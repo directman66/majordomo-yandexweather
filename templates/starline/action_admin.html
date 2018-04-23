@@ -7,12 +7,14 @@
 <!-- <div id="about" class="modal hide"> -->
 	<div class="modal-dialog">
 		<div class="modal-content">
+
+
 			<div class="modal-header">
 				<button class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 				<h4 class="modal-title">https://livegpstracks.com/ [#VER#]</h4>
 			</div>
 			<div class="modal-body">
-				<p> Модуль поддержки сервиса https://livegpstracks.com/</p>
+				<p> Модуль поддержки сервиса https://starline-online.ru </p>
 				<p> Внимание, модуль сам создает класс livegpstrack и объекты в нем. </p>
 				<p class="float-left"></p>
 			</div>
@@ -23,6 +25,7 @@
 
 
 				</p>
+
 				<p class="float-left"></p>
 			</div>
 			
@@ -35,9 +38,15 @@
 </div>
 
 <div>
-https://livegpstracks.com/
+https://starline-online.ru
  &nbsp;&nbsp;<a class="btn btn-default" href="#" onClick="$('#api_settings').toggle();return false;"><#LANG_SETUP#></a>
  &nbsp;&nbsp;<a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=test&tab="><#LANG_TEST#></a>
+	[#if CYCLERUN==1#]
+		<span class="label label-success" title="Статус цикла">Цикл запущен</span>
+	[#else#]
+		<span class="label label-danger" title="Статус цикла">Цикл остановлен</span>
+	[#endif#]
+
  &nbsp; 
 </div>
 
@@ -48,31 +57,28 @@ https://livegpstracks.com/
 
 
 <div class="form-group">
- <label class="control-label"[#if ERR_SERVER#] style="color:red;font-weight:bold"[#endif#]>SERVER:<span style="color:blue">(*)</span></label>
- <div class="controls"><input type="text" name="api_server" value="[#API_SERVER#]" class="input"> <#LANG_SERVER_INFO#>
-   <p class="text-muted"><br/><#LANG_SERVER_TEXT#></p>
+ <label class="control-label"[#if ERR_SERVER#] style="color:red;font-weight:bold"[#endif#]>LOGIN:<span style="color:blue">(*)</span></label>
+ <div class="controls"><input type="text" name="login" value="[#LOGIN#]" class="input"> 
+<p class="text-muted"><br/><"Логин на сайте телематики"></p>   
  </div>
 </div>
 
 <div class="form-group">
- <label class="control-label"[#if ERR_PORT#] style="color:red;font-weight:bold"[#endif#]>PORT:<span style="color:blue">(*)</span></label>
- <div class="controls"><input type="text" name="api_port" value="[#API_PORT#]" class="input"> <#LANG_PORT_INFO#>
-   <p class="text-muted"><br/><#LANG_PORT_TEXT#></p>
+ <label class="control-label"[#if ERR_PORT#] style="color:red;font-weight:bold"[#endif#]>PASSWORD:<span style="color:blue">(*)</span></label>
+ <div class="controls"><input type="text" name="pwd" value="[#PWD#]" class="input"> <#LANG_PORT_INFO#>
+   <p class="text-muted"><br/><"Пароль на сайте телематики"></p>
  </div>
 </div>
 
 
 <div class="form-group">
- <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>MAC:<span style="color:blue">(*)</span></label>
- <div class="controls"><input type="text" name="api_mac" value="[#API_MAC#]" class="input"> <#LANG_MAC_INFO#>
+ <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>TOKEN:<span style="color:blue">(*)</span></label>
+ <div class="controls"><input type="text" name="TOKEN" value="[#TOKEN#]" class="input"> <#LANG_MAC_INFO#>
    <p class="text-muted"><br/><#LANG_MAC_TEXT#></p>
  </div>
 </div>
-<div class="form-group">
- <label class="control-label"><#LANG_NAME#>:</label>
- <div class="controls"><input type="text" name="srv_name" value="[#SRV_NAME#]" class="input"> <#LANG_NAME_INFO#></div>
-</div>
-<div class="form-group">
+
+	<div class="form-group">
  <label class="control-label">
  <#LANG_AUTO_UPDATE_PERIOD#>:(*)
  </label>
@@ -102,25 +108,17 @@ https://livegpstracks.com/
 </div>
 
 <br/>
-[#if VIEW_MODE="outdata_edit"#]	
-	[#inc outdata_edit.html#]
-[#else#]
-[#if VIEW_MODE="indata_edit"#]	
-	[#inc indata_edit.html#]
-[#else#]
+
+				
 <ul class="nav nav-tabs">
   <li[#if TAB=""#] class="active"[#endif#]>
    <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab="><#LANG_SEND#></a>
-  </li>
-  <li[#if TAB="indata"#] class="active"[#endif#]>
+</li>
+<li[#if TAB="indata"#] class="active"[#endif#]>
    <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata"><#LANG_RECEIVE#></a>
   </li>  
 </ul>
-	[#if TAB="outdata" || TAB=""#]  
-	  [#inc outdata.html#] 	
-	[#endif sensor_add#]	
-	[#if TAB="indata"#]
-		[#inc indata.html#] 
-	[#endif#]
+
+	
 [#endif#]
 [#endif#]
