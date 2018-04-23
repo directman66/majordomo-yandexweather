@@ -28,6 +28,10 @@ function starline() {
 *
 * @access public
 */
+ function edit_classes(&$out, $id) {
+  require(DIR_MODULES.$this->name.'/classes_edit.inc.php');
+ }
+
 function saveParams($data=0) {
  $p=array();
  if (IsSet($this->id)) {
@@ -186,6 +190,10 @@ function usual(&$out) {
  $this->admin($out);
 }
  
+ function indata_search(&$out) {	 
+  require(DIR_MODULES.$this->name.'/indata.inc.php');
+ }
+
  function processCycle() {
    $this->getConfig();
 
