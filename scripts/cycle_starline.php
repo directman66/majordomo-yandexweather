@@ -28,7 +28,7 @@ while (1)
    if ((time()-$latest_check)>$checkEvery) {
     $latest_check=time();
     //echo date('Y-m-d H:i:s').' Polling devices...\n';
-    $narodmon2_module->processCycle();
+    $starline_module->processCycle();
    }
    if (file_exists('./reboot') || IsSet($_GET['onetime'])){
       $db->Disconnect();
