@@ -17,10 +17,10 @@ class starline extends module {
 */
 function starline() {
   $this->name="starline";
-  $this->title="https://starline-online.ru/";
+  $this->title="starline-online.ru";
   $this->module_category="<#LANG_SECTION_APPLICATIONS#>";
   $this->checkInstalled();
-  $this->API_KEY = "35uRe2lIkUUPY"; // Module Key
+
 }
 /**
 * saveParams
@@ -155,31 +155,16 @@ function admin(&$out) {
   $out['SET_DATASOURCE']=1;
  }
  
- if ($this->tab=='' || $this->tab=='outdata') {
-   $this->outdata_search($out);
- }  
- if ($this->tab=='indata') {
-   $this->indata_search($out); 
- }
+ 
+ 
  if ($this->view_mode=='test') {
 		$this->sendData();
 		$this->readData();
 		$this->redirect("?");
  }
- if ($this->view_mode=='outdata_edit') {
-   $this->outdata_edit($out, $this->id);
- }
- if ($this->view_mode=='outdata_del') {
-   $this->outdata_del($this->id);
-   $this->redirect("?data_source=$this->data_source&view_mode=node_edit&id=$pid&tab=outdata");
- }	
- if ($this->view_mode=='indata_edit') {
-   $this->indata_edit($out, $this->id);
- }
- if ($this->view_mode=='indata_del') {
-   $this->indata_del($this->id);
-   $this->redirect("?data_source=$this->data_source&view_mode=node_edit&id=$pid&tab=indata");
- }	
+
+
+ 
 }
 /**
 * FrontEnd
@@ -191,45 +176,7 @@ function admin(&$out) {
 function usual(&$out) {
  $this->admin($out);
 }
-/**
-* OutData search
-*
-* @access public
-*/
- function outdata_search(&$out) {	 
-  require(DIR_MODULES.$this->name.'/outdata.inc.php');
- }
-/**
-* InData search
-*
-* @access public
-*/ 
- function indata_search(&$out) {	 
-  require(DIR_MODULES.$this->name.'/indata.inc.php');
- }
-/**
-* OutData edit/add
-*
-* @access public
-*/
- function outdata_edit(&$out, $id) {	
-  require(DIR_MODULES.$this->name.'/outdata_edit.inc.php');
- } 
-/**
-* OutData delete record
-*
-* @access public
-*/
-/**
-* InData edit/add
-*
-* @access public
-*/
-/**
-* InData delete record
-*
-* @access public
-*/
+
  
  function processCycle() {
    $this->getConfig();
@@ -258,26 +205,6 @@ function usual(&$out) {
  }
  
  function readData() {
-$cookie_file = ROOT . 'cached/starline_cookie.txt'; //в этом файле будет храниться сессия
-//$cookie_file = 'dialog_cookie.txt'; //в этом файле будет храниться сессия
-// STEP 1 -- LOGIN
-
-$url = 'https://starline-online.ru/user/login'; // ссылка, по которой нам надо зайти
-// задаём поля, которые будут отправлены при логине     
-$fields = array(
-    'LoginForm[login]' => config['LOGIN'], // номер телефона
-    'LoginForm[rememberMe]' => 'on', 
- 'LoginForm[pass]' =>  config['PWD']
-
-);
-$fields_string = '';
-foreach ($fields as $key => $value) {
-    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';
-}
-rtrim($fields_string, '&');	 
-	 
-	 
-//end main function 
 }
 
 	
