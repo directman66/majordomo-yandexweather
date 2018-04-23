@@ -484,7 +484,7 @@ getURL($url, 0);
 	 
 	 
 //end main function 
-}	
+}}	
  
    
 function readHistory($id, $period, $offset)
