@@ -9,19 +9,19 @@ $db = new mysql(DB_HOST, '', DB_USER, DB_PASSWORD, DB_NAME);
 include_once("./load_settings.php");
 include_once(DIR_MODULES . "control_modules/control_modules.class.php");
 $ctl = new control_modules();
-include_once(DIR_MODULES . 'livegpstracks/livegpstracks.class.php');
-$narodmon2_module = new narodmon2();
-$narodmon2_module->getConfig();
+include_once(DIR_MODULES . 'starline/starline.class.php');
+$starline_module = new starline();
+$starline_module->getConfig();
 // In data
-$tmp1 = SQLSelectOne("SELECT ID FROM lgps_out LIMIT 1");
+//$tmp1 = SQLSelectOne("SELECT ID FROM lgps_out LIMIT 1");
 // Out data
-$tmp2 = SQLSelectOne("SELECT ID FROM lgps_in LIMIT 1");
-if ((!$tmp1['ID']) && (!$tmp2['ID']))
-   exit; // no devices added -- no need to run this cycle
+//$tmp2 = SQLSelectOne("SELECT ID FROM lgps_in LIMIT 1");
+//if ((!$tmp1['ID']) && (!$tmp2['ID']))
+//   exit; // no devices added -- no need to run this cycle
  
 echo date("H:i:s") . " running " . basename(__FILE__) . PHP_EOL;
 $latest_check=0;
-$checkEvery=5; // poll every 5 seconds
+$checkEvery=300; // poll every 5 min
 while (1)
 {
    setGlobal((str_replace('.php', '', basename(__FILE__))) . 'Run', time(), 1);
