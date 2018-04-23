@@ -564,66 +564,61 @@ function readHistory($id, $period, $offset)
 * @access private
 */
  function dbInstall($data) {
-/*
-nm_outdata - 
-*/
-addClass('starline-online'); // Р В Р Р‹Р В РЎвЂўР В Р’В·Р В РўвЂР В Р’В°Р В Р’ВµР В РЎВ Р В РЎвЂќР В Р’В»Р В Р’В°Р РЋР С“Р РЋР С“
-addClassMethod('starline-online','OnChange','SQLUpdate(\'objects\', array("ID"=>$this->id, "DESCRIPTION"=>gg(\'sysdate\').\' \'.gg(\'timenow\'))); ');
-//addClassProperty('livegpstracks','t');
+$classname='starline-online2';
+addClass($classname); 
+addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 
-
-$prop_id=addClassProperty('starline-online', 'arm', 10);
+$prop_id=addClassProperty($classname, 'arm', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='на охране'; //   <-----------
 SQLUpdate('properties',$property); }
 
 
-$prop_id=addClassProperty('starline-online', 'battery', 10);
+$prop_id=addClassProperty($classname, 'battery', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Уровень заряда АКБ'; //   <-----------
 SQLUpdate('properties',$property); } 
 
-$prop_id=addClassProperty('starline-online', 'ctemp', 10);
+$prop_id=addClassProperty($classname, 'ctemp', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Температура в салоне'; //   <-----------
 SQLUpdate('properties',$property); } 
 
-$prop_id=addClassProperty('starline-online', 'etemp', 10);
+$prop_id=addClassProperty($classname, 'etemp', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Температура двигателя'; //   <-----------
 SQLUpdate('properties',$property); } 
 
-$prop_id=addClassProperty('starline-online', 'gsm_lvl', 10);
+$prop_id=addClassProperty($classname, 'gsm_lvl', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Уровень сигнала GSM'; //   <-----------
 SQLUpdate('properties',$property); } 
 
-$prop_id=addClassProperty('starline-online', 'ign', 10);
+$prop_id=addClassProperty($classname, 'ign', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Двигатель заведен'; //   <-----------
 SQLUpdate('properties',$property); } 
 
 
-$prop_id=addClassProperty('starline-online', 'value', 10);
+$prop_id=addClassProperty($classname, 'value', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Остаток средств на счете'; //   <-----------
 SQLUpdate('properties',$property); } 
 
 
-$prop_id=addClassProperty('starline-online', 'y', 10);
+$prop_id=addClassProperty($classname, 'y', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='GPS координаты'; //   <-----------
 SQLUpdate('properties',$property); } 
 
 
 
-$prop_id=addClassProperty('starline-online', 'x', 10);
-				  if ($prop_id) {
-					  $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
-					  $property['ONCHANGE']='OnChange'; //   <-----------
+$prop_id=addClassProperty($classname, 'x', 10);
+if ($prop_id) {
+$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['ONCHANGE']='OnChange'; //   <-----------
 $property['DESCRIPTION']='GPS координаты'; //   <-----------
-					  SQLUpdate('properties',$property);
-				  } 
+SQLUpdate('properties',$property);} 
 
  }
 // --------------------------------------------------------------------
