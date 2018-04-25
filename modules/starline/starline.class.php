@@ -237,8 +237,8 @@ $this->getdatefnc();
 function login() {
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
 $this->getConfig();
-sg('test.starline','login:'.$this->config['STARLINELOGIN']);
-sg('test.starline','login:'.$this->config['STARLINEPWD']);
+//sg('test.starline','login:'.$this->config['STARLINELOGIN']);
+//sg('test.starline','login:'.$this->config['STARLINEPWD']);
 $out['DEBUG'] ='run';
 
 $url = 'https://starline-online.ru/user/login';
@@ -256,7 +256,7 @@ $fields_string = '';
 foreach ($fields as $key => $value) {    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';}
 rtrim($fields_string, '&');
 $this->config['DEBUG']=$fields_string;
-sg('test.starline','login:'.$fields_string);
+//sg('test.starline','login:'.$fields_string);
 
 //sg('test.starline',$this->config['COOKIES']);
 $cdata=$this->config['STARLINECOOKIES'];
@@ -310,31 +310,33 @@ $data=explode("\n",$result);
 foreach($data as $part){
 $par=substr ($part,0,10);
 
-sg('test.starline','part:'.$part);
+//sg('test.starline','part:'.$part);
 if (strpos($part,'PHPSESSID')>0) {
 $sesid=explode('=',  $part);
 $sesid2=explode(';',  $sesid[1]);
-sg('test.starline_PHPSESSID',$sesid2[0]);
+//sg('test.starline_PHPSESSID',$sesid2[0]);
 $this->config['STARLINESESID']=$sesid2[0];
 }
 
 if (strpos($part,': t=')>0) {
 $token=explode('=',  $part);
 $token2=explode(';',  $token[1]);
-sg('test.starline_token',$token2[0]);
+//sg('test.starline_token',$token2[0]);
 $this->config['STARLINETOKEN']=$token2[0];
 }
 
 
 
-sg('test.starline','part:'.$part);
+//sg('test.starline','part:'.$part);
 if (strpos($part,'Captcha')>0) {
-sg('test.starline_Captcha',$part);
+//sg('test.starline_Captcha',$part);
 }else 
-{sg('test.starline_Captcha','no need');}
+{
+//sg('test.starline_Captcha','no need');
+}
 
 if (strpos($part,'Cookies')>0) {
-sg('test.starline_Cookies',$part);
+//sg('test.starline_Cookies',$part);
 }
 }
 
@@ -407,27 +409,29 @@ $data=explode("\n",$result);
 foreach($data as $part){
 $par=substr ($part,0,10);
 
-sg('test.starline2','part:'.$part);
+//sg('test.starline2','part:'.$part);
 if (strpos($part,'PHPSESSID')>0) {
 $sesid=explode('=',  $part);
 $sesid2=explode(';',  $sesid[1]);
-sg('test.starline2_PHPSESSID',$sesid2[0]);
+//sg('test.starline2_PHPSESSID',$sesid2[0]);
 }
 
 if (strpos($part,'t=')>0) {
-sg('test.starline2_token',$part);
+//sg('test.starline2_token',$part);
 }
 
 
 
-sg('test.starline2','part:'.$part);
+//sg('test.starline2','part:'.$part);
 if (strpos($part,'Captcha')>0) {
-sg('test.starline2_Captcha',$part);
+//sg('test.starline2_Captcha',$part);
 }else 
-{sg('test.starline2_Captcha','no need');}
+{
+//sg('test.starline2_Captcha','no need');
+}
 
 if (strpos($part,'Cookies')>0) {
-sg('test.starline2_Cookies',$part);
+//sg('test.starline2_Cookies',$part);
 }
 }
    curl_close($ch);
