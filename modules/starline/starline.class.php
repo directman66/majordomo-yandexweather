@@ -176,7 +176,7 @@ $out['STARLINEDEBUG']=$this->config['STARLINEDEBUG'];
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
- if ($this->tab=='indata ') {
+ if ($this->tab=='indata') {
    $this->indata_search($out); 
  }
  if ($this->view_mode=='login') {
