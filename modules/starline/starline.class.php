@@ -128,12 +128,14 @@ function admin(&$out) {
 		}
 
  
- $out['LOGIN'] = $this->config['LOGIN'];
- $out['PWD']=$this->config['PWD'];
- $out['TOKEN']=$this->config['TOKEN'];
- $out['COOKIES']=$this->config['COOKIES'];
+ $out['STARLINELOGIN'] = $this->config['STARLINELOGIN'];
+ $out['STARLINEPWD']=$this->config['STARLINEPWD'];
+ $out['STARLINETOKEN']=$this->config['STARLINETOKEN'];
+ $out['STARLINESESID']=$this->config['STARLINESESID'];
 
-$out['DEBUG']=$this->config['DEBUG'];
+ $out['STARLINECOOKIES']=$this->config['STARLINECOOKIES'];
+
+$out['STARLINEDEBUG']=$this->config['STARLINEDEBUG'];
 	
  $out['EVERY']=$this->config['EVERY'];
  
@@ -144,20 +146,24 @@ $out['DEBUG']=$this->config['DEBUG'];
  }
  
  if ($this->view_mode=='update_settings') {
-	global $login;
-	$this->config['LOGIN']=$login;	 
+	global $starlinelogin;
+	$this->config['STARLINELOGIN']=$starlinelogin;	 
 
-	global $pwd;
-	$this->config['PWD']=$pwd;	 
+	global $starlinepwd;
+	$this->config['STARLINEPWD']=$starlinepwd;	 
 
-	global $token;
-	$this->config['TOKEN']=$token;	 
+	global $starlinetoken;
+	$this->config['STARLINETOKEN']=$starlinetoken;	 
 
-	global $cookies;
-	$this->config['COOKIES']=$cookies;	 
+	global $starlinesesid;
+	$this->config['STARLINESESID']=$starlinesesid;	 
 
-	global $debug;
-	$this->config['DEBUG']=$debug;	 
+
+	global $starlinecookies;
+	$this->config['STARLINECOOKIES']=$starlinecookies;	 
+
+	global $starlinedebug;
+	$this->config['STARLINEDEBUG']=$starlinedebug;	 
 
    
    $this->saveConfig();
@@ -170,14 +176,22 @@ $out['DEBUG']=$this->config['DEBUG'];
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
- if ($this->tab=='indata') {
+ if ($this->tab=='indata ') {
    $this->indata_search($out); 
  }
- if ($this->view_mode=='test') {
+ if ($this->view_mode=='login') {
 		$this->login();
-//		$this->getinfo();
-//		$this->redirect("?");
  }
+
+ if ($this->view_mode=='get') {
+		$this->getdatefnc();
+ }
+
+ if ($this->view_mode=='startign') {
+		$this->startign2();
+
+ }
+
 }
 /**
 * FrontEnd
@@ -205,54 +219,56 @@ function usual(&$out) {
    }
    
    if ($has) {  
-$this->login();   
+$this->getdatefnc();   
 		 
 	$this->config['LATEST_UPDATE']=time();
 	$this->saveConfig();
    } 
- }
+  }
 
  function sendData() {
 
  }
  
- function sendVals($vals){ 
- }
  
- function readData() {
-
-}
 
 	
 	
 function login() {
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
-
+$this->getConfig();
+sg('test.starline','login:'.$this->config['STARLINELOGIN']);
+sg('test.starline','login:'.$this->config['STARLINEPWD']);
 $out['DEBUG'] ='run';
 
 $url = 'https://starline-online.ru/user/login';
 $fields = array(
-'LoginForm[login]' => config['LOGIN'], 
+'LoginForm[login]' =>$this->config['STARLINELOGIN'], 
 'LoginForm[rememberMe]' => 'on', 
-'LoginForm[pass]' =>  config['PWD'],
+'LoginForm[pass]' => $this->config['STARLINEPWD'],
 'captcha[code]'=>'',
-'captcha[sid]'=>''	
+'captcha[sid]'=>''
 );
+
+
 
 $fields_string = '';
 foreach ($fields as $key => $value) {    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';}
 rtrim($fields_string, '&');
+$this->config['DEBUG']=$fields_string;
+sg('test.starline','login:'.$fields_string);
 
 //sg('test.starline',$this->config['COOKIES']);
-$cdata=$this->config['COOKIES'];
+$cdata=$this->config['STARLINECOOKIES'];
 	 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+//curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_POST, count($fields));
 curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
 //curl_setopt($ch, CURLOPT_POST, $data);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
@@ -261,29 +277,99 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'Accept: application/json, text/javascript, */*; q=0.01',
 'Content-Type: application/x-www-form-urlencoded; charset=UTF-8',
 'X-Requested-With: XMLHttpRequest'
+
+//'User-Agent\': \'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0',
+//'Accept\': \'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+//'Accept-Language\': \'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+//'Connection\': \'keep-alive'
+
+
+//'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0',
+//'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+//'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+//'Connection: keep-alive'
+
 ));
 
 $result = curl_exec($ch);
-//sg('test.starline',$result);
-preg_match_all('/^Set-Cookie:\s*([^;]*)/mi', $result, $matches);
-$cookies = array();
-foreach($matches[1] as $item) {
-    parse_str($item, $cookie);
-    $cookies = array_merge($cookies, $cookie);
+$info = curl_getinfo($ch);
+
+//sg('test.starline','ch:'.$ch);
+//sg('test.starline','result:'.$result);
+
+
+//sg('test.starline','reqestheader:'.json_encode($info));
+//sg('test.starline','reqestheade_ifo:'.$info['request_header']);
+
+//$headers=array();
+$data=explode("\n",$result);
+//$headers['status']=$data[0];
+
+//array_shift($data);
+
+foreach($data as $part){
+$par=substr ($part,0,10);
+
+sg('test.starline','part:'.$part);
+if (strpos($part,'PHPSESSID')>0) {
+$sesid=explode('=',  $part);
+$sesid2=explode(';',  $sesid[1]);
+sg('test.starline_PHPSESSID',$sesid2[0]);
+$this->config['STARLINESESID']=$sesid2[0];
 }
+
+if (strpos($part,': t=')>0) {
+$token=explode('=',  $part);
+$token2=explode(';',  $token[1]);
+sg('test.starline_token',$token2[0]);
+$this->config['STARLINETOKEN']=$token2[0];
+}
+
+
+
+sg('test.starline','part:'.$part);
+if (strpos($part,'Captcha')>0) {
+sg('test.starline_Captcha',$part);
+}else 
+{sg('test.starline_Captcha','no need');}
+
+if (strpos($part,'Cookies')>0) {
+sg('test.starline_Cookies',$part);
+}
+}
+
+
 //sg('test.starline',$matches);
 //sg('test.starline',$cookies);
 curl_close($ch);
+$this->saveConfig();
+ }
 
 
-$ck=substr(file_get_contents ($cookie_file),stripos (file_get_contents ($cookie_file), "PHPSESSID"));
-//
+
+
+
+
+
+
+///////////////////////////////////
+
+function  getdatefnc(){
+$cookie_file = ROOT . 'cached/starline_cookie.txt'; 
+
+$cdata=$this->config['COOKIES'];
+$token=gg('test.starline_token');
+$sesid=gg('test.starline_PHPSESSID');
+
 $cck2=$cdata;
 //
-$cck=urlencode($cck);
 
+//eS = date / 1000;
+//	eS = eS.toString().replace(".","");
+//	path: '/device?tz=360&_='+eS, //list
 
 $url = 'https://starline-online.ru/device?tz=300&_=1512134458324'; 
+//$url = 'https://starline-online.ru/device?tz=360&_='.eS; 
    $ch = curl_init();   
    curl_setopt($ch, CURLOPT_URL, $url);
    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -298,16 +384,52 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 'accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
 'accept-encoding:gzip, deflate, br',
 'accept-language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
-'cookie:'.$cck2,
+'Referer: https://starline-online.ru/site/map',
+//'cookie:'.$cck2,
+'Cookie: PHPSESSID='.$sesid.'; t='.$token.'; lang=ru;',
+
  
 'upgrade-insecure-requests:1',
-'user-agent:Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Mobile Safari/537.36'
+'user-agent:Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Mobile Safari/537.36',
+'Connection: keep-alive'
 
 
 
 ));
 
    $result = curl_exec($ch);
+
+$data=explode("\n",$result);
+//$headers['status']=$data[0];
+
+//array_shift($data);
+
+foreach($data as $part){
+$par=substr ($part,0,10);
+
+sg('test.starline2','part:'.$part);
+if (strpos($part,'PHPSESSID')>0) {
+$sesid=explode('=',  $part);
+$sesid2=explode(';',  $sesid[1]);
+sg('test.starline2_PHPSESSID',$sesid2[0]);
+}
+
+if (strpos($part,'t=')>0) {
+sg('test.starline2_token',$part);
+}
+
+
+
+sg('test.starline2','part:'.$part);
+if (strpos($part,'Captcha')>0) {
+sg('test.starline2_Captcha',$part);
+}else 
+{sg('test.starline2_Captcha','no need');}
+
+if (strpos($part,'Cookies')>0) {
+sg('test.starline2_Cookies',$part);
+}
+}
    curl_close($ch);
 //sg('test.starline',$result);
 //SaveFile(ROOT . 'cached/dialog_result.txt', $result); // сохранять в файл не обязательно, это я делаю просто для того чтобы посмотреть что внутри
@@ -376,8 +498,72 @@ getURL($url, 0);
 }}	
  
    
-function readHistory($id, $period, $offset)
+function startign2()
 {
+$cookie_file = ROOT . 'cached/starline_cookie.txt'; 
+
+$cdata=$this->config['COOKIES'];
+$token=gg('test.starline_token');
+$sesid=gg('test.starline_PHPSESSID');
+
+$cck2=$cdata;
+//
+
+//eS = date / 1000;
+//	eS = eS.toString().replace(".","");
+//	path: '/device?tz=360&_='+eS, //list
+
+//$url = 'https://starline-online.ru/device?tz=300&_=1512134458324'; 
+//$url = 'https://starline-online.ru/device?tz=360&_='.eS; 
+
+$url = 'https://starline-online.ru/device/22198231/executeCommand';  
+$fields = array(
+    'value' => '1', // номер телефона
+    'action' => 'ign', 
+ 'password' =>  ''
+ //'password' =>  gg('balance.StarlinePass')
+);
+$fields_string = '';
+foreach ($fields as $key => $value) {
+    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';
+}
+
+
+   $ch = curl_init();   
+   curl_setopt($ch, CURLOPT_URL, $url);
+   curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+   curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
+   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+   curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+curl_setopt($ch, CURLOPT_POST, count($fields));
+curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+':authority:starline-online.ru',
+':method:GET',
+':path:/device?tz=300&_=1513105401911',
+':scheme:https',
+'accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+'accept-encoding:gzip, deflate, br',
+'accept-language:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7',
+'Referer: https://starline-online.ru/site/map',
+//'cookie:'.$cck2,
+'Cookie: PHPSESSID='.$sesid.'; t='.$token.'; lang=ru;',
+
+ 
+'upgrade-insecure-requests:1',
+'user-agent:Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Mobile Safari/537.36',
+'Connection: keep-alive'
+
+
+
+));
+
+   $result = curl_exec($ch);
+
+sg('test.starline_ign',''.$result);
+
+   curl_close($ch);
+
 
 }
  
