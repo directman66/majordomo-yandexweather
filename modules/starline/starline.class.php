@@ -234,7 +234,9 @@ $url = 'https://starline-online.ru/user/login';
 $fields = array(
 'LoginForm[login]' => config['LOGIN'], 
 'LoginForm[rememberMe]' => 'on', 
-'LoginForm[pass]' =>  config['PWD']
+'LoginForm[pass]' =>  config['PWD'],
+'captcha[code]'=>'',
+'captcha[sid]'=>''	
 );
 
 $fields_string = '';
