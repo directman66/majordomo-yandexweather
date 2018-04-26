@@ -15,9 +15,9 @@
 	
   if (!$qry) $qry="1";
   // SEARCH RESULTS
-//$res=SQLSelect("select  titlename TITLE,descr DESCRIPTION,max(typename) tip, max(ign) ign, max(status) status, max(arm) arm,max(etemp) etemp,max(ctemp) ctemp,max(mayak_temp) mayak_temp,max(device_id) device_idfrom (select titlename,descr,if (tip='typename', VALUE,null) typename,if (tip='alias', VALUE,null) alias,if (tip='device_id', VALUE,null) device_id,if (tip='etemp', VALUE,null) etemp,if (tip='ctemp', VALUE,null) ctemp,if (tip='mayak_temp', VALUE,null) mayak_temp ,if (tip='status', VALUE,null) status ,if (tip='arm', VALUE,null) arm ,if (tip='ign', VALUE,null) ign  from   (SELECT objects.TITLE titlename , objects.DESCRIPTION descr, substring(pvalues.PROPERTY_NAME, position('.' in pvalues.PROPERTY_NAME)+1) tip, pvalues.VALUE fROM `objects`,  `pvalues`WHERE  objects.class_id = (SELECT ID FROM `classes` WHERE title='starline-online') and objects.ID=pvalues.OBJECT_ID     )a    )b       group by  titlename,descr");
+$res=SQLSelect("select  titlename TITLE ,descr DESCRIPTION ,max(typename) tip, max(ign) ign, max(status) status, max(arm) arm,max(etemp) etemp,max(ctemp) ctemp,max(mayak_temp) mayak_temp,max(device_id) device_id from (select titlename,descr,if (tip='typename', VALUE,null) typename,if (tip='alias', VALUE,null) alias,if (tip='device_id', VALUE,null) device_id,if (tip='etemp', VALUE,null) etemp,if (tip='ctemp', VALUE,null) ctemp,if (tip='mayak_temp', VALUE,null) mayak_temp ,if (tip='status', VALUE,null) status ,if (tip='arm', VALUE,null) arm ,if (tip='ign', VALUE,null) ign  from   (SELECT objects.TITLE titlename , objects.DESCRIPTION descr, substring(pvalues.PROPERTY_NAME, position('.' in pvalues.PROPERTY_NAME)+1) tip, pvalues.VALUE fROM `objects`,  `pvalues`WHERE  objects.class_id = (SELECT ID FROM `classes` WHERE title='starline-online') and objects.ID=pvalues.OBJECT_ID     )a    )b       group by  titlename,descr");
 
-  $res=SQLSelect("SELECT `TITLE`,`DESCRIPTION` FROM `objects` WHERE `CLASS_ID` in(SELECT ID  FROM `classes` WHERE title='starline-online')");
+//  $res=SQLSelect("SELECT `TITLE`,`DESCRIPTION` FROM `objects` WHERE `CLASS_ID` in(SELECT ID  FROM `classes` WHERE title='starline-online')");
   
 	
 	if ($res[0]['TITLE']) {
