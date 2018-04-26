@@ -38,7 +38,7 @@
 </div>
 
 <div>
-<img src="../img/modules/starline.png"  width="48" height="48">
+<img src="../img/modules/starline.png"  >
 https://starline-online.ru
  &nbsp;&nbsp;<a class="btn btn-default" href="#" onClick="$('#api_settings').toggle();return false;"><#LANG_SETUP#></a>
  &nbsp;&nbsp;<a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=login&tab=">LOGIN</a>
@@ -64,7 +64,7 @@ https://starline-online.ru
 <div class="form-group">
  <label class="control-label"[#if ERR_SERVER#] style="color:red;font-weight:bold"[#endif#]>LOGIN:<span style="color:blue">(*)</span></label>
  <div class="controls"><input type="text" name="starlinelogin" value="[#STARLINELOGIN#]" class="input"> 
-<p class="text-muted"><br/><"Логин на сайте телематики"></p>   
+<p class="text-muted"><br/>Логин на сайте телематики</p>   
  </div>
 </div>
 
@@ -72,38 +72,36 @@ https://starline-online.ru
 <div class="form-group">
  <label class="control-label"[#if ERR_PORT#] style="color:red;font-weight:bold"[#endif#]>PASSWORD:<span style="color:blue">(*)</span></label>
  <div class="controls"><input type="text" name="starlinepwd" value="[#STARLINEPWD#]" class="input">
-   <p class="text-muted"><br/><"Пароль на сайте телематики"></p>
+   <p class="text-muted"><br/>Пароль на сайте телематики</p>
  </div>
 </div>
 
 
-<div class="form-group">
- <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>COOKIES:<span style="color:blue">(*)</span></label>
- <div class="controls"><input type="text" size=100 name="starlinecookies" value="[#STARLINECOOKIES#]" class="input">
-   <p class="text-muted"><br/><#LANG_MAC_TEXT#></p>
- </div>
-</div>
 
 <div class="form-group">
  <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>SESID:<span style="color:blue">(*)</span></label>
  <div class="controls"><input type="text" size=100 name="starlinesesid" value="[#STARLINESESID#]" class="input">
-   <p class="text-muted"><br/><#LANG_MAC_TEXT#></p>
+   <p class="text-muted"><br/>ID сессии телематики</p>
  </div>
 </div>
 
 <div class="form-group">
  <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>TOKEN:<span style="color:blue">(*)</span></label>
  <div class="controls"><input type="text" size=100 name="starlinetoken" value="[#STARLINETOKEN#]" class="input">
-   <p class="text-muted"><br/><#LANG_MAC_TEXT#></p>
+   <p class="text-muted"><br/>Токен телематики</p>
  </div>
 </div>
 
 
 
 <div class="form-group">
+ <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>COOKIES:</label>
+  <p class="text-muted"><#STARLINECOOKIES#></p>
+ </div>
+
+<div class="form-group">
  <label class="control-label"[#if ERR_API_MAC#] style="color:red;font-weight:bold"[#endif#]>DEBUG:</label>
-  <p class="text-muted"><br/><#STARLINEDEBUG#></p>
- 
+  <p class="text-muted"><#STARLINEDEBUG#></p>
  </div>
 
 
@@ -134,15 +132,10 @@ https://starline-online.ru
 
 <br/>
 
-
-	
-	[#inc indata_edit.html#]
 <ul class="nav nav-tabs">
-  <li[#if TAB="indata"#] class="active"[#endif#]>
-   <a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata"><#LANG_RECEIVE#></a>
-  </li>  
+	<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Device</a> </li>
+	<li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
-	[#if TAB="indata"#]
-		[#inc indata.html#] 
 
-[#endif#]
+
+[#if TAB="indata" || TAB==""#] [#inc indata.html#] [#endif#] [#if TAB="help"#] [#inc help.html#] [#endif#]
