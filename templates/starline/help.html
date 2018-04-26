@@ -1,35 +1,64 @@
 <br/>
 <div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#sms_help">Информация</a>
+		</div>
+		<div class="panel-body collapse" id="sms_help">
+		<p><b>Модуль синхронизации Majordomo и сервиса старлайн телематики starline-online.ru.</b></br>     </br>
+Данный модуль позволяет подключить GSM сигнализацию старлайн  или охранный маяк в MAJORDOMO. Данные устройства должны быть подключены к сервису starline телематика (starline-online.ru). Список сигнализаций можно узнать на сайте производителя. 
+		</div> </div> </div>
 
-	
-<br/>
+
 <div class="panel-group" id="accordion">
-
-Модуль синхронизации Majordomo и сервиса старлайн телематики starline-online.ru.
-	
-Данный модуль подключить GSM сигнализацию старлайн  или охранный маяк в MAJORDOMO. Данные устройства должны быть подключены к сервису starline телематика (starline-online.ru). Список сигнализаций можно узнать на сайте производителя. 
-
-Кнопкой LOGIN происходит заполнение полей TOKEN и SESID. 
-
-Реализовано: 
-1) Автоматическое получение токена и cookies. 
-2) Получение списка привязаного к акаунту оборудования, создание класса starline-online и добавление новых объектов.
-3) Получение данных, которые отдает сервис (GPS координаты, напряжение АКБ, версия прошивки GSM модуля, баланс сим-карты, статуса работы двигателя, охраны и тд.)
-4) Открытие дверей и снятие с охраны автомобиля в целях безопасности в модуль не включено.
-5) Передача GPS координат штатному плагину GSP-трекер. Действия по прибытию в определенную точку настраивайте через штатный плагин.
-
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#nach">Начало работы</a>
+		</div>
+		<div class="panel-body collapse" id="nach">
+		<p>Кнопкой LOGIN происходит заполнение полей TOKEN и SESID.</br> </br>
 Модуль создает цикл cycle_starline, по которому обновление параметров просходит раз в 5 минут (настройки плагина пока игнорируются). Бывают ситуации, что сервис возвращает капчу, в таком случае желательно войти через браузер в сервис и ввести капчу вручную. Если не вводить, через какое-то время все равно авторизация происходит корректно.
 
-В планах:
+		</div> </div> </div>
 
-2) Запуск двигателя, запуск webasto. 
-3) Обработка капчи.
-4) Информирование при минимальном балансе сим-карты, понижении температуры двигателя ниже заданного порога, при понижении напряжения АКБ.	
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#vozm">Возможности</a>
+		</div>
+		<div class="panel-body collapse" id="vozm">
+
+Реализовано:     </br>
+1) Автоматическое получение токена и cookies. </br>
+2) Получение списка привязаного к акаунту оборудования, создание класса starline-online и добавление новых объектов.</br>
+3) Получение данных, которые отдает сервис (GPS координаты, напряжение АКБ, версия прошивки GSM модуля, баланс сим-карты, статуса работы двигателя, охраны и тд.)</br>
+4) Открытие дверей и снятие с охраны автомобиля в целях безопасности в модуль не включено.  </br>
+5) Передача GPS координат штатному плагину GSP-трекер. Действия по прибытию в определенную точку настраивайте через штатный плагин. </br>
+    </br></br>
+
+В планах:  </br>
+
+2) Запуск двигателя, запуск webasto. </br>
+3) Обработка капчи.     </br>
+4) Информирование при минимальном балансе сим-карты, понижении температуры двигателя ниже заданного порога, при понижении напряжения АКБ.	</br>
 
 
+		</div> </div> </div>
 
-<a href="https://github.com/directman66/majordomo-starline" target="_blank">Ссылка на репозиторий</a>.<br>
-<a href="http://majordomo.smartliving.ru/forum/viewtopic.php?f=5&t=5424" target="_blank">Тема на форуме</a>.<br>
+
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#cont">Контактная информация</a>
+		</div>
+		<div class="panel-body collapse" id="cont">
+		<p><b>
+<a href="https://github.com/directman66/majordomo-starline" target="_blank">Ссылка на репозиторий</a><br>
+<a href="http://majordomo.smartliving.ru/forum/viewtopic.php?f=5&t=5424" target="_blank">Тема на форуме</a>.<br></b></br>
+		</div> </div> </div>
+
+                                                                                                                         
+                                                                                                         
 	
 </div>
 
