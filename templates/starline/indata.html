@@ -28,6 +28,14 @@
 
  <th><#LANG_TITLE#></th>
  <th><#LANG_VALUE#></th>  
+<th>Тип</th>  
+<th>Зажиг.</th>  
+<th>Охрана</th>  
+<th>Темп.дв</th>  
+<th>Темп.салона</th>  
+<th>Темп.улицы</th>  
+<th>deviceid</th>  
+
 
  <th>&nbsp;</th>
 </tr>
@@ -36,11 +44,7 @@
 [#begin RESULT#]
 <tr style="height:52px" class="hover_btn2">
 
- <td style="vertical-align:middle">
-  <b>
-   [#TITLE#]
-  </a></b>
- </td>
+ <td style="vertical-align:middle"><b>[#TITLE#]</b> </td>
  <td style="vertical-align:middle">
   [#if DESCRIPTION!=""#]
    [#DESCRIPTION#]
@@ -48,6 +52,62 @@
    &nbsp;
   [#endif#]
  </td>  
+
+ <td style="vertical-align:middle">
+  [#if tip!=""#]
+   [#tip#]
+  [#else#]
+  [#endif#]
+ </td>  
+
+ <td style="vertical-align:middle">
+  [#if ign!=""#]
+   [#ign#]
+  [#else#]
+   
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if arm!=""#]
+   [#arm#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if etemp!=""#]
+   [#etemp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if ctemp!=""#]
+   [#ctemp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+<td style="vertical-align:middle">
+  [#if mayak_temp!=""#]
+   [#mayak_temp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+
+<td style="vertical-align:middle">
+  [#if device_id!=""#]
+   [#device_id#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+
+
  <td style="vertical-align:middle" width="1%" nowrap>
   <div style="width:120px">
   [#if "<#ACTION#>"=="admin"#]
