@@ -176,8 +176,9 @@ $out['STARLINEDEBUG']=$this->config['STARLINEDEBUG'];
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
- if ($this->tab=='indata') {
-   $this->indata_search($out); 
+
+ if ($this->tab=='' || $this->tab=='indata') {
+    $this->indata_search($out); 
  }
  if ($this->view_mode=='login') {
 		$this->login();
@@ -239,7 +240,6 @@ $cookie_file = ROOT . 'cached/starline_cookie.txt';
 $this->getConfig();
 //sg('test.starline','login:'.$this->config['STARLINELOGIN']);
 //sg('test.starline','login:'.$this->config['STARLINEPWD']);
-$out['DEBUG'] ='run';
 
 $url = 'https://starline-online.ru/user/login';
 $fields = array(
@@ -291,11 +291,13 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 
 ));
 
+
 $result = curl_exec($ch);
 $info = curl_getinfo($ch);
+$this->config['STARLINEDEBUG']=$result;
 
 //sg('test.starline','ch:'.$ch);
-//sg('test.starline','result:'.$result);
+sg('test.starline','result:'.$result);
 
 
 //sg('test.starline','reqestheader:'.json_encode($info));
@@ -314,17 +316,23 @@ $par=substr ($part,0,10);
 if (strpos($part,'PHPSESSID')>0) {
 $sesid=explode('=',  $part);
 $sesid2=explode(';',  $sesid[1]);
-//sg('test.starline_PHPSESSID',$sesid2[0]);
+sg('test.starline_PHPSESSID',$sesid2[0]);
 $this->config['STARLINESESID']=$sesid2[0];
 }
 
 if (strpos($part,': t=')>0) {
 $token=explode('=',  $part);
 $token2=explode(';',  $token[1]);
-//sg('test.starline_token',$token2[0]);
+sg('test.starline_token',$token2[0]);
 $this->config['STARLINETOKEN']=$token2[0];
 }
 
+if (strpos($part,'starline.ru')>0) {
+//$token=explode('=',  $part);
+//$token2=explode(';',  $token[1]);
+sg('test.starline_cookies',$part);
+$this->config['STARLINECOOKIES']=$part;
+}
 
 
 //sg('test.starline','part:'.$part);
@@ -357,6 +365,7 @@ $this->saveConfig();
 ///////////////////////////////////
 
 function  getdatefnc(){
+$this->getConfig();
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
 
 $cdata=$this->config['COOKIES'];
@@ -399,8 +408,9 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 
 ));
 
-   $result = curl_exec($ch);
-
+$result = curl_exec($ch);
+$this->config['STARLINEDEBUG']=$result;
+sg('test.starline2','all:'.$result);
 $data=explode("\n",$result);
 //$headers['status']=$data[0];
 
@@ -435,6 +445,7 @@ if (strpos($part,'Cookies')>0) {
 }
 }
    curl_close($ch);
+
 //sg('test.starline',$result);
 //SaveFile(ROOT . 'cached/dialog_result.txt', $result); // сохранять в файл не обязательно, это я делаю просто для того чтобы посмотреть что внутри
 
@@ -479,6 +490,7 @@ sg($devicename.'.'.$key4,$value4);
   } else {
 sg($devicename.'.'.$key2,$value2);
 sg($devicename.'.updated',date('d.m.Y H:i:s'));
+sg($devicename.'.json',$result);
 
    
   }
@@ -499,7 +511,11 @@ getURL($url, 0);
 	 
 	 
 //end main function 
-}}	
+}
+$this->saveConfig();
+
+}
+	
  
    
 function startign2()
