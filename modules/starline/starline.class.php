@@ -1,6 +1,8 @@
 <?php
 /**
 * https://starline-online.ru/
+* author Sannikov Dmitriy sannikovdi@yandex.ru
+* support page 
 * @package project
 * @author Wizard <sergejey@gmail.com>
 * @copyright http://majordomo.smartliving.ru/ (c)
@@ -605,7 +607,7 @@ sg('test.starline_ign',''.$result);
 * @access public
 */
  function uninstall() {
-
+  SQLExec('DROP TABLE IF EXISTS starline');
   parent::uninstall();
  }
 /**
