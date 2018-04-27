@@ -257,7 +257,7 @@ $fields = array(
 $fields_string = '';
 foreach ($fields as $key => $value) {    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';}
 rtrim($fields_string, '&');
-$this->config['DEBUG']=$fields_string;
+$this->config['STARLINEDEBUG']=$fields_string;
 //sg('test.starline','login:'.$fields_string);
 
 //sg('test.starline',$this->config['COOKIES']);
@@ -525,9 +525,11 @@ function startign2()
 {
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
 
-$cdata=$this->config['COOKIES'];
-$token=gg('test.starline_token');
-$sesid=gg('test.starline_PHPSESSID');
+$cdata=$this->config['STARLINECOOKIES'];
+//$token=gg('test.starline_token');
+//$sesid=gg('test.starline_PHPSESSID');
+$token=$this->config['STARLINETOKEN'];
+$sesid=$this->config['STARLINESESID'];
 
 $cck2=$cdata;
 //
