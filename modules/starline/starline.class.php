@@ -514,7 +514,7 @@ getURL($url, 0);
 	 
 //end main function 
 }
-$this->saveConfig();
+//$this->saveConfig();
 
 }
 	
