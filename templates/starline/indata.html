@@ -61,18 +61,24 @@
  </td>  
 
  <td style="vertical-align:middle">
-  [#if ign!=""#]
-   [#ign#]
+  [#if ign==1#]
+   <img src="../templates/telegram/img/enable.png">
   [#else#]
-   
-  [#endif#]
+   <img src="../templates/telegram/img/disable.png">
+ &nbsp;  
+[#endif#]
  </td>  
  <td style="vertical-align:middle">
-  [#if arm!=""#]
-   [#arm#]
+  [#if arm==1#]
+   <img src="../templates/telegram/img/enable.png">
   [#else#]
-   &nbsp;
-  [#endif#]
+   <img src="../templates/telegram/img/disable.png">
+ &nbsp;  
+[#endif#]
+
+
+  
+  
  </td>  
  <td style="vertical-align:middle">
   [#if etemp!=""#]
