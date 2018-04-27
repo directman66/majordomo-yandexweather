@@ -370,10 +370,11 @@ function  getdatefnc(){
 $this->getConfig();
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
 
-$cdata=$this->config['COOKIES'];
-$token=gg('test.starline_token');
-$sesid=gg('test.starline_PHPSESSID');
-
+$cdata=$this->config['STARLINECOOKIES'];
+//$token=gg('test.starline_token');
+//$sesid=gg('test.starline_PHPSESSID');
+$token=$this->config['STARLINETOKEN'];
+$sesid=$this->config['STARLINESESID'];
 $cck2=$cdata;
 //
 
