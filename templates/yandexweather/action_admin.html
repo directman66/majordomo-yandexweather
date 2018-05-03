@@ -85,16 +85,19 @@
 		 </select> минут 
  </div>
 </div>
- </td>
- </table>
-
- [#inc config.html#] 
-
+ </td><td>
 <div class="form-actions">
 <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_UPDATE#></button>
 <input type="hidden" name="view_mode" value="update_settings">
 <input type="hidden" name="mode" value="update">
 </div>
+
+</td>
+ </table>
+
+ [#inc config.html#] 
+
+
 </fieldset>
 </form>
 </div>
@@ -102,7 +105,7 @@
 <br/>
 
 <ul class="nav nav-tabs">
-	<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Device</a> </li>
+	<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Города</a> </li>
 	<li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
 
