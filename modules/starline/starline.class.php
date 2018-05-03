@@ -325,7 +325,10 @@ $this->config['STARLINESESID']=$sesid2[0];
 if (strpos($part,': t=')>0) {
 $token=explode('=',  $part);
 $token2=explode(';',  $token[1]);
-sg('test.starline_token',$token2[0]);
+
+	
+ addClassObject('starline-online','starlinecfg');	
+sg('starlinecfg.token',$token2[0]);	
 $this->config['STARLINETOKEN']=$token2[0];
 }
 
@@ -371,9 +374,10 @@ $this->getConfig();
 $cookie_file = ROOT . 'cached/starline_cookie.txt'; 
 
 $cdata=$this->config['STARLINECOOKIES'];
-//$token=gg('test.starline_token');
+$token=gg('starlinecfg.token');
 //$sesid=gg('test.starline_PHPSESSID');
-$token=$this->config['STARLINETOKEN'];
+//$token=$this->config['STARLINETOKEN'];
+//
 $sesid=$this->config['STARLINESESID'];
 $cck2=$cdata;
 //
