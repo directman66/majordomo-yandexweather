@@ -5,7 +5,7 @@
 <table width=100% border=0><tr>
 <td valign=top>
 <!-- results -->
-[#if RESULT#]
+[#if CITYES#]
 <!-- paging -->
 [#if PAGES#]
 <table border=0>
@@ -37,7 +37,7 @@
 </tr>
 </thead>
 <tbody>
-[#begin RESULT#]
+[#begin CITYES#]
 <tr style="height:52px" class="hover_btn2">
 
  <td style="vertical-align:middle"><b>[#country#]</b> </td>
@@ -79,7 +79,7 @@
   </div>
  </td>
 </tr>
-[#end RESULT#]
+[#end CITYES#]
 </tbody>
 </table>
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
