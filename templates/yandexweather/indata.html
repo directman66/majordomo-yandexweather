@@ -1,0 +1,152 @@
+<br/>
+<p>
+
+</p>
+<table width=100% border=0><tr>
+<td valign=top>
+<!-- results -->
+[#if RESULT#]
+<!-- paging -->
+[#if PAGES#]
+<table border=0>
+<td align=right><b>Pages:</b>&nbsp;</td>
+[#begin PREVPAGE#]<td><a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">&lt;&lt;&lt;</a></td>[#end PREVPAGE#]
+<td>
+[#begin PAGES#]
+[#if !SELECTED#]<a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">[#else#]<b>[#endif#][#NUM#]</b></a>
+[#end PAGES#]
+</td>
+[#begin NEXTPAGE#]<td><a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">&gt;&gt;&gt;</a></td>[#end NEXTPAGE#]
+</table>
+[#endif PAGES#]
+<!-- / paging -->
+<!-- search results (list) -->
+<form action="?" method="post" name="indata" style="padding:0px" class="form">
+<table  align=center class="table table-striped">
+<thead>
+<tr>
+
+ <th><#LANG_TITLE#></th>
+ <th>Обновлено</th>  
+<th>Тип</th>  
+<th>Зажиг.</th>  
+<th>Охрана</th>  
+<th>Темп.дв</th>  
+<th>Темп.салона</th>  
+<th>Темп.улицы</th>  
+<th>deviceid</th>  
+
+
+ <th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+[#begin RESULT#]
+<tr style="height:52px" class="hover_btn2">
+
+ <td style="vertical-align:middle"><b>[#TITLE#]</b> </td>
+ <td style="vertical-align:middle">
+  [#if DESCRIPTION!=""#]
+   [#DESCRIPTION#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+ <td style="vertical-align:middle">
+  [#if tip!=""#]
+   [#tip#]
+  [#else#]
+  [#endif#]
+ </td>  
+
+ <td style="vertical-align:middle">
+  [#if ign==1#]
+   <img src="../templates/telegram/img/enable.png">
+  [#else#]
+   <img src="../templates/telegram/img/disable.png">
+ &nbsp;  
+[#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if arm==1#]
+   <img src="../templates/telegram/img/enable.png">
+  [#else#]
+   <img src="../templates/telegram/img/disable.png">
+ &nbsp;  
+[#endif#]
+
+
+  
+  
+ </td>  
+ <td style="vertical-align:middle">
+  [#if etemp!=""#]
+   [#etemp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if ctemp!=""#]
+   [#ctemp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+<td style="vertical-align:middle">
+  [#if mayak_temp!=""#]
+   [#mayak_temp#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+
+<td style="vertical-align:middle">
+  [#if device_id!=""#]
+   [#device_id#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+
+
+
+ <td style="vertical-align:middle" width="1%" nowrap>
+  <div style="width:120px">
+  [#if "<#ACTION#>"=="admin"#]
+
+  [#endif ACTION#]
+  </div>
+ </td>
+</tr>
+[#end RESULT#]
+</tbody>
+</table>
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+</form>
+<!-- / search results (list) -->
+<!-- paging -->
+[#if PAGES#]
+<table border=0>
+<td align=right><b>Pages:</b>&nbsp;</td>
+[#begin PREVPAGE#]<td><a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">&lt;&lt;&lt;</a></td>[#end PREVPAGE#]
+<td>
+[#begin PAGES#]
+[#if !SELECTED#]<a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">[#else#]<b>[#endif#][#NUM#]</b></a>
+[#end PAGES#]
+</td>
+[#begin NEXTPAGE#]<td><a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">&gt;&gt;&gt;</a></td>[#end NEXTPAGE#]
+</table>
+[#endif PAGES#]
+<!-- / paging -->
+[#else RESULT#]
+<p>
+<font color="red"><#LANG_NO_RECORDS_FOUND#></font>
+</p>
+[#endif RESULT#]
+<!-- / results -->
+</td></tr></table>
