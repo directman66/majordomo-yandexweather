@@ -222,6 +222,17 @@ $token = md5('eternalsun'.$timestamp);
  
 $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
+
+
+
+	
+	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 ");
+
+foreach ($properties as $did)
+{
+$cityid=$did[ID];
+   
+
  
 $opts = array(
   'http'=>array(
@@ -242,7 +253,9 @@ $opts = array(
 $context = stream_context_create($opts);
  //ID города узнаем тут: https://pogoda.yandex.ru/static/cities.xml
 //region="11162" id="28440
-$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=54&lang=ru', false, $context);
+//$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=54&lang=ru', false, $context);
+//$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=53&lang=ru', false, $context);
+$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
 
  
@@ -255,7 +268,7 @@ $data=json_decode($otvet,true);
 
  $objn=$data[info][slug];
 $src=$data[info];
-echo $objn;
+//echo $objn;
 addClassObject('YandexWeather',$objn);
 
 $src=$data[info];
@@ -266,7 +279,6 @@ foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }
 $src=$data[fact];
 foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
 
-$fobjn=$objn."_forecast0";
 $fobjn= $objn;
 //addClassObject('YandexWeather',$fobjn);
 $src=$data[forecasts][0][parts];
@@ -292,7 +304,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts]
 
 
 
-
+  }
 }
   
   
@@ -316,7 +328,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts]
 * @access public
 */
  function uninstall() {
-  SQLExec('DROP TABLE IF EXISTS yandexweather');
+  SQLExec('DROP TABLE IF EXISTS yaweather_cities');
   parent::uninstall();
  }
 /**
@@ -386,7 +398,61 @@ $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='УФ-индекс'; //   <-----------
 SQLUpdate('properties',$property);} 
 
- }
+
+  $data = <<<EOD
+ yaweather_cities: country varchar(100) 
+ yaweather_cities: cityname varchar(30) 
+ yaweather_cities: part varchar(30) 
+ yaweather_cities: ID int(30) unsigned NOT NULL 
+ yaweather_cities: check int(30) 
+ yaweather_cities: head int(30)
+ yaweather_cities: type int(30) 
+ yaweather_cities: part varchar(30) 
+ yaweather_cities: region int(30) 
+
+EOD;
+  parent::dbInstall($data);
+
+        $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
+        if(count($cmds) == 0) {
+            $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Екатеринбург';
+            $rec['part'] = 'Свердловская область';
+            $rec['ID'] = 54;
+            $rec['check'] = '1';
+            $rec['head'] = '1';
+            SQLInsert('yaweather_cities', $rec);
+        $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;"); 
+     
+
+            $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Москва';
+            $rec['part'] = 'Свердловская область';
+            $rec['ID'] = 213;
+            $rec['check'] = '1';
+            $rec['head'] = 0;
+            $rec['type'] = '1';
+
+            SQLInsert('yaweather_cities', $rec);
+
+            $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Санкт-Петербург';
+            $rec['part'] = 'Свердловская область';
+            $rec['ID'] = 2;
+            $rec['check'] = '0';
+
+            SQLInsert('yaweather_cities', $rec);
+
+            $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Курган';
+            $rec['part'] = 'Курганская область';
+            $rec['ID'] = 53;
+            $rec['check'] = '0';
+
+            SQLInsert('yaweather_cities', $rec);
+
+
+ }}
 // --------------------------------------------------------------------
 
 //////
