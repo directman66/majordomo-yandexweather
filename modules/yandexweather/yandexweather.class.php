@@ -164,18 +164,26 @@ function admin(&$out) {
  if ($this->tab=='' || $this->tab=='indata') {
     $this->indata_search($out); 
  }
- if ($this->view_mode=='login') {
-		$this->login();
+
+ if ($this->view_mode=='config_edit') {
+   $this->config_edit($out, $this->id);
  }
+
+ if ($this->view_mode=='config_check') {
+echo "echeck";
+   $this->config_check($this->id);
+ }
+
+ if ($this->view_mode=='config_uncheck') {
+   $this->config_uncheck($this->id);
+ }
+
+
 
  if ($this->view_mode=='get') {
 		$this->getdatefnc();
  }
 
- if ($this->view_mode=='startign') {
-		$this->startign2();
-
- }
 
 }
 /**
@@ -213,7 +221,49 @@ $this->getdatefnc();
 	$this->saveConfig();
    } 
   }
+/**
+* InData edit/add
+*
+* @access public
+*/
+ 
+ function config_edit(&$out, $id) {	
+  require(DIR_MODULES.$this->name.'/config_edit.inc.php');
+ } 
+/**
+* InData delete record
+*
+* @access public
+*/
+ function config_del($id) {
+  $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID='$id'");
+  // some action for related tables
+  SQLExec("DELETE FROM yaweather_cities WHERE ID='".$rec['ID']."'");
+ }
+/**
+* InData delete record
+*
+* @access public
+*/
+ function config_check($id) {
+  $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
+//echo "<br>". implode( $id);
+   $rec['check']=1;
+SQLUpdate('yaweather_cities',$rec); 
+} 
 
+
+/**
+* InData delete record
+*
+* @access public
+*/
+ 
+ function config_uncheck($id) {
+  $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
+   $rec['check']=0;
+SQLUpdate('yaweather_cities',$rec); 
+} 
  
  
 ///////////////////////////////////
