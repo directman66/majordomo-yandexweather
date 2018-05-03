@@ -1,6 +1,6 @@
 <br/>
 <p>
-
+<a href="?view_mode=config_edit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> <#LANG_ADD_NEW_RECORD#></a> 
 </p>
 <table width=100% border=0><tr>
 <td valign=top>
@@ -10,6 +10,7 @@
 [#if PAGES#]
 <table border=0>
 <td align=right><b>Pages:</b>&nbsp;</td>
+
 [#begin PREVPAGE#]<td><a href="?view_mode=<#VIEW_MODE#>&mode=<#MODE#>&save_qry=1&page=[#NUM#]">&lt;&lt;&lt;</a></td>[#end PREVPAGE#]
 <td>
 [#begin PAGES#]
@@ -73,9 +74,19 @@
 
  <td style="vertical-align:middle" width="1%" nowrap>
   <div style="width:120px">
+ <td style="vertical-align:middle" width="1%" nowrap>
+  <div style="width:120px">
   [#if "<#ACTION#>"=="admin"#]
+   <a href="?view_mode=config_edit&id=[#ID#]" class="btn btn-default" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+  [#if check=="1"#]
+   <a href="?view_mode=config_uncheck&id=[#ID#]" class="btn btn-default" title="check"><i class="glyphicon glyphicon-remove-circle"></i></a>
+  [#else#]
+ <a href="?view_mode=config_check&id=[#ID#]" class="btn btn-default" title="check"><i class="glyphicon glyphicon-ok-circle"></i></a>
+  [#endif#]
 
   [#endif ACTION#]
+  </div>
+ </td>
   </div>
  </td>
 </tr>
