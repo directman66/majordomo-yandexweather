@@ -26,15 +26,15 @@
 <thead>
 <tr>
 
- <th><#LANG_TITLE#></th>
+ <th>Город</th>
  <th>Обновлено</th>  
-<th>Тип</th>  
-<th>Зажиг.</th>  
-<th>Охрана</th>  
-<th>Темп.дв</th>  
-<th>Темп.салона</th>  
-<th>Темп.улицы</th>  
-<th>deviceid</th>  
+<th>Температура</th>  
+<th>Облачность</th>  
+<th>Скорость ветра</th>  
+<th>Направление ветра</th>  
+<th>Давление, мм</th>  
+<th>Влажность, %</th>  
+<th>УФ индекс</th>  
 
 
  <th>&nbsp;</th>
@@ -54,50 +54,45 @@
  </td>  
 
  <td style="vertical-align:middle">
-  [#if tip!=""#]
-   [#tip#]
+  [#if temp!=""#]
+   [#temp#]
   [#else#]
   [#endif#]
  </td>  
 
  <td style="vertical-align:middle">
-  [#if ign==1#]
-   <img src="../templates/telegram/img/enable.png">
+  [#if conditionn!=""#]
+   [#conditionn#]
   [#else#]
-   <img src="../templates/telegram/img/disable.png">
- &nbsp;  
-[#endif#]
+  [#endif#]
  </td>  
  <td style="vertical-align:middle">
-  [#if arm==1#]
-   <img src="../templates/telegram/img/enable.png">
+  [#if wind_speed!=""#]
+   [#wind_speed#]
   [#else#]
-   <img src="../templates/telegram/img/disable.png">
- &nbsp;  
-[#endif#]
-
+  [#endif#]
 
   
   
  </td>  
  <td style="vertical-align:middle">
-  [#if etemp!=""#]
-   [#etemp#]
+  [#if wind_dir!=""#]
+   [#wind_dir#]
   [#else#]
    &nbsp;
   [#endif#]
  </td>  
  <td style="vertical-align:middle">
-  [#if ctemp!=""#]
-   [#ctemp#]
+  [#if pressure_mm!=""#]
+   [#pressure_mm#]
   [#else#]
    &nbsp;
   [#endif#]
  </td>  
 
 <td style="vertical-align:middle">
-  [#if mayak_temp!=""#]
-   [#mayak_temp#]
+  [#if humidity!=""#]
+   [#humidity#]
   [#else#]
    &nbsp;
   [#endif#]
@@ -105,8 +100,8 @@
 
 
 <td style="vertical-align:middle">
-  [#if device_id!=""#]
-   [#device_id#]
+  [#if uv_index!=""#]
+   [#uv_index#]
   [#else#]
    &nbsp;
   [#endif#]
