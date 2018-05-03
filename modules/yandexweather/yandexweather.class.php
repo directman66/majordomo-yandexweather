@@ -10,7 +10,7 @@
 */
 //
 //
-class starline extends module {
+class yandexweather extends module {
 /**
 *
 * Module class constructor
@@ -123,21 +123,16 @@ function admin(&$out) {
  $this->getConfig();
 
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
-        if ((time() - gg('cycle_starlineRun')) < 360*2 ) {
+        if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
 			$out['CYCLERUN'] = 1;
 		} else {
 			$out['CYCLERUN'] = 0;
 		}
 
  
- $out['STARLINELOGIN'] = $this->config['STARLINELOGIN'];
- $out['STARLINEPWD']=$this->config['STARLINEPWD'];
- $out['STARLINETOKEN']=$this->config['STARLINETOKEN'];
- $out['STARLINESESID']=$this->config['STARLINESESID'];
+ $out['DUUID'] = $this->config['DUUID'];
+ $out['DEVICEID']=$this->config['DEVICEID'];
 
- $out['STARLINECOOKIES']=$this->config['STARLINECOOKIES'];
-
-$out['STARLINEDEBUG']=$this->config['STARLINEDEBUG'];
 	
  $out['EVERY']=$this->config['EVERY'];
  
@@ -148,24 +143,11 @@ $out['STARLINEDEBUG']=$this->config['STARLINEDEBUG'];
  }
  
  if ($this->view_mode=='update_settings') {
-	global $starlinelogin;
-	$this->config['STARLINELOGIN']=$starlinelogin;	 
+	global $duuid;
+	$this->config['DUUID']=$duuid;	 
 
-	global $starlinepwd;
-	$this->config['STARLINEPWD']=$starlinepwd;	 
-
-	global $starlinetoken;
-	$this->config['STARLINETOKEN']=$starlinetoken;	 
-
-	global $starlinesesid;
-	$this->config['STARLINESESID']=$starlinesesid;	 
-
-
-	global $starlinecookies;
-	$this->config['STARLINECOOKIES']=$starlinecookies;	 
-
-	global $starlinedebug;
-	$this->config['STARLINEDEBUG']=$starlinedebug;	 
+	global $deviceid;
+	$this->config['DEVICEID']=$deviceid;	 
 
    
    $this->saveConfig();
@@ -229,144 +211,8 @@ $this->getdatefnc();
    } 
   }
 
- function sendData() {
-
- }
  
  
-
-	
-	
-function login() {
-$cookie_file = ROOT . 'cached/starline_cookie.txt'; 
-$this->getConfig();
-//sg('test.starline','login:'.$this->config['STARLINELOGIN']);
-//sg('test.starline','login:'.$this->config['STARLINEPWD']);
-
-$url = 'https://starline-online.ru/user/login';
-$fields = array(
-'LoginForm[login]' =>$this->config['STARLINELOGIN'], 
-'LoginForm[rememberMe]' => 'on', 
-'LoginForm[pass]' => $this->config['STARLINEPWD'],
-'captcha[code]'=>'',
-'captcha[sid]'=>''
-);
-
-
-
-$fields_string = '';
-foreach ($fields as $key => $value) {    $fields_string .= urlencode($key) . '=' . urlencode($value) . '&';}
-rtrim($fields_string, '&');
-$this->config['STARLINEDEBUG']=$fields_string;
-//sg('test.starline','login:'.$fields_string);
-
-//sg('test.starline',$this->config['COOKIES']);
-$cdata=$this->config['STARLINECOOKIES'];
-	 
-$ch = curl_init();
-//curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, count($fields));
-curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
-//curl_setopt($ch, CURLOPT_POST, $data);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_HEADER, 1);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 30);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0',
-'Accept: application/json, text/javascript, */*; q=0.01',
-'Content-Type: application/x-www-form-urlencoded; charset=UTF-8',
-'X-Requested-With: XMLHttpRequest'
-
-//'User-Agent\': \'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0',
-//'Accept\': \'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-//'Accept-Language\': \'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
-//'Connection\': \'keep-alive'
-
-
-//'User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0',
-//'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-//'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
-//'Connection: keep-alive'
-
-));
-
-
-$result = curl_exec($ch);
-$info = curl_getinfo($ch);
-$this->config['STARLINEDEBUG']=$result;
-
-//sg('test.starline','ch:'.$ch);
-sg('test.starline','result:'.$result);
-
-
-//sg('test.starline','reqestheader:'.json_encode($info));
-//sg('test.starline','reqestheade_ifo:'.$info['request_header']);
-
-//$headers=array();
-$data=explode("\n",$result);
-//$headers['status']=$data[0];
-
-//array_shift($data);
-
-foreach($data as $part){
-$par=substr ($part,0,10);
-
-//sg('test.starline','part:'.$part);
-if (strpos($part,'PHPSESSID')>0) {
-$sesid=explode('=',  $part);
-$sesid2=explode(';',  $sesid[1]);
-sg('test.starline_PHPSESSID',$sesid2[0]);
-$this->config['STARLINESESID']=$sesid2[0];
-}
-
-if (strpos($part,': t=')>0) {
-$token=explode('=',  $part);
-$token2=explode(';',  $token[1]);
-
-	
- addClassObject('starline-online','starlinecfg');	
-sg('starlinecfg.token',$token2[0]);	
-$this->config['STARLINETOKEN']=$token2[0];
-}
-
-if (strpos($part,'starline.ru')>0) {
-//$token=explode('=',  $part);
-//$token2=explode(';',  $token[1]);
-sg('test.starline_cookies',$part);
-$this->config['STARLINECOOKIES']=$part;
-}
-
-
-//sg('test.starline','part:'.$part);
-if (strpos($part,'Captcha')>0) {
-//sg('test.starline_Captcha',$part);
-}else 
-{
-//sg('test.starline_Captcha','no need');
-}
-
-if (strpos($part,'Cookies')>0) {
-//sg('test.starline_Cookies',$part);
-}
-}
-
-
-//sg('test.starline',$matches);
-//sg('test.starline',$cookies);
-curl_close($ch);
-$this->saveConfig();
- }
-
-
-
-
-
-
-
-
 ///////////////////////////////////
 
 function  getdatefnc(){
@@ -374,8 +220,8 @@ $this->getConfig();
 $timestamp = time();
 $token = md5('eternalsun'.$timestamp);
  
-$uuid = "8211637137c4408898aceb1097921872";
-$deviceid = "315f0e802b0b49eb8404ea8056abeaaf";
+$uuid = "0b122ce93c77f68831839ca1d7cbf44a";
+$deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
  
 $opts = array(
   'http'=>array(
@@ -407,7 +253,7 @@ $otvet=gzdecode($file);
 $data=json_decode($otvet,true);
 //$objn=$data[0]['id'];
 
- $objn=$data[info][slug]."_fact";
+ $objn=$data[info][slug];
 $src=$data[info];
 echo $objn;
 addClassObject('YandexWeather',$objn);
@@ -421,22 +267,23 @@ $src=$data[fact];
 foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
 
 $fobjn=$objn."_forecast0";
+$fobjn= $objn;
 //addClassObject('YandexWeather',$fobjn);
 $src=$data[forecasts][0][parts];
 foreach ($data[forecasts] as $day=> $value ) { 
- $fobjn=$objn."_forecast".$day;
-addClassObject('YandexWeather',$fobjn); 
+// $fobjn=$objn."_forecast".$day;
+///addClassObject('YandexWeather',$fobjn); 
 foreach ($data[forecasts][$day][parts] as $key=> $value ) {   
-sg( $fobjn.'.now',gg('sysdate').' '.gg('timenow'));  
-sg( $fobjn.'.'.$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
-sg( $fobjn.'.'.$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
-sg( $fobjn.'.'.$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
-sg( $fobjn.'.'.$key.'_wind_dir',$data[forecasts][$day][parts][$key][wind_dir]);
-sg( $fobjn.'.'.$key.'_pressure_mm',$data[forecasts][$day][parts][$key][pressure_mm]);
-sg( $fobjn.'.'.$key.'_pressure_pa',$data[forecasts][$day][parts][$key][pressure_pa]);
-sg( $fobjn.'.'.$key.'_humidity',$data[forecasts][$day][parts][$key][humidity]);
-sg( $fobjn.'.'.$key.'condition',$data[forecasts][$day][parts][$key][condition]);
-sg( $fobjn.'.'.$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
+ 
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data[forecasts][$day][parts][$key][wind_dir]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data[forecasts][$day][parts][$key][pressure_mm]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data[forecasts][$day][parts][$key][pressure_pa]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data[forecasts][$day][parts][$key][humidity]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data[forecasts][$day][parts][$key][condition]);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
  
  
  
