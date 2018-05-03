@@ -460,7 +460,6 @@ SQLUpdate('properties',$property);}
  yaweather_cities: check int(30) 
  yaweather_cities: head int(30)
  yaweather_cities: type int(30) 
- yaweather_cities: part varchar(30) 
  yaweather_cities: region int(30) 
 
 EOD;
