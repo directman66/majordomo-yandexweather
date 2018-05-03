@@ -35,7 +35,10 @@
 <th>Давление, мм</th>  
 <th>Влажность, %</th>  
 <th>УФ индекс</th>  
-
+<th>Темп.завтра</th>  
+<th>Облачность завтра</th>  
+<th>Темп.послезавтра</th>  
+<th>Облачность послезавтра</th>  
 
  <th>&nbsp;</th>
 </tr>
@@ -108,6 +111,37 @@
  </td>  
 
 
+ <td style="vertical-align:middle">
+  [#if forecast_1_day_temp_avg!=""#]
+   [#forecast_1_day_temp_avg#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_1_daycondition!=""#]
+   [#forecast_1_daycondition#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_2_day_temp_avg!=""#]
+   [#forecast_2_day_temp_avg#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_2_daycondition!=""#]
+   [#forecast_2_daycondition#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>
 
  <td style="vertical-align:middle" width="1%" nowrap>
   <div style="width:120px">
