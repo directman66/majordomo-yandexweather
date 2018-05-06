@@ -41,6 +41,8 @@
 [#begin CITYES#]
 <tr style="height:52px" class="hover_btn2">
 
+
+
  <td style="vertical-align:middle"><b>[#country#]</b> </td>
  <td style="vertical-align:middle">
   [#if cityname!=""#]
@@ -72,8 +74,7 @@
   
 
 
- <td style="vertical-align:middle" width="1%" nowrap>
-  <div style="width:120px">
+ 
  <td style="vertical-align:middle" width="1%" nowrap>
   <div style="width:120px">
   [#if "<#ACTION#>"=="admin"#]
@@ -87,11 +88,34 @@
   [#endif ACTION#]
   </div>
  </td>
-  </div>
- </td>
+ 
 </tr>
+
 [#end CITYES#]
+
 </tbody>
+<tr>
+<td align="left">
+<form action="/templates/yandexweather/ncity.php" method="get" target="_blank">
+<input type="text" name="ncountry" value="[#ncountry#]"  class="input"> 
+</td>
+<td>
+<input type="text" name="ncity"   value="[#ncity#]" class="input"> 
+</td>
+<td>
+<input type="text" name="npart"   value="[#npart#]" class="input"> 
+</td>
+<td>
+<input type="text" name="nid"  value="[#nid#]" class="input"> 
+</td>
+<td>
+<input type="submit" value="Submit"></form>
+</td>
+
+<td>
+  <a href="?&mode=newcity&id=[nid]" class="btn btn-default" title="Edit"><i class="glyphicon glyphicon-plus"></i></a>
+</td>
+</tr>
 </table>
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
 <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
