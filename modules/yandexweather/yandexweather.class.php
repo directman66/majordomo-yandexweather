@@ -181,6 +181,7 @@ echo "echeck";
 
 
  if ($this->view_mode=='get') {
+setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
  }
 
