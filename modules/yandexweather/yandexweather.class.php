@@ -392,6 +392,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts]
 * @access private
 */
  function dbInstall($data) {
+setGlobal('cycle_yandexweatherAutoRestart','1');	 	 
 $classname='YandexWeather';
 addClass($classname); 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
