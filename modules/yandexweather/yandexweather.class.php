@@ -632,7 +632,7 @@ $rec['country'] = 'Россия';
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);		
 
-			    $rec['country'] = 'Белорусь';
+			    $rec['country'] = 'Белорусия';
             $rec['cityname'] = 'Минск';
             $rec['part'] = '';
             $rec['ID'] = 157;
