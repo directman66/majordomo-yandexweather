@@ -1,0 +1,57 @@
+<!-- Table 'outdata' edit -->
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+[#if OK#]
+<div class="alert alert-success"><#LANG_DATA_SAVED#></div>
+[#endif OK#]
+[#if ERR#]
+<div class="alert alert-error"><#LANG_FILLOUT_REQURED#></div>
+[#endif ERR#]
+<fieldset>
+[#if ID=""#]
+<legend><#LANG_NEW_RECORD#></legend>
+[#endif ID#]
+<!-- DID (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ERR_DID#] style="color:red;font-weight:bold"[#endif#]>
+   Country:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="Country" value="[#Country#]" id="Country"> <#LANG_SID_INFO#></div> 
+</div>
+<!-- TITLE (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if CityName#] style="color:red;font-weight:bold"[#endif#]>
+CityName:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="CityName" value="[#CityName#]" id="CityName"></div>
+</div>
+<!-- LINKED_OBJECT (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if Part#] style="color:red;font-weight:bold"[#endif#]>
+Part:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="Part" value="[#Part#]" id="Part"></div>
+</div>
+<!-- LINKED_PROPERTY (varchar) -->
+<div class="form-group">
+ <label class="col-lg-3 control-label"[#if ID#] style="color:red;font-weight:bold"[#endif#]>
+ID:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="ID" value="[#ID#]" id="ID"></div>
+</div>
+[#module name="linkedobject" object_field="linked_object" property_field="linked_property" method_field="linked_method"#]
+<div class="form-group">
+ <div class="col-lg-offset-3 col-lg-4">
+  [#if ID!=""#]
+  <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
+  [#else ID#]
+  <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
+  [#endif ID#]
+  <a href="?tab=indata" class="btn btn-default "><#LANG_CANCEL#></a>
+  <input type="hidden" name="id" value="<#ID#>">
+  <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+  <input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
+  <input type="hidden" name="mode" value="update">
+ </div>
+</div>
+</fieldset>
+</form>
