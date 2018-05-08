@@ -624,8 +624,27 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 46;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
+	
+	    $rec['country'] = 'Украина';
+            $rec['cityname'] = 'Полтава';
+            $rec['part'] = '';
+            $rec['ID'] = 964;
+            $rec['check'] = '0';
+            SQLInsert('yaweather_cities', $rec);		
+
+			    $rec['country'] = 'Белорусь';
+            $rec['cityname'] = 'Минск';
+            $rec['part'] = '';
+            $rec['ID'] = 157;
+            $rec['check'] = '0';
+            SQLInsert('yaweather_cities', $rec);
 		
-		
+    $rec['country'] = 'Украина';
+            $rec['cityname'] = 'Запорожье';
+            $rec['part'] = '';
+            $rec['ID'] = 960;
+            $rec['check'] = '0';
+            SQLInsert('yaweather_cities', $rec);		
 		
  }}
 // --------------------------------------------------------------------
