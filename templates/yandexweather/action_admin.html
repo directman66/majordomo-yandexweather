@@ -106,9 +106,12 @@
 <br/>
 
 <ul class="nav nav-tabs">
-	<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Города</a> </li>
+	<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Прогноз на 7 дней</a> </li>
+<li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=1indata">Прогноз на текущий день</a> </li>
 	<li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
 
 
-[#if TAB="indata" || TAB==""#] [#inc indata.html#] [#endif#] [#if TAB="help"#] [#inc help.html#] [#endif#]
+[#if TAB="indata" || TAB==""#] [#inc indata.html#] [#endif#]
+[#if TAB="1indata" ] [#inc 1indata.html#] [#endif#]
+[#if TAB="help"#] [#inc help.html#] [#endif#]
