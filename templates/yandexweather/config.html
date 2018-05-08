@@ -1,7 +1,5 @@
 <br/>
 <p>
-<a href="?view_mode=config_edit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> <#LANG_ADD_NEW_RECORD#></a> 
-</p>
 <table width=100% border=0><tr>
 <td valign=top>
 <!-- results -->
@@ -94,32 +92,9 @@
 [#end CITYES#]
 
 </tbody>
-<tr>
-<td align="left">
-<form action="/templates/yandexweather/ncity.php" method="get" target="_blank">
-<input type="text" name="ncountry" value="[#ncountry#]"  class="input"> 
-</td>
-<td>
-<input type="text" name="ncity"   value="[#ncity#]" class="input"> 
-</td>
-<td>
-<input type="text" name="npart"   value="[#npart#]" class="input"> 
-</td>
-<td>
-<input type="text" name="nid"  value="[#nid#]" class="input"> 
-</td>
-<td>
-<input type="submit" value="Submit"></form>
-</td>
 
-<td>
-  <a href="?&mode=newcity&id=[nid]" class="btn btn-default" title="Edit"><i class="glyphicon glyphicon-plus"></i></a>
-</td>
-</tr>
 </table>
-<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
-<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
-</form>
+
 <!-- / search results (list) -->
 <!-- paging -->
 [#if PAGES#]
