@@ -35,9 +35,9 @@
 <th>Давл., мм</th>  
 <th>Влажн. %</th>  
 <th>УФ индекс</th>  
-<th>t°С завтра</th>  
-<th>Завтра</th>  
-<th>t°С послезавтра</th>  
+<th>t°С</th>  
+<th>&nbsp</th>  
+<th>t°С</th>  
 <th>Послезавтра</th>  
 <th>t°С</th>  
 <th>&nbsp;</th>  
@@ -45,8 +45,18 @@
 <th>&nbsp;</th>  
 <th>t°С</th>  
 <th>&nbsp;</th>  
+<th>t°С</th>  
+<th>&nbsp;</th>  
+<th>t°С</th>  
+<th>&nbsp;</th>  
+<th>t°С</th>  
+<th>&nbsp;</th>  
+<th>t°С</th>  
+<th>&nbsp;</th>  
+<th>t°С</th>  
+<th>&nbsp;</th>  
+
  
- <th>&nbsp;</th>
 </tr>
 </thead>
 <tbody>
@@ -189,6 +199,60 @@
   [#forecast_4_daycondition#]
   [#endif#]
  
+   <td style="vertical-align:middle">
+  [#if forecast_5_day_temp_avg!=""#]
+   [#forecast_5_day_temp_avg#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+ [#if forecast_5_daycondition!=""#]
+   <img src="../img/modules/[#forecast_5_daycondition#].png">
+   
+  [#else#]
+  [#forecast_5_daycondition#]
+  [#endif#]
+ </td>     
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_6_day_temp_avg!=""#]
+   [#forecast_6_day_temp_avg#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+ [#if forecast_6_daycondition!=""#]
+   <img src="../img/modules/[#forecast_6_daycondition#].png">
+   
+  [#else#]
+  [#forecast_6_daycondition#]
+  [#endif#]
+ </td>     
+ 
+
+   <td style="vertical-align:middle">
+  [#if forecast_7_day_temp_avg!=""#]
+   [#forecast_7_day_temp_avg#]
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+ [#if forecast_7_daycondition!=""#]
+   <img src="../img/modules/[#forecast_7_daycondition#].png">
+   
+  [#else#]
+  [#forecast_7_daycondition#]
+  [#endif#]
+ </td>     
+ 
+  
+   
 
 
  <td style="vertical-align:middle" width="1%" nowrap>
