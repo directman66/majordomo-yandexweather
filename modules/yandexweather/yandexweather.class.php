@@ -294,7 +294,7 @@ $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
 
 
-
+$mycity=SQLSelect("SELECT ID FROM `yaweather_cities` where `mycity`=1 ")[ID];
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 ");
 
@@ -336,47 +336,65 @@ $otvet=gzdecode($file);
 $data=json_decode($otvet,true);
 //$objn=$data[0]['id'];
 
- $objn=$data[info][slug];
+$objn=$data[info][slug];
 $src=$data[info];
 //echo $objn;
 addClassObject('YandexWeather',$objn);
 sg( $objn.'.json',$otvet);
-	
-
 $src=$data[info];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
 
 foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
-
 $src=$data[fact];
+	foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
+	$fobjn= $objn;
+	$src=$data[forecasts][0][parts];
+		foreach ($data[forecasts] as $day=> $value ) { 
+			foreach ($data[forecasts][$day][parts] as $key=> $value ) {    
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data[forecasts][$day][parts][$key][wind_dir]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data[forecasts][$day][parts][$key][pressure_mm]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data[forecasts][$day][parts][$key][pressure_pa]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data[forecasts][$day][parts][$key][humidity]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data[forecasts][$day][parts][$key][condition]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
+ 			}
+		}
+	}
+
+	
+//mycity	
+if (mycity==$cityid){
+$objn='yw_mycity';
+addClassObject('YandexWeather',$objn);
+sg( $objn.'.json',$otvet);
+$src=$data[info];
+sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
+
 foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
-
-$fobjn= $objn;
-//addClassObject('YandexWeather',$fobjn);
-$src=$data[forecasts][0][parts];
-foreach ($data[forecasts] as $day=> $value ) { 
-// $fobjn=$objn."_forecast".$day;
-///addClassObject('YandexWeather',$fobjn); 
-foreach ($data[forecasts][$day][parts] as $key=> $value ) {   
- 
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data[forecasts][$day][parts][$key][wind_dir]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data[forecasts][$day][parts][$key][pressure_mm]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data[forecasts][$day][parts][$key][pressure_pa]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data[forecasts][$day][parts][$key][humidity]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data[forecasts][$day][parts][$key][condition]);
-sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
- 
- 
- 
-}
-}
-
-
-
-  }
+$src=$data[fact];
+	foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
+	$fobjn= $objn;
+	$src=$data[forecasts][0][parts];
+		foreach ($data[forecasts] as $day=> $value ) { 
+			foreach ($data[forecasts][$day][parts] as $key=> $value ) {    
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data[forecasts][$day][parts][$key][wind_dir]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data[forecasts][$day][parts][$key][pressure_mm]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data[forecasts][$day][parts][$key][pressure_pa]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data[forecasts][$day][parts][$key][humidity]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data[forecasts][$day][parts][$key][condition]);
+			sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
+ 			}
+		}
+	}}
+	
+	
+//////////	
 }
   
   
