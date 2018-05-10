@@ -366,7 +366,7 @@ $src=$data[fact];
 
 	
 //mycity	
-if (mycity==$cityid){
+if ($mycity==$cityid){
 $objn='yw_mycity';
 addClassObject('YandexWeather',$objn);
 sg( $objn.'.json',$otvet);
