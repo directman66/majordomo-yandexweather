@@ -324,6 +324,8 @@ $data=json_decode($otvet,true);
 $src=$data[info];
 //echo $objn;
 addClassObject('YandexWeather',$objn);
+sg( $fobjn.'.json',$otvet);
+	
 
 $src=$data[info];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
