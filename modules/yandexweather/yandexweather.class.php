@@ -324,7 +324,7 @@ $data=json_decode($otvet,true);
 $src=$data[info];
 //echo $objn;
 addClassObject('YandexWeather',$objn);
-sg( $fobjn.'.json',$otvet);
+sg( $objn.'.json',$otvet);
 	
 
 $src=$data[info];
