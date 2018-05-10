@@ -465,6 +465,7 @@ SQLUpdate('properties',$property);}
  yaweather_cities: head int(30)
  yaweather_cities: type int(30) 
  yaweather_cities: region int(30) 
+ yaweather_cities: mycity int(30) 
 
 EOD;
   parent::dbInstall($data);
