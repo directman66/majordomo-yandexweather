@@ -93,7 +93,11 @@
   [#else#]
  <a href="?view_mode=config_check&id=[#ID#]" class="btn btn-default" title="check"><i class="glyphicon glyphicon-ok-circle"></i></a>
   [#endif#]
-<a href="?view_mode=config_mycity&id=[#ID#]" class="btn btn-default" title="check"><i class="glyphicon glyphicon-heart"></i></a>   
+[#if micity=="1"#]   
+<i class="glyphicon glyphicon-heart"></i>  
+[#else#]
+<a href="?view_mode=config_mycity&id=[#ID#]" class="btn btn-default" title="check"><i class="glyphicon glyphicon-heart-empty"></i></a>     
+   	
 
   [#endif ACTION#]
   </div>
