@@ -178,6 +178,11 @@ echo "echeck";
    $this->config_uncheck($this->id);
  }
 
+if ($this->view_mode=='config_mycity') {
+   $this->config_mycity($this->id);
+ }
+	
+
 
 
  if ($this->view_mode=='get') {
@@ -265,6 +270,17 @@ SQLUpdate('yaweather_cities',$rec);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
 } 
+	
+ function config_mycity($id) {
+$rec=SQLSelectOne("update yaweather_cities set mycity=0");
+SQLExec($rec);
+	 
+$rec=SQLSelectOne("update yaweather_cities set mycity=1 WHERE ID=".$id );
+SQLExec($rec);
+
+	 
+} 	
+	
  
  
 ///////////////////////////////////
