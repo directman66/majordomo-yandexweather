@@ -134,6 +134,14 @@
   [#endif#]
  </td>  
  
+ <td style="vertical-align:middle">
+  [#if forecast_0_morningcondition!=""#]
+<img src="../img/modules/[#forecast_0_morningcondition#].png">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
   <td style="vertical-align:middle">
   [#if forecast_0_morning_wind_speed!=""#]
    [#forecast_0_morning_wind_speed#]
@@ -159,6 +167,14 @@
   [#endif#]
  </td>  
  
+ <td style="vertical-align:middle">
+  [#if forecast_0_daycondition!=""#]
+<img src="../img/modules/[#forecast_0_daycondition#].png">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
   <td style="vertical-align:middle">
   [#if forecast_0_day_wind_speed!=""#]
    [#forecast_0_day_wind_speed#]
@@ -176,13 +192,7 @@
  
  
  
-<td style="vertical-align:middle">
-  [#if forecast_0_morningcondition!=""#]
-<img src="../img/modules/[#forecast_0_morningcondition#].png">     
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
+
  
  
  
