@@ -39,7 +39,7 @@
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
-<th>&nbsp;</th>  
+<th>День</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
@@ -194,6 +194,72 @@
  
 
  
+ <td style="vertical-align:middle">
+  [#if forecast_0_evening_temp_avg!=""#]
+   [#forecast_0_evening_temp_avg#]  
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+ <td style="vertical-align:middle">
+  [#if forecast_0_eveningcondition!=""#]
+<img src="../img/modules/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_0_evening_wind_speed!=""#]
+   [#forecast_0_evening_wind_speed#]
+  [#else#]
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if forecast_0_evening_wind_dir!=""#]
+  <img src="../img/modules/[#forecast_0_evening_wind_dir#].png">
+  [#else#]
+ [#wind_dir#]  
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+ 
+ 
+ 
+ 
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_0_night_temp_avg!=""#]
+   [#forecast_0_night_temp_avg#]  
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+ <td style="vertical-align:middle">
+  [#if forecast_0_nightcondition!=""#]
+<img src="../img/modules/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_0_night_wind_speed!=""#]
+   [#forecast_0_night_wind_speed#]
+  [#else#]
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if forecast_0_night_wind_dir!=""#]
+  <img src="../img/modules/[#forecast_0_night_wind_dir#].png">
+  [#else#]
+ [#wind_dir#]  
+   &nbsp;
+  [#endif#]
+ </td>  
  
  
  
