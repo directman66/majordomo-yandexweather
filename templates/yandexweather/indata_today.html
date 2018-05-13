@@ -149,6 +149,33 @@
   [#endif#]
  </td>  
  
+ 
+ 
+ <td style="vertical-align:middle">
+  [#if forecast_0_day_temp_avg!=""#]
+   [#forecast_0_day_temp_avg#]  
+  [#else#]
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+  <td style="vertical-align:middle">
+  [#if forecast_0_day_wind_speed!=""#]
+   [#forecast_0_day_wind_speed#]
+  [#else#]
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if forecast_0_day_wind_dir!=""#]
+  <img src="../img/modules/[#forecast_0_day_wind_dir#].png">
+  [#else#]
+ [#wind_dir#]  
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+ 
+ 
 <td style="vertical-align:middle">
   [#if forecast_0_morningcondition!=""#]
 <img src="../img/modules/[#forecast_0_morningcondition#].png">     
