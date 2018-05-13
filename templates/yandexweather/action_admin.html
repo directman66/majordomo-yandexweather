@@ -104,5 +104,5 @@
         <li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Погода на сегодня</a> </li>
 	<li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
-[#if TAB="indata" || TAB==""#] [#inc indata.html#] [#endif#]
+[#if TAB="indata" || TAB==""#] [#inc indata_today.html#] [#endif#]
 [#if TAB="help"#] [#inc help.html#] [#endif#]
