@@ -35,7 +35,7 @@
 <th>Давл., мм</th>  
 <th>Влажн. %</th>  
 <th>УФ индекс</th>  
-<th>&nbsp;</th>  
+<th>Утро</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
@@ -90,9 +90,6 @@
    [#wind_speed#]
   [#else#]
   [#endif#]
-
-  
-  
  </td>  
  <td style="vertical-align:middle">
   [#if wind_dir!=""#]
@@ -130,120 +127,38 @@
 
 
  <td style="vertical-align:middle">
-  [#if forecast_1_day_temp_avg!=""#]
-   [#forecast_1_day_temp_avg#]
+  [#if forecast_0_morning_temp_avg!=""#]
+   [#forecast_0_morning_temp_avg#]  
   [#else#]
    &nbsp;
   [#endif#]
  </td>  
  
   <td style="vertical-align:middle">
-  [#if forecast_1_daycondition!=""#]
-   <img src="../img/modules/[#forecast_1_daycondition#].png">
+  [#if forecast_0_morning_wind_speed!=""#]
+   [#forecast_0_morning_wind_speed#]
+  [#else#]
+  [#endif#]
+ </td>  
+ <td style="vertical-align:middle">
+  [#if forecast_0_morning_wind_dir!=""#]
+  <img src="../img/modules/[#forecast_0_morning_wind_dir#].png">
+  [#else#]
+ [#wind_dir#]  
+   &nbsp;
+  [#endif#]
+ </td>  
+ 
+<td style="vertical-align:middle">
+  [#if forecast_0_morningcondition!=""#]
+<img src="../img/modules/[#forecast_0_morningcondition #].png">     
   [#else#]
    &nbsp;
   [#endif#]
  </td>  
  
-  <td style="vertical-align:middle">
-  [#if forecast_2_day_temp_avg!=""#]
-   [#forecast_2_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
  
-  <td style="vertical-align:middle">
- [#if forecast_2_daycondition!=""#]
-   <img src="../img/modules/[#forecast_2_daycondition#].png">
-   
-  [#else#]
-  [#forecast_2_daycondition#]
-  [#endif#]
-   
-    <td style="vertical-align:middle">
-  [#if forecast_3_day_temp_avg!=""#]
-   [#forecast_3_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
  
-  <td style="vertical-align:middle">
- [#if forecast_3_daycondition!=""#]
-   <img src="../img/modules/[#forecast_3_daycondition#].png">
-   
-  [#else#]
-  [#forecast_3_daycondition#]
-  [#endif#]
-   
-    <td style="vertical-align:middle">
-  [#if forecast_4_day_temp_avg!=""#]
-   [#forecast_4_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
- 
-  <td style="vertical-align:middle">
- [#if forecast_4_daycondition!=""#]
-   <img src="../img/modules/[#forecast_4_daycondition#].png">
-   
-  [#else#]
-  [#forecast_4_daycondition#]
-  [#endif#]
- 
-   <td style="vertical-align:middle">
-  [#if forecast_5_day_temp_avg!=""#]
-   [#forecast_5_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
- 
-  <td style="vertical-align:middle">
- [#if forecast_5_daycondition!=""#]
-   <img src="../img/modules/[#forecast_5_daycondition#].png">
-   
-  [#else#]
-  [#forecast_5_daycondition#]
-  [#endif#]
- </td>     
- 
-  <td style="vertical-align:middle">
-  [#if forecast_6_day_temp_avg!=""#]
-   [#forecast_6_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
- 
-  <td style="vertical-align:middle">
- [#if forecast_6_daycondition!=""#]
-   <img src="../img/modules/[#forecast_6_daycondition#].png">
-   
-  [#else#]
-  [#forecast_6_daycondition#]
-  [#endif#]
- </td>     
- 
-
-   <td style="vertical-align:middle">
-  [#if forecast_7_day_temp_avg!=""#]
-   [#forecast_7_day_temp_avg#]
-  [#else#]
-   &nbsp;
-  [#endif#]
- </td>  
- 
-  <td style="vertical-align:middle">
- [#if forecast_7_daycondition!=""#]
-   <img src="../img/modules/[#forecast_7_daycondition#].png">
-   
-  [#else#]
-  [#forecast_7_daycondition#]
-  [#endif#]
- </td>     
  
   
    
