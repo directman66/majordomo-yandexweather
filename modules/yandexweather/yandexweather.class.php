@@ -164,6 +164,11 @@ function admin(&$out) {
  if ($this->tab=='' || $this->tab=='indata') {
     $this->indata_search($out); 
  }
+	
+ if ($this->tab=='indataforecast') {
+    $this->indata_search($out); 
+ }
+	
 
  if ($this->view_mode=='config_edit') {
    $this->config_edit($out, $this->id);
