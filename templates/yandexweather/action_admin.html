@@ -102,7 +102,7 @@
 <br/>
 <ul class="nav nav-tabs">
         <li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Погода на сегодня</a> </li>
-<li [#if TAB=="indataforecast" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indataforecast">Погода на 7 дней</a> </li>	
+<li [#if TAB=="indataforecast" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indata">Погода на 7 дней</a> </li>	
 <li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
 [#if TAB="indata" || TAB==""#] [#inc indata_today.html#] [#endif#]
