@@ -105,4 +105,5 @@
 	<li [#if TAB=="help" #] class="active" [#endif#]><a href="?tab=help">Help</a> </li>
 </ul>
 [#if TAB="indata" || TAB==""#] [#inc indata_today.html#] [#endif#]
+[#if TAB="indataforecast"#] [#inc indata.html#] [#endif#]
 [#if TAB="help"#] [#inc help.html#] [#endif#]
