@@ -13,7 +13,7 @@
    $session->data['lgps_in']=$qry;
   }
 
-if (isset($this->skin)) {$skin2=$this->skin} else {$skin2=1}
+if (isset($this->skin)) {$skin2=$this->skin;} else {$skin2=1;}
 	
   if (!$qry) $qry="1";
   // SEARCH RESULTS
