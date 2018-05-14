@@ -33,7 +33,6 @@ function yandexweather() {
  function edit_classes(&$out, $id) {
   require(DIR_MODULES.$this->name.'/classes_edit.inc.php');
  }
-
 function saveParams($data=0) {
  $p=array();
  if (IsSet($this->id)) {
@@ -50,9 +49,6 @@ function saveParams($data=0) {
  }
  return parent::saveParams($p);
 }
-
-
-
 /**
 * getParams
 *
@@ -81,7 +77,6 @@ function getParams() {
   if (isset($tab)) {
    $this->tab=$tab;
   }
-
 }
 /**
 * Run
@@ -133,17 +128,14 @@ function run() {
 */
 function admin(&$out) {
  $this->getConfig();
-
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
 			$out['CYCLERUN'] = 1;
 		} else {
 			$out['CYCLERUN'] = 0;
 		}
-
  $out['DUUID'] = $this->config['DUUID'];
  $out['DEVICEID']=$this->config['DEVICEID'];
-
 	
  $out['EVERY']=$this->config['EVERY'];
  
@@ -156,10 +148,8 @@ function admin(&$out) {
  if ($this->view_mode=='update_settings') {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
-
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
-
    
    $this->saveConfig();
    $this->redirect("?");
@@ -171,7 +161,6 @@ function admin(&$out) {
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
-
  if ($this->tab=='' || $this->tab=='indata') {
     $this->indata_search($out); 
  }
@@ -180,33 +169,24 @@ function admin(&$out) {
     $this->indata_search($out); 
  }
 	
-
  if ($this->view_mode=='config_edit') {
    $this->config_edit($out, $this->id);
  }
-
  if ($this->view_mode=='config_check') {
 echo "echeck";
    $this->config_check($this->id);
  }
-
  if ($this->view_mode=='config_uncheck') {
    $this->config_uncheck($this->id);
  }
-
 if ($this->view_mode=='config_mycity') {
    $this->config_mycity($this->id);
  }
 	
-
-
-
  if ($this->view_mode=='get') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
  }
-
-
 }
 /**
 * FrontEnd
@@ -223,12 +203,8 @@ function usual(&$out) {
   require(DIR_MODULES.$this->name.'/indata.inc.php');
   require(DIR_MODULES.$this->name.'/cfgdata.inc.php');
  }
-
-
-
  function processCycle() {
    $this->getConfig();
-
    $every=$this->config['EVERY'];
    $tdev = time()-$this->config['LATEST_UPDATE'];
    $has = $tdev>$every*60;
@@ -273,8 +249,6 @@ $this->getdatefnc();
    $rec['check']=1;
 SQLUpdate('yaweather_cities',$rec); 
 } 
-
-
 /**
 * InData delete record
 *
@@ -293,14 +267,12 @@ SQLExec($rec);
 	 
 $rec=SQLSelectOne("update yaweather_cities set mycity=1 WHERE ID=".$id );
 SQLExec($rec);
-
 	 
 } 	
 	
  
  
 ///////////////////////////////////
-
 function  getdatefnc(){
 $this->getConfig();
 $timestamp = time();
@@ -308,17 +280,13 @@ $token = md5('eternalsun'.$timestamp);
  
 $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
-
-
 $mycity=SQLSelect("SELECT ID FROM `yaweather_cities` where `mycity`=1 ")[ID];
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 ");
-
 foreach ($properties as $did)
 {
 $cityid=$did[ID];
    
-
  
 $opts = array(
   'http'=>array(
@@ -343,15 +311,12 @@ $context = stream_context_create($opts);
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=53&lang=ru', false, $context);
 $file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
-
  
 header('Content-type: text/json');
 //echo gzdecode($file);
 $otvet=gzdecode($file);
-
 $data=json_decode($otvet,true);
 //$objn=$data[0]['id'];
-
 $objn=$data[info][slug];
 $src=$data[info];
 //echo $objn;
@@ -359,7 +324,6 @@ addClassObject('YandexWeather',$objn);
 sg( $objn.'.json',$otvet);
 $src=$data[info];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
-
 foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
 $src=$data[fact];
 	foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
@@ -379,24 +343,16 @@ $src=$data[fact];
  			}
 		}
 	}
-
 	
 //mycity	
-//if ($mycity==$cityid){
-$objmycity='yw_mycity';
-addClassObject('YandexWeather',$objmycity);
-
-//$objprops=get_props($fobjn);
-//foreach ($objprops as $value)
-//{ sg($objmycity.'.'.$value,gg($fobjn.".".$value);     } 
-
-//}
-	
+if ($mycity==$cityid){
+$objn='yw_mycity';
+addClassObject('YandexWeather',$objn);
 	
 	
 //////////	
-//}
-//}
+}
+}
   
   
   
@@ -434,63 +390,48 @@ setGlobal('cycle_yandexweatherAutoRestart','1');
 $classname='YandexWeather';
 addClass($classname); 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
-
 $prop_id=addClassProperty($classname, 'temp', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Фактическая температура'; //   <-----------
 SQLUpdate('properties',$property); }
-
-
 $prop_id=addClassProperty($classname, 'wind_speed', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Скорость ветра'; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'pressure_pa', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']=' Нормальное давление для заданных координат, кПА'; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'pressure_mm', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Атмосферное давление, ммртст.'; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'now', 2);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['ONCHANGE']='OnChange'; //   <-----------
 $property['DESCRIPTION']='Когда обновлена инфомация'; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'humidity', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Текущая влажность'; //   <-----------
 SQLUpdate('properties',$property); } 
-
-
 $prop_id=addClassProperty($classname, 'wind_dir', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Направление ветра'; //   <-----------
 SQLUpdate('properties',$property); } 
-
-
 $prop_id=addClassProperty($classname, 'phenom', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']=''; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'soil_temp', 10);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Ощущение погоды'; //   <-----------
 SQLUpdate('properties',$property); } 
-
 $prop_id=addClassProperty($classname, 'uv_index', 10);
 if ($prop_id) {
 $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='УФ-индекс'; //   <-----------
 SQLUpdate('properties',$property);} 
-
-
   $data = <<<EOD
  yaweather_cities: country varchar(100) 
  yaweather_cities: cityname varchar(30) 
@@ -501,10 +442,8 @@ SQLUpdate('properties',$property);}
  yaweather_cities: type int(30) 
  yaweather_cities: region int(30) 
  yaweather_cities: mycity int(30) 
-
 EOD;
   parent::dbInstall($data);
-
         $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
         if(count($cmds) == 0) {
             $rec['country'] = 'Россия';
@@ -516,7 +455,6 @@ EOD;
             SQLInsert('yaweather_cities', $rec);
         $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;"); 
      
-
             $rec['country'] = 'Россия';
             $rec['cityname'] = 'Москва';
             $rec['part'] = 'Московская область';
@@ -524,9 +462,7 @@ EOD;
             $rec['check'] = '1';
             $rec['head'] = 0;
             $rec['type'] = '1';
-
             SQLInsert('yaweather_cities', $rec);
-
             $rec['country'] = 'Россия';
             $rec['cityname'] = 'Санкт-Петербург';
             $rec['part'] = 'Ленинградская область';
@@ -547,7 +483,6 @@ EOD;
             $rec['ID'] = 65;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);		
-
 		   $rec['country'] = 'Россия';
             $rec['cityname'] = 'Красноярск';
             $rec['part'] = 'Красноярский край';
@@ -590,14 +525,12 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 50;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
-
 	    $rec['country'] = 'Россия';
             $rec['cityname'] = 'Уфа';
             $rec['part'] = '';
             $rec['ID'] = 172;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
-
 		
 	$rec['country'] = 'Россия';
             $rec['cityname'] = 'Казань';
@@ -605,7 +538,6 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 43;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
-
 	    $rec['country'] = 'Россия';
             $rec['cityname'] = 'Самара';
             $rec['part'] = '';
@@ -633,7 +565,6 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 193;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
-
 		
 	    $rec['country'] = 'Россия';
             $rec['cityname'] = 'Тверь';
@@ -641,7 +572,6 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 14;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);	
-
 	    $rec['country'] = 'Россия';
             $rec['cityname'] = 'Вологда';
             $rec['part'] = '';
@@ -669,7 +599,6 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 964;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);		
-
 			    $rec['country'] = 'Белорусия';
             $rec['cityname'] = 'Минск';
             $rec['part'] = '';
@@ -686,7 +615,6 @@ $rec['country'] = 'Россия';
 		
  }}
 // --------------------------------------------------------------------
-
 //////
 function getaddrfromcoord($x,$y)
 {
@@ -720,13 +648,3 @@ return $spl[0] ;
 * TW9kdWxlIGNyZWF0ZWQgQXByIDA0LCAyMDE2IHVzaW5nIFNlcmdlIEouIHdpemFyZCAoQWN0aXZlVW5pdCBJbmMgd3d3LmFjdGl2ZXVuaXQuY29tKQ==
 *
 */
-
-
-function get_props($obj)
-{
-$sql='SELECT substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
-$rec = SQLSelect($sql); 
-foreach ($rec as $prop)
-{$ar2[] = $prop[title];}
-return $ar2;
-}
