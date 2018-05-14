@@ -123,8 +123,8 @@ function run() {
 	
 $out['TODAY']=$this->today;	
 $out['FORECAST']=$this->forecast;		
-//$out['TYPE']=$this->type;			
-$out['TYPE']='FORECAST';			
+$out['TYPE']=$this->type;			
+//$out['TYPE']='FORECAST';			
 	
 	
   $date = date("Y-m-d");
