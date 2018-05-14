@@ -396,7 +396,7 @@ addClassObject('YandexWeather',$objmycity);
 	
 //////////	
 //}
-}
+//}
   
   
   
