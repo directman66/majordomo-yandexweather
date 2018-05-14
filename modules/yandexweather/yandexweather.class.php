@@ -110,7 +110,13 @@ function run() {
   $out['MODE']=$this->mode;
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
-  $out['D1']=date('d/m');
+  $out['D1']=date('Y-m-d', '+1 days');
+  $out['D2']=date('Y-m-d', '+2 days');	
+  $out['D3']=date('Y-m-d', '+3 days');	
+  $out['D4']=date('Y-m-d', '+4 days');		
+  $out['D5']=date('Y-m-d', '+5 days');		
+  $out['D6']=date('Y-m-d', '+6 days');	
+  $out['D7']=date('Y-m-d', '+7 days');		
   $this->data=$out;
   $p=new parser(DIR_TEMPLATES.$this->name."/".$this->name.".html", $this->data, $this);
   $this->result=$p->result;
