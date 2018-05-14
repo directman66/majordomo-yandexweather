@@ -70,19 +70,21 @@
  
 
  
- <td style="vertical-align:middle">
-  [#if check!=""#]
-   [#check#]
+ [#if check=="1"#]
+   <a href="?view_mode=config_uncheck&id=[#ID#]" class="btn btn-default" title="Не проверять"><i class="glyphicon glyphicon-remove-circle"></i></a>
   [#else#]
+ <a href="?view_mode=config_check&id=[#ID#]" class="btn btn-default" title="Проверять"><i class="glyphicon glyphicon-ok-circle"></i></a>
   [#endif#]
+
+
+
   
   
- <td style="vertical-align:middle">
-  [#if mycity!=""#]
-   [#mycity#]
-  [#else#]
-  [#endif#]
- </td>    
+  [#if mycity=="1"#]   
+<i class="glyphicon glyphicon-heart"></i>  
+[#else#]
+<a href="?view_mode=config_mycity&id=[#ID#]" class="btn btn-default" title="Это мой город"><i class="glyphicon glyphicon-heart-empty"></i></a>     
+[#endif#]   	
 
   <td style="vertical-align:middle">
   [#if latlon!=""#]
@@ -98,19 +100,7 @@
   <div style="width:120px">
   [#if "<#ACTION#>"=="admin"#]
    <a href="?view_mode=config_edit&id=[#ID#]" class="btn btn-default" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
-  [#if check=="1"#]
-   <a href="?view_mode=config_uncheck&id=[#ID#]" class="btn btn-default" title="Не проверять"><i class="glyphicon glyphicon-remove-circle"></i></a>
-  [#else#]
- <a href="?view_mode=config_check&id=[#ID#]" class="btn btn-default" title="Проверять"><i class="glyphicon glyphicon-ok-circle"></i></a>
-  [#endif#]
-
-  [#if mycity=="1"#]   
-<i class="glyphicon glyphicon-heart"></i>  
-[#else#]
-<a href="?view_mode=config_mycity&id=[#ID#]" class="btn btn-default" title="Это мой город"><i class="glyphicon glyphicon-heart-empty"></i></a>     
-[#endif#]   	
-
-  [#endif ACTION#]
+    [#endif ACTION#]
   </div>
  </td>
  
