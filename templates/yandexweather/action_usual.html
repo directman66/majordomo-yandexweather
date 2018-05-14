@@ -2,6 +2,7 @@
 
 <!--# TYPE=[#TYPE#]#-->
 SKIN=[#SKIN#]
+[#if SKIN="1"#]
  <head>
 <style>
    body {
@@ -10,6 +11,7 @@ SKIN=[#SKIN#]
    }
   </style>
  </head>
+[#endif#]
 
 [#if TYPE=""#]
   [#inc indata_today.html#]
