@@ -349,7 +349,7 @@ $src=$data[fact];
 $objmycity='yw_mycity';
 addClassObject('YandexWeather',$objmycity);	
 	
-$mycity1=SQLSelect("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
+$mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
 
 sg($objmycity.'cityID', $mycity);
