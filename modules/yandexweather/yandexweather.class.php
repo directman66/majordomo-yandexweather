@@ -280,7 +280,7 @@ $token = md5('eternalsun'.$timestamp);
  
 $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
-$mycity=SQLSelect("SELECT ID FROM `yaweather_cities` where `mycity`=1 ")[ID];
+
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 ");
 foreach ($properties as $did)
@@ -345,9 +345,14 @@ $src=$data[fact];
 	}
 	
 //mycity	
-if ($mycity==$cityid){
+	
 $objmycity='yw_mycity';
-addClassObject('YandexWeather',$objmycity);
+addClassObject('YandexWeather',$objmycity);	
+	
+$mycity=SQLSelect("SELECT ID FROM `yaweather_cities` where `mycity`=1 ")[ID];	
+sg($objmycity.'cityID', $mycity);
+	
+if ($mycity==$cityid){
 $objprops=get_props($fobjn);
 foreach ($objprops as $value)
 {
