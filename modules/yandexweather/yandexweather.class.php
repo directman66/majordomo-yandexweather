@@ -110,7 +110,7 @@ function run() {
   $out['MODE']=$this->mode;
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
-  $out['D1']=date('d/m', strtotime(date()+'.1.' day');
+  $out['D1']=date('d/m');
   $this->data=$out;
   $p=new parser(DIR_TEMPLATES.$this->name."/".$this->name.".html", $this->data, $this);
   $this->result=$p->result;
