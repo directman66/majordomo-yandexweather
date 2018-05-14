@@ -282,7 +282,7 @@ $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
 
 	
-	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 and latlon  ");
+	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1   ");
 	
 	
 foreach ($properties as $did)
