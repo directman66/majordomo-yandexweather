@@ -386,13 +386,11 @@ $src=$data[fact];
 $objmycity='yw_mycity';
 addClassObject('YandexWeather',$objmycity);
 
-$objprops=get_props($fobjn);
-foreach ($objprops as $value)
-{
-//	echo $objmycity.'.'.$value."=".gg($fobjn.".".$value)."<br>";
- sg($objmycity.'.'.$value,gg($fobjn.".".$value);     
-} 
-//    }
+//$objprops=get_props($fobjn);
+//foreach ($objprops as $value)
+//{ sg($objmycity.'.'.$value,gg($fobjn.".".$value);     } 
+
+     //    }
 	
 	
 	
