@@ -390,12 +390,12 @@ addClassObject('YandexWeather',$objmycity);
 //foreach ($objprops as $value)
 //{ sg($objmycity.'.'.$value,gg($fobjn.".".$value);     } 
 
-}
+//}
 	
 	
 	
 //////////	
-}
+//}
 }
   
   
