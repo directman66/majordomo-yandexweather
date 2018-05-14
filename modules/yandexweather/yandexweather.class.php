@@ -133,9 +133,11 @@ function run() {
 $out['TYPE']=$this->type;			
 
 	
-if (IsSet($this->skin)) {$out['SKIN']=$this->skin;}	
-else {$out['SKIN']=1;}
+//if (IsSet($this->skin)) {$out['SKIN']=$this->skin;}	
+//else {$out['SKIN']=1;}
+	
 $out['SKIN']=1;
+	
 //$out['TYPE']=$type;				
 //$out['TYPE']='FORECAST';
 	
