@@ -342,7 +342,7 @@ $src=$data[fact];
 			sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data[forecasts][$day][parts][$key][daytime]); 
  			}
 		}
-	}
+	
 	
 //mycity	
 	
@@ -352,22 +352,14 @@ addClassObject('YandexWeather',$objmycity);
 $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1[ID];	
 
-sg($objmycity.'.cityID1', $mycity1);
 sg($objmycity.'.cityID', $mycity);
-sg($objmycity.'.cityID2', 'test');	
 	
 if ($mycity==$cityid){
 $objprops=get_props($fobjn);
-foreach ($objprops as $value)
-{
-	//echo $objmycity.'.'.$value."=".gg($fobjn.".".$value)."<br>";
- sg($objmycity.'.'.$value,gg($fobjn.".".$value));     
+foreach ($objprops as $value){ sg($objmycity.'.'.$value,gg($fobjn.".".$value));}	
+}
 }	
 	
-	
-	
-//////////	
-}
 }
   
   
