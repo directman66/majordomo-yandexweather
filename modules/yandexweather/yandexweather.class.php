@@ -261,6 +261,7 @@ SQLUpdate('yaweather_cities',$rec);
 SQLUpdate('yaweather_cities',$rec); 
 } 
 	
+	
  function config_mycity($id) {
 $rec=SQLSelectOne("update yaweather_cities set mycity=0");
 SQLExec($rec);
