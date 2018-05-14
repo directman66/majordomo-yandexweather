@@ -390,7 +390,7 @@ addClassObject('YandexWeather',$objmycity);
 //foreach ($objprops as $value)
 //{ sg($objmycity.'.'.$value,gg($fobjn.".".$value);     } 
 
-     //    }
+}
 	
 	
 	
@@ -722,3 +722,11 @@ return $spl[0] ;
 */
 
 
+function get_props($obj)
+{
+$sql='SELECT substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
+$rec = SQLSelect($sql); 
+foreach ($rec as $prop)
+{$ar2[] = $prop[title];}
+return $ar2;
+}
