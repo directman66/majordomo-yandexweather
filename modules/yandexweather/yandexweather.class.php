@@ -82,7 +82,7 @@ function getParams() {
   if (isset($tab)) {
    $this->tab=$tab;
   }
-$this->D1="03/03";	
+
 }
 /**
 * Run
@@ -110,7 +110,7 @@ function run() {
   $out['MODE']=$this->mode;
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
-  $out['D1']=$this->D1;
+  $out['D1']=date('d/m', strtotime(date()+'.1.' day');
   $this->data=$out;
   $p=new parser(DIR_TEMPLATES.$this->name."/".$this->name.".html", $this->data, $this);
   $this->result=$p->result;
@@ -132,7 +132,6 @@ function admin(&$out) {
 			$out['CYCLERUN'] = 0;
 		}
 
-$D1="02/02";
  $out['DUUID'] = $this->config['DUUID'];
  $out['DEVICEID']=$this->config['DEVICEID'];
 
@@ -212,7 +211,6 @@ function usual(&$out) {
 }
  
  function indata_search(&$out) {	 
-	 $D1="01/01";
   require(DIR_MODULES.$this->name.'/indata.inc.php');
   require(DIR_MODULES.$this->name.'/cfgdata.inc.php');
  }
