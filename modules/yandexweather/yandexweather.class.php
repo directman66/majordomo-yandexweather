@@ -62,6 +62,9 @@ function getParams() {
   global $view_mode;
   global $edit_mode;
   global $tab;
+  global $today;
+  global $forecast;
+	
   if (isset($id)) {
    $this->id=$id;
   }
@@ -71,6 +74,14 @@ function getParams() {
   if (isset($view_mode)) {
    $this->view_mode=$view_mode;
   }
+if (isset($today)) {
+   $this->today=$today;
+  }	
+	
+if (isset($forecast)) {
+   $this->forecast=$forecast;
+  }		
+	
   if (isset($edit_mode)) {
    $this->edit_mode=$edit_mode;
   }
@@ -162,10 +173,12 @@ function admin(&$out) {
 //   $this->outdata_search($out);
 // }  
  if ($this->tab=='' || $this->tab=='indata') {
+$today = $this->today;		 
     $this->indata_search($out); 
  }
 	
  if ($this->tab=='indataforecast') {
+    $forecast = $this->forecast;		 
     $this->indata_search($out); 
  }
 	
@@ -187,6 +200,11 @@ if ($this->view_mode=='config_mycity') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
  }
+	
+//$today = $this->today;	
+//$forecast = $this->forecast;		
+//if ($map == "on") {$out["MULTI_ROUTES"]["map"]= gg('yt_settings.height');} else {$out["MULTI_ROUTES"]["map"]= "0";}		
+	
 }
 /**
 * FrontEnd
@@ -196,6 +214,7 @@ setGlobal('cycle_yandexweatherControl','start');
 * @access public
 */
 function usual(&$out) {
+
  $this->admin($out);
 }
  
