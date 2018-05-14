@@ -352,7 +352,7 @@ addClassObject('YandexWeather',$objmycity);
 $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
 
-sg($objmycity.'cityID', $mycity);
+sg($objmycity.'cityID', $mycity1);
 	
 if ($mycity==$cityid){
 $objprops=get_props($fobjn);
