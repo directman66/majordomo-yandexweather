@@ -450,6 +450,8 @@ SQLUpdate('properties',$property);}
  yaweather_cities: type int(30) 
  yaweather_cities: region int(30) 
  yaweather_cities: mycity int(30) 
+ yaweather_cities: latlon varchar(50) 
+ 
 EOD;
   parent::dbInstall($data);
         $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
@@ -620,6 +622,16 @@ $rec['country'] = 'Россия';
             $rec['ID'] = 960;
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);		
+
+         $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Спутник';
+            $rec['part'] = 'Ростовская область';
+            $rec['ID'] = 0;
+            $rec['check'] = '0';
+            $rec['latlon'] = 'lat=47.240585&lon=38.870989';		
+		
+            SQLInsert('yaweather_cities', $rec);		
+
 		
  }}
 // --------------------------------------------------------------------
