@@ -103,7 +103,7 @@ if (isset($forecast)) {
 */
 function run() {
  global $session;
- global $type;	
+// global $type;	
   $out=array();
   if ($this->action=='admin') {
    $this->admin($out);
@@ -124,8 +124,8 @@ function run() {
 	
 //$out['TODAY']=$this->today;	
 //$out['FORECAST']=$this->forecast;		
-//$out['TYPE']=$this->type;			
-$out['TYPE']=$type;				
+$out['TYPE']=$this->type;			
+//$out['TYPE']=$type;				
 //$out['TYPE']='FORECAST';			
 	
 	
