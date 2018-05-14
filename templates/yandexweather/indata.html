@@ -23,9 +23,12 @@
 <!-- search results (list) -->
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
  
+   [#if SKIN="1"#]
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Таблицы</title>
+  
+
   <style type="text/css">
    table {
     background: white; /* Цвет фона таблицы */
@@ -36,6 +39,7 @@
    }
   </style>
  </head> 
+ [#endif#]
  
 <table  align=center class="table table-striped">
 <thead>
