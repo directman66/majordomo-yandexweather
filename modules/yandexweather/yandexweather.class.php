@@ -632,7 +632,7 @@ $rec['country'] = 'Россия';
             $rec['check'] = '0';
             SQLInsert('yaweather_cities', $rec);		
 
-         $rec['country'] = 'Россия';
+ $rec['country'] = 'Россия';
             $rec['cityname'] = 'Спутник';
             $rec['part'] = 'Ростовская область';
             $rec['ID'] = 0;
@@ -640,7 +640,23 @@ $rec['country'] = 'Россия';
             $rec['latlon'] = 'lat=47.240585&lon=38.870989';		
 		
             SQLInsert('yaweather_cities', $rec);		
+		
+        $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Ростов-на-Дону';
+            $rec['part'] = 'Ростовская область';
+            $rec['ID'] = 39;
+            $rec['check'] = '0';
+            
+            SQLInsert('yaweather_cities', $rec);		
 
+$rec['country'] = 'Россия';
+            $rec['cityname'] = 'Таганрог';
+            $rec['part'] = 'Ростовская область';
+            $rec['ID'] = 971;
+            $rec['check'] = '0';
+            
+            SQLInsert('yaweather_cities', $rec);				
+		
 		
  }}
 // --------------------------------------------------------------------
