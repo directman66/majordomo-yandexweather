@@ -114,10 +114,12 @@ function run() {
   $out['D1']=date('d/m', strtotime("+1 day", $date));
   $out['D2']=date('d/m', strtotime("+2 day", $date));
   $out['D3']=date('d/m', strtotime("+3 day", $date));
-  $out['D4']=date('Y-m-d', '+4 days');		
-  $out['D5']=date('Y-m-d', '+5 days');		
-  $out['D6']=date('Y-m-d', '+6 days');	
-  $out['D7']=date('Y-m-d', '+7 days');		
+  $out['D4']=date('d/m', strtotime("+4 day", $date));
+  $out['D5']=date('d/m', strtotime("+5 day", $date));
+  $out['D6']=date('d/m', strtotime("+6 day", $date));
+  $out['D7']=date('d/m', strtotime("+7 day", $date));	
+	
+	
   $this->data=$out;
   $p=new parser(DIR_TEMPLATES.$this->name."/".$this->name.".html", $this->data, $this);
   $this->result=$p->result;
