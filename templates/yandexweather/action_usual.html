@@ -1,15 +1,13 @@
 <!--# Action Usual #-->
 [#if TYPE=""#]
- [#begin ALL#]   
- [#inc indata_today.html#]
+  [#inc indata_today.html#]
  [#inc indata.html#]
-[#end ALL#]   
+[#else#]
 [#endif#]
 
 [#if TYPE="TODAY"#]
- [#begin TODAY#]   
   [#inc today.html#]
-[#end TODAY#]   
+[#else#]
 [#endif#]
 
 [#if TYPE="FORECAST"#]
