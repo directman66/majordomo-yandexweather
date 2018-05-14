@@ -721,15 +721,4 @@ return $spl[0] ;
 *
 */
 
-function get_props($obj)
-{
-//$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
-$sql='SELECT substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
-$rec = SQLSelect($sql); 
-foreach ($rec as $prop)
-{
- //print_r($prop)[title];
-$ar2[] = $prop[title];
-}
-return $ar2;
-}
+
