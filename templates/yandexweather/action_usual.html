@@ -1,3 +1,13 @@
 <!--# Action Usual #-->
+[#if TODAY#]
+   [#begin TODAY#]
  [#inc indata_today.html#]
+[#end TODAY#]
+[#endif TODAY#]
 
+
+[#if FORECAST#]
+   [#begin TODAY#]
+ [#inc today.html#]
+[#end FORECASTTODAY#]
+[#endif FORECAST#]
