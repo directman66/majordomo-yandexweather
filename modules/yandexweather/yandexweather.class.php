@@ -115,6 +115,11 @@ function run() {
   $out['MODE']=$this->mode;
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
+	
+$out['TODAY']=$this->today;	
+$out['FORECAST']=$this->forecast;		
+	
+	
   $date = date("Y-m-d");
   $date = strtotime($date);
   $out['D1']=date('d/m', strtotime("+1 day", $date));
