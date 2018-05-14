@@ -549,6 +549,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 172;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);	
 		
 	$rec['country'] = 'Россия';
@@ -562,6 +563,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 51;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);
 		
 	    $rec['country'] = 'Россия';
@@ -569,6 +571,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 38;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);
 		
 	    $rec['country'] = 'Россия';
@@ -576,6 +579,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 194;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);	
 		
 	    $rec['country'] = 'Россия';
@@ -583,6 +587,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 193;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);	
 		
 	    $rec['country'] = 'Россия';
@@ -596,6 +601,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 21;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);	
 		
 	    $rec['country'] = 'Россия';
@@ -603,6 +609,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 16;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);
 		
 	    $rec['country'] = 'Россия';
@@ -610,6 +617,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 46;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);	
 	
 	    $rec['country'] = 'Украина';
@@ -617,12 +625,14 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 964;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);		
 			    $rec['country'] = 'Белорусия';
             $rec['cityname'] = 'Минск';
             $rec['part'] = '';
             $rec['ID'] = 157;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);
 		
     $rec['country'] = 'Украина';
@@ -630,6 +640,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = '';
             $rec['ID'] = 960;
             $rec['check'] = '0';
+            $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);		
 
  $rec['country'] = 'Россия';
@@ -646,6 +657,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = 'Ростовская область';
             $rec['ID'] = 39;
             $rec['check'] = '0';
+            $rec['latlon'] = '';				
             
             SQLInsert('yaweather_cities', $rec);		
 
@@ -654,6 +666,7 @@ $rec['country'] = 'Россия';
             $rec['part'] = 'Ростовская область';
             $rec['ID'] = 971;
             $rec['check'] = '0';
+            $rec['latlon'] = '';						
             
             SQLInsert('yaweather_cities', $rec);				
 		
