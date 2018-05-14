@@ -64,6 +64,7 @@ function getParams() {
   global $tab;
   global $today;
   global $forecast;
+  global $type;	
 	
   if (isset($id)) {
    $this->id=$id;
@@ -77,6 +78,10 @@ function getParams() {
 if (isset($today)) {
    $this->today=$today;
   }	
+	
+if (isset($type)) {
+   $this->today=$type;
+  }		
 	
 if (isset($forecast)) {
    $this->forecast=$forecast;
@@ -118,6 +123,7 @@ function run() {
 	
 $out['TODAY']=$this->today;	
 $out['FORECAST']=$this->forecast;		
+$out['TYPE']=$this->type;			
 	
 	
   $date = date("Y-m-d");
