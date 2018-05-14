@@ -65,6 +65,7 @@ function getParams() {
   global $mode;
   global $view_mode;
   global $edit_mode;
+  global $D1;	
   global $tab;
   if (isset($id)) {
    $this->id=$id;
@@ -81,6 +82,7 @@ function getParams() {
   if (isset($tab)) {
    $this->tab=$tab;
   }
+$this->D1="03/03";	
 }
 /**
 * Run
