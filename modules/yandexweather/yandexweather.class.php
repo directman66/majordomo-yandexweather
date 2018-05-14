@@ -110,6 +110,7 @@ function run() {
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
   $date = date("Y-m-d");
+  $date = strtotime($date);
   $out['D1']=date('d/m', strtotime("+1 day", $date));
   $out['D2']=date('d/m', strtotime("+2 day", $date));
   $out['D3']=date('d/m', strtotime("+3 day", $date));
