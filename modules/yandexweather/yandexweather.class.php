@@ -342,14 +342,7 @@ else
 {sg( $objn.'.'.$key,$value); }     
 
 $src=$data[geo_object];
-sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
-	
-foreach ($src as $key=> $value ) { 
-if (is_array($value)) {
-foreach ($value as $key2=> $value2 ) {sg( $objn.'.'.$key.'_'.$key2,$value2); }
-}	
-else	
-{sg( $objn.'.'.$key,$value); }     
+foreach ($src as $key=> $value ) {sg( $objn.'.'.$key,$value); }     
 	
 	
 $src=$data[fact];
