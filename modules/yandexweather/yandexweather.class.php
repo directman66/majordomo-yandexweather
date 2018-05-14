@@ -110,8 +110,9 @@ function run() {
   $out['MODE']=$this->mode;
   $out['ACTION']=$this->action;
   $out['TAB']=$this->tab;
-  $out['D1']=date('Y-m-d', '+1 days');
-  $out['D2']=date('Y-m-d', '+2 days');	
+  $date = date("Y-m-d");
+  $out['D1']=date('d/', strtotime("1 day", $date));
+  $out['D2']=date('d/m', strtotime("2 day", $date));
   $out['D3']=date('Y-m-d', '+3 days');	
   $out['D4']=date('Y-m-d', '+4 days');		
   $out['D5']=date('Y-m-d', '+5 days');		
