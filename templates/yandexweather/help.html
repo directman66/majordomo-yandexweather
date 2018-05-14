@@ -1,18 +1,68 @@
 <br/>
 <div class="panel-group" id="accordion">
 	<div class="panel panel-info">
-<div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion" href="#sms_help">Информация</a></div>
-<p><b>Модуль получения данных о погоде с сайта яндекс.</b></br>     </br>
-Для добавления своего города - нужно узнать из строки браузера номер своего города.
-[code]https://yandex.ru/pogoda/[b]2[/b]  [/code]
-Например для Санкт-Петербурга это значение 2 нужно добавить в таблицу yaweather_cities на примере уже имеющихся данных и поставить 1 напротив поля check. 
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#sms_help">Информация</a>
 		</div>
+		<div class="panel-body collapse" id="sms_help">
+		<p><b>Модуль получения данных о погоде с сайта яндекс.</b></br>     </br>
+
+	
+		</div> </div> </div>
 
 
-
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#nach">Начало работы</a>
 		</div>
-</div> </div>
+		<div class="panel-body collapse" id="nach">
+		<p>Для начала работы необходимо заполнить таблицу или выбрать город из имеющихся</br> </br>
+Для добавления своего города - нужно узнать из строки браузера номер своего города. [code]https://yandex.ru/pogoda/[b]2[/b] [/code] Например для Санкт-Петербурга это значение 2 нужно добавить в таблицу yaweather_cities на примере уже имеющихся данных и поставить 1 напротив поля check. 
 
+		</div> </div> </div>
+
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#vozm">Возможности</a>
+		</div>
+		<div class="panel-body collapse" id="vozm">
+
+Реализовано:     </br>
+1) Добавлен прогноз погоды на день (утро/день/вечер/ночь) <br>
+2) Прогноз на 7 дней вынесен в отдельную вкладку. <br>
+3) Добавлен выбор избранного города, создается объект yw_mycity, куда будут копироваться свойства избранного города. Для выбора избранного города необходимо нажать "сердечко" на нужном. <br>
+yw_mycity избавит от необходимости править чужие сценарии, например для уведомления о погоде.
+4) Добавлена возможность указать вместо id города его координаты. Необходимо в поле latlon таблицы yaweather_cities указать значение в формате lat=47.240585&lon=38.870989. В качестве id города можно указать любое значение, latlon будет в качестве более приоритетного параметра.  <br>
+    </br></br>
+
+В планах:  </br>
+
+1) Голосовое информирование и предупреждения при изменении погоды и по графику</br>
+
+		</div> </div> </div>
+
+
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#cont">Контактная информация</a>
+		</div>
+		<div class="panel-body collapse" id="cont">
+		<p><b>
+<a href="https://github.com/directman66/majordomo-yandexweather" target="_blank">Ссылка на репозиторий</a><br>
+<a href="https://majordomo.smartliving.ru/forum/viewtopic.php?f=5&t=5449#p79567" target="_blank">Тема на форуме</a>.<br></b></br>
+		</div> </div> </div>
+
+                                                                                                                         
+                                                                                                         
+	
+</div>
+
+
+	
+</div>
 <br>
 <p><b>Поддержать разработку и развитие модуля:</b><br>
 Банковская карта: 5106211026111760<br>
@@ -20,8 +70,3 @@ Yandex деньги: 41001189619405<br>
 и другие способы по договоренности (Сбербанк, ГПБ).<br>
 С уважением, directman66.<br>
 sannikovdi@ya.ru<br>
-
-
-
-	
-
