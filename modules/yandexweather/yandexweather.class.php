@@ -333,13 +333,24 @@ addClassObject('YandexWeather',$objn);
 sg( $objn.'.json',$otvet);
 $src=$data[info];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
-foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
+	
+foreach ($src as $key=> $value ) { 
+if (is_array($value)) {
+foreach ($value as $key2=> $value2 ) {sg( $objn.'.'.$key.'_'.$key2,$value2); }
+}	
+else	
+{sg( $objn.'.'.$key,$value); }     
 $src=$data[fact];
-	foreach ($src as $key=> $value ) {   sg( $objn.'.'.$key,$value); }     
+	foreach ($src as $key=> $value ) { sg( $objn.'.'.$key,$value); }
+	
+	}     
 	$fobjn= $objn;
 	$src=$data[forecasts][0][parts];
 		foreach ($data[forecasts] as $day=> $value ) { 
 			foreach ($data[forecasts][$day][parts] as $key=> $value ) {    
+				
+				
+				
 			sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data[forecasts][$day][parts][$key][temp_avg]);
 			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data[forecasts][$day][parts][$key][wind_speed]);
 			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data[forecasts][$day][parts][$key][wind_gust]);
