@@ -383,9 +383,13 @@ $src=$data[fact];
 	
 //mycity	
 if ($mycity==$cityid){
-$objn='yw_mycity';
-addClassObject('YandexWeather',$objn);
+$objmycity='yw_mycity';
+addClassObject('YandexWeather',$objmycity);
 
+$objprops=get_props($fobjn);
+foreach ($objprops as $prop)
+{sg($objmycity,	$prop);     }
+	
 	
 	
 //////////	
