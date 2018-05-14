@@ -35,7 +35,12 @@
 <th>Давл., мм</th>  
 <th>Влажн. %</th>  
 <th>УФ индекс</th>  
-<th>[#D1#]</th>  
+<th>
+ <?php
+$date = new DateTime('2000-01-01');
+echo $date->format('Y-m-d H:i:s');
+?>
+ </th>  
 <th>[#d2#]</th>  
 <th>&nbsp;</th>  
 <th>&nbsp;</th>  
