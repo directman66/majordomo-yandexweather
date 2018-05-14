@@ -65,6 +65,7 @@ function getParams() {
   global $today;
   global $forecast;
   global $type;	
+  global $skin;		
 	
   if (isset($id)) {
    $this->id=$id;
@@ -80,8 +81,13 @@ if (isset($today)) {
   }	
 	
 if (isset($type)) {
-   $this->today=$type;
+   $this->type=$type;
   }		
+	
+if (isset($skin)) {
+   $this->skin=$skin;
+  }		
+	
 	
 if (isset($forecast)) {
    $this->forecast=$forecast;
@@ -125,8 +131,13 @@ function run() {
 //$out['TODAY']=$this->today;	
 //$out['FORECAST']=$this->forecast;		
 $out['TYPE']=$this->type;			
+
+	
+if (IsSet($this->skin)) {$out['SKIN']=$this->skin;}	
+else {$out['SKIN']=1;}
+
 //$out['TYPE']=$type;				
-//$out['TYPE']='FORECAST';			
+//$out['TYPE']='FORECAST';
 	
 	
   $date = date("Y-m-d");
