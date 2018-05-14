@@ -282,10 +282,12 @@ $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
 
 	
-	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 ");
+	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1 and latlon  ");
+	
+	
 foreach ($properties as $did)
 {
-$cityid=$did[ID];
+
    
  
 $opts = array(
@@ -305,11 +307,16 @@ $opts = array(
 );
  
 $context = stream_context_create($opts);
+	
+$cityid=$did[ID];
+$latlon=$did[latlon];	
+	
  //ID города узнаем тут: https://pogoda.yandex.ru/static/cities.xml
 //region="11162" id="28440
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=54&lang=ru', false, $context);
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=53&lang=ru', false, $context);
-$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);
+if $cityid<>"" {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);}
+if $latlon<>"" {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
  
 header('Content-type: text/json');
