@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <radialGradient id="skc_d-a" cy="50.27%" r="48.397%" fx="50%" fy="50.27%">
+      <stop offset="0%" stop-color="#FFC227"/>
+      <stop offset="100%" stop-color="#FFB300"/>
+    </radialGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="12" cy="12" r="5" fill="url(#skc_d-a)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.4190543,2.19930642 L15.4190543,5.26957619" transform="rotate(22.5 15.42 3.734)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.57327285,18.7264847 L8.57327285,21.7967545" transform="rotate(22.5 8.573 20.262)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.2607277,7.04097986 L20.2607277,10.1112496" transform="rotate(67.5 20.26 8.576)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.73354939,13.8867613 L3.73354939,16.957031" transform="rotate(67.5 3.734 15.422)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.2607277,13.8881401 L20.2607277,16.9584099" transform="rotate(112.5 20.26 15.423)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.73354939,7.04235871 L3.73354939,10.1126285" transform="rotate(112.5 3.734 8.577)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.571894,2.19930642 L8.571894,5.26957619" transform="rotate(-22.5 8.572 3.734)"/>
+    <path stroke="#FFB300" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.4176754,18.7264847 L15.4176754,21.7967545" transform="rotate(-22.5 15.418 20.262)"/>
+  </g>
+</svg>
