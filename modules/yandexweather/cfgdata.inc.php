@@ -69,6 +69,10 @@ sg('test.yammode',$this->mode);
 //   }
    global $check;
    $rec['check']=$check;
+
+   global $latlon;
+   $rec['latlon']=$latlon;
+
 //   if ($rec['check']=='') {
 //    $out['ERR_check']=1;
 //    $ok=0;
