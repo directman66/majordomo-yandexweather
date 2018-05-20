@@ -13,39 +13,45 @@
 <!-- DID (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if ERR_DID#] style="color:red;font-weight:bold"[#endif#]>
-   Country:
+Страна:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="country" value="[#country#]" id="country"> <#LANG_SID_INFO#></div> 
 </div>
 <!-- TITLE (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if CityName#] style="color:red;font-weight:bold"[#endif#]>
-CityName:
+Город:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="cityname" value="[#cityname#]" id="cityname"></div>
 </div>
 <!-- LINKED_OBJECT (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if Part#] style="color:red;font-weight:bold"[#endif#]>
-Part:
+Область:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="part" value="[#part#]" id="part"></div>
 </div>
 <!-- LINKED_PROPERTY (varchar) -->
 <div class="form-group">
- <label class="col-lg-3 control-label"[#if ID#] style="color:red;font-weight:bold"[#endif#]>
+ <label class="col-lg-4 control-label"[#if ID#] style="color:red;font-weight:bold"[#endif#]>
 ID:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="ID" value="[#ID#]" id="ID"></div>
 </div>
 
 <div class="form-group">
+ <label class="col-lg-3 control-label"[#if LATLON#] style="color:red;font-weight:bold"[#endif#]>
+latlon:
+ </label>
+ <div class="col-lg-4"><input type="text" class="form-control" name="latlon" value="[#latlon#]" id="latlon"></div>
+</div>
+
+
+<div class="form-group">
  <div class="col-lg-offset-3 col-lg-4">
-  [#if ID!=""#]
-  <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_SUBMIT#></button>
-  [#else ID#]
+
   <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
-  [#endif ID#]
+
   <a href="?tab=indata" class="btn btn-default "><#LANG_CANCEL#></a>
   <input type="hidden" name="id" value="<#ID#>">
   <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
