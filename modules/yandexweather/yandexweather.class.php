@@ -199,7 +199,7 @@ function admin(&$out) {
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
- if ($this->tab=='' || $this->tab=='indata') {
+ if ($this->tab=='' || $this->tab=='indata' || $this->tab=='widgets') {
 $today = $this->today;		 
     $this->indata_search($out); 
  }
