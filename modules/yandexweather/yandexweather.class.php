@@ -222,6 +222,9 @@ echo "echeck";
 if ($this->view_mode=='config_mycity') {
    $this->config_mycity($this->id);
  }
+if ($this->view_mode=='indata_del') {
+   $this->config_del($this->id);
+ }
 	
  if ($this->view_mode=='get') {
 setGlobal('cycle_yandexweatherControl','start'); 
@@ -280,9 +283,8 @@ $this->getdatefnc();
 * @access public
 */
  function config_del($id) {
-  $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID='$id'");
   // some action for related tables
-  SQLExec("DELETE FROM yaweather_cities WHERE ID='".$rec['ID']."'");
+  SQLExec("DELETE FROM yaweather_cities WHERE ID='".$id."'");
  }
 /**
 * InData delete record
