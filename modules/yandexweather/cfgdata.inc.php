@@ -1,5 +1,5 @@
 <?php	
-sg('test.yaload',2);
+//sg('test.yaload',2);
   global $session;
   if ($this->owner->name=='panel') {
    $out['CONTROLPANEL']=1;
@@ -37,7 +37,7 @@ $res=SQLSelect("SELECT * FROM `yaweather_cities` ");
 
 if ($this->mode=='update') {
    $ok=1;
-sg('test.yammode',$this->mode);
+//sg('test.yammode',$this->mode);
 
    global $ID;
    $rec['ID']=$ID;
@@ -77,7 +77,7 @@ sg('test.yammode',$this->mode);
 //    $out['ERR_check']=1;
 //    $ok=0;
 //   }
-sg('test.yaok',$ok);
+//sg('test.yaok',$ok);
    //UPDATING RECORD
    if ($ok) {
 //    if ($rec['ID']) {
