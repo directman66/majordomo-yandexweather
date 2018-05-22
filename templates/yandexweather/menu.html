@@ -26,7 +26,7 @@
   [#conditionn#]
   [#endif#]
  <br>
- <p> Утро&nbsp;&nbsp;&nbsp;День&nbsp;&nbsp;&nbsp;Вечер&nbsp;&nbsp;&nbsp;Ночь <br></p>
+ <p> Утро&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;День&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вечер&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ночь <br></p>
  
    [#if forecast_0_morning_temp_avg!=""#]
    [#forecast_0_morning_temp_avg#]  
@@ -71,6 +71,8 @@
   [#if forecast_0_nightcondition!=""#]
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
   [#else#]
+&nbsp;
+ [#endif#] 
  
  
 [#end RESULTMYCITY#]
