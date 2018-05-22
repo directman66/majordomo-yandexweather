@@ -22,53 +22,18 @@
   Утро&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   День&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   Вечер&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Ночь <br></p>
- 
-   [#if forecast_0_morning_temp_avg!=""#]
-   [#forecast_0_morning_temp_avg#]  
-  [#else#]
-   &nbsp;
-  [#endif#]
-   [#if forecast_0_morningcondition!=""#]
+  Ночь
+  <br></p>
+ [#forecast_0_morning_temp_avg#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [#forecast_0_day_temp_avg#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [#if forecast_0_eveningcondition!=""#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ [#forecast_0_night_temp_avg#]  
+ <br>
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png">     
-  [#else#]
-   &nbsp;
-  [#endif#]
- 
- 
- [#if forecast_0_day_temp_avg!=""#]
-   [#forecast_0_day_temp_avg#]  
-  [#else#]
-   &nbsp;
-  [#endif#]
-  [#if forecast_0_daycondition!=""#]
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
-  [#else#]
-   &nbsp;
-  [#endif#]
- 
- [#if forecast_0_evening_temp_avg!=""#]
-   [#forecast_0_evening_temp_avg#]  
-  [#else#]
-   &nbsp;
-  [#endif#]
-   [#if forecast_0_eveningcondition!=""#]
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
- [#else#]
-   &nbsp;
-  [#endif#]
- 
- 
-  [#if forecast_0_night_temp_avg!=""#]
-   [#forecast_0_night_temp_avg#]  
-  [#else#]
-   &nbsp;
-  [#endif#]
-  [#if forecast_0_nightcondition!=""#]
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
-  [#else#]
-&nbsp;
- [#endif#] 
+
  
  
 [#end RESULTMYCITY#]
