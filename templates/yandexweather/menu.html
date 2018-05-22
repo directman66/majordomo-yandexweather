@@ -5,7 +5,7 @@
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
  
 [#begin RESULTMYCITY#]
- <h2>[#locality_name#] [#district_name#] 
+<big>[#locality_name#] [#district_name#] 
  
 &nbsp;&nbsp;&nbsp;&nbsp;  
 [#if temp!=""#]
@@ -21,9 +21,9 @@
   [#else#]
   [#conditionn#]
   [#endif#]
-</h2>  
+</big>
  <br>
-  <small>  
+<small>  
 ветер&nbsp; 
 [#if forecast_0_day_wind_dir="s"#] южный [#endif#] 
 [#if forecast_0_day_wind_dir="se"#] юго-западный [#endif#]   
