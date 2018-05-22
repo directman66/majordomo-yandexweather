@@ -5,7 +5,7 @@
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
  
 [#begin RESULTMYCITY#]
- [#locality_name#] [#district_name#] 
+ <p>[#locality_name#] [#district_name#] </p>
 &nbsp;&nbsp;&nbsp;&nbsp;  
 [#if temp!=""#]
    [#temp#]
@@ -32,9 +32,9 @@
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png" title="[#forecast_0_morningcondition#]">     
 &nbsp;&nbsp;
  <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
-&nbsp;&nbsp;
+&nbsp;
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
-&nbsp;&nbsp;
+&nbsp;
  <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
  
 [#end RESULTMYCITY#]
