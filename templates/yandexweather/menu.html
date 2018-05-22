@@ -14,7 +14,18 @@
  
 [#begin RESULTMYCITY#]
  [#locality_name#] [#district_name#] 
- <!--<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#conditionn#].png"> -->
+[#if temp!=""#]
+   [#temp#]
+  [#else#]
+  [#endif#]    
+ 
+[#if conditionn!=""#]
+<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#conditionn#].png">
+  [#else#]
+  [#conditionn#]
+  [#endif#]
+ 
+ 
 [#end RESULTMYCITY#]
 
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
