@@ -27,6 +27,29 @@
   [#endif#]
  Утро День Вечер Ночь
  
+   [#if forecast_0_morning_temp_avg!=""#]
+   [#forecast_0_morning_temp_avg#]  
+  [#else#]
+   &nbsp;
+  [#endif#]
+   [#if forecast_0_morningcondition!=""#]
+<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ 
+ 
+ [#if forecast_0_day_temp_avg!=""#]
+   [#forecast_0_day_temp_avg#]  
+  [#else#]
+   &nbsp;
+  [#endif#]
+  [#if forecast_0_daycondition!=""#]
+<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
+  [#else#]
+   &nbsp;
+  [#endif#]
+ 
 [#end RESULTMYCITY#]
 
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
