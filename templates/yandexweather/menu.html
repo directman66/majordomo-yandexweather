@@ -5,25 +5,27 @@
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
  
 [#begin RESULTMYCITY#]
-<h2>[#locality_name#] [#district_name#] 
+<h2>
+  <table width=100% border=0><tr> 
+   <td>[#locality_name#] [#district_name#] </td>
  
-&nbsp;&nbsp;&nbsp;&nbsp;  
+<td>
 [#if temp!=""#]
    [#temp#]
   [#else#]
   [#endif#]   
 °С  
-
-&nbsp;&nbsp; 
-&nbsp;&nbsp; 
-[#if conditionn!=""#]
+   </td>
+<td>
+   [#if conditionn!=""#]
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#conditionn#].png" itle="[#conditionn#]  [#forecast_0_day_wind_speed#]"  
   [#else#]
   [#conditionn#]
   [#endif#]
+</td>
 </h2>
  <br>
-<small> <small>  <small>   
+<td><small> <small>  <small>   
 ветер&nbsp;[#forecast_0_day_wind_dir#] 
 [#if forecast_0_day_wind_dir="s"#] южный [#endif#] 
 [#if forecast_0_day_wind_dir="se"#] юго-западный [#endif#]   
@@ -34,6 +36,7 @@
 [#if forecast_0_day_wind_dir="nw"#] северо-восточный [#endif#]     
 [#if forecast_0_day_wind_dir="w"#] восточный [#endif#]
 &nbsp;[#forecast_0_day_wind_speed#]&nbsp;м/с
+ </td></tr></table>
 </small> </small> </small>     
   <br>
  <p> 
