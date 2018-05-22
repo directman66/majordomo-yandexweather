@@ -37,24 +37,27 @@
 </small> </small> </small>     
   <br>
  <p> 
-  Утро&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  День&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Вечер&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Ночь
-  <br></p>
- [#forecast_0_morning_temp_avg#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- [#forecast_0_day_temp_avg#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- [#forecast_0_evening_temp_avg#]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- [#forecast_0_night_temp_avg#]  
- <br>
-<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png" title="[#forecast_0_morningcondition#]">     
-&nbsp;&nbsp;
- <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
-
-<img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
-&nbsp;
- <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
- 
+  <table><tr>
+  <td>Утро</td>
+  <td>День</td>
+  <td>Вечер</td>
+   <td>Ночь</td></tr></p>
+<tr>   
+ <td>[#forecast_0_morning_temp_avg#]</td>
+ <td>[#forecast_0_day_temp_avg#]</td>
+ <td>[#forecast_0_evening_temp_avg#]</td>
+ <td>[#forecast_0_night_temp_avg#]</td>  
+</tr> 
+<tr>    
+<td><img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png" title="[#forecast_0_morningcondition#]">     
+</td> 
+ <td><img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
+</td> 
+ <td><img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
+</td> 
+ <td><img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
+</td> 
+ </tr>  
 [#end RESULTMYCITY#]
 
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
