@@ -5,7 +5,7 @@
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
  
 [#begin RESULTMYCITY#]
- <h3>[#locality_name#] [#district_name#] </h3>
+ <h3>[#locality_name#] [#district_name#] 
  
 &nbsp;&nbsp;&nbsp;&nbsp;  
 [#if temp!=""#]
@@ -18,6 +18,7 @@
   [#else#]
   [#conditionn#]
   [#endif#]
+</h3>  
  <br>
  <p> 
   Утро&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -33,7 +34,7 @@
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_morningcondition#].png" title="[#forecast_0_morningcondition#]">     
 &nbsp;&nbsp;
  <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_daycondition#].png" title="[#forecast_0_daycondition#]">     
-&nbsp;
+
 <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_eveningcondition#].png" title="[#forecast_0_eveningcondition#]">     
 &nbsp;
  <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_0_nightcondition#].png" title="[#forecast_0_nightcondition#]">     
