@@ -66,6 +66,8 @@ function getParams() {
   global $forecast;
   global $type;	
   global $skin;		
+global $sayweather;		
+global $sayforecast;		
 	
   if (isset($id)) {
    $this->id=$id;
