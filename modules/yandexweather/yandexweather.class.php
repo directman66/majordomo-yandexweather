@@ -233,14 +233,14 @@ setGlobal('cycle_yandexweatherControl','start');
 		$this->getdatefnc();
  }
 
-        if ($sayweather)
+        if ($this->view_mode=='sayweather')
         {
             $this->sayweather();
             echo "Ok";
             exit;
         }
 
-        if ($sayforecast)
+        if ($this->view_mode=='sayforecast')
         {
             $this->sayforecast();
             echo "Ok";
