@@ -1071,4 +1071,4 @@ $status .= 'Завтра ожидается ' . chtiv1($w, 'градус', 'гр
 $status .= gg("ow_day1.weather_type") . ".";
 return $status;
 }
-*/
+
