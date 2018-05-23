@@ -328,13 +328,13 @@ SQLUpdate('yaweather_cities',$rec);
 
 function sayweather() {
 $text='Сегодня хорошая погода';
-//$text=gettextforecast_short()
+$text=gettextforecast_short()
 say($text,2);
 }
 
 function sayforecast() {
 $text='Завтра ожидается хорошая погода';	
-//$text=gettextforecast_long()
+$text=gettextforecast_long()
 say($text,2);
 }
 
