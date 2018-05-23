@@ -230,6 +230,21 @@ if ($this->view_mode=='indata_del') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
  }
+
+        if ($sayweather)
+        {
+            $this->sayweather();
+            echo "Ok";
+            exit;
+        }
+
+        if ($sayforecast)
+        {
+            $this->sayforecast();
+            echo "Ok";
+            exit;
+        }
+	
 	
 //$today = $this->today;	
 //$forecast = $this->forecast;		
@@ -307,7 +322,16 @@ SQLUpdate('yaweather_cities',$rec);
   $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
-} 
+}
+
+function sayweather() {
+say('Сегодня хорошая погода',2);
+}
+
+function sayforecast() {
+say('Завтра будет  хорошая погода',2);	
+}
+
 	
 	
  function config_mycity($id) {
