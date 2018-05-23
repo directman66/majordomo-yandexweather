@@ -927,3 +927,148 @@ function chtiv1($string, $ch1, $ch2, $ch3)
 	
 	return $string1;
 }
+
+
+////////////////////////////
+//////////////////////
+///////////////////////
+function gettextforecast_long()
+{
+	$status .= "Сейчас на улице по данным метеослужб " . gg("ow_fact.weather_type") . ", ";
+
+$w = round(gg("ow_fact.temperature"));
+$status .= 'температура ' . chtiv1($w, 'градус', 'градуса', 'градусов')  . " цельсия, ";
+
+//Температура "По ощущениям"
+//$realFellTemp = round(gg("ow_fact.realFell"));
+//$realFellTemp = round(gg("ow_fact.temperature"));
+
+if (gg('all_in_one.zaoknom_actual')=='1' && (gg('all_in_one.zaoknom2_actual')=="1"))
+{$realFellTemp = round(min(gg("all_in_one.zaoknomtemp"),gg("all_in_one.zaoknom2temp")));}
+else if 
+(gg('all_in_one.zaoknom_actual')=='1' && (gg('all_in_one.zaoknom2_actual')=="0"))
+{$realFellTemp = round(gg("all_in_one.zaoknomtemp"));} 
+else if 
+(gg('all_in_one.zaoknom_actual')=='0' && (gg('all_in_one.zaoknom2_actual')=="1"))
+{$realFellTemp = round(gg("all_in_one.zaoknom2temp"));} 
+else if 
+(gg('all_in_one.zaoknom_actual')=='0' && (gg('all_in_one.zaoknom2_actual')=="0"))
+{$realFellTemp = round(gg("ow_fact.realFell"));} 
+else {$realFellTemp = round(gg("ow_fact.realFell"));     }
+
+
+
+
+
+if ($w != $realFellTemp) {
+    $status .= "на датчиках на балконе  " . chtiv1($realFellTemp, 'градус', 'градуса', 'градусов')  . " цельсия, ";
+}
+//$w = gg("ow_fact.realFell");
+$w = gg("ow_fact.temperature");
+if ($w < -40) {
+    $status .= 'мы морозов не боимся! ';
+} elseif ($w < -30) { 
+     $status .= 'одевайтесь теплее, очень холодно, ';
+} elseif ($w < -20) {
+    $status .= 'самое время есть мороженое, ';
+} elseif ($w < -10) {
+    $status .= 'холодновато, ';
+} elseif ($w <- 3)  {
+    $status .= 'не особо холодно, ';
+} elseif ($w < 3) {
+    $status .= 'значит, возможно, гололёд, ';
+} elseif ($w < 10) {
+    $status .= 'прохладно, ';
+} elseif ($w < 22)  {
+    $status .= 'тепло, ';
+} elseif ($w < 30) {
+    $status .= 'жарко, ';
+} elseif ($w > 30) {
+    $status .= 'ташкент, ';
+} 
+
+
+
+
+// Сравнение со вчерашним днем
+$tNew = round((float) getGlobal('ow_fact.temperature'));
+$tOld = round((float) getGlobal('ow_fact.tempYesterday'));
+$tDelta = abs($tNew - $tOld);
+
+if ($tNew > $tOld) {
+     $status .= "теплее, чем вчера на " . chtiv1($tDelta, 'градус', 'градуса', 'градусов') . ". ";
+} elseif ($tNew < $tOld) {
+     $status .= "холоднее, чем вчера на " . chtiv1($tDelta, 'градус', 'градуса', 'градусов') . ". ";
+} elseif ($tNew == $tOld) {
+     $status .= "так же как и вчера. ";
+}
+
+$h = round(gg("ow_fact.humidity"));
+
+$status .= "Относительная влажность " . chtiv1($h, 'процент', 'процента', 'процентов') . ". ";
+
+$pressure = (float) gg("ow_fact.pressure_mmhg");
+if ($pressure < 738) {
+    $status .= 'Атмосферное давление пониженное';
+} elseif ($pressure > 768) {
+    $status .='Атмосферное давление повышенное';
+} else {
+    $status .= 'Атмосферное давление в пределах нормы';
+}
+ $status .= " (" . chtiv1(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
+
+// ветер
+$WindSpeed = (float) gg("ow_fact.wind_speed");
+if ($WindSpeed < 1) {
+    $status .= "Ветра нет";
+} elseif ($WindSpeed < 2) {
+    $status .= "Легкий ветер, ";
+} elseif ($WindSpeed < 5) {
+    $status .= "Слабый ветер";
+} elseif ($WindSpeed < 8) {
+    $status .= "Умеренный ветер";
+} elseif ($WindSpeed < 10) {
+    $status .= "Свежий ветер";
+} elseif ($WindSpeed < 14) {
+    $status .= "Сильный ветер";
+} elseif ($WindSpeed < 17) {
+    $status .= "Очень сильный ветер";
+} elseif ($WindSpeed < 21) {
+    $status .= "Ветер очень-очень сильный";
+} elseif ($WindSpeed < 28) {
+    $status .= "Шторм";
+} else {
+    $status .= "Ураган";
+}
+if ($WindSpeed >= 1) {
+    $status .= " (" . chtiv1(round($WindSpeed), 'метр', 'метра', 'метров') . " в секунду), ";
+    $windDirections = array('севера', 'северо-востока', 'востока', 'юго-востока', 'юга', 'юго-запада', 'запада', 'северо-запада', 'севера');
+     $degree = gg('ow_fact.wind_direction');
+     $WindDir = $windDirections[round($degree / 45)];
+    $status .= " дующий с " . $WindDir;
+}
+$status .= ". ";
+// Прогноз погоды на сегодня
+if (timeBetween("01:00", "10:00")) {
+    $status .= "Сегодня утром ожидается ";
+    $w = round(gg("ow_day0.temp_morn"));
+} elseif (timeBetween("10:00", "14:00")) {
+     $status .= "Сегодня днем ожидается ";
+    $w = round(gg("ow_day0.temp_day"));
+} elseif (timeBetween("14:00", "20:00")) {
+     $status .= "Сегодня вечером ожидается ";
+    $w = round(gg("ow_day0.eve"));
+} else {
+     $status .= "Сегодня ночью ожидается ";
+    $w = round(gg("ow_day0.temp_night")); 
+}
+
+$status .= chtiv1($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
+
+// Погода на завтра
+$w = round(gg("ow_day1.temperature"));
+$status .= 'Завтра ожидается ' . chtiv1($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
+$status .= gg("ow_day1.weather_type") . ".";
+return $status;
+}
+*/
