@@ -828,13 +828,86 @@ return $ar2;
 ///////////////////////////
 ///////////////////////////
 
-function chti($string, $ch1, $ch2, $ch3)
+function gettextforecast_short()
 {
-$ff=Array('0','1','2','3','4','5','6','7','8','9');
-	if(substr($string,-2, 1)==1 AND strlen($string)>1) 
-	{$ry=array("0 $ch3","1 $ch3","2 $ch3","3 $ch3" ,"4 $ch3","5 $ch3","6 $ch3","7 $ch3","8 $ch3","9 $ch3");}
-	else {$ry=array("0 $ch3","1 $ch1","2 $ch2","3 $ch2","4 $ch2","5 $ch3"," 6 $ch3","7 $ch3","8 $ch3"," 9 $ch3");}
-	$string1=substr($string,0,-1).str_replace($ff, $ry, substr($string,-1,1));
-	
-	return $string1;
+	$return_full="";
+$status="";
+
+$status.="Сейчас ".gg("ow_fact.weather_type").".";
+$return_full.=$status." ";
+    
+$status="";
+$w=round(gg("ow_fact.temperature"));
+$tempw=$w;
+if($tempw >= 11 and $tempw <= 14) {
+  $tempcels="градусов";
+} else {
+  while ($tempw > 9) {
+    $tempw=$tempw-10;
+  }
+    
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= градусов ; }
+  if($tempw == 1) { $tempcels= градус ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
 }
+
+$tNew = abs((float)gg('ow_fact.temperature'));
+$status.='По данным метеослужб температура воздуха '.gg('ow_fact.temperature')." ".$tempcels." цельсия. Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
+$return_full.=$status." ";
+
+$tempw="";
+$tempcels="";
+    
+$status="";  
+$h=round(gg("ow_fact.humidity"));
+$tempw=$h;
+if($tempw >= 11 and $tempw <= 14){
+  $tempcels="процентов";
+} else {
+  while ($tempw > 9){
+    $tempw=$tempw-10;
+  }
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= процентов ; }
+  if($tempw == 1) { $tempcels= процент ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= процента ; }
+}
+$status.="Относительная влажность ".gg("ow_fact.humidity")." ".$tempcels. ".";
+$return_full.=$status." ";
+
+$tempw="";
+$tempcels="";
+    
+$status="";
+$pressure=round(gg("ow_fact.pressure_mmhg"));
+if ($pressure<728) {
+  $status.='Атмосферное давление пониженное';
+} elseif ($pressure>768) {
+  $status.='Атмосферное давление повышенное.';
+} else {
+  $status.='Атмосферное давление нормальное.';
+}
+$return_full.=$status." ";
+    
+$status="";
+//ветер
+$WindSpeed=(float)gg("ow_fact.wind_speed");
+if ($WindSpeed<1) {
+  $status.='Ветра нет.';
+} elseif ($WindSpeed<4) {
+  $status.='Ветер слабый.';
+} elseif ($WindSpeed<6) {
+  $status.='Ветер сильный.';
+} elseif ($WindSpeed<9) {
+  $status.='Ветер очень сильный.';
+} else {
+  $status.='Ветер очень! Очень сильный.';
+}
+$return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в секунду. ";
+
+//$status='Сейчас на улице '.gg('TempOutside').' градусов.';
+//$return_full.=$status;
+
+sg("ThisComputer.weatherFact", $return_full);
+return $return_full;
+}
+
