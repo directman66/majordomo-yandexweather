@@ -236,15 +236,11 @@ setGlobal('cycle_yandexweatherControl','start');
         if ($this->view_mode=='sayweather')
         {
             $this->sayweather();
-            echo "Ok";
-            exit;
         }
 
         if ($this->view_mode=='sayforecast')
         {
             $this->sayforecast();
-            echo "Ok";
-            exit;
         }
 	
 	
