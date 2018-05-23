@@ -235,12 +235,12 @@ setGlobal('cycle_yandexweatherControl','start');
 
         if ($this->view_mode=='sayweather')
         {
-            $this->sayweather();
+  //          $this->sayweather();
         }
 
         if ($this->view_mode=='sayforecast')
         {
-            $this->sayforecast();
+   //         $this->sayforecast();
         }
 	
 	
@@ -324,7 +324,7 @@ SQLUpdate('yaweather_cities',$rec);
 
 function sayweather() {
 $text='Сегодня хорошая погода';
-$text=gettextforecast_short();
+//$text=gettextforecast_short();
 say($text,2);
 }
 
@@ -823,7 +823,7 @@ return $ar2;
 ///////////////////////////
 ///////////////////////////
 ///////////////////////////
-
+/**
 function gettextforecast_short()
 {
 	$return_full="";
@@ -1067,3 +1067,5 @@ $status .= 'Завтра ожидается ' . chtiv1($w, 'градус', 'гр
 $status .= gg("ow_day1.weather_type") . ".";
 return $status;
 }
+
+*/
