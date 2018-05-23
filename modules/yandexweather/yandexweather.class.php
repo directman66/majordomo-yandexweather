@@ -327,11 +327,13 @@ SQLUpdate('yaweather_cities',$rec);
 }
 
 function sayweather() {
-say('Сегодня хорошая погода',2);
+$text=gettextforecast_short()
+say($text,2);
 }
 
 function sayforecast() {
-say('Завтра будет  хорошая погода',2);	
+$text=gettextforecast_long()
+say($text,2);
 }
 
 	
@@ -818,6 +820,12 @@ return $ar2;
 /////////////////////////////////////////////
 /////////////////////////////////////////////
 /////////////////////////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+
 function gettextforecast_short()
 {
 	$return_full="";
@@ -900,6 +908,11 @@ $return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в сек
 sg("ThisComputer.weatherFact", $return_full);
 return $return_full;
 }
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
+///////////////////////////
 
 function gettextforecast_long()
 {
