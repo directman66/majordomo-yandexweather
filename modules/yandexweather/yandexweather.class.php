@@ -235,12 +235,12 @@ setGlobal('cycle_yandexweatherControl','start');
 
         if ($this->view_mode=='sayweather')
         {
-  //          $this->sayweather();
+            $this->sayweather();
         }
 
         if ($this->view_mode=='sayforecast')
         {
-   //         $this->sayforecast();
+            $this->sayforecast();
         }
 	
 	
