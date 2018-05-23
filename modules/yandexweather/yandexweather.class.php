@@ -828,12 +828,13 @@ function gettextforecast_short()
 {
 	$return_full="";
 $status="";
-
-$status.="Сейчас ".gg("ow_fact.weather_type").".";
+$wt=gg("yw_mycity.weather_type")
+	
+$status.="Сейчас ".gg("yw_mycity.weather_type").".";
 $return_full.=$status." ";
     
 $status="";
-$w=round(gg("ow_fact.temperature"));
+$w=round(gg("yw_mycity.temperature"));
 $tempw=$w;
 if($tempw >= 11 and $tempw <= 14) {
   $tempcels="градусов";
@@ -847,15 +848,15 @@ if($tempw >= 11 and $tempw <= 14) {
   if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
 }
 
-$tNew = abs((float)gg('ow_fact.temperature'));
-$status.='По данным метеослужб температура воздуха '.gg('ow_fact.temperature')." ".$tempcels." цельсия. Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
+$tNew = abs((float)gg('yw_mycity.temperature'));
+$status.='По данным метеослужб температура воздуха '.gg('yw_mycity.temperature')." ".$tempcels." цельсия. Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
 $return_full.=$status." ";
 
 $tempw="";
 $tempcels="";
     
 $status="";  
-$h=round(gg("ow_fact.humidity"));
+$h=round(gg("yw_mycity.humidity"));
 $tempw=$h;
 if($tempw >= 11 and $tempw <= 14){
   $tempcels="процентов";
@@ -867,14 +868,14 @@ if($tempw >= 11 and $tempw <= 14){
   if($tempw == 1) { $tempcels= процент ; }
   if($tempw >= 2 and $tempw <= 4) { $tempcels= процента ; }
 }
-$status.="Относительная влажность ".gg("ow_fact.humidity")." ".$tempcels. ".";
+$status.="Относительная влажность ".gg("yw_mycity.humidity")." ".$tempcels. ".";
 $return_full.=$status." ";
 
 $tempw="";
 $tempcels="";
     
 $status="";
-$pressure=round(gg("ow_fact.pressure_mmhg"));
+$pressure=round(gg("yw_mycity.pressure_mmhg"));
 if ($pressure<728) {
   $status.='Атмосферное давление пониженное';
 } elseif ($pressure>768) {
@@ -886,7 +887,7 @@ $return_full.=$status." ";
     
 $status="";
 //ветер
-$WindSpeed=(float)gg("ow_fact.wind_speed");
+$WindSpeed=(float)gg("yw_mycity.wind_speed");
 if ($WindSpeed<1) {
   $status.='Ветра нет.';
 } elseif ($WindSpeed<4) {
@@ -898,7 +899,7 @@ if ($WindSpeed<1) {
 } else {
   $status.='Ветер очень! Очень сильный.';
 }
-$return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в секунду. ";
+$return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в секунду. ";
 
 //$status='Сейчас на улице '.gg('TempOutside').' градусов.';
 //$return_full.=$status;
@@ -930,9 +931,10 @@ function chtiv1($string, $ch1, $ch2, $ch3)
 ///////////////////////
 function gettextforecast_long()
 {
+//if  (gg("yw_mycity.weather_type")	
 	$status .= "Сейчас на улице по данным метеослужб " . gg("ow_fact.weather_type") . ", ";
 
-$w = round(gg("ow_fact.temperature"));
+$w = round(gg("yw_mycity.temperature"));
 $status .= 'температура ' . chtiv1($w, 'градус', 'градуса', 'градусов')  . " цельсия, ";
 
 //Температура "По ощущениям"
@@ -960,7 +962,7 @@ if ($w != $realFellTemp) {
     $status .= "на датчиках на балконе  " . chtiv1($realFellTemp, 'градус', 'градуса', 'градусов')  . " цельсия, ";
 }
 //$w = gg("ow_fact.realFell");
-$w = gg("ow_fact.temperature");
+$w = gg("yw_mycity.temperature");
 if ($w < -40) {
     $status .= 'мы морозов не боимся! ';
 } elseif ($w < -30) { 
@@ -987,8 +989,8 @@ if ($w < -40) {
 
 
 // Сравнение со вчерашним днем
-$tNew = round((float) getGlobal('ow_fact.temperature'));
-$tOld = round((float) getGlobal('ow_fact.tempYesterday'));
+$tNew = round((float) getGlobal('yw_mycity.temperature'));
+$tOld = round((float) getGlobal('yw_mycity.tempYesterday'));
 $tDelta = abs($tNew - $tOld);
 
 if ($tNew > $tOld) {
@@ -999,11 +1001,11 @@ if ($tNew > $tOld) {
      $status .= "так же как и вчера. ";
 }
 
-$h = round(gg("ow_fact.humidity"));
+$h = round(gg("yw_mycity.humidity"));
 
 $status .= "Относительная влажность " . chtiv1($h, 'процент', 'процента', 'процентов') . ". ";
 
-$pressure = (float) gg("ow_fact.pressure_mmhg");
+$pressure = (float) gg("yw_mycity.pressure_mmhg");
 if ($pressure < 738) {
     $status .= 'Атмосферное давление пониженное';
 } elseif ($pressure > 768) {
@@ -1014,7 +1016,7 @@ if ($pressure < 738) {
  $status .= " (" . chtiv1(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
 
 // ветер
-$WindSpeed = (float) gg("ow_fact.wind_speed");
+$WindSpeed = (float) gg("yw_mycity.wind_speed");
 if ($WindSpeed < 1) {
     $status .= "Ветра нет";
 } elseif ($WindSpeed < 2) {
@@ -1039,7 +1041,7 @@ if ($WindSpeed < 1) {
 if ($WindSpeed >= 1) {
     $status .= " (" . chtiv1(round($WindSpeed), 'метр', 'метра', 'метров') . " в секунду), ";
     $windDirections = array('севера', 'северо-востока', 'востока', 'юго-востока', 'юга', 'юго-запада', 'запада', 'северо-запада', 'севера');
-     $degree = gg('ow_fact.wind_direction');
+     $degree = gg('yw_mycity.wind_direction');
      $WindDir = $windDirections[round($degree / 45)];
     $status .= " дующий с " . $WindDir;
 }
@@ -1047,24 +1049,24 @@ $status .= ". ";
 // Прогноз погоды на сегодня
 if (timeBetween("01:00", "10:00")) {
     $status .= "Сегодня утром ожидается ";
-    $w = round(gg("ow_day0.temp_morn"));
+    $w = round(gg("yw_mycity.temp_morn"));
 } elseif (timeBetween("10:00", "14:00")) {
      $status .= "Сегодня днем ожидается ";
-    $w = round(gg("ow_day0.temp_day"));
+    $w = round(gg("yw_mycity.temp_day"));
 } elseif (timeBetween("14:00", "20:00")) {
      $status .= "Сегодня вечером ожидается ";
-    $w = round(gg("ow_day0.eve"));
+    $w = round(gg("yw_mycity.eve"));
 } else {
      $status .= "Сегодня ночью ожидается ";
-    $w = round(gg("ow_day0.temp_night")); 
+    $w = round(gg("yw_mycity.temp_night")); 
 }
 
-$status .= chtiv1($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
+$status .= chtiv1($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("yw_mycity.weather_type") . ". ";
 
 // Погода на завтра
-$w = round(gg("ow_day1.temperature"));
+$w = round(gg("yw_mycity.temperature"));
 $status .= 'Завтра ожидается ' . chtiv1($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
-$status .= gg("ow_day1.weather_type") . ".";
+$status .= gg("yw_mycity.weather_type") . ".";
 return $status;
 }
 
