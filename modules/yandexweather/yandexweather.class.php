@@ -334,7 +334,7 @@ say($text,2);
 
 function sayforecast() {
 $text='Завтра ожидается хорошая погода';	
-$text=gettextforecast_long()
+//$text=gettextforecast_long()
 say($text,2);
 }
 
@@ -907,7 +907,7 @@ $return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в сек
 //$status='Сейчас на улице '.gg('TempOutside').' градусов.';
 //$return_full.=$status;
 
-sg("ThisComputer.weatherFact", $return_full);
+
 return $return_full;
 }
 
