@@ -823,7 +823,7 @@ return $ar2;
 ///////////////////////////
 ///////////////////////////
 ///////////////////////////
-/**
+
 function gettextforecast_short()
 {
 	$return_full="";
@@ -906,6 +906,8 @@ $return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в сек
 
 return $return_full;
 }
+
+/**
 
 ////////////////////////////////
 
