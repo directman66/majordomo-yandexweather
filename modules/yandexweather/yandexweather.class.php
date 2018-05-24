@@ -511,6 +511,12 @@ $prop_id=addClassProperty($classname, 'wind_speed', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Скорость ветра'; //   <-----------
 SQLUpdate('properties',$property); } 
+	
+$prop_id=addClassProperty($classname, 'condition', 30);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Состояние погоды'; //   <-----------
+SQLUpdate('properties',$property); } 
+	 
 $prop_id=addClassProperty($classname, 'pressure_pa', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']=' Нормальное давление для заданных координат, кПА'; //   <-----------
@@ -828,8 +834,22 @@ function gettextforecast_short()
 {
 	$return_full="";
 $status="";
+$condition='ясно';
+if (gg("yw_mycity.condition")='overcast') {$condition='пасмурно';}
+if (gg("yw_mycity.condition")='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
+if (gg("yw_mycity.condition")='cloudy-and-rain') {$condition='облачно с  дождем';}
+if (gg("yw_mycity.condition")='cloudy') {$condition='облачно';}
+if (gg("yw_mycity.condition")='overcast-and-light-rain') {$condition='пасмурно и легкий дождь';}
+if (gg("yw_mycity.condition")='overcast-and-light-snow') {$condition='пасмурно с дождем';}
+if (gg("yw_mycity.condition")='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
+if (gg("yw_mycity.condition")='partly-cloudy-and-light-snow') {$condition='переменная облачность и легкий снег';}
+if (gg("yw_mycity.condition")='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
+if (gg("yw_mycity.condition")='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
+if (gg("yw_mycity.condition")='partly-cloudy	') {$condition='переменная облачность';}
+	
 
-$status.="Сейчас ".gg("ow_fact.weather_type").".";
+	
+$status.="Сейчас ".$condition.".";
 $return_full.=$status." ";
     
 $status="";
@@ -847,15 +867,16 @@ if($tempw >= 11 and $tempw <= 14) {
   if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
 }
 
-$tNew = abs((float)gg('ow_fact.temperature'));
-$status.='По данным метеослужб температура воздуха '.gg('ow_fact.temperature')." ".$tempcels." цельсия. Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
+$tNew = abs((float)gg('yw_mycity.temp'));
+$status.='По данным метеослужб температура воздуха '.gg('yw_mycity.temp')." ".$tempcels." цельсия. ";
+//Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
 $return_full.=$status." ";
 
 $tempw="";
 $tempcels="";
     
 $status="";  
-$h=round(gg("ow_fact.humidity"));
+$h=round(gg("yw_mycity.humidity"));
 $tempw=$h;
 if($tempw >= 11 and $tempw <= 14){
   $tempcels="процентов";
@@ -867,14 +888,14 @@ if($tempw >= 11 and $tempw <= 14){
   if($tempw == 1) { $tempcels= процент ; }
   if($tempw >= 2 and $tempw <= 4) { $tempcels= процента ; }
 }
-$status.="Относительная влажность ".gg("ow_fact.humidity")." ".$tempcels. ".";
+$status.="Относительная влажность ".gg("yw_mycity.humidity")." ".$tempcels. ".";
 $return_full.=$status." ";
 
 $tempw="";
 $tempcels="";
     
 $status="";
-$pressure=round(gg("ow_fact.pressure_mmhg"));
+$pressure=round(gg("yw_mycity.pressure_mm"));
 if ($pressure<728) {
   $status.='Атмосферное давление пониженное';
 } elseif ($pressure>768) {
@@ -886,7 +907,7 @@ $return_full.=$status." ";
     
 $status="";
 //ветер
-$WindSpeed=(float)gg("ow_fact.wind_speed");
+$WindSpeed=(float)gg("yw_mycity.wind_speed");
 if ($WindSpeed<1) {
   $status.='Ветра нет.';
 } elseif ($WindSpeed<4) {
@@ -898,7 +919,7 @@ if ($WindSpeed<1) {
 } else {
   $status.='Ветер очень! Очень сильный.';
 }
-$return_full.=$status." ".round(gg("ow_fact.wind_speed"))." метра в секунду. ";
+$return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в секунду. ";
 
 //$status='Сейчас на улице '.gg('TempOutside').' градусов.';
 //$return_full.=$status;
