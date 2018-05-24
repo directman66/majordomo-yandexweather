@@ -833,7 +833,7 @@ $status.="Сейчас ".gg("ow_fact.weather_type").".";
 $return_full.=$status." ";
     
 $status="";
-$w=round(gg("ow_fact.temperature"));
+$w=round(gg("yw_mycity.temp"));
 $tempw=$w;
 if($tempw >= 11 and $tempw <= 14) {
   $tempcels="градусов";
