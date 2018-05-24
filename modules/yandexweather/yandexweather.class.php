@@ -329,8 +329,9 @@ $text='Сегодня хорошая погода';
 $return_full="";
 $status="";
 $condition='ясно';
-	/**
-if (gg("yw_mycity.condition")=='overcast') {$condition='пасмурно';}
+	
+if (gg('yw_mycity.condition')=='overcast') {$condition='пасмурно';}
+/**	
 if (gg("yw_mycity.condition")=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
 if (gg("yw_mycity.condition")='cloudy-and-rain') {$condition='облачно с  дождем';}
 if (gg("yw_mycity.condition")=='cloudy') {$condition='облачно';}
