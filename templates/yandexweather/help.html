@@ -50,14 +50,35 @@
 <div class="panel-group" id="accordion">
 	<div class="panel panel-info">
 		<div class="panel-heading">
-		<a data-toggle="collapse" data-parent="#accordion" href="#vidjet">Добавление виджета в домашние страницы</a>
+		<a data-toggle="collapse" data-parent="#accordion" href="#vidget">Добавление виджета в домашние страницы</a>
 		</div>
-		<div class="panel-body collapse" id="vidjet">
+		<div class="panel-body collapse" id="vidget">
 
 Вы можете использовать плагин в домашних страницах используя следующий код: <br><br>
  <code><b>&#091#module name="yandexweather" #&#093</b></code> - выводит погоду на сегодня и прогноз на 7 дней <br> 
  <code><b>&#091#module name="yandexweather" type="TODAY"#&#093</b></code> - выводит погоду на сегодня<br> 
  <code><b>&#091#module name="yandexweather" type="FORECAST"#&#093</b></code> - выводит прогноз на 7 дней<br> 
+
+		</div> </div> </div>
+
+<div class="panel-group" id="accordion">
+	<div class="panel panel-info">
+		<div class="panel-heading">
+		<a data-toggle="collapse" data-parent="#accordion" href="#event">Вызов голосового уведомления:</a>
+		</div>
+		<div class="panel-body collapse" id="event">
+
+Проговаривает текущую погоду голосом:<br>
+<code><b>
+include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');<br>
+$yw = new yandexweather();<br>
+$yw->sayweather();</b></code> - <br><br> 
+Проговаривает текущую погоду и прогноз на завтра голосом<br> 
+<code><b>
+include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');<br>
+$yw = new yandexweather();<br>
+$yw->sayforecast();</b></code> 
+	</b></code> 			
 
 		</div> </div> </div>
 
