@@ -338,7 +338,7 @@ if (gg("yw_mycity.condition")=='partly-cloudy-and-light-rain') {$condition='пе
 if (gg("yw_mycity.condition")=='partly-cloudy-and-light-snow') {$condition='переменная облачность и легкий снег';}
 if (gg("yw_mycity.condition")=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
 if (gg("yw_mycity.condition")=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg("yw_mycity.condition")=='partly-cloudy	') {$condition='переменная облачность';}
+if (gg("yw_mycity.condition")=='partly-cloudy') {$condition='переменная облачность';}
 	
 
 	
