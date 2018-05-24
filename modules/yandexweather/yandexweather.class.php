@@ -321,10 +321,101 @@ SQLUpdate('yaweather_cities',$rec);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
 }
-
+////////////////////////////////////////
+////////////////////////////////////////
+////////////////////////////////////////	
 function sayweather() {
 $text='Сегодня хорошая погода';
+$return_full="";
+$status="";
+$condition='ясно';
+	/**
+if (gg("yw_mycity.condition")=='overcast') {$condition='пасмурно';}
+if (gg("yw_mycity.condition")=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
+if (gg("yw_mycity.condition")='cloudy-and-rain') {$condition='облачно с  дождем';}
+if (gg("yw_mycity.condition")=='cloudy') {$condition='облачно';}
+if (gg("yw_mycity.condition")=='overcast-and-light-rain') {$condition='пасмурно и легкий дождь';}
+if (gg("yw_mycity.condition")=='overcast-and-light-snow') {$condition='пасмурно с дождем';}
+if (gg("yw_mycity.condition")=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
+if (gg("yw_mycity.condition")=='partly-cloudy-and-light-snow') {$condition='переменная облачность и легкий снег';}
+if (gg("yw_mycity.condition")=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
+if (gg("yw_mycity.condition")=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
+if (gg("yw_mycity.condition")=='partly-cloudy') {$condition='переменная облачность';}
+*/	
 
+	
+$status.="Сейчас ".$condition.".";
+$return_full.=$status." ";
+    
+$status="";
+$w=round(gg("yw_mycity.temp"));
+$tempw=$w;
+if($tempw >= 11 and $tempw <= 14) {
+  $tempcels="градусов";
+} else {
+  while ($tempw > 9) {
+    $tempw=$tempw-10;
+  }
+    
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= градусов ; }
+  if($tempw == 1) { $tempcels= градус ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
+}
+
+$tNew = abs((float)gg('yw_mycity.temp'));
+$status.='По данным метеослужб температура воздуха '.gg('yw_mycity.temp')." ".$tempcels." цельсия. ";
+//Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
+$return_full.=$status." ";
+
+$tempw="";
+$tempcels="";
+    
+$status="";  
+$h=round(gg("yw_mycity.humidity"));
+$tempw=$h;
+if($tempw >= 11 and $tempw <= 14){
+  $tempcels="процентов";
+} else {
+  while ($tempw > 9){
+    $tempw=$tempw-10;
+  }
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= процентов ; }
+  if($tempw == 1) { $tempcels= процент ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= процента ; }
+}
+$status.="Относительная влажность ".gg("yw_mycity.humidity")." ".$tempcels. ".";
+$return_full.=$status." ";
+
+$tempw="";
+$tempcels="";
+    
+$status="";
+$pressure=round(gg("yw_mycity.pressure_mm"));
+if ($pressure<728) {
+  $status.='Атмосферное давление пониженное';
+} elseif ($pressure>768) {
+  $status.='Атмосферное давление повышенное.';
+} else {
+  $status.='Атмосферное давление нормальное.';
+}
+$return_full.=$status." ";
+    
+$status="";
+//ветер
+$WindSpeed=(float)gg("yw_mycity.wind_speed");
+if ($WindSpeed<1) {
+  $status.='Ветра нет.';
+} elseif ($WindSpeed<4) {
+  $status.='Ветер слабый.';
+} elseif ($WindSpeed<6) {
+  $status.='Ветер сильный.';
+} elseif ($WindSpeed<9) {
+  $status.='Ветер очень сильный.';
+} else {
+  $status.='Ветер очень! Очень сильный.';
+}
+$return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в секунду. ";
+say($return_full,2);
 
 }
 
