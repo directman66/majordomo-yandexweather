@@ -328,7 +328,7 @@ $res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
      //paging($res, 100, $out); // search result paging
 $total=count($res);
 $rec['DAY_0'] = $total+1;	  
-$rec['TITLE'] = 'sayfeather';
+$rec['TITLE'] = 'sayweather';
 $rec['DAY_0'] = '1';
 $rec['DAY_1'] = '1';	 
 $rec['DAY_2'] = '1';
@@ -339,7 +339,13 @@ $rec['DAY_6'] = '0';
 $rec['ONCE'] = '0';	             
 $rec['LINKED_OBJECT'] = 'yw_mycity';	             	 
 $rec['LINKED_METHOD'] = 'sayweather';	             	 	 
-SQLInsert('app_alarmclock', $rec);  
+$rec['METHOD'] = 'method';	 
+SQLInsert('app_alarmclock', $rec); 
+	 
+	 
+sg('yw_mycity.AlarmTime','07:00');
+sg('yw_mycity.AlarmOn','1');	 
+	 
 } 
 
  function alarmforecast() {
