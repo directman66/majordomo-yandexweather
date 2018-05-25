@@ -68,6 +68,8 @@ function getParams() {
   global $skin;		
 global $sayweather;		
 global $sayforecast;		
+global $alarmweather;		
+global $alarmforecast;		
 	
   if (isset($id)) {
    $this->id=$id;
@@ -243,6 +245,15 @@ setGlobal('cycle_yandexweatherControl','start');
             $this->sayforecast();
         }
 	
+        if ($this->view_mode=='alarmweather')
+        {
+            $this->alarmweather();
+        }
+	
+        if ($this->view_mode=='alarmforecast')
+        {
+            $this->alarmforecast();
+        }	
 	
 //$today = $this->today;	
 //$forecast = $this->forecast;		
@@ -310,6 +321,16 @@ $this->getdatefnc();
    $rec['check']=1;
 SQLUpdate('yaweather_cities',$rec); 
 } 
+	
+ function alarmweather() {
+  
+} 
+
+ function alarmforecast() {
+  
+} 
+	
+	
 /**
 * InData delete record
 *
