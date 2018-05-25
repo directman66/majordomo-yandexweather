@@ -443,7 +443,7 @@ $status .= "Сейчас на улице по данным метеослужб 
 
 $w = round(gg("yw_mycity.temp"));
 //$status .= 'температура ' . chti($w, 'градус', 'градуса', 'градусов')  . " цельсия, ";
-$status .= 'температура '.$w.' градусов цельсия, ";
+$status .= 'температура '.$w." градусов цельсия, ";
 
 //if (gg('all_in_one.zaoknom_actual')=='1' && (gg('all_in_one.zaoknom2_actual')=="1"))
 //{$realFellTemp = round(min(gg("all_in_one.zaoknomtemp"),gg("all_in_one.zaoknom2temp")));}
