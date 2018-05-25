@@ -327,7 +327,7 @@ SQLUpdate('yaweather_cities',$rec);
 $res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
      //paging($res, 100, $out); // search result paging
 $total=count($res);
-$rec['DAY_0'] = $total+1	  
+$rec['DAY_0'] = $total+1;	  
 $rec['TITLE'] = 'sayfeather';
 $rec['DAY_0'] = '1';
 $rec['DAY_1'] = '1';	 
