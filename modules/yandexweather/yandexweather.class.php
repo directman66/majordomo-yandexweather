@@ -323,7 +323,23 @@ SQLUpdate('yaweather_cities',$rec);
 } 
 	
  function alarmweather() {
-  
+
+$res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
+     //paging($res, 100, $out); // search result paging
+$total=count($res);
+$rec['DAY_0'] = $total+1	  
+$rec['TITLE'] = 'sayfeather';
+$rec['DAY_0'] = '1';
+$rec['DAY_1'] = '1';	 
+$rec['DAY_2'] = '1';
+$rec['DAY_3'] = '1';
+$rec['DAY_4'] = '1';	 
+$rec['DAY_5'] = '0';	 
+$rec['DAY_6'] = '0';	 
+$rec['ONCE'] = '0';	             
+$rec['LINKED_OBJECT'] = 'yw_mycity';	             	 
+$rec['LINKED_METHOD'] = 'sayweather';	             	 	 
+SQLInsert('app_alarmclock', $rec);  
 } 
 
  function alarmforecast() {
