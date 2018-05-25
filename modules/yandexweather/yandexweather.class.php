@@ -496,10 +496,10 @@ $tDelta = abs($tNew - $tOld);
 
 if ($tNew > $tOld) {
      //$status .= "теплее, чем вчера на " . chti($tDelta, 'градус', 'градуса', 'градусов') . ". ";
-$status .= "теплее, чем вчера на " . $tDelta. 'градуса. ';     
+$status .= "теплее, чем вчера на " . $tDelta. ' градуса. ';     
 } elseif ($tNew < $tOld) {
 //     $status .= "холоднее, чем вчера на " . chti($tDelta, 'градус', 'градуса', 'градусов') . ". ";
-     $status .= "холоднее, чем вчера на " . $tDelta . 'градуса. ';
+     $status .= "холоднее, чем вчера на " . $tDelta . ' градуса. ';
 } elseif ($tNew == $tOld) {
      $status .= "так же как и вчера. ";
 }
@@ -507,7 +507,7 @@ $status .= "теплее, чем вчера на " . $tDelta. 'градуса. '
 $h = round(gg("yw_mycity.humidity"));
 
 //$status .= "Относительная влажность " . chti($h, 'процент', 'процента', 'процентов') . ". ";
-$status .= "Относительная влажность " . $h.'процентов.';	
+$status .= "Относительная влажность " . $h.' процентов.';	
 
 $pressure = (float) gg("yw_mycity.pressure_mm");
 if ($pressure < 738) {
@@ -518,7 +518,7 @@ if ($pressure < 738) {
     $status .= 'Атмосферное давление в пределах нормы';
 }
  //$status .= " (" . chti(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
-$status .=  round($pressure). " (миллиметров ртутного столба). "; 
+$status .= " ". round($pressure). " (миллиметров ртутного столба). "; 
 
 // ветер
 $WindSpeed = (float) gg("yw_mycity.wind_speed");
@@ -545,7 +545,7 @@ if ($WindSpeed < 1) {
 }
 if ($WindSpeed >= 1) {
 //    $status .= " (" . chti(round($WindSpeed), 'метр', 'метра', 'метров') . " в секунду), ";
-$status .= " (" . round($WindSpeed) ."метра в секунду), ";
+$status .= " ( " . round($WindSpeed) ."метра в секунду), ";
 //    $windDirections = array('севера', 'северо-востока', 'востока', 'юго-востока', 'юга', 'юго-запада', 'запада', 'северо-запада', 'севера');
     
 if (gg('yw_mycity.wind_dir')=='n') {$degree = 'севера';}
