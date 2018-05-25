@@ -825,7 +825,8 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 
-$ChangeCondition="if ($this->object_title=='yw_mycity'){
+$ChangeCondition=<<<EOD
+if ($this->object_title=='yw_mycity'){
 $lastcondition=gg('yw_mycity.lastcondition');
 $conditioneng=gg('yw_mycity.condition');
 if ($lastcondition<>$conditioneng){
@@ -842,7 +843,7 @@ if ($conditioneng=='partly-cloudy-and-snow') {$condition='переменная �
 if ($conditioneng=='partly-cloudy') {$condition='переменная облачность';}
 sg('yw_mycity.lastcondition',$conditioneng) ;
 say(' На улице '.$condition,2);}}
-";	
+EOD;	
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
