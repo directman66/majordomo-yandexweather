@@ -866,7 +866,7 @@ SQLUpdate('properties',$property); }
 	
 $prop_id=addClassProperty($classname, 'condition', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
-$property['ONCHANGE']="ChangeCondition"; // 	       <-----------	       
+//$property['ONCHANGE']="ChangeCondition"; // 	       <-----------	       
 $property['DESCRIPTION']='Состояние погоды'; //   <-----------
 
 SQLUpdate('properties',$property); } 
