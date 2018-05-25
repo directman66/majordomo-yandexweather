@@ -823,10 +823,8 @@ foreach ($objprops as $value){ sg($objmycity.'.'.$value,gg($fobjn.".".$value));}
 setGlobal('cycle_yandexweatherAutoRestart','1');	 	 
 $classname='YandexWeather';
 addClass($classname); 
-addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
-addClassMethod($classname,'ChangeCondition',"
-if ($this->object_title=='yw_mycity')
-{
+	 
+$ChangeCondition=<<<EOD
 $lastcondition=gg('yw_mycity.lastcondition');
 $conditioneng=gg('yw_mycity.condition');
  
@@ -846,6 +844,13 @@ sg('yw_mycity.lastcondition',$conditioneng) ;
 say(' На улице стало '.$condition,2);
 }
 }
+EOD;	
+	
+	 
+addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
+addClassMethod($classname,'ChangeCondition',$ChangeCondition);
+if ($this->object_title=='yw_mycity')
+{
 
 ");	 
 $prop_id=addClassProperty($classname, 'temp', 30);
