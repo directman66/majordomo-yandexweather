@@ -825,7 +825,7 @@ $classname='YandexWeather';
 addClass($classname); 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 addClassMethod($classname,'ChangeCondition',"
-if ($this->object_title=="yw_mycity")
+if ($this->object_title=='yw_mycity')
 {
 $lastcondition=gg('yw_mycity.lastcondition');
 $conditioneng=gg('yw_mycity.condition');
