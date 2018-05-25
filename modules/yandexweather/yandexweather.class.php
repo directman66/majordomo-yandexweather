@@ -766,7 +766,7 @@ for ($i = 0; $i < $total; $i++)
    SQLUpdate('pvalues', $rec);
 }
 
-Ъ	
+	
 	
  
  
