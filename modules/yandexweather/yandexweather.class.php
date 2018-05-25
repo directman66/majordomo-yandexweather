@@ -850,7 +850,7 @@ say(' На улице стало '.$condition,2);
 */	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
-//addClassMethod($classname,'ChangeCondition',$ChangeCondition);
+addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 
 
 
