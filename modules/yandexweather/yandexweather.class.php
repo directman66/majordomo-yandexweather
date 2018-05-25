@@ -848,6 +848,9 @@ say(" На улице ".$condition,2);}}
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 addClassMethod($classname,'ChangeCondition',$ChangeCondition);
+	 
+addClassMethod($classname,'sayweather',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayweather(); ");	 
+addClassMethod($classname,'sayforecast',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayforecast(); ");	 
 
 
 
