@@ -737,6 +737,7 @@ SQLExec($rec);
 } 	
 	
 function upd_PROPERTY_NAME() {	
+	
 $sqlQuery = "SELECT pvalues.*, objects.TITLE as OBJECT_TITLE, properties.TITLE as PROPERTY_TITLE
                FROM pvalues
                JOIN objects ON pvalues.OBJECT_ID = objects.id
@@ -765,7 +766,7 @@ for ($i = 0; $i < $total; $i++)
 
    SQLUpdate('pvalues', $rec);
 }
-
+}
 	
 	
  
