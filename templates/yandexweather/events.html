@@ -10,13 +10,26 @@
 
 				<div class="controls"><input type="checkbox" id="enable_events" name="enable_events" data-toggle="collapse" data-target="#enable_events" value="1"
 				<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
-					 [#if ENABLE_EVENTS="1" #] checked[#endif#]</div>
+					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
+				<input type="hidden" name="view_mode" value="update_settings">
+				<input type="hidden" name="tab" value="event">
+				<input type="hidden" name="mode" value="update">
+
+</div>
+
+
+
+
 			</div>
 
 <a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=sayweather&tab=events">Погода сейчас</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проговаривает голосом текущую погоду<br><br>
 <a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=sayforecast&tab=events">Прогноз погоды</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проговаривает голосом прогноз погоды на завтра <br> <br>
 <a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=alarmweather&tab=events">Будильник погода</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Добавляет в модуль "будильник" голосовое уведомление текущей погоды в будний день в 07:00<br>   <br>
 <a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=alarmforecast&tab=events">Будильник прогноз</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Добавляет в модуль "будильник" голосовое уведомление прогноза погоды в будний день в 07:15<br>    
+
+
 
 
   </form>
