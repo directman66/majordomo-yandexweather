@@ -824,6 +824,24 @@ setGlobal('cycle_yandexweatherAutoRestart','1');
 $classname='YandexWeather';
 addClass($classname); 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
+addClassMethod($classname,'ChangeCondition',"
+//say ($this->object_title);
+if ($this->object_title=="yw_mycity"){
+$conditioneng=gg('yw_mycity.condition');
+if ($conditioneng=='overcast') {$condition='ясно';}
+if ($conditioneng=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
+if ($conditioneng=='cloudy-and-rain') {$condition='облачно с  дождем';}
+if ($conditioneng=='cloudy') {$condition='облачно';}
+if ($conditioneng=='overcast-and-light-rain') {$condition='легкий дождь';}
+if ($conditioneng=='overcast-and-light-snow') {$condition='небольшой снег';}
+if ($conditioneng=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
+if ($conditioneng=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
+if ($conditioneng=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
+if ($conditioneng=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
+if ($conditioneng=='partly-cloudy') {$condition='переменная облачность';}
+say(' На улице стало '.$condition,2);
+
+}");	 
 $prop_id=addClassProperty($classname, 'temp', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Фактическая температура'; //   <-----------
@@ -837,6 +855,7 @@ SQLUpdate('properties',$property); }
 $prop_id=addClassProperty($classname, 'condition', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Состояние погоды'; //   <-----------
+$property['ONCHANGE']='ChangeCondition'; // 	       
 SQLUpdate('properties',$property); } 
 	 
 $prop_id=addClassProperty($classname, 'pressure_pa', 30);
@@ -873,6 +892,12 @@ if ($prop_id) {
 $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='УФ-индекс'; //   <-----------
 SQLUpdate('properties',$property);} 
+
+addClassObject('YandexWeather',$objmycity);	 	 
+	 
+
+	 
+	 
   $data = <<<EOD
  yaweather_cities: country varchar(100) 
  yaweather_cities: cityname varchar(30) 
