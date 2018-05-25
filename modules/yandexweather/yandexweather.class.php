@@ -888,7 +888,7 @@ $objprops=get_props($fobjn);
 foreach ($objprops as $value){ sg($objmycity.'.'.$value,gg($fobjn.".".$value));}	
 }
 }
-upd_PROPERTY_NAME();	
+//upd_PROPERTY_NAME();	
 	
 }
   
