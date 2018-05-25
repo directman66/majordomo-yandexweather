@@ -825,9 +825,12 @@ $classname='YandexWeather';
 addClass($classname); 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 addClassMethod($classname,'ChangeCondition',"
-//say ($this->object_title);
-if ($this->object_title=="yw_mycity"){
+if ($this->object_title=="yw_mycity")
+{
+$lastcondition=gg('yw_mycity.lastcondition');
 $conditioneng=gg('yw_mycity.condition');
+ 
+if ($lastcondition<>$conditioneng){
 if ($conditioneng=='overcast') {$condition='ясно';}
 if ($conditioneng=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
 if ($conditioneng=='cloudy-and-rain') {$condition='облачно с  дождем';}
@@ -839,9 +842,12 @@ if ($conditioneng=='partly-cloudy-and-light-snow') {$condition='переменн
 if ($conditioneng=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
 if ($conditioneng=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
 if ($conditioneng=='partly-cloudy') {$condition='переменная облачность';}
+sg('yw_mycity.lastcondition',$conditioneng) ;
 say(' На улице стало '.$condition,2);
+}
+}
 
-}");	 
+");	 
 $prop_id=addClassProperty($classname, 'temp', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Фактическая температура'; //   <-----------
