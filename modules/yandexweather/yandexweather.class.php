@@ -518,7 +518,7 @@ if ($pressure < 738) {
     $status .= 'Атмосферное давление в пределах нормы';
 }
  //$status .= " (" . chti(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
-$status .= " (round($pressure)). "миллиметров ртутного столба). "; 
+$status .=  round($pressure). " (миллиметров ртутного столба). "; 
 
 // ветер
 $WindSpeed = (float) gg("yw_mycity.wind_speed");
