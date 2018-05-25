@@ -850,7 +850,7 @@ say(' На улице стало '.$condition,2);
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
-addClassMethod($classname,'ChangeCondition',$ChangeCondition);
+//addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 
 
 
@@ -868,7 +868,6 @@ $prop_id=addClassProperty($classname, 'condition', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 //$property['ONCHANGE']="ChangeCondition"; // 	       <-----------	       
 $property['DESCRIPTION']='Состояние погоды'; //   <-----------
-
 SQLUpdate('properties',$property); } 
 	 
 $prop_id=addClassProperty($classname, 'pressure_pa', 30);
