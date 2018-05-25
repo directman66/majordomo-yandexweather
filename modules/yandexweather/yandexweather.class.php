@@ -824,7 +824,7 @@ setGlobal('cycle_yandexweatherAutoRestart','1');
 $classname='YandexWeather';
 addClass($classname); 
 	 
-/*
+
 $ChangeCondition="if ($this->object_title=='yw_mycity'){
 $lastcondition=gg('yw_mycity.lastcondition');
 $conditioneng=gg('yw_mycity.condition');
@@ -843,7 +843,7 @@ if ($conditioneng=='partly-cloudy') {$condition='переменная облач
 sg('yw_mycity.lastcondition',$conditioneng) ;
 say(' На улице '.$condition,2);}}
 ";	
-*/	
+	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 //addClassMethod($classname,'ChangeCondition',$ChangeCondition);
