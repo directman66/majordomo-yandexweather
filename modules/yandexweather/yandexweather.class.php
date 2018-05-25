@@ -636,7 +636,7 @@ $status .= $w ." градусов цельсия, " . $condition . ". ";
 // Погода на завтра
 $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
-$status .= 'Завтра ожидается ' . $w. "градусов цельсия, ";
+$status .= 'Завтра ожидается ' . $w. " градусов цельсия, ";
 $condition='ясно';
 if (gg('yw_mycity.forecast_1_daycondition')=='overcast') {$condition='ясно';}
 if (gg('yw_mycity.forecast_1_daycondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
