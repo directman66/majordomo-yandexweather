@@ -825,25 +825,25 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 
-$ChangeCondition=<<<EOD
-if ($this->object_title=='yw_mycity'){
-$lastcondition=gg('yw_mycity.lastcondition');
-$conditioneng=gg('yw_mycity.condition');
+$ChangeCondition='
+if ($this->object_title=="yw_mycity"){
+$lastcondition=gg("yw_mycity.lastcondition");
+$conditioneng=gg("yw_mycity.condition");
 if ($lastcondition<>$conditioneng){
-if ($conditioneng=='overcast') {$condition='ясно';}
-if ($conditioneng=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if ($conditioneng=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if ($conditioneng=='cloudy') {$condition='облачно';}
-if ($conditioneng=='overcast-and-light-rain') {$condition='легкий дождь';}
-if ($conditioneng=='overcast-and-light-snow') {$condition='небольшой снег';}
-if ($conditioneng=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if ($conditioneng=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if ($conditioneng=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if ($conditioneng=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if ($conditioneng=='partly-cloudy') {$condition='переменная облачность';}
-sg('yw_mycity.lastcondition',$conditioneng) ;
-say(' На улице '.$condition,2);}}
-EOD;	
+if ($conditioneng=="overcast") {$condition="ясно";}
+if ($conditioneng=="cloudy-and-light-rain") {$condition="облачно и легкий дождь";}
+if ($conditioneng=="cloudy-and-rain") {$condition="облачно с  дождем";}
+if ($conditioneng=="cloudy") {$condition="облачно";}
+if ($conditioneng=="overcast-and-light-rain") {$condition="легкий дождь";}
+if ($conditioneng=="overcast-and-light-snow") {$condition="небольшой снег";}
+if ($conditioneng=="partly-cloudy-and-light-rain") {$condition="переменная облачность и легкий дождь";}
+if ($conditioneng=="partly-cloudy-and-light-snow") {$condition="переменная облачность и небольшой снег";}
+if ($conditioneng=="partly-cloudy-and-rain") {$condition="переменная облачность с дождем";}
+if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная облачность со снегом";}
+if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
+sg("yw_mycity.lastcondition",$conditioneng) ;
+say(" На улице ".$condition,2);}}
+';	
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
