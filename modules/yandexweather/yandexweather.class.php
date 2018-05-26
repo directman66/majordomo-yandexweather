@@ -197,7 +197,7 @@ echo $this->view_mode;
  }
 //	echo $this->view_mode;
  //$this->config['ENABLE_EVENTS']=123;	 	 
-// if ($this->view_mode=='update_settings') 
+ if ($this->view_mode=='update_settings') 
  {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
