@@ -195,7 +195,7 @@ function admin(&$out) {
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
 
-global $deviceid;
+global $enable_events;
 	$this->config['ENABLE_EVENTS']=$enable_events;	 
    
    $this->saveConfig();
