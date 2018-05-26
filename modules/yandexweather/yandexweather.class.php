@@ -113,8 +113,6 @@ if (isset($forecast)) {
 * @access public
 */
 function run() {
-echo "run";	
-echo $this->view_mode;		
  global $session;
 // global $type;	
   $out=array();
@@ -186,7 +184,7 @@ echo $this->view_mode;
 		}
  $out['DUUID'] = $this->config['DUUID'];
  $out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
-	echo $this->config['ENABLE_EVENTS'];
+//	echo $this->config['ENABLE_EVENTS'];
 //$out['ENABLE_EVENTS'] = 123;		
  $out['DEVICEID']=$this->config['DEVICEID'];
 	
@@ -197,9 +195,10 @@ echo $this->view_mode;
 	 $this->config['UUID'] = $out['UUID'];
 	 $this->saveConfig();
  }
-	echo $this->view_mode;
+//	echo $this->view_mode;
  //$this->config['ENABLE_EVENTS']=123;	 	 
- if ($this->view_mode=='update_settings') {
+// if ($this->view_mode=='update_settings') 
+ {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
 	global $deviceid;
