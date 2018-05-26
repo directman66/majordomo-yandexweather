@@ -194,12 +194,13 @@ function admin(&$out) {
 	$this->config['DUUID']=$duuid;	 
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
-
-global $enable_events;
-	$this->config['ENABLE_EVENTS']=$enable_events;	 
+	 
+	global $enable_events;
+//	$this->config['ENABLE_EVENTS']=$enable_events;	 
+	$this->config['ENABLE_EVENTS']=123;	 	 
    
    $this->saveConfig();
-   $this->redirect("?");
+   //$this->redirect("?");
  }
  if (isset($this->data_source) && !$_GET['data_source'] && !$_POST['data_source']) {
   $out['SET_DATASOURCE']=1;
