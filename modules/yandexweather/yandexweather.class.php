@@ -137,6 +137,9 @@ function run() {
 //$out['FORECAST']=$this->forecast;		
 $out['TYPE']=$this->type;			
 
+$out['ENABLE_EVENTS']=$this->enable_events;			
+$out['DUUID']=$this->duuid;				
+$out['DEVICEID']=$this->deviceid;					
 	
 //if (IsSet($this->skin)) {$out['SKIN']=$this->skin;}	
 //else {$out['SKIN']=1;}
