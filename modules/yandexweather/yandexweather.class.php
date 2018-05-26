@@ -181,7 +181,9 @@ function admin(&$out) {
 			$out['CYCLERUN'] = 0;
 		}
  $out['DUUID'] = $this->config['DUUID'];
- $out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
+ //$out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
+	echo $this->config['ENABLE_EVENTS'];
+$out['ENABLE_EVENTS'] = 123;		
  $out['DEVICEID']=$this->config['DEVICEID'];
 	
  $out['EVERY']=$this->config['EVERY'];
