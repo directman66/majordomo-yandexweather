@@ -176,6 +176,7 @@ $out['SKIN']=1;
 */
 function admin(&$out) {
 	echo "admin";
+echo $this->view_mode;	
  $this->getConfig();
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
