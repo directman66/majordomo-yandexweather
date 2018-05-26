@@ -173,7 +173,7 @@ $out['SKIN']=1;
 * @access public
 */
 function admin(&$out) {
-	echo "admin";
+///	echo "admin";
 echo $this->view_mode;	
  $this->getConfig();
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
@@ -209,7 +209,7 @@ echo $this->view_mode;
 //	$this->config['ENABLE_EVENTS']=123;	 	 
    
    $this->saveConfig();
-   //$this->redirect("?");
+   $this->redirect("?");
  }
  if (isset($this->data_source) && !$_GET['data_source'] && !$_POST['data_source']) {
   $out['SET_DATASOURCE']=1;
@@ -218,16 +218,12 @@ echo $this->view_mode;
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
- if ($this->tab=='' || $this->tab=='indata' || $this->tab=='widgets') {
+ if ($this->tab=='' || $this->tab=='indata' || $this->tab=='widgets'|| $this->tab=='indataforecast') {
 $today = $this->today;		 
     $this->indata_search($out); 
  }
 	
- if ($this->tab=='indataforecast') {
-    $forecast = $this->forecast;		 
-    $this->indata_search($out); 
- }
-	
+ 	
  if ($this->view_mode=='config_edit') {
    $this->config_edit($out, $this->id);
  }
