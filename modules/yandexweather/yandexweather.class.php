@@ -193,6 +193,7 @@ function admin(&$out) {
 	 $this->config['UUID'] = $out['UUID'];
 	 $this->saveConfig();
  }
+	echo $this->view_mode;
  //$this->config['ENABLE_EVENTS']=123;	 	 
  if ($this->view_mode=='update_settings') {
 	global $duuid;
