@@ -113,6 +113,7 @@ if (isset($forecast)) {
 * @access public
 */
 function run() {
+echo "run";	
  global $session;
 // global $type;	
   $out=array();
@@ -173,6 +174,7 @@ $out['SKIN']=1;
 * @access public
 */
 function admin(&$out) {
+	echo "admin";
  $this->getConfig();
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
