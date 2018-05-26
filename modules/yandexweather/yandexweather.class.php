@@ -137,9 +137,9 @@ function run() {
 //$out['FORECAST']=$this->forecast;		
 $out['TYPE']=$this->type;			
 
-$out['ENABLE_EVENTS']=$this->enable_events;			
-$out['DUUID']=$this->duuid;				
-$out['DEVICEID']=$this->deviceid;					
+//$out['ENABLE_EVENTS']=$this->enable_events;			
+//$out['DUUID']=$this->duuid;				
+//$out['DEVICEID']=$this->deviceid;					
 	
 //if (IsSet($this->skin)) {$out['SKIN']=$this->skin;}	
 //else {$out['SKIN']=1;}
@@ -191,7 +191,7 @@ function admin(&$out) {
 	 $this->config['UUID'] = $out['UUID'];
 	 $this->saveConfig();
  }
- $this->config['ENABLE_EVENTS']=123;	 	 
+ //$this->config['ENABLE_EVENTS']=123;	 	 
  if ($this->view_mode=='update_settings') {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
@@ -199,8 +199,8 @@ function admin(&$out) {
 	$this->config['DEVICEID']=$deviceid;	 
 	 
 	global $enable_events;
-//	$this->config['ENABLE_EVENTS']=$enable_events;	 
-	$this->config['ENABLE_EVENTS']=123;	 	 
+	$this->config['ENABLE_EVENTS']=$enable_events;	 
+//	$this->config['ENABLE_EVENTS']=123;	 	 
    
    $this->saveConfig();
    //$this->redirect("?");
