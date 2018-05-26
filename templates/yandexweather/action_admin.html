@@ -33,7 +33,12 @@
 				<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
 					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
 	
-	</div>				
+	</div>	
+<div class="form-actions">
+<button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_UPDATE#></button>
+<input type="hidden" name="view_mode" value="update_settings">
+<input type="hidden" name="mode" value="update">
+</div>	
 	
 <!--
 <table>
