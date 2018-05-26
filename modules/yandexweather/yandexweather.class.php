@@ -215,6 +215,7 @@ echo $this->view_mode;
   $out['SET_DATASOURCE']=1;
  }
  
+	
 // if ($this->tab=='' || $this->tab=='outdata') {
 //   $this->outdata_search($out);
 // }  
