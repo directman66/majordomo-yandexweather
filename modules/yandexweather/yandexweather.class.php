@@ -178,6 +178,7 @@ function admin(&$out) {
 			$out['CYCLERUN'] = 0;
 		}
  $out['DUUID'] = $this->config['DUUID'];
+ $out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
  $out['DEVICEID']=$this->config['DEVICEID'];
 	
  $out['EVERY']=$this->config['EVERY'];
@@ -193,6 +194,9 @@ function admin(&$out) {
 	$this->config['DUUID']=$duuid;	 
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
+
+global $deviceid;
+	$this->config['ENABLE_EVENTS']=$enable_events;	 
    
    $this->saveConfig();
    $this->redirect("?");
