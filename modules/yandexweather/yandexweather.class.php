@@ -114,6 +114,7 @@ if (isset($forecast)) {
 */
 function run() {
 echo "run";	
+echo $this->view_mode;		
  global $session;
 // global $type;	
   $out=array();
