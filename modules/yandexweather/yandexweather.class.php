@@ -229,7 +229,7 @@ $today = $this->today;
    $this->config_edit($out, $this->id);
  }
  if ($this->view_mode=='config_check') {
-echo "echeck";
+//echo "echeck";
    $this->config_check($this->id);
  }
  if ($this->view_mode=='config_uncheck') {
