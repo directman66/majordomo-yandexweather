@@ -1015,8 +1015,8 @@ addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id
 addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
-addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
-addClassMethod($classname,'sayforecast','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayforecast(); ');	 
+//addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
+//addClassMethod($classname,'sayforecast','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayforecast(); ');	 
 
 
 
