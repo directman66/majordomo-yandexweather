@@ -136,7 +136,6 @@ function run() {
 //$out['TODAY']=$this->today;	
 //$out['FORECAST']=$this->forecast;		
 $out['TYPE']=$this->type;			
-
 //$out['ENABLE_EVENTS']=$this->enable_events;			
 //$out['DUUID']=$this->duuid;				
 //$out['DEVICEID']=$this->deviceid;					
@@ -246,12 +245,10 @@ if ($this->view_mode=='indata_del') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
  }
-
         if ($this->view_mode=='sayweather')
         {
             $this->sayweather();
         }
-
         if ($this->view_mode=='sayforecast')
         {
             $this->sayforecast();
@@ -286,7 +283,6 @@ setGlobal('cycle_yandexweatherControl','start');
 * @access public
 */
 function usual(&$out) {
-
  $this->admin($out);
 }
  
@@ -341,7 +337,6 @@ SQLUpdate('yaweather_cities',$rec);
 } 
 	
  function alarmweather() {
-
 $res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
      //paging($res, 100, $out); // search result paging
 $total=count($res);
@@ -365,7 +360,6 @@ sg('yw_mycity.AlarmTime','07:00');
 sg('yw_mycity.AlarmOn','1');	 
 	 
 } 
-
  function alarmforecast() {
   
 $res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
@@ -423,7 +417,6 @@ if (gg('yw_mycity.condition')=='partly-cloudy-and-rain') {$condition='перем
 if (gg('yw_mycity.condition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
 if (gg('yw_mycity.condition')=='partly-cloudy') {$condition='переменная облачность';}
 	
-
 	
 $status.="Сейчас ".$condition.".";
 $return_full.=$status." ";
@@ -442,12 +435,10 @@ if($tempw >= 11 and $tempw <= 14) {
   if($tempw == 1) { $tempcels= градус ; }
   if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
 }
-
 $tNew = abs((float)gg('yw_mycity.temp'));
 $status.='По данным метеослужб температура воздуха '.gg('yw_mycity.temp')." ".$tempcels." цельсия. ";
 //Датчики на балконе показывают " . chti(round(gg("zaoknom")), 'градус', 'градуса', 'градусов')  . " цельсия." ;
 $return_full.=$status." ";
-
 $tempw="";
 $tempcels="";
     
@@ -466,7 +457,6 @@ if($tempw >= 11 and $tempw <= 14){
 }
 $status.=" Относительная влажность ".gg("yw_mycity.humidity")." ".$tempcels. ".";
 $return_full.=$status." ";
-
 $tempw="";
 $tempcels="";
     
@@ -497,7 +487,6 @@ if ($WindSpeed<1) {
 }
 $return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в секунду. ";
 say($return_full,2);
-
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -521,11 +510,9 @@ if (gg('yw_mycity.condition')=='partly-cloudy-and-snow') {$condition='перем
 if (gg('yw_mycity.condition')=='partly-cloudy') {$condition='переменная облачность';}
 	
 $status .= "Сейчас на улице по данным метеослужб " .$condition . ", ";
-
 $w = round(gg("yw_mycity.temp"));
 //$status .= 'температура ' . chti($w, 'градус', 'градуса', 'градусов')  . " цельсия, ";
 $status .= 'температура '.$w." градусов цельсия, ";
-
 //if (gg('all_in_one.zaoknom_actual')=='1' && (gg('all_in_one.zaoknom2_actual')=="1"))
 //{$realFellTemp = round(min(gg("all_in_one.zaoknomtemp"),gg("all_in_one.zaoknom2temp")));}
 //else if 
@@ -538,7 +525,6 @@ $status .= 'температура '.$w." градусов цельсия, ";
 //(gg('all_in_one.zaoknom_actual')=='0' && (gg('all_in_one.zaoknom2_actual')=="0"))
 //{$realFellTemp = round(gg("ow_fact.realFell"));} 
 //else {$realFellTemp = round(gg("ow_fact.realFell"));     }
-
 //if ($w != $realFellTemp) {
 //    $status .= "на датчиках на балконе  " . chti($realFellTemp, 'градус', 'градуса', 'градусов')  . " цельсия, ";
 //}
@@ -565,16 +551,11 @@ if ($w < -40) {
 } elseif ($w > 30) {
     $status .= 'ташкент, ';
 } 
-
-
-
-
 // Сравнение со вчерашним днем
 $tNew = round((float) getGlobal('yw_mycity.temp'));
 //$tOld = round((float) getHistoryAvg("tsrearyard.temp", strtotime("-1 day")) ('ow_fact.tempYesterday'));
 $tOld = round((float) getHistoryAvg("yw_mycity.temp", strtotime("-1 day")));
 $tDelta = abs($tNew - $tOld);
-
 if ($tNew > $tOld) {
      //$status .= "теплее, чем вчера на " . chti($tDelta, 'градус', 'градуса', 'градусов') . ". ";
 $status .= "теплее, чем вчера на " . $tDelta. ' градуса. ';     
@@ -584,12 +565,9 @@ $status .= "теплее, чем вчера на " . $tDelta. ' градуса. 
 } elseif ($tNew == $tOld) {
      $status .= "так же как и вчера. ";
 }
-
 $h = round(gg("yw_mycity.humidity"));
-
 //$status .= "Относительная влажность " . chti($h, 'процент', 'процента', 'процентов') . ". ";
 $status .= "Относительная влажность " . $h.' процентов.';	
-
 $pressure = (float) gg("yw_mycity.pressure_mm");
 if ($pressure < 738) {
     $status .= 'Атмосферное давление пониженное';
@@ -600,7 +578,6 @@ if ($pressure < 738) {
 }
  //$status .= " (" . chti(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
 $status .= " ". round($pressure). " (миллиметров ртутного столба). "; 
-
 // ветер
 $WindSpeed = (float) gg("yw_mycity.wind_speed");
 if ($WindSpeed < 1) {
@@ -637,9 +614,6 @@ if (gg('yw_mycity.wind_dir')=='s') {$degree = 'юга';}
 if (gg('yw_mycity.wind_dir')=='sw') {$degree = 'юго-запада';}     
 if (gg('yw_mycity.wind_dir')=='w') {$degree = 'запада';}     
 if (gg('yw_mycity.wind_dir')=='nw') {$degree = 'северо-запада';}     
-
-
-
 //     $WindDir = $windDirections[round($degree / 45)];
     $status .= " дующий с " . $degree;
 }
@@ -708,12 +682,8 @@ if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-rain') {$condi
 if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
 if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy') {$condition='переменная облачность';}    
 }
-
-
-
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
 $status .= $w ." градусов цельсия, " . $condition . ". ";
-
 // Погода на завтра
 $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
@@ -730,12 +700,10 @@ if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-light-snow') {$c
 if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
 if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
 if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy') {$condition='переменная облачность';}    
-
 $status .= $condition . ".";	
 	
 say($status,2);
 }
-
 	
 	
  function config_mycity($id) {
@@ -754,27 +722,20 @@ $sqlQuery = "SELECT pvalues.*, objects.TITLE as OBJECT_TITLE, properties.TITLE a
                JOIN objects ON pvalues.OBJECT_ID = objects.id
                JOIN properties ON pvalues.PROPERTY_ID = properties.id
               WHERE pvalues.PROPERTY_NAME != CONCAT_WS('.', objects.TITLE, properties.TITLE)";
-
 $data = SQLSelect($sqlQuery);
 $total = count($data);
-
 for ($i = 0; $i < $total; $i++)
 {
    $objectProperty = $data[$i]['OBJECT_TITLE'] . "." . $data[$i]['PROPERTY_TITLE'];
-
    if ($data[$i]['PROPERTY_NAME'])
       echo "Incorrect: " . $data[$i]['PROPERTY_NAME'] . " should be $objectProperty" . PHP_EOL;
    else
       echo "Missing: " . $objectProperty . PHP_EOL;
-
    $sqlQuery = "SELECT *
                   FROM pvalues
                  WHERE ID = '" . $data[$i]['ID'] . "'";
-
    $rec = SQLSelectOne($sqlQuery);
-
    $rec['PROPERTY_NAME'] = $data[$i]['OBJECT_TITLE'] . "." . $data[$i]['PROPERTY_TITLE'];
-
    SQLUpdate('pvalues', $rec);
 }
 }
@@ -790,14 +751,12 @@ $token = md5('eternalsun'.$timestamp);
  
 $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
-
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1   ");
 	
 	
 foreach ($properties as $did)
 {
-
    
  
 $opts = array(
@@ -849,7 +808,6 @@ foreach ($value as $key2=> $value2 ) {sg( $objn.'.'.$key.'_'.$key2,$value2); }
 }	
 else	
 {sg( $objn.'.'.$key,$value); }     
-
 $src=$data[geo_object];
 foreach ($src as $key=> $value ) {
 if (is_array($value)) {
@@ -891,7 +849,6 @@ addClassObject('YandexWeather',$objmycity);
 	
 $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1[ID];	
-
 sg($objmycity.'.cityID', $mycity);
 	
 if ($mycity==$cityid){
@@ -925,11 +882,6 @@ foreach ($objprops as $value){ sg($objmycity.'.'.$value,gg($fobjn.".".$value));}
 */
  function uninstall() {
   SQLExec('DROP TABLE IF EXISTS yaweather_cities');
-//      SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
-//      SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
-//      SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
-//      SQLExec("delete from classes where title = 'YandexWeather'");
-
   parent::uninstall();
  }
 /**
@@ -944,7 +896,6 @@ setGlobal('cycle_yandexweatherAutoRestart','1');
 $classname='YandexWeather';
 addClass($classname); 
 	 
-
 $ChangeCondition='
 if (($this->object_title=="yw_mycity") and ($conditioneng<>'')){
 $lastcondition=gg("yw_mycity.lastcondition");
@@ -964,68 +915,18 @@ if ($conditioneng=="partly-cloudy") {$condition="переменная облач
 sg("yw_mycity.lastcondition",$conditioneng) ;
 sg("yw_mycity.lastconditionrus",$condition) ; 
 say(" На улице ".$condition,2);}}
-
-';
-/*	 
-$Changetemp='
-$par="yw_mycity.temp";
-$curt=gg($par);
-$period="-5 hour";
-$period3="-3 hour";
-
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandtemp","down");sg("yw_mycity.trandtempfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandtemp","=");sg("yw_mycity.trandtempfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandtemp","up");sg("yw_mycity.trandtempfa","fa-arrow-circle-up");}
-
-sg("yw_mycity.trandtemp-3",getHistoryAvg($par, strtotime($period3)) );
-
-
-$par="yw_mycity.pressure_mm";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandpres","down");sg("yw_mycity.trandpresfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandpres","=");sg("yw_mycity.trandpresfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandpres","up");sg("yw_mycity.trandpresfa","fa-arrow-circle-up");}
-
-$par="yw_mycity.humidity";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandhum","down");sg("yw_mycity.trandhumfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandhum","=");sg("yw_mycity.trandhumfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandhum","up");sg("yw_mycity.trandhumfa","fa-arrow-circle-up");}
-
-
-$par="yw_mycity.wind_speed";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandwind_speed","down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandwind_speed","=");}
-else if ($prevt<$curt) { sg("yw_mycity.trandwind_speed","up");}
-
-';
-*/
+';	
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 addClassMethod($classname,'ChangeCondition',$ChangeCondition);
-addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
-//addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
-//addClassMethod($classname,'sayforecast','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayforecast(); ');	 
-
-
-
+addClassMethod($classname,'sayweather',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayweather(); ");	 
+addClassMethod($classname,'sayforecast',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayforecast(); ");	 
 $prop_id=addClassProperty($classname, 'temp', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Фактическая температура'; //   <-----------
-$property['ONCHANGE']="Changetemp"; //	       
 SQLUpdate('properties',$property); }
-
 $prop_id=addClassProperty($classname, 'wind_speed', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='Скорость ветра'; //   <-----------
@@ -1071,10 +972,8 @@ if ($prop_id) {
 $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='УФ-индекс'; //   <-----------
 SQLUpdate('properties',$property);} 
-
 addClassObject('YandexWeather',$objmycity);	 	 
 	 
-
 	 
 	 
   $data = <<<EOD
@@ -1273,7 +1172,6 @@ $rec['country'] = 'Россия';
             $rec['check'] = '0';
             $rec['latlon'] = '';								
             SQLInsert('yaweather_cities', $rec);		
-
  $rec['country'] = 'Россия';
             $rec['cityname'] = 'Спутник';
             $rec['part'] = 'Ростовская область';
@@ -1291,7 +1189,6 @@ $rec['country'] = 'Россия';
             $rec['latlon'] = '';				
             
             SQLInsert('yaweather_cities', $rec);		
-
 $rec['country'] = 'Россия';
             $rec['cityname'] = 'Таганрог';
             $rec['part'] = 'Ростовская область';
@@ -1337,7 +1234,6 @@ return $spl[0] ;
 * TW9kdWxlIGNyZWF0ZWQgQXByIDA0LCAyMDE2IHVzaW5nIFNlcmdlIEouIHdpemFyZCAoQWN0aXZlVW5pdCBJbmMgd3d3LmFjdGl2ZXVuaXQuY29tKQ==
 *
 */
-
 function get_props($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
