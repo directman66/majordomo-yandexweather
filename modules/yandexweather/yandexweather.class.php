@@ -346,6 +346,8 @@ sg($objn.'.AlarmTime','07:00');
 sg($objn.'.AlarmOn','1');	 	 
 sg($objn.'.code','yw_mycity.sayweather');	 	 	 
 sg($objn.'.linked_method','sayweather');	 	 	 	 
+SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayweather"));   	 
+	 
 } 
  function alarmforecast() {
 $objn='AlarmClock'.AlarmIndex();	 
@@ -357,6 +359,7 @@ sg($objn.'.AlarmTime','07:15');
 sg($objn.'.AlarmOn','1');	 	 
 sg($objn.'.code','yw_mycity.sayforecast');	 	 	 
 sg($objn.'.linked_method','sayforecast');	 	 	 	 
+SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayforecast"));   	 	 
  } 
 	
 	
