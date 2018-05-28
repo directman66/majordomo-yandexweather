@@ -966,7 +966,7 @@ sg("yw_mycity.lastconditionrus",$condition) ;
 say(" На улице ".$condition,2);}}
 
 ';
-	 
+/*	 
 $Changetemp='
 $par="yw_mycity.temp";
 $curt=gg($par);
@@ -1007,7 +1007,8 @@ if ($prevt>$curt) { sg("yw_mycity.trandwind_speed","down");}
 else if ($prevt=$curt) { sg("yw_mycity.trandwind_speed","=");}
 else if ($prevt<$curt) { sg("yw_mycity.trandwind_speed","up");}
 
-';	 
+';
+*/
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
