@@ -40,7 +40,14 @@
 
    
    
- </tr>  </table>
+ </tr>  
+<tr>
+ <td>
+[#if conditionrus!=""#] [#conditionrus#]
+[#else#]  [#endif#]   
+  
+ </td><tr>
+ </table>
 [#end RESULTMYCITY#]
   </table>
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
