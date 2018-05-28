@@ -173,7 +173,7 @@ $out['SKIN']=1;
 */
 function admin(&$out) {
 ///	echo "admin";
-echo $this->view_mode;	
+//echo $this->view_mode;	
  $this->getConfig();
 //        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
@@ -901,22 +901,23 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 $ChangeCondition='
-if ($this->object_title=="yw_mycity"){
+if (($this->object_title=="yw_mycity") and ($conditioneng<>'')){
 $lastcondition=gg("yw_mycity.lastcondition");
 $conditioneng=gg("yw_mycity.condition");
 if ($lastcondition<>$conditioneng){
 if ($conditioneng=="overcast") {$condition="ясно";}
-if ($conditioneng=="cloudy-and-light-rain") {$condition="облачно и легкий дождь";}
-if ($conditioneng=="cloudy-and-rain") {$condition="облачно с  дождем";}
+if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
+if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
 if ($conditioneng=="cloudy") {$condition="облачно";}
-if ($conditioneng=="overcast-and-light-rain") {$condition="легкий дождь";}
+if ($conditioneng=="overcast-and-light-rain") {$condition="моросящий дождь";}
 if ($conditioneng=="overcast-and-light-snow") {$condition="небольшой снег";}
-if ($conditioneng=="partly-cloudy-and-light-rain") {$condition="переменная облачность и легкий дождь";}
+if ($conditioneng=="partly-cloudy-and-light-rain") {$condition="переменная облачность и небольшой дождь";}
 if ($conditioneng=="partly-cloudy-and-light-snow") {$condition="переменная облачность и небольшой снег";}
 if ($conditioneng=="partly-cloudy-and-rain") {$condition="переменная облачность с дождем";}
 if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная облачность со снегом";}
 if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
 sg("yw_mycity.lastcondition",$conditioneng) ;
+sg("yw_mycity.lastconditionrus",$condition) ; 
 say(" На улице ".$condition,2);}}
 ';	
 	 
