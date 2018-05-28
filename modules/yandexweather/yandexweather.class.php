@@ -1287,3 +1287,10 @@ return $ar2;
     }
     return $index;
 }
+
+function get_id($prop)
+{
+$sql='SELECT id   FROM `objects`  WHERE TITLE ="'.$prop.'"';
+$rec = SQLSelect($sql); 
+return $rec[0][id];
+}
