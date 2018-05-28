@@ -977,7 +977,7 @@ else if ($prevt<$curt) { sg("yw_mycity.trandtemp","up");sg("yw_mycity.trandtempf
 sg("yw_mycity.trandtemp-3",getHistoryAvg($par, strtotime($period3)) );
 
 
-$par="yw_mycity.pressure";
+$par="yw_mycity.pressure_mm";
 $curt=gg($par);
 $prevt=getHistoryAvg($par, strtotime($period));
 echo $prevt.":".$curt ;
@@ -1009,8 +1009,8 @@ addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id
 addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
-addClassMethod($classname,'sayweather',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayweather(); ");	 
-addClassMethod($classname,'sayforecast',"include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php'); $yw = new yandexweather(); $yw->sayforecast(); ");	 
+addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
+addClassMethod($classname,'sayforecast','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayforecast(); ');	 
 
 
 
