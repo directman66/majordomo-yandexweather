@@ -901,7 +901,7 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 $ChangeCondition='
-if (($this->object_title=="yw_mycity") and ($conditioneng<>'')){
+if (($this->object_title=="yw_mycity") and ($conditioneng<>"")){
 $lastcondition=gg("yw_mycity.lastcondition");
 $conditioneng=gg("yw_mycity.condition");
 if ($lastcondition<>$conditioneng){
