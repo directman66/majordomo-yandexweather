@@ -337,52 +337,27 @@ SQLUpdate('yaweather_cities',$rec);
 } 
 	
  function alarmweather() {
-$res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
-     //paging($res, 100, $out); // search result paging
-$total=count($res);
-$rec['DAY_0'] = $total+1;	  
-$rec['TITLE'] = 'sayweather';
-$rec['DAY_0'] = '1';
-$rec['DAY_1'] = '1';	 
-$rec['DAY_2'] = '1';
-$rec['DAY_3'] = '1';
-$rec['DAY_4'] = '1';	 
-$rec['DAY_5'] = '0';	 
-$rec['DAY_6'] = '0';	 
-$rec['ONCE'] = '0';	             
-$rec['LINKED_OBJECT'] = 'yw_mycity';	             	 
-$rec['LINKED_METHOD'] = 'sayweather';	             	 	 
-$rec['METHOD'] = 'method';	 
-SQLInsert('app_alarmclock', $rec); 
-	 
-	 
-sg('yw_mycity.AlarmTime','07:00');
-sg('yw_mycity.AlarmOn','1');	 
-	 
+$objn='AlarmClock'.AlarmIndex();	 
+addClassObject('AlarmClock',$objn);	 
+sg($objn.'.days','1111111');
+sg($objn.'.once','0');	 
+sg($objn.'.method','method');	 	 
+sg($objn.'.AlarmTime','07:00');	 	 
+sg($objn.'.AlarmOn','1');	 	 
+sg($objn.'.code','yw_mycity.sayweather');	 	 	 
+sg($objn.'.linked_method','sayweather');	 	 	 	 
 } 
  function alarmforecast() {
-  
-$res=SQLSelect("SELECT * FROM app_alarmclock WHERE 1");
-     //paging($res, 100, $out); // search result paging
-$total=count($res);
-$rec['DAY_0'] = $total+1;	  
-$rec['TITLE'] = 'sayforecast';
-$rec['DAY_0'] = '1';
-$rec['DAY_1'] = '1';	 
-$rec['DAY_2'] = '1';
-$rec['DAY_3'] = '1';
-$rec['DAY_4'] = '1';	 
-$rec['DAY_5'] = '0';	 
-$rec['DAY_6'] = '0';	 
-$rec['ONCE'] = '0';	             
-$rec['LINKED_OBJECT'] = 'yw_mycity';	             	 
-$rec['LINKED_METHOD'] = 'sayforecast';	             	 	 
-$rec['METHOD'] = 'method';	 
-SQLInsert('app_alarmclock', $rec); 
- 
-sg('yw_mycity.AlarmTime','07:15');
-sg('yw_mycity.AlarmOn','1');	 
-} 
+$objn='AlarmClock'.AlarmIndex();	 
+addClassObject('AlarmClock',$objn);	 
+sg($objn.'.days','1111111');
+sg($objn.'.once','0');	 
+sg($objn.'.method','method');	 	 
+sg($objn.'.AlarmTime','07:15');	 	 
+sg($objn.'.AlarmOn','1');	 	 
+sg($objn.'.code','yw_mycity.sayforecast');	 	 	 
+sg($objn.'.linked_method','sayforecast');	 	 	 	 
+ } 
 	
 	
 /**
@@ -1288,4 +1263,24 @@ foreach ($rec as $prop)
 $ar2[] = $prop[title];
 }
 return $ar2;
+}
+
+
+ function AlarmIndex() {
+    $objects=getObjectsByClass('AlarmClock');
+    $index=0;
+    $total = count($objects);
+    for ($i = 0; $i < $total; $i++) {
+        if (preg_match('/(\d+)/',$objects[$i]['TITLE'],$m)) {
+            $current_index=(int)$m[1];
+            if ($current_index>$index) {
+                $index=$current_index;
+            }
+        }
+    }
+    $index++;
+    if ($index<10) {
+        $index='0'.$index;
+    }
+    return $index;
 }
