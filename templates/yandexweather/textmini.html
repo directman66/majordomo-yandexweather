@@ -1,0 +1,32 @@
+<table width=100% border=0><tr>
+<td valign=top>
+<!-- results -->
+[#if RESULTMYCITY#]
+<form action="?" method="post" name="indata" style="padding:0px" class="form">
+ 
+[#begin RESULTMYCITY#]
+<h2>
+  <table width="80%" border=0><tr> 
+
+ 
+<td>
+[#if temp!=""#]
+   [#temp#]
+  [#else#]
+  [#endif#]   
+°С  
+   </td>
+
+ </tr>  </table>
+[#end RESULTMYCITY#]
+  </table>
+<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
+<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
+</form>
+
+[#else RESULTMYCITY#]
+<p>
+<font color="red"><#LANG_NO_RECORDS_FOUND#></font>
+</p>
+[#endif RESULTMYCITY#]
+
