@@ -10,13 +10,28 @@
 
  
 <td>
-[#if temp!=""#]
-   [#temp#]
-  [#else#]
-  [#endif#]   
+[#if temp!=""#] [#temp#]
+[#else#]  [#endif#]   
 °С  
    </td>
+<td>   
+/   
+   </td> 
+<td>   
+[#if humidity!=""#] [#humidity#]%
+[#else#]  [#endif#]   
+   </td> 
+<td>   
+/   
+   </td> 
+<td>   
+[#if pressure_mm!=""#] [#pressure_mm#]
+[#else#]  [#endif#]   
+   </td> 
+   
 
+   
+   
  </tr>  </table>
 [#end RESULTMYCITY#]
   </table>
