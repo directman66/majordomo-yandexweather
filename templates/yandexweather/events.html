@@ -22,7 +22,10 @@
 </div>				
 				
 <div class="controls">
-<input type="checkbox" class="form-control" name="enable_events" [#if enable_events="1" #] checked[#else#] [#endif#] />	
+	
+<input type="checkbox" id="enableProxy" name="enable_events" data-toggle="collapse" data-target="#events_settings" value="1"
+					 [#if ENABLE_EVENTS="1" #] checked[#else#] [#endif#]></div>	
+	
 <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
 	
 					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
