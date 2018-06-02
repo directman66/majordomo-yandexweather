@@ -21,7 +21,8 @@ $yandexweather_module->getConfig();
  
 echo date("H:i:s") . " running " . basename(__FILE__) . PHP_EOL;
 $latest_check=0;
-$checkEvery=300; // poll every 5 min
+//$checkEvery=300; // poll every 5 min
+$checkEvery=$yandexweather_module->config['EVERY']*60;
 while (1)
 {
    setGlobal((str_replace('.php', '', basename(__FILE__))) . 'Run', time(), 1);
