@@ -1306,7 +1306,7 @@ $rec = SQLSelect($sql);
 foreach ($rec as $prop)
 {
  //print_r($prop)[title];
-$ar2[] = $prop[title];
+$ar2[] = $prop['title'];
 }
 return $ar2;
 }
