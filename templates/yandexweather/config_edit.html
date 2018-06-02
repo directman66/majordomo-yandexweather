@@ -8,7 +8,8 @@
 [#endif ERR#]
 <fieldset>
 [#if ID=""#]
-<legend><#LANG_NEW_RECORD#></legend>
+ <table><tr><td>
+<legend>Добавить город:</legend>
 [#endif ID#]
 <!-- DID (varchar) -->
 <div class="form-group">
@@ -17,6 +18,7 @@
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="country" value="[#country#]" id="country"> <#LANG_SID_INFO#></div> 
 </div>
+ </td></tr><tr><td> 
 <!-- TITLE (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if !cityname#] style="color:red;font-weight:bold"[#endif#]>
@@ -24,6 +26,7 @@
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="cityname" value="[#cityname#]" id="cityname"></div>
 </div>
+</td></tr><tr><td>  
 <!-- LINKED_OBJECT (varchar) -->
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if !part#] style="color:red;font-weight:bold"[#endif#]>
@@ -31,6 +34,7 @@
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="part" value="[#part#]" id="part"></div>
 </div>
+</td></tr><tr><td>  
 <!-- LINKED_PROPERTY (varchar) -->
 <div class="form-group">
  <label class="col-lg-4 control-label"[#if !ID#] style="color:red;font-weight:bold"[#endif#]>
@@ -38,6 +42,7 @@ ID:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="ID" value="[#ID#]" id="ID"></div>
 </div>
+</td></tr><tr><td>  
 
 <div class="form-group">
  <label class="col-lg-3 control-label"[#if !latlon#] style="color:red;font-weight:bold"[#endif#]>
@@ -45,18 +50,20 @@ latlon:
  </label>
  <div class="col-lg-4"><input type="text" class="form-control" name="latlon" value="[#latlon#]" id="latlon"></div>
 </div>                 	
-
+</td></tr>
+ </table>
 
 <div class="form-group">
  <div class="col-lg-offset-3 col-lg-4">
 
   <button type="submit" name="subm" value="Add" class="btn btn-primary"><#LANG_ADD#></button>
-
-  <a href="?tab=indata" class="btn btn-default "><#LANG_CANCEL#></a>
   <input type="hidden" name="id" value="<#ID#>">
   <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
   <input type="hidden" name="edit_mode" value="<#EDIT_MODE#>">
   <input type="hidden" name="mode" value="update">
+   
+  <a href="?tab=indata" class="btn btn-default "><#LANG_CANCEL#></a>
+ 
  </div>
 </div>
 </fieldset>
