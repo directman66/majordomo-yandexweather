@@ -65,25 +65,29 @@
  </div>
 </div>
  </td><td>
+	</td></tr>
+ </table>
+				
 <div class="form-actions">
 <button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_UPDATE#></button>
 <input type="hidden" name="view_mode" value="update_settings">
 <input type="hidden" name="mode" value="update">
-</button>
-	
 </div>
-	</td></tr>
- </table>
-
- [#inc config.html#] 
-
-
-	[#inc config_edit.html#] 
+	
 </fieldset>
 </form>
-</div>
+</div>	
+	
+<hr align="center" width="300" color="Gray" />
+	
+[#inc config.html#] 
+[#inc config_edit.html#] 
+	
+
 <br/>
-<ul class="nav nav-tabs">
+
+	 
+	 <ul class="nav nav-tabs">
 <!--
 <li [#if TAB=="" || TAB=="indata" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=update_settings&id=<#ID#>&tab=indata">Погода на сегодня</a> </li>
 <li [#if TAB=="indataforecast" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=indataforecast">Погода на 7 дней</a> </li>	
