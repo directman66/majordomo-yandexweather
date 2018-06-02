@@ -185,21 +185,31 @@ sg('test.view_mode',$this->view_mode);
  $out['DUUID']=$this->config['DUUID'];	
  $out['DEVICEID']=$this->config['DEVICEID'];
  $out['EVERY']=$this->config['EVERY'];
- if ($this->view_mode=='update_settings') 
+	
+if ($this->view_mode=='update_headsettings') 
 	 
  {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
+
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
 
 	global $every;
 	$this->config['EVERY']=$every;	 
+        
+	$this->saveConfig();
+        $this->redirect("?");
+	
+}
+	
+	
+ if ($this->view_mode=='update_evetssettings') 
 	 
-	 
+ {
 	global $enable_events;
 	$this->config['ENABLE_EVENTS']=$enable_events;	 
-//	$this->config['ENABLE_EVENTS']=123;	 	 
+
    
    $this->saveConfig();
    $this->redirect("?");
