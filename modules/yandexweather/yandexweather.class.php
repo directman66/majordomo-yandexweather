@@ -202,6 +202,10 @@ function admin(&$out) {
 	$this->config['DUUID']=$duuid;	 
 	global $deviceid;
 	$this->config['DEVICEID']=$deviceid;	 
+
+	global $every;
+	$this->config['EVERY']=$every;	 
+	 
 	 
 	global $enable_events;
 	$this->config['ENABLE_EVENTS']=$enable_events;	 
