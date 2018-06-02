@@ -175,28 +175,17 @@ function admin(&$out) {
 ///	echo "admin";
 //echo $this->view_mode;	
  $this->getConfig();
-//        if ((time() - gg('cycle_livegpstracksRun')) < $this->config['TLG_TIMEOUT']*2 ) {
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
 			$out['CYCLERUN'] = 1;
 		} else {
 			$out['CYCLERUN'] = 0;
 		}
- $out['DUUID'] = $this->config['DUUID'];
  $out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
-//	echo $this->config['ENABLE_EVENTS'];
-//$out['ENABLE_EVENTS'] = 123;		
+ $out['DUUID']=$this->config['DUUID'];	
  $out['DEVICEID']=$this->config['DEVICEID'];
-	
  $out['EVERY']=$this->config['EVERY'];
- 
- if (!$out['UUID']) {
-	 $out['UUID'] = md5(microtime() . rand(0, 9999));
-	 $this->config['UUID'] = $out['UUID'];
-	 $this->saveConfig();
- }
-//	echo $this->view_mode;
- //$this->config['ENABLE_EVENTS']=123;	 	 
  if ($this->view_mode=='update_settings') 
+	 
  {
 	global $duuid;
 	$this->config['DUUID']=$duuid;	 
@@ -273,10 +262,6 @@ setGlobal('cycle_yandexweatherControl','start');
             $this->upd_PROPERTY_NAME();
         }		
  
-	
-//$today = $this->today;	
-//$forecast = $this->forecast;		
-//if ($map == "on") {$out["MULTI_ROUTES"]["map"]= gg('yt_settings.height');} else {$out["MULTI_ROUTES"]["map"]= "0";}		
 	
 }
 /**
