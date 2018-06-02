@@ -29,6 +29,7 @@
 <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
 	
 					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
+<div class='collapse [#if ENABLE_EVENTS="1"#] in[#endif#]' id='events_settings'>	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
 				<input type="hidden" name="view_mode" value="update_eventssettings">
