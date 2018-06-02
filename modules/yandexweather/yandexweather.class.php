@@ -890,6 +890,12 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 $ChangeCondition='
+include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
+$yw= new yandexweather();
+$yw->getConfig();
+$ee=$yw->config["ENABLE_EVENTS"];
+if ($ee=="1"){
+
 if (($this->object_title=="yw_mycity") and ($this->getProperty("conditioneng")<>"")){
 //if ($this->object_title=="yw_mycity") {
 $lastcondition=gg("yw_mycity.lastcondition");
@@ -909,6 +915,7 @@ if ($conditioneng=="partly-cloudy") {$condition="переменная облач
 sg("yw_mycity.lastcondition",$conditioneng) ;
 sg("yw_mycity.lastconditionrus",$condition) ; 
 say(" На улице ".$condition,2);}}
+}
 ';	
 	 
 $Changetemp='
