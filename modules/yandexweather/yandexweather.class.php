@@ -204,7 +204,7 @@ if ($this->view_mode=='update_headsettings')
 }
 	
 	
- if ($this->view_mode=='update_evetssettings') 
+ if ($this->view_mode=='update_eventssettings') 
 	 
  {
 	global $enable_events;
