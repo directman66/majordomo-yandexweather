@@ -20,23 +20,10 @@
 
 &nbsp;
 <form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
-&nbsp;&nbsp;<a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=upd_PROPERTY_NAME&tab=">UPD</a>	
 <fieldset>
 	
-<div class="form-group">
- <label class="control-label"[#if ERR_SERVER#] style="color:red;font-weight:bold"[#endif#]>ENABLE_EVENTS:<span style="color:blue">(*)</span></label>
- <div class="controls"><input type="text" name="enable_events" value="[#ENABLE_EVENTS#]" class="input"></div>
-</div>				
-				
-				<div class="controls"><input type="checkbox" id="enable_events" name="enable_events" data-toggle="collapse" data-target="#enable_events" value="1"
-				<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
-					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
-	
-	</div>	
 	
 
-<table>
- 
 	<!--
  <tr><td>
 <div class="form-group">
@@ -64,31 +51,32 @@
 		 </select> минут 
  </div>
 </div>
- </td><td>
-				
-<div class="form-actions">
-<button type="submit" name="subm" value="Submit" class="btn btn-primary"><#LANG_UPDATE#></button>
+<br>				
+<table>
+<div class="form-actions" align="left">
+<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
 <!--
 	<input type="hidden" name="view_mode" value="update_settings">
 -->
 <input type="hidden" name="view_mode" value="update_headsettings">	
 <input type="hidden" name="mode" value="update">
-	</td></tr>
- </table>
+&nbsp;&nbsp;<a class="btn btn-primary" href="?data_source=<#DATA_SOURCE#>&view_mode=upd_PROPERTY_NAME&tab=">Обновить структуру БД</a>	
 	
-
+</div>
+</table>
 	
 </fieldset>
 </form>
 	
-<hr align="center" width="300" color="Gray" />
-	
+<hr>
+<hr color="Gray" >	
 [#inc config.html#] 
+<hr color="Gray" >
 [#inc config_edit.html#] 
 
 </div>
 	
-
+<hr color="Gray" >
 <br/>
 
 	 
