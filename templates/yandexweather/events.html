@@ -15,21 +15,17 @@
 <fieldset>
 	
 				
+		
+
 <div class="form-group">
- <label class="control-label">ENABLE_EVENTS:</label>
- <div class="controls"><input type="text" name="enable_events" value="[#ENABLE_EVENTS#]" class="input"> 
+ <div class="controls">
+ <label>
+ <input type="checkbox" name="enable_events" value="1"[#if ENABLE_EVENTS="1"#] checked[#endif#]> 
+Уведомлять  об изменении погоды</label>
  </div>
-</div>				
-				
-<div class="controls">
-	
-<input type="checkbox" id="enableProxy" name="enable_events" data-toggle="collapse" data-target="#events_settings" value="1"
-					 [#if ENABLE_EVENTS="1" #] checked[#else#] [#endif#]></div>	
-	
-<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
-	
-					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
-<div class='collapse [#if ENABLE_EVENTS="1"#] in[#endif#]' id='events_settings'>	
+</div>
+
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
 				<input type="hidden" name="view_mode" value="update_eventssettings">
@@ -41,7 +37,7 @@
 
 
 
-			</div>
+
 			
 
 <a class="btn btn-default" href="?data_source=<#DATA_SOURCE#>&view_mode=sayweather&tab=events">Погода сейчас</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проговаривает голосом текущую погоду<br><br>
@@ -53,4 +49,3 @@
 
 
   </form>
-
