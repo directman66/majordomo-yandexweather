@@ -8,52 +8,26 @@
 [#endif ERR#]
 <fieldset>
 [#if ID=""#]
- </table> 
- </table> 
- <table><tr><td>
-<legend>Добавить город:</legend>
+
+
 [#endif ID#]
 <!-- DID (varchar) -->
+Добавить город:<br>
 <div class="form-group">
- <label class="col-lg-3 control-label"[#if ERR_DID#] style="color:red;font-weight:bold"[#endif#]>
 Страна:
- </label>
- <div class="col-lg-4"><input type="text" class="form-control" name="country" value="[#country#]" id="country"> <#LANG_SID_INFO#></div> 
-</div>
- </td></tr><tr><td> 
-<!-- TITLE (varchar) -->
-<div class="form-group">
- <label class="col-lg-3 control-label"[#if !cityname#] style="color:red;font-weight:bold"[#endif#]>
+<input type="text" class="form-control" name="country" value="[#country#]" id="country"> <#LANG_SID_INFO#>
+<br>
 Город:
- </label>
- <div class="col-lg-4"><input type="text" class="form-control" name="cityname" value="[#cityname#]" id="cityname"></div>
-</div>
-</td></tr><tr><td>  
-<!-- LINKED_OBJECT (varchar) -->
-<div class="form-group">
- <label class="col-lg-3 control-label"[#if !part#] style="color:red;font-weight:bold"[#endif#]>
+<input type="text" class="form-control" name="cityname" value="[#cityname#]" id="cityname">
+<br>
 Область:
- </label>
- <div class="col-lg-4"><input type="text" class="form-control" name="part" value="[#part#]" id="part"></div>
-</div>
-</td></tr><tr><td>  
-<!-- LINKED_PROPERTY (varchar) -->
-<div class="form-group">
- <label class="col-lg-4 control-label"[#if !ID#] style="color:red;font-weight:bold"[#endif#]>
+<input type="text" class="form-control" name="part" value="[#part#]" id="part">
+<br>
 ID:
- </label>
- <div class="col-lg-4"><input type="text" class="form-control" name="ID" value="[#ID#]" id="ID"></div>
-</div>
-</td></tr><tr><td>  
-
-<div class="form-group">
- <label class="col-lg-3 control-label"[#if !latlon#] style="color:red;font-weight:bold"[#endif#]>
+<input type="text" class="form-control" name="ID" value="[#ID#]" id="ID">
+<br>
 latlon:
- </label>
- <div class="col-lg-4"><input type="text" class="form-control" name="latlon" value="[#latlon#]" id="latlon"></div>
-</div>                 	
-</td></tr>
- </table>
+<input type="text" class="form-control" name="latlon" value="[#latlon#]" id="latlon">
 
 <div class="form-group">
  <div class="col-lg-offset-3 col-lg-4">
