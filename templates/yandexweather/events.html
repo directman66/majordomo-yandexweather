@@ -21,8 +21,10 @@
  </div>
 </div>				
 				
-				<div class="controls"><input type="checkbox" id="enable_events" name="enable_events" data-toggle="collapse" data-target="#enable_events" value="1"
-				<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
+<div class="controls">
+<input type="checkbox" class="form-control" name="enable_events" [#if enable_events="1" #] checked[#else#] [#endif#] />	
+<label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;Уведомлять  об изменении погоды</label>
+	
 					 [#if ENABLE_EVENTS="1" #] checked[#endif#]
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
