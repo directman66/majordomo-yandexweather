@@ -174,6 +174,7 @@ $out['SKIN']=1;
 function admin(&$out) {
 ///	echo "admin";
 //echo $this->view_mode;	
+sg('test.view_mode',$this->view_mode);	
  $this->getConfig();
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
 			$out['CYCLERUN'] = 1;
