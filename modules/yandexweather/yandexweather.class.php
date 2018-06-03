@@ -896,7 +896,7 @@ $yw->getConfig();
 $ee=$yw->config["ENABLE_EVENTS"];
 if ($ee=="1"){
 
-if (($this->object_title=="yw_mycity") and ($this->getProperty("conditioneng")<>"")){
+if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")){
 //if ($this->object_title=="yw_mycity") {
 $lastcondition=gg("yw_mycity.lastcondition");
 $conditioneng=gg("yw_mycity.condition");
