@@ -889,6 +889,9 @@ setGlobal('cycle_yandexweatherAutoRestart','1');
 $classname='YandexWeather';
 addClass($classname); 
 	 
+$this->getConfig();
+$this->config['ENABLE_EVENTS']=1;	
+	 
 $ChangeCondition='
 include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
 $yw= new yandexweather();
