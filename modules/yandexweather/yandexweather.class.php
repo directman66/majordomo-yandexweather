@@ -901,6 +901,7 @@ if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")
 $lastcondition=gg("yw_mycity.lastcondition");
 $conditioneng=gg("yw_mycity.condition");
 if ($lastcondition<>$conditioneng){
+$condition=$conditioneng; 
 if ($conditioneng=="overcast") {$condition="ясно";}
 if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
 if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
