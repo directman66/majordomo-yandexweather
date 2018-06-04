@@ -289,6 +289,11 @@ if ($this->view_mode=='indata_del') {
    $this->config_del($this->id);
  }
 	
+if ($this->view_mode=='titledel') {
+   $this->title_del($this->id);
+ }
+	
+	
  if ($this->view_mode=='get') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
@@ -374,6 +379,12 @@ $this->getdatefnc();
   // some action for related tables
   SQLExec("DELETE FROM yaweather_cities WHERE ID='".$id."'");
  }
+
+function title_del($id) {
+  // some action for related tables
+  SQLExec("delete  from objects where class_id = (select id from classes where title = 'YandexWeather') and TITLE='".$id."'");
+ }	
+	
 /**
 * InData delete record
 *
