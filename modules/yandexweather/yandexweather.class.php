@@ -831,7 +831,13 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 $ChangeCondition='
+include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
+$yw= new yandexweather();
+$yw->getConfig();
+$ee=$yw->config["ENABLE_EVENTS"];
+if ($ee=="1"){
 require(DIR_MODULES."yandexweather/saycondition.php");
+}
 ';	
 	 
 $Changetemp='
