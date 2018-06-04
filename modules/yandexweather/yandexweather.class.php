@@ -793,25 +793,25 @@ foreach ($src as $key=> $value ) {
 if (is_array($value)) {
 foreach ($value as $key2=> $value2 ) {
 	
-if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 
+//if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 
 sg( $objn.'.'.$key.'_'.$key2,$value2); 
 		     }
 }	
 else	
 {
-if (gg($objn.'.'.$key.'_'.$key)<>$value)
+//if (gg($objn.'.'.$key.'_'.$key)<>$value)
 	sg( $objn.'.'.$key,$value); }     
 $src=$data['geo_object'];
 foreach ($src as $key=> $value ) {
 if (is_array($value)) {
 foreach ($value as $key2=> $value2 ) {
-if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 	
+//if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 	
 	sg( $objn.'.'.$key.'_'.$key2,$value2); 
 }
 }	
 else	
 {
-if (gg($objn.'.'.$key.'_'.$key)<>$value)
+//if (gg($objn.'.'.$key.'_'.$key)<>$value)
 	sg( $objn.'.'.$key,$value); }     
 }	
 	
