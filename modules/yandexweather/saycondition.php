@@ -1,7 +1,4 @@
 <?php	
-
-
-if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")){
 $lastcondition=gg("yw_mycity.lastcondition");
 $conditioneng=gg("yw_mycity.condition");
 $condition1eng=gg("yw_mycity.forecast_0_daycondition");  
@@ -20,8 +17,4 @@ sg("yw_mycity.lastcondition1rus",$condition1) ;
 sg("yw_mycity.lastcondition2rus",$condition2) ;     
 sg("yw_mycity.lastcondition3rus",$condition3) ;         
 
-    
-    say(" На улице ".$condition,2);
-}
-}
 
