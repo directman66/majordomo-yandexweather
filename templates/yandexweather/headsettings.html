@@ -1,0 +1,46 @@
+<form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
+<fieldset>
+<!--
+ <tr><td>
+<div class="form-group">
+ <label class="control-label">UUID:</label>
+ <div class="controls"><input type="text" name="duuid" value="[#DUUID#]" class="input">  </div>
+  </td><td>
+ <label class="control-label">DEVICEID:</label>
+ <div class="controls"><input type="text" name="deviceid" value="[#DEVICEID#]" class="input"> 
+</div>
+ </td><td>
+ -->
+	
+<div class="form-group">
+ <label class="control-label">
+ <#LANG_AUTO_UPDATE_PERIOD#>:(*)
+ </label>
+
+ <div class="controls">
+		<select name="every" class="input span2">
+			<option[#if EVERY="5"#] selected[#endif#]>5
+			<option[#if EVERY="10"#] selected[#endif#]>10
+			<option[#if EVERY="15"#] selected[#endif#]>15
+			<option[#if EVERY="20"#] selected[#endif#]>20
+			<option[#if EVERY="30"#] selected[#endif#]>30
+			<option[#if EVERY="60"#] selected[#endif#]>60
+		 </select> минут 
+ </div>
+</div>
+<br>				
+<table>
+<div class="form-actions" align="left">
+<button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
+<!--
+	<input type="hidden" name="view_mode" value="update_settings">
+-->
+<input type="hidden" name="view_mode" value="update_headsettings">	
+<input type="hidden" name="mode" value="update">
+&nbsp;&nbsp;<a class="btn btn-primary" href="?data_source=<#DATA_SOURCE#>&view_mode=upd_PROPERTY_NAME&tab=">Обновить структуру БД</a>	
+	
+</div>
+</table>
+	
+</fieldset>
+</form>
