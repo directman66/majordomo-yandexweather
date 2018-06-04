@@ -835,7 +835,8 @@ include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
 $yw= new yandexweather();
 $yw->getConfig();
 $ee=$yw->config["ENABLE_EVENTS"];
-if ($ee=="1"){
+if (($ee=="1") and ($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>""))
+{
 require(DIR_MODULES."yandexweather/saycondition.php");
 }
 ';	
