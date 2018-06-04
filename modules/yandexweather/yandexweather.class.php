@@ -971,7 +971,35 @@ $property['ONCHANGE']="ChangeCondition"; // 	       <-----------
 $property['DESCRIPTION']='Состояние погоды'; //   <-----------
 SQLUpdate('properties',$property); } 
 	 
-$prop_id=addClassProperty($classname, 'pressure_pa', 30);
+
+	 
+	 $prop_id=addClassProperty($classname, 'locality_name', 0);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Название населенного пункта'; //   <-----------
+SQLUpdate('properties',$property); } 
+	 
+	 $prop_id=addClassProperty($classname, 'conditionrus', 0);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Состояние погоды сейчас по русски'; //   <-----------
+SQLUpdate('properties',$property); } 	 
+	 
+$prop_id=addClassProperty($classname, 'condition1rus', 0);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Состояние погоды на завтра  по русски'; //   <-----------
+SQLUpdate('properties',$property); } 	 	 
+	 
+$prop_id=addClassProperty($classname, 'condition2rus', 0);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Состояние погоды на после-завтра  по русски'; //   <-----------
+SQLUpdate('properties',$property); } 	 	 	 
+	 
+$prop_id=addClassProperty($classname, 'condition3rus', 0);
+if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
+$property['DESCRIPTION']='Состояние погоды на после-после-завтра  по русски'; //   <-----------
+SQLUpdate('properties',$property); } 	 	 	 	 
+	  
+	 
+	 $prop_id=addClassProperty($classname, 'pressure_pa', 30);
 if ($prop_id) {$property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']=' Нормальное давление для заданных координат, кПА'; //   <-----------
 SQLUpdate('properties',$property); } 
