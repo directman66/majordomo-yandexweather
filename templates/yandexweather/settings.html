@@ -1,0 +1,10 @@
+</br>
+select
+	 <ul class="nav nav-tabs">
+
+<li [#if TAB=="settings" && ST=="1" || ST=="" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=settings$st=1">Общие</a> </li>
+<li [#if TAB=="settings" && ST=="2" #] class="active" [#endif#]><a href="?data_source=<#DATA_SOURCE#>&view_mode=<#VIEW_MODE#>&id=<#ID#>&tab=settings&st=2">Города</a> </li>	
+</ul>
+
+[#if st="1#] [#inc headsettings.html#] [#endif#]
+[#if st="2#][#inc config.html#] [#inc config_edit.html#][#endif#]
