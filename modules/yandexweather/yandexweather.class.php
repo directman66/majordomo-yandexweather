@@ -734,17 +734,25 @@ sg( $objn.'.now',gg('sysdate').' '.gg('timenow'));
 	
 foreach ($src as $key=> $value ) { 
 if (is_array($value)) {
-foreach ($value as $key2=> $value2 ) {sg( $objn.'.'.$key.'_'.$key2,$value2); }
+foreach ($value as $key2=> $value2 ) {
+	
+if (gg($objn.'.'.$key.'_'.$key2)<>$value2)) sg( $objn.'.'.$key.'_'.$key2,$value2); 
+		     }
 }	
 else	
-{sg( $objn.'.'.$key,$value); }     
+{if (gg($objn.'.'.$key.'_'.$key)<>$value)
+	sg( $objn.'.'.$key,$value); }     
 $src=$data['geo_object'];
 foreach ($src as $key=> $value ) {
 if (is_array($value)) {
-foreach ($value as $key2=> $value2 ) {sg( $objn.'.'.$key.'_'.$key2,$value2); }
+foreach ($value as $key2=> $value2 ) {
+if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 	
+	sg( $objn.'.'.$key.'_'.$key2,$value2); 
+}
 }	
 else	
-{sg( $objn.'.'.$key,$value); }     
+{if (gg($objn.'.'.$key.'_'.$key)<>$value)
+	sg( $objn.'.'.$key,$value); }     
 }	
 	
 	
@@ -758,16 +766,32 @@ $src=$data['fact'];
 			foreach ($data['forecasts'][$day]['parts'] as $key=> $value ) {    
 				
 				
-				
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data['forecasts'][$day]['parts'][$key]['temp_avg']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data['forecasts'][$day]['parts'][$key]['wind_speed']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data['forecasts'][$day]['parts'][$key]['wind_gust']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data['forecasts'][$day]['parts'][$key]['wind_dir']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data['forecasts'][$day]['parts'][$key]['pressure_mm']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data['forecasts'][$day]['parts'][$key]['pressure_pa']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data['forecasts'][$day]['parts'][$key]['humidity']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['parts'][$key]['condition']);
-			sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']); 
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg')<>$data['forecasts'][$day]['parts'][$key]['temp_avg']);
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data['forecasts'][$day]['parts'][$key]['temp_avg']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'wind_speed')<>$data['forecasts'][$day]['parts'][$key]['wind_speed']);				
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data['forecasts'][$day]['parts'][$key]['wind_speed']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust')<>$data['forecasts'][$day]['parts'][$key]['_wind_gust']);				
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data['forecasts'][$day]['parts'][$key]['wind_gust']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'wind_dir')<>$data['forecasts'][$day]['parts'][$key]['wind_dir']);								
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data['forecasts'][$day]['parts'][$key]['wind_dir']);
+			
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm')<>$data['forecasts'][$day]['parts'][$key]['_pressure_mm']);				
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_mm',$data['forecasts'][$day]['parts'][$key]['pressure_mm']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'pressure_pa')<>$data['forecasts'][$day]['parts'][$key]['pressure_pa']);								
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_pressure_pa',$data['forecasts'][$day]['parts'][$key]['pressure_pa']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity')<>$data['forecasts'][$day]['parts'][$key]['_humidity']);								
+sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data['forecasts'][$day]['parts'][$key]['humidity']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'condition')<>$data['forecasts'][$day]['parts'][$key]['condition']);								
+sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['parts'][$key]['condition']);
+
+if (gg( $fobjn.'.'."forecast_".$day."_".$key.'daytime')<>$data['forecasts'][$day]['parts'][$key]['daytime']);								
+sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']); 
  			}
 		}
 	
@@ -783,7 +807,10 @@ sg($objmycity.'.cityID', $mycity);
 	
 if ($mycity==$cityid){
 $objprops=get_props($fobjn);
-foreach ($objprops as $value){ sg($objmycity.'.'.$value,gg($fobjn.".".$value));}	
+foreach ($objprops as $value){ 
+	if (gg($objmycity.'.'.$value)<>gg($fobjn.".".$value));
+	sg($objmycity.'.'.$value,gg($fobjn.".".$value));
+}	
 }
 }
 //upd_PROPERTY_NAME();	
