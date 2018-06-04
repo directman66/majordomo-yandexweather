@@ -1,3 +1,4 @@
+<?php	
 include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
 $yw= new yandexweather();
 $yw->getConfig();
