@@ -1,3 +1,4 @@
+<?php	
 $par="yw_mycity.temp";
 $curt=gg($par);
 $period="-5 hour";
