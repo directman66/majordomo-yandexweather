@@ -1207,7 +1207,9 @@ $rec['mycity'] = '0';
             SQLInsert('yaweather_cities', $rec);				
 
 
+		
 global $enable_events;
+$this->getConfig();		
 $this->config['ENABLE_EVENTS']=1;	 
 $this->saveConfig();
 		
