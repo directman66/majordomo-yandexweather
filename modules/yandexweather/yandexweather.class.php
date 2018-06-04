@@ -265,7 +265,7 @@ $today = $this->today;
     $this->indata_search($out); 
  }
 	
- if ($this->tab=='settings') {
+ if (($this->tab=='settings1')|| ($this->tab=='settings2')) {
 $today = $this->today;		 
     $this->settingstab($out); 
  }
