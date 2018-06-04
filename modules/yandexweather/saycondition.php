@@ -1,9 +1,5 @@
 <?php	
-include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
-$yw= new yandexweather();
-$yw->getConfig();
-$ee=$yw->config["ENABLE_EVENTS"];
-if ($ee=="1"){
+
 
 if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")){
 $lastcondition=gg("yw_mycity.lastcondition");
@@ -28,4 +24,4 @@ sg("yw_mycity.lastcondition3rus",$condition3) ;
     say(" На улице ".$condition,2);
 }
 }
-}
+
