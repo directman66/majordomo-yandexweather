@@ -1359,6 +1359,7 @@ if ($conditioneng=="partly-cloudy-and-light-snow") {$condition="переменн
 if ($conditioneng=="partly-cloudy-and-rain") {$condition="переменная облачность с дождем";}
 if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная облачность со снегом";}
 if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
+if ($conditioneng=="overcast-and-rain") {$condition="ливень";}	
 //sg("yw_mycity.lastcondition",$conditioneng) ;
 //sg("yw_mycity.lastconditionrus",$condition) ; 
 return $condition;
