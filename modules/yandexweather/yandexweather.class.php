@@ -893,68 +893,12 @@ $this->getConfig();
 $this->config['ENABLE_EVENTS']=1;	
 	 
 $ChangeCondition='
-include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
-$yw= new yandexweather();
-$yw->getConfig();
-$ee=$yw->config["ENABLE_EVENTS"];
-if ($ee=="1"){
-
-if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")){
-//if ($this->object_title=="yw_mycity") {
-$lastcondition=gg("yw_mycity.lastcondition");
-$conditioneng=gg("yw_mycity.condition");
-if ($lastcondition<>$conditioneng){
-$condition=$conditioneng; 
-if ($conditioneng=="overcast") {$condition="ясно";}
-if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
-if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
-if ($conditioneng=="cloudy") {$condition="облачно";}
-if ($conditioneng=="overcast-and-light-rain") {$condition="моросящий дождь";}
-if ($conditioneng=="overcast-and-light-snow") {$condition="небольшой снег";}
-if ($conditioneng=="partly-cloudy-and-light-rain") {$condition="переменная облачность и небольшой дождь";}
-if ($conditioneng=="partly-cloudy-and-light-snow") {$condition="переменная облачность и небольшой снег";}
-if ($conditioneng=="partly-cloudy-and-rain") {$condition="переменная облачность с дождем";}
-if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная облачность со снегом";}
-if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
-sg("yw_mycity.lastcondition",$conditioneng) ;
-sg("yw_mycity.lastconditionrus",$condition) ; 
-say(" На улице ".$condition,2);}}
+require(DIR_MODULES."yandexweather/saycondition.php");
 }
 ';	
 	 
 $Changetemp='
-$par="yw_mycity.temp";
-$curt=gg($par);
-$period="-5 hour";
-$period3="-3 hour";
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandtemp","down");sg("yw_mycity.trandtempfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandtemp","=");sg("yw_mycity.trandtempfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandtemp","up");sg("yw_mycity.trandtempfa","fa-arrow-circle-up");}
-sg("yw_mycity.trandtemp-3",getHistoryAvg($par, strtotime($period3)) );
-$par="yw_mycity.pressure_mm";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandpres","down");sg("yw_mycity.trandpresfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandpres","=");sg("yw_mycity.trandpresfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandpres","up");sg("yw_mycity.trandpresfa","fa-arrow-circle-up");}
-$par="yw_mycity.humidity";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandhum","down");sg("yw_mycity.trandhumfa","fa-arrow-circle-down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandhum","=");sg("yw_mycity.trandhumfa","fa-pause-circle");}
-else if ($prevt<$curt) { sg("yw_mycity.trandhum","up");sg("yw_mycity.trandhumfa","fa-arrow-circle-up");}
-$par="yw_mycity.wind_speed";
-$curt=gg($par);
-$prevt=getHistoryAvg($par, strtotime($period));
-echo $prevt.":".$curt ;
-if ($prevt>$curt) { sg("yw_mycity.trandwind_speed","down");}
-else if ($prevt=$curt) { sg("yw_mycity.trandwind_speed","=");}
-else if ($prevt<$curt) { sg("yw_mycity.trandwind_speed","up");}
-';	 
+require(DIR_MODULES."yandexweather/changetemp.php");';	 
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
