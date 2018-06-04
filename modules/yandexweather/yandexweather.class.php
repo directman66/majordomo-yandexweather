@@ -596,7 +596,6 @@ $condition=getconditionrus(gg('yw_mycity.forecast_0_eveningcondition'));
 } else {
      $status .= "Сегодня ночью ожидается ";
     $w = round(gg("yw_mycity.forecast_0_night_temp_avg")); 
-$condition='ясно';
 $condition=getconditionrus(gg('yw_mycity.forecast_0_nightcondition'));	
 }
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
