@@ -2,9 +2,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 
-
-<table width=100% border=0><tr>
-<td valign=top>
 <!-- results -->
 [#if RESULTMYCITY#]
 <form action="?" method="post" name="indata" style="padding:0px" class="form">
@@ -36,10 +33,6 @@
 [#if pressure_mm!=""#] [#pressure_mm#]mm
 [#else#]  [#endif#]   
    </td> 
-   
-
-   
-    
  </tr>  
 
 <tr>
@@ -50,8 +43,8 @@
  </td><tr>
  </table>
  </h2>  
-[#end RESULTMYCITY#]
-  </table>
+
+  
 <input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
 <input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
 </form>
