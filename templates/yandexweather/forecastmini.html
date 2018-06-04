@@ -15,35 +15,13 @@
 
  
 <td>
-<i class="fa [#trandtempfa#]"></i> 
-[#if temp!=""#] [#temp#]
+Завтра ожидается 
+[#if forecast_0_day_temp_avg!=""#] [#forecast_0_day_temp_avg#]
 [#else#]  [#endif#]   
 °С  
    </td>
 <td>   
-/   
-   </td> 
-<td>   
-<i class="fa [#trandhumfa#]"></i>  
-[#if humidity!=""#] [#humidity#]%
-[#else#]  [#endif#]   
-   </td> 
-<td>   
-/   
-   </td> 
-<td>   
-<i class="fa [#trandpresfa#]"></i>  
-[#if pressure_mm!=""#] [#pressure_mm#]mm
-[#else#]  [#endif#]   
-   </td> 
-   
 
-   
-    
- </tr>  
-
-<tr>
- <td valign=middle>
 [#if conditionrus!=""#] [#conditionrus#]
 [#else#]  [#endif#]   
   
