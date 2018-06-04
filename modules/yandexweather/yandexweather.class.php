@@ -890,7 +890,10 @@ $classname='YandexWeather';
 addClass($classname); 
 	 
 $this->getConfig();
-$this->config['ENABLE_EVENTS']=1;	
+$this->config['ENABLE_EVENTS']=1;
+$this->saveConfig();	 
+	 
+	 
 	 
 $ChangeCondition='
 require(DIR_MODULES."yandexweather/saycondition.php");
