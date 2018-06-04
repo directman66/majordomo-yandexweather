@@ -1294,14 +1294,9 @@ return $rec[0][id];
 }
 
 
-function getconditionrus($condition){
-	if (($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>"")){
-//if ($this->object_title=="yw_mycity") {
-$lastcondition=gg("yw_mycity.lastcondition");
-$conditioneng=gg("yw_mycity.condition");
-if ($lastcondition<>$conditioneng){
-$condition=$conditioneng; 
-if ($conditioneng=="overcast") {$condition="ясно";}
+function getconditionrus($conditioneng){
+$condition=$conditioneng;
+if ($conditioneng=="overcast") {$condition="пасмурно";}
 if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
 if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
 if ($conditioneng=="cloudy") {$condition="облачно";}
