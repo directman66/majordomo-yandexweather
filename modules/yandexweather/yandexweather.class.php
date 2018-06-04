@@ -227,6 +227,12 @@ $today = $this->today;
     $this->indata_search($out); 
  }
 	
+ if ($this->tab=='settings') {
+$today = $this->today;		 
+    $this->settingstab($out); 
+ }
+	
+	
  	
  if ($this->view_mode=='config_edit') {
    $this->config_edit($out, $this->id);
@@ -288,8 +294,14 @@ function usual(&$out) {
  
  function indata_search(&$out) {	 
   require(DIR_MODULES.$this->name.'/indata.inc.php');
-  require(DIR_MODULES.$this->name.'/cfgdata.inc.php');
  }
+	
+	
+ function settingstab(&$out) {	 
+    require(DIR_MODULES.$this->name.'/cfgdata.inc.php');
+ }
+	
+	
  function processCycle() {
    $this->getConfig();
    $every=$this->config['EVERY'];
