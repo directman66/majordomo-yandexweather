@@ -714,7 +714,15 @@ $data=json_decode($otvet,true);
 $objn=$data['info']['slug'];
 $src=$data['info'];
 //echo $objn;
-addClassObject('YandexWeather',$objn);
+//проверяем, нужен ли новый объект	
+$new=0;	
+sql="select * from objects where class_id = (select id from classes where title = 'YandexWeather') and objects.TITLE='".$objn."'"	;
+if (empty(SQLSelectOne(sql)['TITLE']))
+    {addClassObject('YandexWeather',$objn);
+    $new=1;
+    } 
+	
+
 //sg( $objn.'.json',$otvet);
 $src=$data['info'];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
@@ -788,8 +796,20 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['par
 	
 //mycity	
 	
+	
+	
 $objmycity='yw_mycity';
+	
+//проверяем, нужен ли новый объект	
+$new=0;	
+sql="select * from objects where class_id = (select id from classes where title = 'YandexWeather') and objects.TITLE='".$objmycity."'"	;
+if (empty(SQLSelectOne(sql)['TITLE']))
+    {
 addClassObject('YandexWeather',$objmycity);	
+    $new=1;
+    } 	
+	
+
 	
 $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
@@ -803,7 +823,8 @@ foreach ($objprops as $value){
 }	
 }
 }
-//upd_PROPERTY_NAME();	
+	
+if ($new==1) {upd_PROPERTY_NAME();}	
 	
 }
   
