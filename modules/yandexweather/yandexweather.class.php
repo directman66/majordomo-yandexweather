@@ -381,20 +381,8 @@ function sayweather() {
 $text='Сегодня хорошая погода';
 $return_full="";
 $status="";
-$condition='ясно';
-	
-if (gg('yw_mycity.condition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.condition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.condition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.condition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.condition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.condition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.condition')=='partly-cloudy') {$condition='переменная облачность';}
-	
+
+$condition=getconditionrus(gg('yw_mycity.condition'));				
 	
 $status.="Сейчас ".$condition.".";
 $return_full.=$status." ";
