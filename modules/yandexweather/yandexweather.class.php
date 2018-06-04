@@ -203,6 +203,44 @@ if ($this->view_mode=='update_headsettings')
 	
 }
 	
+if ($this->view_mode=='add_city') 
+	 
+{
+   global $ID;
+   $rec['ID']=$ID;
+	 
+   global $country;
+   $rec['country']=$country;
+  
+   global $cityname;
+  $rec['cityname']=$cityname;
+
+   global $part;
+   $rec['part']=$part;
+   global $check;
+   $rec['check']=$check;
+
+   global $latlon;
+   $rec['latlon']=$latlon;
+
+$table_name='yaweather_cities';
+     SQLInsert($table_name, $rec); // adding new record
+
+
+  if (is_array($rec)) {
+   foreach($rec as $k=>$v) {
+    if (!is_array($v)) {
+     $rec[$k]=htmlspecialchars($v);
+    }
+   }
+  }
+  outHash($rec, $out);
+
+
+
+}
+
+
 	
  if ($this->view_mode=='update_eventssettings') 
 	 
