@@ -471,21 +471,11 @@ say($return_full,2);
 ///////////////////////////////////////////
 ///////////////////////////////////////////	
 function sayforecast() {
-$text='Завтра ожидается хорошая погода';	
+
 //$text=gettextforecast_long();
-$condition='ясно';
+
+$condition=getconditionrus(gg('yw_mycity.condition'));				
 	
-if (gg('yw_mycity.condition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.condition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.condition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.condition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.condition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.condition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.condition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.condition')=='partly-cloudy') {$condition='переменная облачность';}
 	
 $status .= "Сейчас на улице по данным метеослужб " .$condition . ", ";
 $w = round(gg("yw_mycity.temp"));
@@ -600,65 +590,26 @@ $status .= ". ";
 if (timeBetween("01:00", "10:00")) {
     $status .= "Сегодня утром ожидается ";
     $w = round(gg("yw_mycity.forecast_0_morning_temp_avg"));
-$condition='ясно';
-if (gg('yw_mycity.forecast_0_morningcondition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.forecast_0_morningcondition')=='partly-cloudy') {$condition='переменная облачность';}        
+
+$condition=getconditionrus(gg('yw_mycity.forecast_0_morningcondition'));				
 } elseif (timeBetween("10:00", "14:00")) {
      $status .= "Сегодня днем ожидается ";
     $w = round(gg("yw_mycity.forecast_0_day_temp_avg"));
-$condition='ясно';
-if (gg('yw_mycity.forecast_0_daycondition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.forecast_0_daycondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.forecast_0_daycondition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.forecast_0_daycondition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.forecast_0_daycondition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.forecast_0_daycondition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.forecast_0_daycondition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.forecast_0_daycondition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.forecast_0_daycondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.forecast_0_daycondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.forecast_0_daycondition')=='partly-cloudy') {$condition='переменная облачность';}
+
+$condition=getconditionrus(gg('yw_mycity.forecast_0_daycondition'));			
     
 } elseif (timeBetween("14:00", "20:00")) {
      $status .= "Сегодня вечером ожидается ";
     $w = round(gg("yw_mycity.forecast_0_evening_temp_avg"));
-$condition='ясно';
-if (gg('yw_mycity.forecast_0_eveningcondition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.forecast_0_eveningcondition')=='partly-cloudy') {$condition='переменная облачность';}
+
+
+$condition=getconditionrus(gg('yw_mycity.forecast_0_eveningcondition'));		
     
 } else {
      $status .= "Сегодня ночью ожидается ";
     $w = round(gg("yw_mycity.forecast_0_night_temp_avg")); 
 $condition='ясно';
-if (gg('yw_mycity.forecast_0_nightcondition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='cloudy-and-rain') {$condition='облачно с  дождем';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.forecast_0_nightcondition')=='partly-cloudy') {$condition='переменная облачность';}    
+$condition=getconditionrus(gg('yw_mycity.forecast_0_nightcondition'));	
 }
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
 $status .= $w ." градусов цельсия, " . $condition . ". ";
@@ -666,18 +617,8 @@ $status .= $w ." градусов цельсия, " . $condition . ". ";
 $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
 $status .= 'Завтра ожидается ' . $w. " градусов цельсия, ";
-$condition='ясно';
-if (gg('yw_mycity.forecast_1_daycondition')=='overcast') {$condition='ясно';}
-if (gg('yw_mycity.forecast_1_daycondition')=='cloudy-and-light-rain') {$condition='облачно и легкий дождь';}
-if (gg('yw_mycity.forecast_1_daycondition')=='cloudy-and-rain') {$condition='облачно с дождем';}
-if (gg('yw_mycity.forecast_1_daycondition')=='cloudy') {$condition='облачно';}
-if (gg('yw_mycity.forecast_1_daycondition')=='overcast-and-light-rain') {$condition='легкий дождь';}
-if (gg('yw_mycity.forecast_1_daycondition')=='overcast-and-light-snow') {$condition='небольшой снег';}
-if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-light-rain') {$condition='переменная облачность и легкий дождь';}
-if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-light-snow') {$condition='переменная облачность и небольшой снег';}
-if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-rain') {$condition='переменная облачность с дождем';}
-if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy-and-snow') {$condition='переменная облачность со снегом';}
-if (gg('yw_mycity.forecast_1_daycondition')=='partly-cloudy') {$condition='переменная облачность';}    
+
+$condition=getconditionrus(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
 	
 say($status,2);
@@ -1297,6 +1238,7 @@ return $rec[0][id];
 function getconditionrus($conditioneng){
 $condition=$conditioneng;
 if ($conditioneng=="overcast") {$condition="пасмурно";}
+if ($conditioneng=="clear") {$condition="ясно";}	
 if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
 if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
 if ($conditioneng=="cloudy") {$condition="облачно";}
