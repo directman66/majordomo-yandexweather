@@ -894,7 +894,6 @@ $this->config['ENABLE_EVENTS']=1;
 	 
 $ChangeCondition='
 require(DIR_MODULES."yandexweather/saycondition.php");
-}
 ';	
 	 
 $Changetemp='
