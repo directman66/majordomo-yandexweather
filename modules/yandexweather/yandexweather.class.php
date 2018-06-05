@@ -478,9 +478,9 @@ if($tempw >= 11 and $tempw <= 14){
   while ($tempw > 9){
     $tempw=$tempw-10;
   }
-  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= процентов ; }
-  if($tempw == 1) { $tempcels= процент ; }
-  if($tempw >= 2 and $tempw <= 4) { $tempcels= процента ; }
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= 'процентов' ; }
+  if($tempw == 1) { $tempcels= 'процент' ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= 'процента' ; }
 }
 $status.=" Относительная влажность ".gg("yw_mycity.humidity")." ".$tempcels. ".";
 $return_full.=$status." ";
