@@ -49,7 +49,7 @@ $res=SQLSelect("select  ".$skin2." SKIN,  DATE_FORMAT(DATE_ADD(NOW(), INTERVAL 1
 $trandtempfa='fa-pause-circle';
 $trandhumfa='fa-pause-circle';
 $trandpresfa='fa-pause-circle';
-$conditionrus='ясно';
+$conditionrus=' ';
 
 
 if (gg('yw_mycity.trandtempfa')<>"") { $trandtempfa=gg('yw_mycity.trandtempfa');}
