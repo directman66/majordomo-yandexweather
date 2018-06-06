@@ -3,13 +3,14 @@
 </head>
 
 
-<table width=100% border=0><tr>
-<td valign=top>
-<!-- results -->
+
 [#if RESULTMYCITY#]
-<form action="?" method="post" name="indata" style="padding:0px" class="form">
  
 [#begin RESULTMYCITY#]
+<table width=100% border=0><tr>
+<td valign=top>
+
+
 <h2>
   <table width="100%" border=0><tr> 
 
@@ -49,16 +50,15 @@
   
  </td><tr>
  </table>
+ </table>
  </h2>  
 [#end RESULTMYCITY#]
-  </table>
-<input type="hidden" name="data_source" value="<#DATA_SOURCE#>">
-<input type="hidden" name="view_mode" value="<#VIEW_MODE#>">
-</form>
+
+
 
 [#else RESULTMYCITY#]
  
-<p>
+
 <font color="red"><#LANG_NO_RECORDS_FOUND#></font>
-</p>
+
 [#endif RESULTMYCITY#]
