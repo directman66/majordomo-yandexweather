@@ -911,7 +911,7 @@ foreach ($objprops as $value){
 */
  function uninstall() {
   SQLExec('DROP TABLE IF EXISTS yaweather_cities');
-  SQLExec('DROP TABLE IF EXISTS yaweather_main);
+  SQLExec('DROP TABLE IF EXISTS yaweather_main');
       SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
       SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
       SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
