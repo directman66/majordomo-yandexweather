@@ -911,10 +911,13 @@ foreach ($objprops as $value){
 */
  function uninstall() {
   SQLExec('DROP TABLE IF EXISTS yaweather_cities');
+  SQLExec('DROP TABLE IF EXISTS yaweather_main);
       SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
       SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
       SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
       SQLExec("delete from classes where title = 'YandexWeather'");	 
+
+
   parent::uninstall();
  }
 /**
@@ -1050,9 +1053,74 @@ addClassObject('YandexWeather',$objmycity);
  yaweather_cities: latlon varchar(50) 
  
 EOD;
-  parent::dbInstall($data);
-        $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
-        if(count($cmds) == 0) {
+   parent::dbInstall($data);
+
+$data = <<<EOD
+yaweather_main: SKIN                varchar(100) 
+yaweather_main: conditionrus        varchar(100) 
+yaweather_main: condition1rus       varchar(100) 
+yaweather_main: trandtempfa         varchar(100) 
+yaweather_main: trandhumfa          varchar(100) 
+yaweather_main: trandpresfa         varchar(100) 
+yaweather_main: locality_name       varchar(100) 
+yaweather_main: district_name       varchar(100) 
+yaweather_main: d1                  varchar(100) 
+yaweather_main: d2                  varchar(100) 
+yaweather_main: d3                  varchar(100) 
+yaweather_main: d4                  varchar(100) 
+yaweather_main: d5                  varchar(100) 
+yaweather_main: d6                  varchar(100) 
+yaweather_main: d7                  varchar(100) 
+yaweather_main: TITLE               varchar(100) 
+yaweather_main: DESCRIPTION         varchar(100) 
+yaweather_main: temp                varchar(100) 
+yaweather_main: conditionn          varchar(100) 
+yaweather_main: wind_speed          varchar(100) 
+yaweather_main: wind_dir            varchar(100) 
+yaweather_main: pressure_mm         varchar(100) 
+yaweather_main: humidity            varchar(100) 
+yaweather_main: uv_index            varchar(100) 
+yaweather_main: forecast_1_day_temp_avg  varchar(100) 
+yaweather_main: forecast_2_day_temp_avg  varchar(100) 
+yaweather_main: forecast_3_day_temp_avg  varchar(100) 
+yaweather_main: forecast_4_day_temp_avg  varchar(100) 
+yaweather_main: forecast_5_day_temp_avg  varchar(100) 
+yaweather_main: forecast_6_day_temp_avg  varchar(100) 
+yaweather_main: forecast_7_day_temp_avg  varchar(100) 
+yaweather_main: forecast_1_daycondition  varchar(100) 
+yaweather_main: forecast_2_daycondition  varchar(100) 
+yaweather_main: forecast_3_daycondition  varchar(100) 
+yaweather_main: forecast_4_daycondition  varchar(100) 
+yaweather_main: forecast_5_daycondition  varchar(100) 
+yaweather_main: forecast_6_daycondition      varchar(100) 
+yaweather_main: forecast_7_daycondition      varchar(100) 
+yaweather_main: forecast_0_morningcondition  varchar(100) 
+yaweather_main: forecast_0_daycondition      varchar(100) 
+yaweather_main: forecast_0_eveningcondition  varchar(100) 
+yaweather_main: forecast_0_nightcondition    varchar(100) 
+yaweather_main: forecast_0_morning_temp_avg  varchar(100) 
+yaweather_main: forecast_0_day_temp_avg      varchar(100) 
+yaweather_main: forecast_0_evening_temp_avg    varchar(100) 
+yaweather_main: forecast_0_night_temp_avg      varchar(100) 
+yaweather_main: forecast_0_morning_wind_speed  varchar(100) 
+yaweather_main: forecast_0_day_wind_speed      varchar(100) 
+yaweather_main: forecast_0_evening_wind_speed  varchar(100) 
+yaweather_main: forecast_0_night_wind_speed    varchar(100) 
+yaweather_main: forecast_0_morning_wind_dir    varchar(100) 
+yaweather_main: forecast_0_day_wind_dir        varchar(100) 
+yaweather_main: forecast_0_evening_wind_dir      varchar(100) 
+yaweather_main: forecast_0_night_wind_dir        varchar(100) 
+yaweather_main: forecast_0_morning_pressure_mm   varchar(100) 
+yaweather_main: forecast_0_day_pressure_mm       varchar(100) 
+yaweather_main: forecast_0_evening_pressure_mm  varchar(100) 
+yaweather_main: forecast_0_night_short_pressure_mm  varchar(100) 
+EOD;
+ 
+   parent::dbInstall($data);
+
+
+         $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
+         if(count($cmds) == 0) {
             $rec['country'] = 'Россия';
             $rec['cityname'] = 'Екатеринбург';
             $rec['part'] = 'Свердловская область';
