@@ -1011,12 +1011,29 @@ addClass($classname);
 $ChangeCondition='
 if(($this->object_title=="yw_mycity") and ($this->getProperty("condition")<>""))
 {
-require(DIR_MODULES."yandexweather/saycondition.php");
+//require(DIR_MODULES."yandexweather/ywext.inc.php");
+include_once(DIR_MODULES."yandexweather/ywext.inc.php");
+ 
+$lastcondition=gg("yw_mycity.lastcondition");
+$conditioneng=gg("yw_mycity.condition");
+$condition1eng=gg("yw_mycity.forecast_0_daycondition");  
+$condition2eng=gg("yw_mycity.forecast_1_daycondition");  
+$condition3eng=gg("yw_mycity.forecast_2_daycondition");    
 
-include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
-$yw= new yandexweather();
-$yw->getConfig();
-$ee=$yw->config["ENABLE_EVENTS"];
+ $condition=getconditionrusincl($conditioneng);
+$condition1=getconditionrusincl($condition1eng);    
+$condition2=getconditionrusincl($condition2eng);        
+$condition3=getconditionrusincl($condition3eng);        
+sg("yw_mycity.lastcondition",$conditioneng);
+sg("yw_mycity.lastconditionrus",$condition); 
+    
+sg("yw_mycity.condition1rus",$condition1) ;     
+sg("yw_mycity.condition2rus",$condition2) ;     
+sg("yw_mycity.condition3rus",$condition3) ;         
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'ENABLE_EVENTS\'");
+$ee=$cmd_rec[\'VALUE\'];
+ 
 if ($ee=="1") {
  say(" На улице ".$condition,2); 
 }}
