@@ -1475,6 +1475,15 @@ $spl=explode(',',$otvet) ;
 return $spl[0] ;
 //return $url;
 } 
+
+function getconditionrus($conditioneng){
+require(DIR_MODULES.$this->name.'/ywext.php');
+
+$condition=getconditionrusincl($conditioneng){
+return $condition;
+}
+
+
 }
 /*
 *
@@ -1522,11 +1531,5 @@ return $rec[0][id];
 }
 
 
-function getconditionrus($conditioneng){
-require(DIR_MODULES.$this->name.'/ywext.php');
-
-$condition=getconditionrusincl($conditioneng){
-return $condition;
-}
 	
 	
