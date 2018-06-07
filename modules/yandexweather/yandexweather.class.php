@@ -935,12 +935,13 @@ foreach ($objprops as $value){
 * @access public
 */
  function uninstall() {
-  SQLExec('DROP TABLE IF EXISTS yaweather_cities');
-  SQLExec('DROP TABLE IF EXISTS yaweather_main');
-      SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
-      SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
-      SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
-      SQLExec("delete from classes where title = 'YandexWeather'");	 
+SQLExec('DROP TABLE IF EXISTS yaweather_cities');
+SQLExec('DROP TABLE IF EXISTS yaweather_main');
+SQLExec('DROP TABLE IF EXISTS yaweather_config');	 
+SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
+SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
+SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
+SQLExec("delete from classes where title = 'YandexWeather'");	 
 
 
   parent::uninstall();
@@ -1080,6 +1081,15 @@ addClassObject('YandexWeather',$objmycity);
 EOD;
    parent::dbInstall($data);
 
+	 
+  $data = <<<EOD
+ yaweather_config: parametr varchar(300)
+ yaweather_config:  value varchar(100)  
+  
+EOD;
+   parent::dbInstall($data);
+	 
+	 
 $data = <<<EOD
 yaweather_main: locality_name       varchar(100) 
 yaweather_main: district_name       varchar(100) 
@@ -1365,6 +1375,15 @@ $rec['mycity'] = '0';
             SQLInsert('yaweather_cities', $rec);				
 
 
+		 
+$par['parametr'] = 'every';
+$par['value'] = 30;		 
+SQLInsert('yaweather_config', $par);				
+		 
+$par['parametr'] = 'enable_events';
+$par['value'] = 1;		 
+SQLInsert('yaweather_config', $par);				
+		 
 		
 global $enable_events;
 $this->getConfig();		
