@@ -503,7 +503,7 @@ $text='Сегодня хорошая погода';
 $return_full="";
 $status="";
 
-$condition=getconditionrus(gg('yw_mycity.condition'));				
+$condition=$this->getconditionrus(gg('yw_mycity.condition'));				
 	
 $status.="Сейчас ".$condition.".";
 $return_full.=$status." ";
@@ -583,7 +583,7 @@ function sayforecast() {
 
 //$text=gettextforecast_long();
 
-$condition=getconditionrus(gg('yw_mycity.condition'));				
+$condition=$this->getconditionrus(gg('yw_mycity.condition'));				
 	
 	
 $status .= "Сейчас на улице по данным метеослужб " .$condition . ", ";
@@ -700,24 +700,24 @@ if (timeBetween("01:00", "10:00")) {
     $status .= "Сегодня утром ожидается ";
     $w = round(gg("yw_mycity.forecast_0_morning_temp_avg"));
 
-$condition=getconditionrus(gg('yw_mycity.forecast_0_morningcondition'));				
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_morningcondition'));				
 } elseif (timeBetween("10:00", "14:00")) {
      $status .= "Сегодня днем ожидается ";
     $w = round(gg("yw_mycity.forecast_0_day_temp_avg"));
 
-$condition=getconditionrus(gg('yw_mycity.forecast_0_daycondition'));			
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_daycondition'));			
     
 } elseif (timeBetween("14:00", "20:00")) {
      $status .= "Сегодня вечером ожидается ";
     $w = round(gg("yw_mycity.forecast_0_evening_temp_avg"));
 
 
-$condition=getconditionrus(gg('yw_mycity.forecast_0_eveningcondition'));		
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_eveningcondition'));		
     
 } else {
      $status .= "Сегодня ночью ожидается ";
     $w = round(gg("yw_mycity.forecast_0_night_temp_avg")); 
-$condition=getconditionrus(gg('yw_mycity.forecast_0_nightcondition'));	
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_nightcondition'));	
 }
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
 $status .= $w ." градусов цельсия, " . $condition . ". ";
@@ -726,7 +726,7 @@ $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
 $status .= 'Завтра ожидается ' . $w. " градусов цельсия, ";
 
-$condition=getconditionrus(gg('yw_mycity.forecast_1_daycondition'));
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
 	
 say($status,2);
@@ -1477,14 +1477,15 @@ return $spl[0] ;
 } 
 
 function getconditionrus($conditioneng){
-require(DIR_MODULES.$this->name.'/ywext.php');
+  require(DIR_MODULES.$this->name.'/ywext.inc.php');
+//require(DIR_MODULES.$this->name.'/ywext.php');
 
-$condition=getconditionrusincl($conditioneng){
+$condition=getconditionrusincl($conditioneng);
 return $condition;
-}
+//}
 
 
-}
+}}
 /*
 *
 * TW9kdWxlIGNyZWF0ZWQgQXByIDA0LCAyMDE2IHVzaW5nIFNlcmdlIEouIHdpemFyZCAoQWN0aXZlVW5pdCBJbmMgd3d3LmFjdGl2ZXVuaXQuY29tKQ==
