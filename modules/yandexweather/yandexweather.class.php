@@ -216,10 +216,10 @@ if ($this->view_mode=='update_headsettings')
 global $duuid;
 global $every;	
 global $deviceid;	
-//	$this->config['DUUID']=$duuid;	 
-//	$this->config['DEVICEID']=$deviceid;	 
-//	$this->config['EVERY']=$every;	 
-//	$this->saveConfig();
+	$this->config['DUUID']=$duuid;	 
+	$this->config['DEVICEID']=$deviceid;	 
+	$this->config['EVERY']=$every;	 
+	$this->saveConfig();
 //      $this->redirect("?");
 	
 //$rec=array();
@@ -278,13 +278,9 @@ $table_name='yaweather_cities';
  {
 global $enable_events;
 
-//$this->config['ENABLE_EVENTS']=$enable_events;	 
-//   $this->saveConfig();
+$this->config['ENABLE_EVENTS']=$enable_events;	 
+   $this->saveConfig();
 //   $this->redirect("?");
-
-//$rec=array();
-//$rec['ENABLE_EVENTS']=$enable_events;	 	 
-//SQLUpdate('yaweather_config', $rec); // update	 
 
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
 
