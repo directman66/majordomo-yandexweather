@@ -1,5 +1,5 @@
 <?php	
-function getconditionrus($conditioneng){
+function getconditionrusincl($conditioneng){
 $condition=$conditioneng;
 if ($conditioneng=="overcast") {$condition="пасмурно";}
 if ($conditioneng=="clear") {$condition="ясно";}	
