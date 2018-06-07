@@ -12,17 +12,14 @@ $ctl = new control_modules();
 include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');
 $yandexweather_module = new yandexweather();
 $yandexweather_module->getConfig();
-// In data
-//$tmp1 = SQLSelectOne("SELECT ID FROM lgps_out LIMIT 1");
-// Out data
-//$tmp2 = SQLSelectOne("SELECT ID FROM lgps_in LIMIT 1");
-//if ((!$tmp1['ID']) && (!$tmp2['ID']))
-//   exit; // no devices added -- no need to run this cycle
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='EVERY'");
+$checkEvery=$cmd_rec['VALUE'];
+
  
 echo date("H:i:s") . " running " . basename(__FILE__) . PHP_EOL;
 $latest_check=0;
 //$checkEvery=300; // poll every 5 min
-$checkEvery=$yandexweather_module->config['EVERY']*60;
+//$checkEvery=$yandexweather_module->config['EVERY']*60;
 while (1)
 {
    setGlobal((str_replace('.php', '', basename(__FILE__))) . 'Run', time(), 1);
