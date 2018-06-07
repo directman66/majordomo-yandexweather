@@ -186,11 +186,25 @@ function admin(&$out) {
  //$out['DEVICEID']=$this->config['DEVICEID'];
  //$out['EVERY']=$this->config['EVERY'];
 	
-$cmd_rec = SQLSelectOne("SELECT * FROM yaweather_config");
-if (!$cmd_rec['EVERY']) $out['EVERY']=$cmd_rec['EVERY'];
-if (!$cmd_rec['ENABLE_EVENTS']) $out['ENABLE_EVENTS']=$cmd_rec['EVERY'];	
-if (!$cmd_rec['DUUID']) $out['DUUID']=$cmd_rec['DUUID'];
-if (!$cmd_rec['DEVICEID']) $out['DEVICEID']=$cmd_rec['DEVICEID'];
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='EVERY'");
+$out['EVERY']=$cmd_rec['VALUE'];
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='DUUID'");
+$out['DUUID']=$cmd_rec['VALUE'];
+
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='ENABLE_EVENTS'");
+$out['ENABLE_EVENTS']=$cmd_rec['VALUE'];
+//$out['ENABLE_EVENTS']=1;
+
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='DEVICEID'");
+$out['DEVICEID']=$cmd_rec['VALUE'];
+
+//if (!$cmd_rec['EVERY']) $out['EVERY']=$cmd_rec['EVERY'];
+//if (!$cmd_rec['ENABLE_EVENTS']) $out['ENABLE_EVENTS']=$cmd_rec['EVERY'];	
+//if (!$cmd_rec['DUUID']) $out['DUUID']=$cmd_rec['DUUID'];
+//if (!$cmd_rec['DEVICEID']) $out['DEVICEID']=$cmd_rec['DEVICEID'];
 
 $cmd_rec = array();
 	
@@ -208,11 +222,14 @@ global $deviceid;
 //	$this->saveConfig();
 //      $this->redirect("?");
 	
-$rec=array();
-$rec['DUUID']=$duuid;	 	 
-$rec['DEVICEID']=$duuid;	 	 
-$rec['EVERY']=$duuid;	 	 	
-SQLUpdate('yaweather_config', $rec); // update	 	
+//$rec=array();
+//$rec['DUUID']=$duuid;	 	 
+//$rec['DEVICEID']=$duuid;	 	 
+//$rec['EVERY']=$duuid;	 	 	
+//SQLUpdate('yaweather_config', $rec); // update	 	
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$duuid' where parametr='DUUID'");
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$every' where parametr='EVERY'");
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$deviceid' where parametr='$deviceid'");
 	
 	
 }
@@ -265,9 +282,13 @@ global $enable_events;
 //   $this->saveConfig();
 //   $this->redirect("?");
 
-$rec=array();
-$rec['ENABLE_EVENTS']=$enable_events;	 	 
-SQLUpdate('yaweather_config', $rec); // update	 
+//$rec=array();
+//$rec['ENABLE_EVENTS']=$enable_events;	 	 
+//SQLUpdate('yaweather_config', $rec); // update	 
+
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+
+
  }
  if (isset($this->data_source) && !$_GET['data_source'] && !$_POST['data_source']) {
   $out['SET_DATASOURCE']=1;
