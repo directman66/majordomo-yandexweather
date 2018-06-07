@@ -363,7 +363,7 @@ $this->getdatefnc();
 $this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
-	$this->saveConfig();
+	//$this->saveConfig();
    } 
   }
 /**
