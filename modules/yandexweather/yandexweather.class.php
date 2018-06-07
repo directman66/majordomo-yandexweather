@@ -1525,7 +1525,7 @@ return $rec[0][id];
 function getconditionrus($conditioneng){
 require(DIR_MODULES.$this->name.'/ywext.php');
 
-$condition=getconditionrus($conditioneng){
+$condition=getconditionrusincl($conditioneng){
 return $condition;
 }
 	
