@@ -1,4 +1,4 @@
-
+<?php	
 function getconditionrus($conditioneng){
 $condition=$conditioneng;
 if ($conditioneng=="overcast") {$condition="пасмурно";}
