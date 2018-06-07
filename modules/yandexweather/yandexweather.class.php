@@ -1449,7 +1449,7 @@ $par['value'] = 30;
 SQLInsert('yaweather_config', $par);				
 		 
 $par['parametr'] = 'ENABLE_EVENTS';
-$par['value'] = 1;		 
+$par['value'] = 0;		 
 SQLInsert('yaweather_config', $par);				
 		 
 $par['parametr'] = 'DUUID';
