@@ -297,7 +297,7 @@ if ($this->view_mode=='titledel') {
  if ($this->view_mode=='get') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
-		$this->get_props2();	 
+		$this->upd_PROPERTY_NAME();	 
     		$this->insertmain();
 	 
 	 
