@@ -174,32 +174,46 @@ $out['SKIN']=1;
 function admin(&$out) {
 ///	echo "admin";
 //echo $this->view_mode;	
-sg('test.view_mode',$this->view_mode);	
+//('test.view_mode',$this->view_mode);	
  $this->getConfig();
         if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
 			$out['CYCLERUN'] = 1;
 		} else {
 			$out['CYCLERUN'] = 0;
 		}
- $out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
- $out['DUUID']=$this->config['DUUID'];	
- $out['DEVICEID']=$this->config['DEVICEID'];
- $out['EVERY']=$this->config['EVERY'];
+ //$out['ENABLE_EVENTS'] = $this->config['ENABLE_EVENTS'];	
+ //$out['DUUID']=$this->config['DUUID'];	
+ //$out['DEVICEID']=$this->config['DEVICEID'];
+ //$out['EVERY']=$this->config['EVERY'];
+	
+$cmd_rec = SQLSelectOne("SELECT * FROM yaweather_config");
+if (!$cmd_rec['EVERY']) $out['EVERY']=$cmd_rec['EVERY'];
+if (!$cmd_rec['ENABLE_EVENTS']) $out['ENABLE_EVENTS']=$cmd_rec['EVERY'];	
+if (!$cmd_rec['DUUID']) $out['DUUID']=$cmd_rec['DUUID'];
+if (!$cmd_rec['DEVICEID']) $out['DEVICEID']=$cmd_rec['DEVICEID'];
+
+$cmd_rec = array();
+	
+	
 	
 if ($this->view_mode=='update_headsettings') 
 	 
  {
-	global $duuid;
-	$this->config['DUUID']=$duuid;	 
-
-	global $deviceid;
-	$this->config['DEVICEID']=$deviceid;	 
-
-	global $every;
-	$this->config['EVERY']=$every;	 
-        
-	$this->saveConfig();
-        $this->redirect("?");
+global $duuid;
+global $every;	
+global $deviceid;	
+//	$this->config['DUUID']=$duuid;	 
+//	$this->config['DEVICEID']=$deviceid;	 
+//	$this->config['EVERY']=$every;	 
+//	$this->saveConfig();
+//      $this->redirect("?");
+	
+$rec=array();
+$rec['DUUID']=$duuid;	 	 
+$rec['DEVICEID']=$duuid;	 	 
+$rec['EVERY']=$duuid;	 	 	
+SQLUpdate('yaweather_config', $rec); // update	 	
+	
 	
 }
 	
@@ -245,12 +259,15 @@ $table_name='yaweather_cities';
  if ($this->view_mode=='update_eventssettings') 
 	 
  {
-	global $enable_events;
-	$this->config['ENABLE_EVENTS']=$enable_events;	 
+global $enable_events;
 
-   
-   $this->saveConfig();
-   $this->redirect("?");
+//$this->config['ENABLE_EVENTS']=$enable_events;	 
+//   $this->saveConfig();
+//   $this->redirect("?");
+
+$rec=array();
+$rec['ENABLE_EVENTS']=$enable_events;	 	 
+SQLUpdate('yaweather_config', $rec); // update	 
  }
  if (isset($this->data_source) && !$_GET['data_source'] && !$_POST['data_source']) {
   $out['SET_DATASOURCE']=1;
@@ -1376,21 +1393,21 @@ $rec['mycity'] = '0';
 
 
 		 
-$par['parametr'] = 'every';
+$par['parametr'] = 'EVERY';
 $par['value'] = 30;		 
 SQLInsert('yaweather_config', $par);				
 		 
-$par['parametr'] = 'enable_events';
+$par['parametr'] = 'ENABLE_EVENTS';
 $par['value'] = 1;		 
 SQLInsert('yaweather_config', $par);				
 		 
+$par['parametr'] = 'DUUID';
+$par['value'] = "";		 
+SQLInsert('yaweather_config', $par);						
 		
-global $enable_events;
-$this->getConfig();		
-$this->config['ENABLE_EVENTS']=1;	 
-$this->config['EVERY']=15;	 
-$this->saveConfig();
-		
+$par['parametr'] = 'DEVICEID';
+$par['value'] = "";		 
+SQLInsert('yaweather_config', $par);						
 		
 		
 		
