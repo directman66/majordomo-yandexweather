@@ -229,9 +229,11 @@ global $deviceid;
 //SQLUpdate('yaweather_config', $rec); // update	 	
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$duuid' where parametr='DUUID'");
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$every' where parametr='EVERY'");
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$deviceid' where parametr='$deviceid'");
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
 	
+
 	
+
 }
 	
 if ($this->view_mode=='add_city') 
@@ -399,6 +401,8 @@ $this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
 	//$this->saveConfig();
+$cmd_rec = SQLSelectOne("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
+$cmd_rec = SQLSelectOne("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
    } 
   }
 /**
@@ -1460,7 +1464,13 @@ $par['parametr'] = 'DEVICEID';
 $par['value'] = "";		 
 SQLInsert('yaweather_config', $par);						
 		
+$par['parametr'] = 'LASTCYCLE_TS';
+$par['value'] = "0";		 
+SQLInsert('yaweather_config', $par);						
 		
+$par['parametr'] = 'LASTCYCLE_TXT';
+$par['value'] = "0";		 
+SQLInsert('yaweather_config', $par);						
 		
 		
 		
