@@ -13,7 +13,7 @@ include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');
 $yandexweather_module = new yandexweather();
 $yandexweather_module->getConfig();
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='EVERY'");
-$checkEvery=$cmd_rec['VALUE'];
+$checkEvery=$cmd_rec['VALUE']*60;
 
  
 echo date("H:i:s") . " running " . basename(__FILE__) . PHP_EOL;
