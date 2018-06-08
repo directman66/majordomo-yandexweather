@@ -224,6 +224,8 @@ if ($this->view_mode=='update_headsettings')
 global $duuid;
 global $every;	
 global $deviceid;	
+global $forecast_day;	
+	
 	$this->config['DUUID']=$duuid;	 
 	$this->config['DEVICEID']=$deviceid;	 
 	$this->config['EVERY']=$every;	 
@@ -238,7 +240,7 @@ global $deviceid;
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$duuid' where parametr='DUUID'");
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$every' where parametr='EVERY'");
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
-	
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
 
 	
 
@@ -413,6 +415,7 @@ $this->insertmain();
 	//$this->saveConfig();
 $cmd_rec = SQLSelectOne("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
 $cmd_rec = SQLSelectOne("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
+
    } 
   }
 /**
