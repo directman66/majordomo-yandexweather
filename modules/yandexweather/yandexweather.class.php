@@ -863,9 +863,10 @@ $new=0;
 //sql="select * from objects where class_id = (select id from classes where title = 'YandexWeather') and objects.TITLE='".$objn."'"	;
 //if (empty(SQLSelectOne(sql)['TITLE']))
 //    {
+if ($objn<>"") {
 addClassObject('YandexWeather',$objn);
 $new=1;
-//    } 
+} 
 	
 
 //sg( $objn.'.json',$otvet);
