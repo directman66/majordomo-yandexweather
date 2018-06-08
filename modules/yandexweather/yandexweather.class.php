@@ -924,7 +924,7 @@ $src=$data['fact'];
 		foreach ($data['forecasts'] as $day=> $value ) { 
 			foreach ($data['forecasts'][$day]['parts'] as $key=> $value ) {    
 				
-while ($day<=$forecast_day)
+if  ($day<=$forecast_day)
 	
 {	
 	
