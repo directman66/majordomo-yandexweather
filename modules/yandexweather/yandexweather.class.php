@@ -1511,7 +1511,8 @@ $cmd_rec=SQLSelectOne($sql);
 		 
 $par=array();		 
 $par['OBJECT_ID'] = $id;
-$par['CODE'] = $Changetemp;		 
+$par['CODE'] = $Changecondition;		 
+$par['TITLE'] = 'Changecondition';		 		 
 SQLInsert('methods', $par);						
 		 
 //		 $property['CODE']=$Changetemp; //   
