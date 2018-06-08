@@ -18,7 +18,8 @@
  <label class="control-label">
  <#LANG_AUTO_UPDATE_PERIOD#>:(*)
  </label>
-<table><tr><td>
+<table>
+<tr><td>
  <div class="controls">
 		<select name="every" class="input span2">
 			<option[#if EVERY="5"#] selected[#endif#]>5
@@ -29,9 +30,29 @@
 			<option[#if EVERY="60"#] selected[#endif#]>60
 		 </select> минут 
  </div>
-
-
-				</td><td>
+</td><td>
+<tr><td>
+<label class="control-label">
+Прогноз погоды на (дней):
+ </label>	
+ <div class="controls">
+		<select name="every" class="input span2">
+			<option[#if FORECAST_DAY="1#] selected[#endif#]>1
+			<option[#if FORECAST_DAY="2#] selected[#endif#]>2
+			<option[#if FORECAST_DAY="3#] selected[#endif#]>3
+			<option[#if FORECAST_DAY="4"#] selected[#endif#]>4
+			<option[#if FORECAST_DAY="5"#] selected[#endif#]>5
+			<option[#if FORECAST_DAY="6"#] selected[#endif#]>6
+			<option[#if FORECAST_DAY="7"#] selected[#endif#]>7						    
+			<option[#if FORECAST_DAY="8"#] selected[#endif#]>8						    
+			<option[#if FORECAST_DAY="9"#] selected[#endif#]>9						    
+			<option[#if FORECAST_DAY="10"#] selected[#endif#]>10						    						    
+		 </select> минут 
+ </div>
+</td><td>				
+				
+				
+							
 <div class="form-actions" align="left">
 <button type="submit" name="subm" value="Submit" class="btn btn-primary">Сохранить</button>
 <input type="hidden" name="view_mode" value="update_headsettings">	
