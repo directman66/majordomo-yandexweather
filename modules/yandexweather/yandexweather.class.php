@@ -1074,7 +1074,7 @@ require(DIR_MODULES."yandexweather/changetemp.php");';
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 //addClassMethod($classname,'ChangeCondition',$ChangeCondition);
-addClassMethod($classname,'ChangeCondition','');
+addClassMethod($classname,'ChangeCondition','///');
 addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
 addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
@@ -1181,7 +1181,6 @@ EOD;
   $data = <<<EOD
  yaweather_config: parametr varchar(300)
  yaweather_config:  value varchar(100)  
-  
 EOD;
    parent::dbInstall($data);
 	 
