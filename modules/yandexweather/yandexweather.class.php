@@ -203,6 +203,12 @@ $out['ENABLE_EVENTS']=$cmd_rec['VALUE'];
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='DEVICEID'");
 $out['DEVICEID']=$cmd_rec['VALUE'];
 
+	
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='FORECAST_DAY'");
+$out['FORECAST_DAY']=$cmd_rec['VALUE'];
+
+	
+
 //if (!$cmd_rec['EVERY']) $out['EVERY']=$cmd_rec['EVERY'];
 //if (!$cmd_rec['ENABLE_EVENTS']) $out['ENABLE_EVENTS']=$cmd_rec['EVERY'];	
 //if (!$cmd_rec['DUUID']) $out['DUUID']=$cmd_rec['DUUID'];
@@ -1477,6 +1483,9 @@ $par['parametr'] = 'LASTCYCLE_TXT';
 $par['value'] = "0";		 
 SQLInsert('yaweather_config', $par);						
 		
+$par['parametr'] = 'FORECAST_DAY';
+$par['value'] = "7";		 
+SQLInsert('yaweather_config', $par);						
 		
 		
  }}
