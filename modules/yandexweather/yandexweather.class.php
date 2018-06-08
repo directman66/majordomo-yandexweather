@@ -33,6 +33,8 @@ function yandexweather() {
  function edit_classes(&$out, $id) {
   require(DIR_MODULES.$this->name.'/classes_edit.inc.php');
  }
+	
+///	
 function saveParams($data=0) {
  $p=array();
  if (IsSet($this->id)) {
@@ -328,6 +330,8 @@ if ($this->view_mode=='indata_del') {
 if ($this->view_mode=='titledel') {
    $this->title_del($this->id);
  }
+	
+	
 	
 	
  if ($this->view_mode=='get') {
