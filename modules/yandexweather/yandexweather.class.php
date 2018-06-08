@@ -1167,7 +1167,7 @@ $sql="SELECT * FROM `methods` where OBJECT_ID=(SELECT id   FROM `objects`  WHERE
  
 $property=SQLSelectOne($sql);
 $property['CODE']=$Changetemp; //   
-SQLUpdate('properties',$property);} 
+SQLUpdate('methods',$property);} 
 	 
 //addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
