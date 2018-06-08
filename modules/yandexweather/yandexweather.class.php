@@ -1075,6 +1075,18 @@ require(DIR_MODULES."yandexweather/changetemp.php");';
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 //addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 addClassMethod($classname,'ChangeCondition','');	 
+addClassMethod($classname,'Changetemp',$Changetemp);		 
+	 
+	 
+$objmycity='yw_mycity';
+addClassObject('YandexWeather',$objmycity);	 	 
+$sql='SELECT * FROM "methods" where OBJECT_ID=(SELECT id   FROM "objects"  WHERE TITLE ="yw_mycity")';
+ 
+$property=SQLSelectOne($sql);
+$property['CODE']=$Changetemp; //   
+SQLUpdate('methods',$property);} 
+
+	 
 	 
 	 
 addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
@@ -1160,14 +1172,6 @@ $property=SQLSelectOne("SELECT * FROM properties WHERE ID=".$prop_id);
 $property['DESCRIPTION']='УФ-индекс'; //   <-----------
 SQLUpdate('properties',$property);} 
 
-$objmycity='yw_mycity';
-addClassObject('YandexWeather',$objmycity);	 	 
-	 
-//$sql="SELECT * FROM `methods` where OBJECT_ID=(SELECT id   FROM `objects`  WHERE TITLE ='yw_mycity')";
- 
-//$property=SQLSelectOne($sql);
-//$property['CODE']=$Changetemp; //   
-//SQLUpdate('methods',$property);} 
 	 
 //addClassMethod($classname,'Changetemp',$Changetemp);	 
 	 
