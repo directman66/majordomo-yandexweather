@@ -821,8 +821,14 @@ $token = md5('eternalsun'.$timestamp);
  
 $uuid = "0b122ce93c77f68831839ca1d7cbf44a";
 $deviceid = "3fb4aa04ac896f1b51dd48d643d9e76e";
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='FORECAST_DAY'");
+$forecast_day=$cmd_rec['VALUE'];
+	
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1   ");
+	
+
 	
 	
 foreach ($properties as $did)
@@ -911,14 +917,17 @@ else
 	
 $src=$data['fact'];
 	foreach ($src as $key=> $value ) { sg( $objn.'.'.$key,$value); }
+		} 
 	
-	}     
 	$fobjn= $objn;
 	$src=$data['forecasts'][0]['parts'];
 		foreach ($data['forecasts'] as $day=> $value ) { 
 			foreach ($data['forecasts'][$day]['parts'] as $key=> $value ) {    
 				
-				
+while ($day<=$forecast_day)
+	
+{	
+	
 if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg')<>$data['forecasts'][$day]['parts'][$key]['temp_avg']);
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data['forecasts'][$day]['parts'][$key]['temp_avg']);
 
@@ -945,6 +954,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['p
 
 if (gg( $fobjn.'.'."forecast_".$day."_".$key.'daytime')<>$data['forecasts'][$day]['parts'][$key]['daytime']);								
 sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']); 
+}
  			}
 		}
 	
@@ -1487,7 +1497,7 @@ $par['value'] = "0";
 SQLInsert('yaweather_config', $par);						
 		
 $par['parametr'] = 'FORECAST_DAY';
-$par['value'] = "7";		 
+$par['value'] = "3";		 
 SQLInsert('yaweather_config', $par);						
 		
 		
