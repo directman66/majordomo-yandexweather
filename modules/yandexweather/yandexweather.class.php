@@ -1082,7 +1082,7 @@ $objmycity='yw_mycity';
 addClassObject('YandexWeather',$objmycity);	 	 
 $sql='SELECT * FROM "methods" where OBJECT_ID=(SELECT id   FROM "objects"  WHERE TITLE ="yw_mycity")';
  
-$property=SQLSelectOne($sql);
+//$property=SQLSelectOne($sql);
 //$property['CODE']=$Changetemp; //   
 //SQLUpdate('methods',$property);} 
 
