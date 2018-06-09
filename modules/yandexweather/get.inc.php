@@ -1,5 +1,4 @@
 <?php	
-$this->getConfig();
 $timestamp = time();
 $token = md5('eternalsun'.$timestamp);
  
@@ -20,7 +19,9 @@ sg('test.starline', 'start '.date());
 foreach ($properties as $did)
 {
  
-sg('test.vm', $did['ID']);
+$didr= $did['ID'];
+echo "<br>идем по циклу $didr<br>"; 
+sg('test.vm', $didr);
 $opts = array(
   'http'=>array(
     'method'=>"GET",
@@ -76,6 +77,8 @@ $new=1;
 sg( 'test.vm',$otvet);
 $src=$data['info'];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
+echo time();
+echo "<br>"; 
 	
 foreach ($src as $key=> $value ) { 
 if (is_array($value)) {
@@ -83,12 +86,16 @@ foreach ($value as $key2=> $value2 ) {
 	
 //if (gg($objn.'.'.$key.'_'.$key2)<>$value2) 
 sg( $objn.'.'.$key.'_'.$key2,$value2); 
+ echo $objn.'.'.$key.'_'.$key2.":".$value2;
 		     }
 }	
 else	
 {
 //if (gg($objn.'.'.$key.'_'.$key)<>$value)
-	sg( $objn.'.'.$key,$value); }
+	sg( $objn.'.'.$key,$value); 
+echo  $objn.'.'.$key.":".$value;  
+echo "<br>"; 
+}
 }     
 
 //////////////geo_object
@@ -98,12 +105,16 @@ if (is_array($value)) {
 foreach ($value as $key2=> $value2 ) {
 //if (gg($objn.'.'.$key.'_'.$key2)!=$value2) 	
 	sg( $objn.'.'.$key.'_'.$key2,$value2); 
+echo $objn.'.'.$key.'_'.$key2.":".$value2;  
+ echo "<br>";
 }
 }	
 else	
 {
 //if (gg($objn.'.'.$key.'_'.$key)!=$value)
-	sg( $objn.'.'.$key,$value); }     
+	sg( $objn.'.'.$key,$value); 
+	echo $objn.'.'.$key.":".$value;  
+}     
 }	
 	
 ///////////////////////////////////////////////////	
@@ -120,10 +131,13 @@ if  ($day<=$forecast_day)
 {	
 if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg')<>$data['forecasts'][$day]['parts'][$key]['temp_avg']);
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data['forecasts'][$day]['parts'][$key]['temp_avg']);
+echo  $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg'.":".$data['forecasts'][$day]['parts'][$key]['temp_avg'];
+echo "<br>"; 
 
 if (gg( $fobjn.'.'."forecast_".$day."_".$key.'wind_speed')<>$data['forecasts'][$day]['parts'][$key]['wind_speed']);				
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data['forecasts'][$day]['parts'][$key]['wind_speed']);
-
+echo  $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed'.":".$data['forecasts'][$day]['parts'][$key]['wind_speed'];
+echo "<br>";
 if (gg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust')<>$data['forecasts'][$day]['parts'][$key]['_wind_gust']);				
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data['forecasts'][$day]['parts'][$key]['wind_gust']);
 
@@ -165,25 +179,30 @@ addClassObject('YandexWeather',$objmycity);
 $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
 sg($objmycity.'.cityID', $mycity);
+ echo $objmycity.'.cityID'.":". $mycity;
+echo "<br>"; 
+echo "мой город ".$mycity;
+echo "<br>"; 
+ 
 	
 if ($mycity==$cityid){
-$objprops=get_props1($fobjn);
-foreach ($objprops as $value){ 
-	if (gg($objmycity.'.'.$value)<>gg($fobjn.".".$value));
-	sg($objmycity.'.'.$value,gg($fobjn.".".$value));
-				}	
-			}
-			
-	
+echo "это мой город ".$mycity;
+echo "<br>"; 
+$objprops=get_props($fobjn);
+foreach ($objprops as $value)
+{ 
+ sg($objmycity.'.'.$value,gg($fobjn.".".$value));
+echo $objmycity.'.'.$value.":".gg($fobjn.".".$value); 
+echo "<br>";  
+}
+}
 }
 
 
-
-
-function get_props1($obj)
+function get_props($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
-$sql='SELECT substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
+$sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
 $rec = SQLSelect($sql); 
 foreach ($rec as $prop)
 {
