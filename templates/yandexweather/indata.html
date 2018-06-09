@@ -38,37 +38,37 @@
 <th>Влажн. %</th>  
 <th>УФ индекс</th>  
 
-[# if FORECAST_DAY gte 1#] 
+[# if gte FORECAST_DAY  1#] 
  <th>[#D1#]</th>  
 <th>&nbsp;</th>  
  [#else#] [#endif#]
 
-[# if FORECAST_DAY gte 2#]  
+[# if gte FORECAST_DAY  2#]  
 <th>[#D2#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#]
  
-[# if FORECAST_DAY gte 3#]  
+[# if gte FORECAST_DAY  3#]  
 <th>[#D3#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#] 
  
-[# if FORECAST_DAY gte 4#]  
+[# if gte FORECAST_DAY  4#]  
 <th>[#D4#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#]
  
-[# if FORECAST_DAY gte 5#]  
+[# if gte FORECAST_DAY  5#]  
 <th>[#D5#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#]
  
- [# if FORECAST_DAY gte 6#] 
+ [# if  gte FORECAST_DAY  6#] 
 <th>[#D6#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#]
  
-[# if FORECAST_DAY gte 7#] 
+[# if  gte FORECAST_DAY  7#] 
 <th>[#D7#]</th>  
 <th>&nbsp;</th>  
 [#else#] [#endif#]
