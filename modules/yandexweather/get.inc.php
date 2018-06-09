@@ -196,6 +196,8 @@ echo $objmycity.'.'.$value.":".gg($fobjn.".".$value);
 echo "<br>";  
 }
 }
+	
+echo "конец функции получения данных ".date();	
 }
 
 
