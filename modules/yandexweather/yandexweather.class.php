@@ -205,13 +205,13 @@ $out['DEVICEID']=$cmd_rec['VALUE'];
 
 	
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='FORECAST_DAY'");
-	$forecast_day=$cmd_rec['VALUE'];
+$forecast_day=$cmd_rec['VALUE'];
 $out['FORECAST_DAY']=$forecast_day;
 	
 	
 
 for ($i = 1; $i <= $forecast_day; $i++) {
-    $out['FORECAST_DAY'.$forecast_day]="1";
+//    $out['FORECAST_DAY'.$forecast_day]="1";
 }
 	
 
