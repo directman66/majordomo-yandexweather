@@ -211,7 +211,8 @@ $out['FORECAST_DAY']=$forecast_day;
 	
 
 for ($i = 1; $i <= $forecast_day; $i++) {
-//    $out['FORECAST_DAY'.$forecast_day]="1";
+$fday='FORECAST_DAY'.$forecast_day;	
+$out[$fday]="1";
 }
 	
 
