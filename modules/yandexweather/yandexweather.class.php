@@ -924,9 +924,9 @@ $data = SQLSelect($sqlQuery);
 $total = count($data); 
 for ($i = 0; $i < $total; $i++)
 { $objectProperty = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"];
- $sqlQuery = "SELECT * FROM pvalues WHERE ID =".$data[$i]['ID'] ;
+ $sqlQuery = "SELECT * FROM pvalues WHERE ID =".$data[$i][\'ID\'] ;
  $rec = SQLSelectOne($sqlQuery); 
- $rec['PROPERTY_NAME'] = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"]; SQLUpdate("pvalues", $rec); } 
+ $rec[\'PROPERTY_NAME\'] = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"]; SQLUpdate("pvalues", $rec); } 
 
 $data = SQLSelect($sqlQuery); 
 $total = count($data); 
