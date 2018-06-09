@@ -209,13 +209,10 @@ $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='FORE
 $out['FORECAST_DAY']=$forecast_day;
 	
 	
-for  	=
+
 for ($i = 1; $i <= $forecast_day; $i++) {
     $out['FORECAST_DAY'.$forecast_day]="1";
 }
-	else 
-	{$out['FORECAST_DAY'.$forecast_day]=""}
-
 	
 
 //if (!$cmd_rec['EVERY']) $out['EVERY']=$cmd_rec['EVERY'];
