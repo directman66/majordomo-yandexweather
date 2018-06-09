@@ -770,12 +770,19 @@ function upd_PROPERTY_NAME_timer() {
 SetTimeOut("upd_PROPERTY_NAME",'
 
 $sqlQuery = "SELECT pvalues.*, objects.TITLE as OBJECT_TITLE, properties.TITLE as PROPERTY_TITLE FROM pvalues JOIN objects ON pvalues.OBJECT_ID = objects.id JOIN properties ON pvalues.PROPERTY_ID = properties.id WHERE pvalues.PROPERTY_NAME != CONCAT_WS('.', objects.TITLE, properties.TITLE)"; 
+
 $data = SQLSelect($sqlQuery); 
+
 $total = count($data); 
+
 for ($i = 0; $i < $total; $i++)
+
 { $objectProperty = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"];
+
  $sqlQuery = "SELECT * FROM pvalues WHERE ID =".$data[$i]["ID"] ;
+ 
  $rec = SQLSelectOne($sqlQuery); $rec["PROPERTY_NAME"] = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"]; SQLUpdate("pvalues", $rec); } 
+ 
  ',30);	
 
 }
