@@ -353,7 +353,8 @@ if ($this->view_mode=='titledel') {
 setGlobal('cycle_yandexweatherControl','start'); 
 		$this->getdatefnc();
 //$t1 = new Thread('$this->upd_PROPERTY_NAME' );
-		$this->upd_PROPERTY_NAME_timer();	 
+//		$this->upd_PROPERTY_NAME_timer();	 
+cm('yw+mycity.updatetitle');	 
     		$this->insertmain();
 	 
 	 
