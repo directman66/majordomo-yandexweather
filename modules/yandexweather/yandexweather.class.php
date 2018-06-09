@@ -911,12 +911,25 @@ if (($ee=="1") && ($this->getProperty("condition")<>$lastcondition)) {
 	 
 $Changetemp='
 require(DIR_MODULES."yandexweather/changetemp.php");';	 
+
+$updatetitle='
+$sqlQuery = "SELECT pvalues.*, objects.TITLE as OBJECT_TITLE, properties.TITLE as PROPERTY_TITLE FROM pvalues JOIN objects ON pvalues.OBJECT_ID = objects.id JOIN properties ON pvalues.PROPERTY_ID = properties.id WHERE pvalues.PROPERTY_NAME != CONCAT_WS('.', objects.TITLE, properties.TITLE)"; 
+$data = SQLSelect($sqlQuery); 
+$total = count($data); 
+for ($i = 0; $i < $total; $i++)
+{ $objectProperty = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"];
+ $sqlQuery = "SELECT * FROM pvalues WHERE ID =".$data[$i]["ID"] ;
+ $rec = SQLSelectOne($sqlQuery); $rec["PROPERTY_NAME"] = $data[$i]["OBJECT_TITLE"] . "." . $data[$i]["PROPERTY_TITLE"]; SQLUpdate("pvalues", $rec); } 
+';
+ 
+
 	
 	 
 addClassMethod($classname,'OnChange','SQLUpdate("objects", array("ID"=>$this->id, "DESCRIPTION"=>gg("sysdate")." ".gg("timenow"))); ');
 //addClassMethod($classname,'ChangeCondition',$ChangeCondition);
 addClassMethod($classname,'ChangeCondition','///');
 addClassMethod($classname,'Changetemp',$Changetemp);	 
+addClassMethod($classname,'updatetitle',$updatetitle);	 
 	 
 addClassMethod($classname,'sayweather','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayweather(); ');	 
 addClassMethod($classname,'sayforecast','include_once(DIR_MODULES . "yandexweather/yandexweather.class.php"); $yw = new yandexweather(); $yw->sayforecast(); ');	 
