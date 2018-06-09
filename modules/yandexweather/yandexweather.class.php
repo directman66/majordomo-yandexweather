@@ -1404,7 +1404,7 @@ return $condition;
 function get_props($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
-$sql='SELECT substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
+$sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
 $rec = SQLSelect($sql); 
 foreach ($rec as $prop)
 {
@@ -1436,7 +1436,7 @@ return $ar2;
 
 function get_id($prop)
 {
-$sql='SELECT id   FROM `objects`  WHERE TITLE ="'.$prop.'"';
+$sql='SELECT distinct id idFROM `objects`  WHERE TITLE ="'.$prop.'"';
 $rec = SQLSelect($sql); 
 return $rec[0][id];
 }
