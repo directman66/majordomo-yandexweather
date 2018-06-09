@@ -188,7 +188,7 @@ echo "<br>";
 if ($mycity==$cityid){
 echo "это мой город ".$mycity;
 echo "<br>"; 
-$objprops=get_props($fobjn);
+$objprops=get_props1($fobjn);
 foreach ($objprops as $value)
 { 
  sg($objmycity.'.'.$value,gg($fobjn.".".$value));
@@ -199,7 +199,7 @@ echo "<br>";
 }
 
 
-function get_props($obj)
+function get_props1($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
 $sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
