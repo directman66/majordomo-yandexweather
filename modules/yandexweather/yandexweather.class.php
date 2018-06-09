@@ -1061,8 +1061,8 @@ $condition1=getconditionrusincl($condition1eng);
 $condition2=getconditionrusincl($condition2eng);        
 $condition3=getconditionrusincl($condition3eng);        
 sg("yw_mycity.lastcondition",$conditioneng);
-sg("yw_mycity.lastconditionrus",$condition); 
-    
+sg("yw_mycity.conditionrus",$condition); 
+  
 sg("yw_mycity.condition1rus",$condition1) ;     
 sg("yw_mycity.condition2rus",$condition2) ;     
 sg("yw_mycity.condition3rus",$condition3) ;         
