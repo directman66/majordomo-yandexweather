@@ -11,7 +11,7 @@ $forecast_day=$cmd_rec['VALUE'];
 	
 	$properties=SQLSelect("SELECT * FROM `yaweather_cities` where `check`=1   ");
 
-sg('test.starline', 'start '.date());
+//sg('test.starline', 'start '.date());
 	
 
 	
