@@ -35,22 +35,45 @@
 <th>t°С</th>  
 <th>Обл.</th>  
 <th>Ветер, м/с</th>  
-<th>Нап.ветра</th>  
+
+ 
+ <th>Нап.ветра</th>  
 <th>Давл., мм</th>  
-<th>Влажн. %</th>  
+
+ 
+ <th>Влажн. %</th>  
 <th>УФ индекс</th>  
-<th>[#D1#]</th>  
+
+[#if FORECAST_DAY>=1#]   
+ <th>[#D1#]</th>  
 <th>&nbsp;</th>  
-<th>[#D2#]</th>  
+[#else#][#endif#] 
+
+[#if FORECAST_DAY>=2#]   
+ <th>[#D2#]</th>  
 <th>&nbsp;</th>  
+[#else#][#endif#] 
+
+[#if FORECAST_DAY>=3#]   
 <th>[#D3#]</th>  
 <th>&nbsp;</th>  
-<th>[#D4#]</th>  
+[#else#][#endif#] 
+
+ 
+ [#if FORECAST_DAY>=4#]  
+ <th>[#D4#]</th>  
 <th>&nbsp;</th>  
+[#else#][#endif#] 
+ 
+[#if FORECAST_DAY>=5#]  
 <th>[#D5#]</th>  
 <th>&nbsp;</th>  
+[#else#][#endif#] 
+ 
+[#if FORECAST_DAY>=6#]   
 <th>[#D6#]</th>  
 <th>&nbsp;</th>  
+[#else#][#endif#] 
 
 [#if FORECAST_DAY>=7#]  
  <th>[#D7#]</th>  
@@ -139,7 +162,7 @@
   [#endif#]
  </td>  
 
-
+[#if FORECAST_DAY>=1#]  
  <td style="vertical-align:middle">
   [#if forecast_1_day_temp_avg!=""#]
    [#forecast_1_day_temp_avg#]°
@@ -155,7 +178,10 @@
    &nbsp;
   [#endif#]
  </td>  
+[#else#][#endif#] 
  
+ 
+[#if FORECAST_DAY>=2#]   
   <td style="vertical-align:middle">
   [#if forecast_2_day_temp_avg!=""#]
    [#forecast_2_day_temp_avg#]°
@@ -164,6 +190,7 @@
   [#endif#]
  </td>  
  
+ 
   <td style="vertical-align:middle">
  [#if forecast_2_daycondition!=""#]
    <img src="../templates/yandexweather/img/skin/[#SKIN#]/[#forecast_2_daycondition#].png">
@@ -171,7 +198,10 @@
   [#else#]
   [#forecast_2_daycondition#]
   [#endif#]
+[#else#][#endif#]   
+
    
+[#if FORECAST_DAY>=3#]     
     <td style="vertical-align:middle">
   [#if forecast_3_day_temp_avg!=""#]
    [#forecast_3_day_temp_avg#]°
@@ -187,8 +217,11 @@
   [#else#]
   [#forecast_3_daycondition#]
   [#endif#]
+[#else#][#endif#]   
    
-    <td style="vertical-align:middle">
+    
+[#if FORECAST_DAY>=4#]   
+ <td style="vertical-align:middle">
   [#if forecast_4_day_temp_avg!=""#]
    [#forecast_4_day_temp_avg#]°
   [#else#]
@@ -203,8 +236,11 @@
   [#else#]
   [#forecast_4_daycondition#]
   [#endif#]
+[#else#][#endif#]   
  
-   <td style="vertical-align:middle">
+   
+ [#if FORECAST_DAY>=5#]  
+ <td style="vertical-align:middle">
   [#if forecast_5_day_temp_avg!=""#]
    [#forecast_5_day_temp_avg#]°
   [#else#]
@@ -219,9 +255,12 @@
   [#else#]
   [#forecast_5_daycondition#]
   [#endif#]
- </td>     
+ </td>   
+[#else#][#endif#] 
  
-  <td style="vertical-align:middle">
+ 
+[#if FORECAST_DAY>=6#]   
+ <td style="vertical-align:middle">
   [#if forecast_6_day_temp_avg!=""#]
    [#forecast_6_day_temp_avg#]°
   [#else#]
@@ -237,8 +276,9 @@
   [#forecast_6_daycondition#]
   [#endif#]
  </td>     
+[#else#][#endif#] 
  
-
+[#if FORECAST_DAY>=7#]  
    <td style="vertical-align:middle">
   [#if forecast_7_day_temp_avg!=""#]
    [#forecast_7_day_temp_avg#]°
@@ -255,6 +295,7 @@
   [#forecast_7_daycondition#]
   [#endif#]
  </td>     
+[#else#][#endif#] 
  
  <td>
    <a href="/panel/linkedobject.html?op=redirect&object=[#TITLE#]&sub=properties"  class="btn btn-default" title="Свойства объекта"><i class="glyphicon glyphicon-th"></i></a> 
