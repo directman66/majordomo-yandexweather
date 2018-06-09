@@ -154,7 +154,30 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['par
 
 
 
-
+//mycity	
+$objmycity='yw_mycity';
+//проверяем, нужен ли новый объект	
+//sql="select * from objects where class_id = (select id from classes where title = 'YandexWeather') and objects.TITLE='".$objmycity."'"	;
+//if (empty(SQLSelectOne(sql)['TITLE']))
+//    {
+addClassObject('YandexWeather',$objmycity);	
+    $new=1;
+//    } 	
+$mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
+$mycity=$mycity1['ID'];	
+sg($objmycity.'.cityID', $mycity);
+	
+if ($mycity==$cityid){
+$objprops=get_props($fobjn);
+foreach ($objprops as $value){ 
+	if (gg($objmycity.'.'.$value)<>gg($fobjn.".".$value));
+	sg($objmycity.'.'.$value,gg($fobjn.".".$value));
+				}	
+			}
+	
+	
+	
+	
 	
 }
 
