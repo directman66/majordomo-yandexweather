@@ -185,7 +185,8 @@ foreach ($objprops as $value){
 function get_props1($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
-$sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
+//$sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
+$sql='SELECT  substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%" group by substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1)';
 $rec = SQLSelect($sql); 
 foreach ($rec as $prop)
 {
