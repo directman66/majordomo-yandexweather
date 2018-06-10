@@ -908,7 +908,9 @@ $ee=$cmd_rec[\'VALUE\'];
  
 if (($ee=="1") && ($this->getProperty("condition")<>$lastcondition)) {
   say(" На улице ".$condition,2); 
-}}';
+}}
+sg("yw_mycity.lastcondition",$this->getProperty("condition"));
+';
 	 
 $Changetemp='
 require(DIR_MODULES."yandexweather/changetemp.php");';	 
