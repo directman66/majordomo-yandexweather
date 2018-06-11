@@ -197,6 +197,11 @@ $out['DUUID']=$cmd_rec['VALUE'];
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='ENABLE_EVENTS'");
 $out['ENABLE_EVENTS']=$cmd_rec['VALUE'];
+	
+	
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
+$out['MSG_LEVEL']=$cmd_rec['VALUE'];
+	
 //$out['ENABLE_EVENTS']=1;
 
 
@@ -296,12 +301,14 @@ $table_name='yaweather_cities';
 	 
  {
 global $enable_events;
+global $msg_level;	 
 
 $this->config['ENABLE_EVENTS']=$enable_events;	 
    $this->saveConfig();
 //   $this->redirect("?");
 
 $cmd_rec = SQLSelectOne("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+$cmd_rec = SQLSelectOne("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
  }
@@ -598,7 +605,12 @@ if ($WindSpeed<1) {
   $status.='Ветер очень! Очень сильный.';
 }
 $return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в секунду. ";
-say($return_full,2);
+	
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
+$msglevel=$cmd_rec['VALUE'];	
+
+	
+say($return_full,$msglevel);
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -753,8 +765,11 @@ $status .= 'Завтра ожидается ' . $w. " градусов цель�
 
 $condition=$this->getconditionrus(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
+$msglevel=$cmd_rec['VALUE'];	
 	
-say($status,2);
+say($status,$msglevel);
 }
 	
 	
@@ -1368,6 +1383,10 @@ SQLInsert('yaweather_config', $par);
 $par['parametr'] = 'FORECAST_DAY';
 $par['value'] = "3";		 
 SQLInsert('yaweather_config', $par);						
+
+$par['parametr'] = 'MSG_LEVEL';
+$par['value'] = "2";		 
+SQLInsert('yaweather_config', $par);		 
 		 
 		 
 $objmycity='yw_mycity';
