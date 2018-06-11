@@ -564,10 +564,14 @@ if ($callback == "Callback_yandexweather_widget1")
 $url=$params[\'url\'];
 $w=$params[\'w\'];
 $h=$params[\'h\'];
-if ($url==""){
- $url='https://yandex.ru/pogoda/yekaterinburg/details?from=serp_title';
+
+$mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
+$mycityid=$mycity1['ID'];	
+
+
+ $url=\'https://yandex.ru/pogoda/'.$mycityid.'/details?from=serp_title\';
  
-}
+
 if ($w==""){$w=200;}
 if ($h==""){$h=900;}
 
