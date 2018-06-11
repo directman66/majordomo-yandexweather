@@ -19,9 +19,9 @@
 
 <div class="form-group">
  <div class="controls">
- <label>
+ <label>Уведомлять  об изменении погоды:&nbsp;&nbsp;
  <input type="checkbox" name="enable_events" value="1"[#if ENABLE_EVENTS="1"#] checked[#endif#]> 
-Уведомлять  об изменении погоды</label>
+</label>
  </div>
 </div>
 
@@ -29,7 +29,7 @@
 				
 <label class="control-label">
 Уровень сообщений ($MSG_LEVEL):
- </label>	
+ 
  <div class="controls">
 		<select name="msg_level" class="input span2">
 			<option[#if MSG_LEVEL=""||MSG_LEVEL="0"#] selected[#endif#]>0
@@ -44,6 +44,7 @@
 			<option[#if MSG_LEVEL="9"#] selected[#endif#]>9						    
 			<option[#if MSG_LEVEL="10"#] selected[#endif#]>10						    						    
 		 </select>  
+</label>					
  </div>				
 
 
