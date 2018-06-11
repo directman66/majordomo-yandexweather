@@ -536,16 +536,12 @@ SQLUpdate('yaweather_cities',$rec);
 	
  function tlg_yandex() {
 	 
-$rec=SQLSelectOne("SELECT max(ID)+1 id FROM tlg_cmd " );
-  $cmdid= $rec['id'];
-	 
-	 
-	 
+ 
 	 
 $code='
 $option = array( array(
 $this->buildInlineKeyboardButton($text="Текущая","","Callback_yandexweather_saynow",""),
-$this->buildInlineKeyboardButton($text="Прогзнос","","Callback_yandexweather_sayforecast",""),                      
+$this->buildInlineKeyboardButton($text="Прогноз","","Callback_yandexweather_sayforecast",""),                      
 $this->buildInlineKeyboardButton($text="Виджет","","Callback_yandexweather_widget1","")
 ) );
 
@@ -554,14 +550,27 @@ $content = array(\'chat_id\' => $chat_id, \'text\' => "Погода Яндекс
 $this->sendContent($content);
 
 ';
-
+	 
+$code1='
+include_once(DIR_MODULES . "yandexweather/yandexweather.class.php");
+ $yw = new yandexweather();
+if ($callback == "Callback_yandexweather_saynow")
+{ $yw->sayweather();  }
+if ($callback == "Callback_yandexweather_sayforecast")
+{ $yw->sayforecast();  }
+if ($callback == "Callback_yandexweather_widget1")
+{}
+';	 
 	 
 	 
 $rec=SQLSelect("SELECT *  FROM tlg_cmd  where TITLE='Погода Яндекс'" );
  
   if  (count($rec)==0 ){
 	  
-	 
+
+$rec=SQLSelectOne("SELECT max(ID)+1 id FROM tlg_cmd " );
+  $cmdid= $rec['id'];
+	  
 $par=array();		 
 $par['ID'] = $cmdid;
 $par['TITLE'] = 'Погода Яндекс';		 		 
@@ -572,6 +581,19 @@ $par['CONDITION'] = 1;
 $par['PRIORITY'] = 0;		 		 	 	 	 
 $par['CODE'] = $code;		 		 	 	 	 	 
 SQLInsert('tlg_cmd', $par);						
+
+	  
+$rec=SQLSelectOne("SELECT max(ID)+1 id FROM tlg_event" );
+  $eventid= $rec['id'];
+	 
+$par=array();		 
+$par['ID'] = $eventid;
+$par['TITLE'] = 'yw_callback';		 		 
+$par['DESCRIPTION'] = 'Ветка модуля Погоды Яндекс';		 		 	 
+$par['TYPE_EVENT'] = 9;		 		 	 	 
+$par['ENABLE'] = 1;		 		 	 	 	 
+$par['CODE'] = $code1;		 		 	 	 	 	 
+SQLInsert('tlg_event', $par);						
 	 
 	 
 }	}
