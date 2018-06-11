@@ -576,7 +576,7 @@ if ($w==""){$w=200;}
 if ($h==""){$h=900;}
 
 $save_to="./cms/cached/screen.png"; // куда сохранять
-    unlink($save_to);}
+    unlink($save_to);
 $cmd=\'xvfb-run -a -s "-screen 0 1024x768x24" wkhtmltoimage --crop-x 15 --crop-y 180 --crop-w 882 --crop-h 437 \'.$url.\' \'.$save_to;
 // echo $cmd;
 $output = shell_exec($cmd);
@@ -593,9 +593,7 @@ cd wkhtmltox/bin/
 sudo mv wkhtmltopdf  /usr/bin/wkhtmltopdf
 sudo mv wkhtmltoimage  /usr/bin/wkhtmltoimage";
 $telegram_module->sendMessageToAll($text);
-}
-
-}
+}}
 ';	 
 	 
 	 
