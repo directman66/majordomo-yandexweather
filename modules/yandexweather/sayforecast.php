@@ -1,7 +1,12 @@
 <?php	
+//require(DIR_MODULES."yandexweather/ywext.inc.php");
+//include_once(DIR_MODULES."yandexweather/ywext.inc.php");
+include(DIR_MODULES."yandexweather/ywext.inc.php");
 //$text=gettextforecast_long();
 
-$condition=$this->getconditionrus(gg('yw_mycity.condition'));				
+//$condition=$this->getconditionrus(gg('yw_mycity.condition'));	
+$condition=getconditionrusincl(gg('yw_mycity.condition'));	
+//getconditionrusincl			
 //$condition=gg('yw_mycity.conditionrus');				
 	
 	
@@ -119,24 +124,23 @@ if (timeBetween("01:00", "10:00")) {
     $status .= "Сегодня утром ожидается ";
     $w = round(gg("yw_mycity.forecast_0_morning_temp_avg"));
 
-//$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_morningcondition'));				
+$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_morningcondition'));				
 } elseif (timeBetween("10:00", "14:00")) {
      $status .= "Сегодня днем ожидается ";
     $w = round(gg("yw_mycity.forecast_0_day_temp_avg"));
 
-//$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_daycondition'));			
+$condition=getconditionrusincl(gg('yw_mycity.forecast_0_daycondition'));			
     
 } elseif (timeBetween("14:00", "20:00")) {
      $status .= "Сегодня вечером ожидается ";
     $w = round(gg("yw_mycity.forecast_0_evening_temp_avg"));
 
-
-//$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_eveningcondition'));		
+$condition=getconditionrusincl(gg('yw_mycity.forecast_0_eveningcondition'));				
     
 } else {
      $status .= "Сегодня ночью ожидается ";
     $w = round(gg("yw_mycity.forecast_0_night_temp_avg")); 
-//$condition=$this->getconditionrus(gg('yw_mycity.forecast_0_nightcondition'));	
+$condition=getconditionrusincl(gg('yw_mycity.forecast_0_nightcondition'));	
 }
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
 $status .= $w ." градусов цельсия, " . $condition . ". ";
@@ -145,10 +149,13 @@ $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
 $status .= 'Завтра ожидается ' . $w. " градусов цельсия, ";
 
-//$condition=$this->getconditionrus(gg('yw_mycity.forecast_1_daycondition'));
+$condition=getconditionrusincl(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
 $msglevel=$cmd_rec['VALUE'];	
 	
 say($status,$msglevel);
+
+
+
