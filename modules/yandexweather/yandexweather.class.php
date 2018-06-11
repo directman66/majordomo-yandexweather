@@ -539,6 +539,9 @@ SQLUpdate('yaweather_cities',$rec);
 $rec=SQLSelectOne("SELECT max(ID)+1 id FROM tlg_cmd " );
   $cmdid= $rec['id'];
 	 
+	 
+	 
+	 
 $code='
 $option = array( array(
 $this->buildInlineKeyboardButton($text="Текущая","","Callback_yandexweather_saynow",""),
@@ -546,13 +549,17 @@ $this->buildInlineKeyboardButton($text="Прогзнос","","Callback_yandexwea
 $this->buildInlineKeyboardButton($text="Виджет","","Callback_yandexweather_widget1","")
 ) );
 
-
 $keyb = $this->buildInlineKeyBoard($option);
 $content = array(\'chat_id\' => $chat_id, \'text\' => "Погода Яндекс:", \'reply_markup\' => $keyb);
 $this->sendContent($content);
 
 ';
+
 	 
+	 
+$rec=SQLSelect("SELECT * id FROM tlg_cmd  where TITLE='Погода Яндекс'" );
+ 
+  if  (count($data)==0 ){
 	 
 $par=array();		 
 $par['ID'] = $cmdid;
@@ -566,7 +573,7 @@ $par['CODE'] = $code;
 SQLInsert('tlg_cmd', $par);						
 	 
 	 
-}	
+}	}
 	
 ////////////////////////////////////////
 ////////////////////////////////////////
