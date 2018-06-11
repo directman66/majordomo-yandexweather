@@ -559,7 +559,32 @@ if ($callback == "Callback_yandexweather_saynow")
 if ($callback == "Callback_yandexweather_sayforecast")
 { $yw->sayforecast();  }
 if ($callback == "Callback_yandexweather_widget1")
-{}
+{
+
+$url=$params[\'url\'];
+$w=$params[\'w\'];
+$h=$params[\'h\'];
+if ($url==""){
+ $url='https://yandex.ru/pogoda/yekaterinburg/details?from=serp_title';
+ 
+}
+if ($w==""){$w=200;}
+if ($h==""){$h=900;}
+
+//$save_to="./cached/screen.png"; // куда сохранять
+$save_to="/var/www/сms/cached/screen.png"; // куда сохранять
+if (file_exists($save_to)) {
+    unlink($save_to);}
+$cmd=\'xvfb-run -a -s "-screen 0 1024x768x24" wkhtmltoimage --crop-x 15 --crop-y 180 --crop-w 882 --crop-h 437 \'.$url.\' \'.$save_to;
+ echo $cmd;
+$output = shell_exec($cmd);
+
+include_once(DIR_MODULES . \'telegram/telegram.class.php\');
+$telegram_module = new telegram();
+$telegram_module->sendImageToAll($save_to);
+	
+	
+}
 ';	 
 	 
 	 
