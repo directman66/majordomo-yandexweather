@@ -559,7 +559,8 @@ $this->sendContent($content);
 	 
 $rec=SQLSelect("SELECT *  FROM tlg_cmd  where TITLE='Погода Яндекс'" );
  
-  if  (count($data)==0 ){
+  if  (count($rec)==0 ){
+	  
 	 
 $par=array();		 
 $par['ID'] = $cmdid;
