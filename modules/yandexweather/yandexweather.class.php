@@ -557,7 +557,7 @@ $this->sendContent($content);
 
 	 
 	 
-$rec=SQLSelect("SELECT * id FROM tlg_cmd  where TITLE='Погода Яндекс'" );
+$rec=SQLSelect("SELECT *  FROM tlg_cmd  where TITLE='Погода Яндекс'" );
  
   if  (count($data)==0 ){
 	 
