@@ -1,3 +1,4 @@
+<?php
 $text='Сегодня хорошая погода';
 $return_full="";
 $status="";
