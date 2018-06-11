@@ -375,6 +375,12 @@ cm('yw_mycity.updatetitle');
             $this->sayforecast();
         }
 	
+if ($this->view_mode=='tlg_yandex')
+        {
+            $this->tlg_yandex();
+        }	
+
+	
         if ($this->view_mode=='alarmweather')
         {
             $this->alarmweather();
@@ -527,6 +533,41 @@ SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayforecast"));
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
 }
+	
+ function tlg_yandex() {
+	 
+$rec=SQLSelectOne("SELECT max(ID)+1 id FROM tlg_cmd " );
+  $cmdid= $rec['id'];
+	 
+$code='
+$option = array( array(
+$this->buildInlineKeyboardButton($text="Текущая","","Callback_yandexweather_saynow",""),
+$this->buildInlineKeyboardButton($text="Прогзнос","","Callback_yandexweather_sayforecast",""),                      
+$this->buildInlineKeyboardButton($text="Виджет","","Callback_yandexweather_widget1","")
+) );
+
+
+$keyb = $this->buildInlineKeyBoard($option);
+$content = array(\'chat_id\' => $chat_id, \'text\' => "Погода Яндекс:", \'reply_markup\' => $keyb);
+$this->sendContent($content);
+
+';
+	 
+	 
+$par=array();		 
+$par['ID'] = $cmdid;
+$par['TITLE'] = 'Погода Яндекс';		 		 
+$par['DESCRIPTION'] = 'Ветка модуля Погоды Яндекс';		 		 	 
+$par['ACCESS'] = 3;		 		 	 	 
+$par['SHOW_MODE'] = 1;		 		 	 	 	 
+$par['CONDITION'] = 1;		 		 	 	 	 
+$par['PRIORITY'] = 0;		 		 	 	 	 
+$par['CODE'] = $code;		 		 	 	 	 	 
+SQLInsert('tlg_cmd', $par);						
+	 
+	 
+}	
+	
 ////////////////////////////////////////
 ////////////////////////////////////////
 ////////////////////////////////////////	
