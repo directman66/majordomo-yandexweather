@@ -565,11 +565,11 @@ $url=$params[\'url\'];
 $w=$params[\'w\'];
 $h=$params[\'h\'];
 
-$mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
-$mycityid=$mycity1['ID'];	
+$mycity1=SQLSelectOne("SELECT ID FROM yaweather_cities where mycity=1 ");
+$mycityid=$mycity1[\'ID\'];	
 
 
- $url=\'https://yandex.ru/pogoda/'.$mycityid.'/details?from=serp_title\';
+ $url="https://yandex.ru/pogoda/".$mycityid."/details?from=serp_title";
  
 
 if ($w==""){$w=200;}
