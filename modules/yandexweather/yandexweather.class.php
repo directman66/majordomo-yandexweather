@@ -797,10 +797,14 @@ sg("yw_mycity.condition3rus",$condition3) ;
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'ENABLE_EVENTS\'");
 $ee=$cmd_rec[\'VALUE\'];
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
+$msglevel=$cmd_rec['VALUE'];
  
 if (($ee=="1") && ($this->getProperty("condition")<>$lastcondition)) {
-  say(" На улице ".$condition,2); 
-}}
+  say(" На улице ".$condition,$msglevel); 
+}
+}
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
 ';
 	 
