@@ -1278,7 +1278,7 @@ $par['value'] = "2";
 SQLInsert('yaweather_config', $par);		 
 		 
 $par['parametr'] = 'LASTCONDITION';
-$par['value'] = "";		 
+$par['value'] = "0";		 
 SQLInsert('yaweather_config', $par);		 
 
 		 
