@@ -788,7 +788,7 @@ $condition3eng=gg("yw_mycity.forecast_2_daycondition");
 $condition1=getconditionrusincl($condition1eng);    
 $condition2=getconditionrusincl($condition2eng);        
 $condition3=getconditionrusincl($condition3eng);        
-sg("yw_mycity.lastcondition",$conditioneng);
+
 sg("yw_mycity.conditionrus",$condition); 
     
 sg("yw_mycity.condition1rus",$condition1) ;     
@@ -797,15 +797,23 @@ sg("yw_mycity.condition3rus",$condition3) ;
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'ENABLE_EVENTS\'");
 $ee=$cmd_rec[\'VALUE\'];
-
-$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
-$msglevel=$cmd_rec['VALUE'];
  
-if (($ee=="1") && ($this->getProperty("condition")<>$lastcondition)) {
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'MSG_LEVEL\'");
+$msglevel=$cmd_rec[\'VALUE\'];
+ 
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'LASTCONDITION\'");
+$lastcondition=$cmd_rec[\'VALUE\'];
+
+ 
+//say($ee.":".$this->getProperty("condition").':'.$lastcondition,$msglevel); 
+
+ if (($ee=="1") && ($this->getProperty("condition")!=$lastcondition)) {
+   
   say(" На улице ".$condition,$msglevel); 
 }
 }
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
+$cmd_rec = SQLSelectOne("update yaweather_config set value=".$this->getProperty("condition")." where parametr=\'LASTCONDITION\'");		   	   	   	
 ';
 	 
 $Changetemp='
@@ -1269,6 +1277,10 @@ $par['parametr'] = 'MSG_LEVEL';
 $par['value'] = "2";		 
 SQLInsert('yaweather_config', $par);		 
 		 
+$par['parametr'] = 'LASTCONDITION';
+$par['value'] = "";		 
+SQLInsert('yaweather_config', $par);		 
+
 		 
 $objmycity='yw_mycity';
 addClassObject('YandexWeather',$objmycity);	 	 
