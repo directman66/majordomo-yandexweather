@@ -813,7 +813,7 @@ $lastcondition=$cmd_rec[\'VALUE\'];
 }
 }
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
-$cmd_rec = SQLSelectOne("update yaweather_config set value=".$this->getProperty("condition")." where parametr=\'LASTCONDITION\'");		   	   	   	
+$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$this->getProperty("condition")."\' where parametr=\'LASTCONDITION\'");		   	   	   	
 ';
 	 
 $Changetemp='
