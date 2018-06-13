@@ -805,7 +805,7 @@ $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'LAS
 $lastcondition=$cmd_rec[\'VALUE\'];
 
  
-//say($ee.":".$this->getProperty("condition").':'.$lastcondition,$msglevel); 
+//say($ee.":".$this->getProperty("condition").\':\'.$lastcondition,$msglevel); 
 
  if (($ee=="1") && ($this->getProperty("condition")!=$lastcondition)) {
    
