@@ -543,8 +543,8 @@ $option = array( array(
 $this->buildInlineKeyboardButton($text="Текущая","","Callback_yandexweather_saynow",""),
 $this->buildInlineKeyboardButton($text="Прогноз","","Callback_yandexweather_sayforecast",""),                      
 $this->buildInlineKeyboardButton($text="Виджет с сайта","","Callback_yandexweather_widget1",""),
-$this->buildInlineKeyboardButton($text="Виджет локальный","","Callback_yandexweather_widget2",""),
-$this->buildInlineKeyboardButton($text="Виджет текстовый","","Callback_yandexweather_widget3","")
+//$this->buildInlineKeyboardButton($text="Виджет локальный","","Callback_yandexweather_widget2",""),
+//$this->buildInlineKeyboardButton($text="Виджет текстовый","","Callback_yandexweather_widget3","")
 ) );
 
 $keyb = $this->buildInlineKeyBoard($option);
