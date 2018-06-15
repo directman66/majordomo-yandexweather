@@ -806,7 +806,7 @@ $lastcondition=$cmd_rec[\'VALUE\'];
 
  
 //say($ee.":".$this->getProperty("condition").\':\'.$lastcondition,$msglevel); 
-//say($ee.":".getObject(\'yw_mycity\')->getProperty(\'condition\').':'.$lastcondition,$msglevel);  
+//say($ee.":".getObject(\'yw_mycity\')->getProperty(\'condition\').\':\'.$lastcondition,$msglevel);  
 // say($ee.":".$params[\'NEW_VALUE\'].\':\'.$lastcondition,$msglevel);  
  //getObject(\'yw_mycity\')->getProperty(\'condition\');
 
