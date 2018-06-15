@@ -805,15 +805,21 @@ $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr=\'LAS
 $lastcondition=$cmd_rec[\'VALUE\'];
 
  
-//say($ee.":".$this->getProperty("condition").\':\'.$lastcondition,$msglevel); 
+//say($ee.":".$this->getProperty("condition").':'.$lastcondition,$msglevel); 
+//say($ee.":".getObject(\'yw_mycity\')->getProperty(\'condition\').':'.$lastcondition,$msglevel);  
+// say($ee.":".$params[\'NEW_VALUE\'].\':\'.$lastcondition,$msglevel);  
+ //getObject(\'yw_mycity\')->getProperty(\'condition\');
 
- if (($ee=="1") && ($this->getProperty("condition")!=$lastcondition)) {
+ //if (($ee=="1") && ($this->getProperty("condition")!=$lastcondition)) {
+if (($ee=="1") && ($params[\'NEW_VALUE\']!=$lastcondition)) { 
    
   say(" На улице ".$condition,$msglevel); 
 }
 }
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
-$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$this->getProperty("condition")."\' where parametr=\'LASTCONDITION\'");		   	   	   	
+//$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$this->getProperty("condition")."\' where parametr=\'LASTCONDITION\'");		   	   	   	
+$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$params[\'NEW_VALUE\']."\' where parametr=\'LASTCONDITION\'");	
+
 ';
 	 
 $Changetemp='
