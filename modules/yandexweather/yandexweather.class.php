@@ -249,10 +249,10 @@ global $forecast_day;
 //$rec['DEVICEID']=$duuid;	 	 
 //$rec['EVERY']=$duuid;	 	 	
 //SQLUpdate('yaweather_config', $rec); // update	 	
-$cmd_rec = SQLSelect("update yaweather_config set value='$duuid' where parametr='DUUID'");
-$cmd_rec = SQLSelect("update yaweather_config set value='$every' where parametr='EVERY'");
-$cmd_rec = SQLSelect("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
-$cmd_rec = SQLSelect("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
+SQLSelect("update yaweather_config set value='$duuid' where parametr='DUUID'");
+SQLSelect("update yaweather_config set value='$every' where parametr='EVERY'");
+SQLSelect("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
+SQLSelect("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
 
 	
 
@@ -307,8 +307,8 @@ $this->config['ENABLE_EVENTS']=$enable_events;
    $this->saveConfig();
 //   $this->redirect("?");
 
-$cmd_rec = SQLSelect("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
-$cmd_rec = SQLSelect("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
+SQLSelect("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+SQLSelect("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
  }
@@ -434,8 +434,8 @@ $this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
 	//$this->saveConfig();
-$cmd_rec = SQLSelect("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
-$cmd_rec = SQLSelect("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
+SQLSelect("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
+SQLSelect("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
 
    } 
   }
@@ -651,11 +651,11 @@ function sayforecast() {
 	
 	
  function config_mycity($id) {
-$rec=SQLSelect("update yaweather_cities set mycity=0");
-SQLExec($rec);
+SQLSelect("update yaweather_cities set mycity=0");
+//SQLExec($rec);
 	 
-$rec=SQLSelect("update yaweather_cities set mycity=1 WHERE ID=".$id );
-SQLExec($rec);
+SQLSelect("update yaweather_cities set mycity=1 WHERE ID=".$id );
+//SQLExec($rec);
 	 
 } 	
 	
