@@ -249,10 +249,10 @@ global $forecast_day;
 //$rec['DEVICEID']=$duuid;	 	 
 //$rec['EVERY']=$duuid;	 	 	
 //SQLUpdate('yaweather_config', $rec); // update	 	
-SQLSelect("update yaweather_config set value='$duuid' where parametr='DUUID'");
-SQLSelect("update yaweather_config set value='$every' where parametr='EVERY'");
-SQLSelect("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
-SQLSelect("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
+SQLexec("update yaweather_config set value='$duuid' where parametr='DUUID'");
+SQLexec("update yaweather_config set value='$every' where parametr='EVERY'");
+SQLexec("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
+SQLexec("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
 
 	
 
