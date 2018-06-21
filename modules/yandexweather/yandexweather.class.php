@@ -307,8 +307,8 @@ $this->config['ENABLE_EVENTS']=$enable_events;
    $this->saveConfig();
 //   $this->redirect("?");
 
-SQLSelect("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
-SQLSelect("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
+SQLexec("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+SQLexec("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
  }
