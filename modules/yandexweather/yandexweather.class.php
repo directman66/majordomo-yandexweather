@@ -249,10 +249,10 @@ global $forecast_day;
 //$rec['DEVICEID']=$duuid;	 	 
 //$rec['EVERY']=$duuid;	 	 	
 //SQLUpdate('yaweather_config', $rec); // update	 	
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$duuid' where parametr='DUUID'");
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$every' where parametr='EVERY'");
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
+$cmd_rec = SQLSelect("update yaweather_config set value='$duuid' where parametr='DUUID'");
+$cmd_rec = SQLSelect("update yaweather_config set value='$every' where parametr='EVERY'");
+$cmd_rec = SQLSelect("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
+$cmd_rec = SQLSelect("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
 
 	
 
@@ -307,8 +307,8 @@ $this->config['ENABLE_EVENTS']=$enable_events;
    $this->saveConfig();
 //   $this->redirect("?");
 
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
-$cmd_rec = SQLSelectOne("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
+$cmd_rec = SQLSelect("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+$cmd_rec = SQLSelect("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
  }
@@ -434,8 +434,8 @@ $this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
 	//$this->saveConfig();
-$cmd_rec = SQLSelectOne("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
-$cmd_rec = SQLSelectOne("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
+$cmd_rec = SQLSelect("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
+$cmd_rec = SQLSelect("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
 
    } 
   }
@@ -651,10 +651,10 @@ function sayforecast() {
 	
 	
  function config_mycity($id) {
-$rec=SQLSelectOne("update yaweather_cities set mycity=0");
+$rec=SQLSelect("update yaweather_cities set mycity=0");
 SQLExec($rec);
 	 
-$rec=SQLSelectOne("update yaweather_cities set mycity=1 WHERE ID=".$id );
+$rec=SQLSelect("update yaweather_cities set mycity=1 WHERE ID=".$id );
 SQLExec($rec);
 	 
 } 	
@@ -818,7 +818,7 @@ if (($ee=="1") && ($params[\'NEW_VALUE\']!=$lastcondition)) {
 }
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
 //$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$this->getProperty("condition")."\' where parametr=\'LASTCONDITION\'");		   	   	   	
-$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$params[\'NEW_VALUE\']."\' where parametr=\'LASTCONDITION\'");	
+$cmd_rec = SQLSelect("update yaweather_config set value=\'".$params[\'NEW_VALUE\']."\' where parametr=\'LASTCONDITION\'");	
 
 ';
 	 
