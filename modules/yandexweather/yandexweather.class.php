@@ -818,7 +818,7 @@ if (($ee=="1") && ($params[\'NEW_VALUE\']!=$lastcondition)) {
 }
 sg("yw_mycity.lastcondition",$this->getProperty("condition"));
 //$cmd_rec = SQLSelectOne("update yaweather_config set value=\'".$this->getProperty("condition")."\' where parametr=\'LASTCONDITION\'");		   	   	   	
-$cmd_rec = SQLSelect("update yaweather_config set value=\'".$params[\'NEW_VALUE\']."\' where parametr=\'LASTCONDITION\'");	
+$cmd_rec = SQLexec("update yaweather_config set value=\'".$params[\'NEW_VALUE\']."\' where parametr=\'LASTCONDITION\'");	
 
 ';
 	 
