@@ -184,7 +184,7 @@ foreach ($objprops as $value){
 	
 }
 
-
+/*
 function get_props1($obj)
 {
 //$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
@@ -198,3 +198,5 @@ $ar2[] = $prop['title'];
 }
 return $ar2;
 }
+
+*/
