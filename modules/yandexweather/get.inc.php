@@ -18,10 +18,10 @@ $forecast_day=$cmd_rec['VALUE'];
 	
 foreach ($properties as $did)
 {
- 
+header('Content-type: text/json'); 
 $didr= $did['ID'];
 //echo "<br>идем по циклу $didr<br>"; 
-sg('test.vm', $didr);
+//sg('test.vm', $didr);
 $opts = array(
   'http'=>array(
     'method'=>"GET",
@@ -52,7 +52,7 @@ if (isset($cityid)) {$file = file_get_contents('https://api.weather.yandex.ru/v1
 if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
  
-header('Content-type: text/json');
+
 //echo gzdecode($file);
 $otvet=gzdecode($file);
 $data=json_decode($otvet,true);
