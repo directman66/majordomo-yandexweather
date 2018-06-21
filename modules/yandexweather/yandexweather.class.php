@@ -434,8 +434,8 @@ $this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
 	//$this->saveConfig();
-SQLSelect("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
-SQLSelect("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
+SQLexec("update yaweather_config set value=UNIX_TIMESTAMP() where parametr='LASTCYCLE_TS'");		   
+SQLexec("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'");		   	   
 
    } 
   }
