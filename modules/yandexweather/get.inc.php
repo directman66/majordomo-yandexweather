@@ -18,7 +18,7 @@ $forecast_day=$cmd_rec['VALUE'];
 	
 foreach ($properties as $did)
 {
-header('Content-type: text/json'); 
+//header('Content-type: text/json'); 
 $didr= $did['ID'];
 //echo "<br>идем по циклу $didr<br>"; 
 //sg('test.vm', $didr);
@@ -47,11 +47,15 @@ $latlon=$did['latlon'];
 //region="11162" id="28440
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=54&lang=ru', false, $context);
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid=53&lang=ru', false, $context);
-$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);	
-if (isset($cityid)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);}
-if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
+//$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);	
+//if (isset($cityid)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);}
+//if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
  
+if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
+elseif {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);}
+	
+	
 
 //echo gzdecode($file);
 $otvet=gzdecode($file);
