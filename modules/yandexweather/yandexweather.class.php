@@ -1248,6 +1248,40 @@ $rec['country'] = 'Россия';
             $rec['latlon'] = '';						
 $rec['mycity'] = '0';		            
             SQLInsert('yaweather_cities', $rec);				
+////////////////
+$rec['country'] = 'Россия';
+            $rec['cityname'] = 'Керчь';
+            $rec['part'] = 'Республика Крым';
+            $rec['ID'] = 11464;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+$rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);				
+
+		 
+$rec['country'] = 'Северная Осетия — Алания';
+            $rec['cityname'] = 'Моздок';
+            $rec['part'] = 'Моздокский район';
+            $rec['ID'] = 11022;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+$rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);				
+
+		 
+		 
+		 $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Тольяти';
+            $rec['part'] = 'Самарская область';
+            $rec['ID'] = 240;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+$rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);				
+
+		 
+ 
+				
 
 
 		 
