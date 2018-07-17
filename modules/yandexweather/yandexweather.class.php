@@ -1259,9 +1259,9 @@ $rec['mycity'] = '0';
             SQLInsert('yaweather_cities', $rec);				
 
 		 
-$rec['country'] = 'Северная Осетия — Алания';
+$rec['country'] = 'Россия';
             $rec['cityname'] = 'Моздок';
-            $rec['part'] = 'Моздокский район';
+            $rec['part'] = 'Северная Осетия — Алания';
             $rec['ID'] = 11022;
             $rec['check'] = '0';
             $rec['latlon'] = '';						
@@ -1279,10 +1279,40 @@ $rec['mycity'] = '0';
 $rec['mycity'] = '0';		            
             SQLInsert('yaweather_cities', $rec);				
 
+	
+       	 $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Домодедово';
+            $rec['part'] = 'Московская область';
+            $rec['ID'] = 10725;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+$rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);	
 		 
+	    $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Оха';
+            $rec['part'] = 'Сахалинская область';
+            $rec['ID'] = 11447;
+            $rec['check'] = '0';
+            $rec['latlon'] = 'lat=53.58991&lon=142.95313';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);	
+		 
+	    $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Балашиха';
+            $rec['part'] = 'Московская область';
+            $rec['ID'] = 10716;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);	
  
 				
-
+////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////////////////////////////
+		 ////////////////////////////////////////////////////////////////
 
 		 
 $par['parametr'] = 'EVERY';
