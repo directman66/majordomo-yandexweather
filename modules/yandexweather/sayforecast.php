@@ -151,6 +151,7 @@ $status .= 'Завтра ожидается ' . $w. " градусов цель�
 
 $condition=getconditionrusincl(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
+sg('yw_now',$status);
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
 $msglevel=$cmd_rec['VALUE'];	
