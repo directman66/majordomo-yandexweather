@@ -77,5 +77,6 @@ $return_full.=$status." ".round(gg("yw_mycity.wind_speed"))." метра в се
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
 $msglevel=$cmd_rec['VALUE'];	
 
+sg('yw_forecast',$status);
 	
 say($return_full,$msglevel);
