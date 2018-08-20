@@ -1490,7 +1490,7 @@ return $ar2;
 
 function get_id($prop)
 {
-$sql='SELECT distinct id idFROM `objects`  WHERE TITLE ="'.$prop.'"';
+$sql='SELECT distinct id id FROM `objects`  WHERE TITLE ="'.$prop.'"';
 $rec = SQLSelect($sql); 
 return $rec[0][id];
 }
