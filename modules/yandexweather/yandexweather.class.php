@@ -811,7 +811,7 @@ $lastcondition=$cmd_rec[\'VALUE\'];
  //getObject(\'yw_mycity\')->getProperty(\'condition\');
 
  //if (($ee=="1") && ($this->getProperty("condition")!=$lastcondition)) {
-if (($ee=="1") && ($params[\'NEW_VALUE\']!=$lastcondition) && ($condition!="0") { 
+if (($ee=="1") && ($params[\'NEW_VALUE\']!=$lastcondition) && ($condition!="0")) { 
    
   say(" На улице ".$condition,$msglevel); 
 }
