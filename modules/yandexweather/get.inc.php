@@ -68,13 +68,14 @@ $src=$data['info'];
 //echo $objn;
 //проверяем, нужен ли новый объект	
 $new=0;	
+$error='0';
 //sql="select * from objects where class_id = (select id from classes where title = 'YandexWeather') and objects.TITLE='".$objn."'"	;
 //if (empty(SQLSelectOne(sql)['TITLE']))
 //    {
 if ($objn<>"") {
 addClassObject('YandexWeather',$objn);
 $new=1;
-} 
+} else $error=1; 
 
 ///////////////////////////
 //sg( 'test.vm',$otvet);
@@ -82,7 +83,7 @@ $src=$data['info'];
 sg( $objn.'.now',gg('sysdate').' '.gg('timenow')); 
 //echo time();
 //echo "<br>"; 
-	
+if ($error==0){	
 foreach ($src as $key=> $value ) { 
 if (is_array($value)) {
 foreach ($value as $key2=> $value2 ) {
@@ -99,10 +100,11 @@ else
 //echo  $objn.'.'.$key.":".$value;  
 //echo "<br>"; 
 }
-}     
+} }    
 ////////////////////////////////
 //////////////geo_object
 $src=$data['geo_object'];
+if ($error==0){
 foreach ($src as $key=> $value ) {
 if (is_array($value)) {
 foreach ($value as $key2=> $value2 ) {
@@ -118,15 +120,19 @@ else
 	sg( $objn.'.'.$key,$value); 
 ///	echo $objn.'.'.$key.":".$value;  
 }     
-}	
+}	}
 	
 ////////////////////////////////	
 /////fact
 ///////////////////////////////////////////////////	
 $src=$data['fact'];
+if ($error==0){
 	foreach ($src as $key=> $value ) { 
-if (!is_array($value)){sg( $objn.'.'.$key,$value);} 
+if (!is_array($value)){sg( $objn.'.'.$key,$value);
+if (($key=='pressure_mm')&&($value=='')) $error=1;
+} 
 
+}
 }
 ///////////////////////////////////////////////////	///////////////////////////////////////////////////	
 ///////////////////////////////////////////////////	
@@ -135,6 +141,7 @@ if (!is_array($value)){sg( $objn.'.'.$key,$value);}
 //////////////
 	$fobjn= $objn;
 	$src=$data['forecasts'][0]['parts'];
+if ($error==0){
 foreach ($data['forecasts'] as $day=> $value ) 
 { 
 foreach ($data['forecasts'][$day]['parts'] as $key=> $value ) {    
@@ -152,11 +159,9 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'_humidity',$data['forecasts'][$day]['p
 sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['parts'][$key]['condition']);
 sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']); 
 
-
-	
 }
 }
-}
+}}
 //////////////////////////////
 
 
@@ -174,7 +179,7 @@ $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
 sg($objmycity.'.cityID', $mycity);
 	
-if (($mycity==$cityid)&&(gg($fobjn.".pressure_mm")<>'0')){
+if (($mycity==$cityid)&&($error=='0')){
 $objprops=get_props($fobjn);
 foreach ($objprops as $value){ 
 	if (gg($objmycity.'.'.$value)<>gg($fobjn.".".$value));
