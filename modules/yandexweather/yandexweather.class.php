@@ -651,9 +651,12 @@ function sayforecast() {
 	
 	
  function config_mycity($id=213) {
-SQLExec("update yaweather_cities set mycity=0");
+
 //SQLExec($rec);
-if ($id<>"") SQLExec("update yaweather_cities set mycity=1 WHERE ID=".$id );
+if ($id<>"") {
+SQLExec("update yaweather_cities set mycity=0");
+SQLExec("update yaweather_cities set mycity=1 WHERE ID=".$id );
+}
 //SQLExec($rec);
 	 
 } 	
