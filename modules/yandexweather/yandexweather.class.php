@@ -650,7 +650,7 @@ function sayforecast() {
 }
 	
 	
- function config_mycity($id) {
+ function config_mycity($id=213) {
 SQLExec("update yaweather_cities set mycity=0");
 //SQLExec($rec);
 	 
