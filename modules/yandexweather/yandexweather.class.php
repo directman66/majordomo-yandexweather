@@ -1346,7 +1346,43 @@ $rec['mycity'] = '0';
             $rec['latlon'] = '';						
             $rec['mycity'] = '0';		            
             SQLInsert('yaweather_cities', $rec);
- 
+
+		     $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Якутск';
+            $rec['part'] = 'Республика Саха';
+            $rec['ID'] = 74;
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);
+		 
+		 	     $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Азов';
+            $rec['part'] = 'Ростовская область';
+            $rec['ID'] = '';
+            $rec['check'] = '0';
+            $rec['latlon'] = 'lat=47.110434&lon=39.394719';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);
+		 
+	 	     $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Лениногорск';
+            $rec['part'] = 'Республика Татарстан;
+            $rec['ID'] = '11126';
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);
+	    	     $rec['country'] = 'Россия';
+            $rec['cityname'] = 'Альметьевск';
+            $rec['part'] = 'Республика Татарстан;
+            $rec['ID'] = '11121';
+            $rec['check'] = '0';
+            $rec['latlon'] = '';						
+            $rec['mycity'] = '0';		            
+            SQLInsert('yaweather_cities', $rec);
+		 
+		 
 				
 ////////////////////////////////////////////////////////////////
 		 ////////////////////////////////////////////////////////////////
