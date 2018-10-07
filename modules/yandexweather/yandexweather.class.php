@@ -10,6 +10,9 @@
 */
 //
 //
+//ini_set('max_execution_time', '600');
+ini_set ('display_errors', 'off');
+
 class yandexweather extends module {
 /**
 *
