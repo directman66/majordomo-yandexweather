@@ -18,9 +18,9 @@ if($tempw >= 11 and $tempw <= 14) {
     $tempw=$tempw-10;
   }
     
-  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= градусов ; }
-  if($tempw == 1) { $tempcels= градус ; }
-  if($tempw >= 2 and $tempw <= 4) { $tempcels= градуса ; }
+  if($tempw == 0 or $tempw >= 5 and $tempw <= 9) { $tempcels= 'градусов' ; }
+  if($tempw == 1) { $tempcels= 'градус' ; }
+  if($tempw >= 2 and $tempw <= 4) { $tempcels= 'градуса' ; }
 }
 $tNew = abs((float)gg('yw_mycity.temp'));
 $status.='По данным метеослужб температура воздуха '.gg('yw_mycity.temp')." ".$tempcels." цельсия. ";
