@@ -179,7 +179,7 @@ $mycity1=SQLSelectOne("SELECT ID FROM `yaweather_cities` where `mycity`=1 ");
 $mycity=$mycity1['ID'];	
 sg($objmycity.'.cityID', $mycity);
 	
-if (($mycity==$cityid)&&($error=='0')){
+if (($mycity==$cityid)&&($error=='0')&&($fobjn<>"")){
 $objprops=get_props($fobjn);
 foreach ($objprops as $value){ 
 	if (gg($objmycity.'.'.$value)<>gg($fobjn.".".$value));
