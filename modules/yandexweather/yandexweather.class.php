@@ -339,7 +339,7 @@ SQLexec("update yaweather_config set value='$msg_level' where parametr='MSG_LEVE
    $this->config_edit($out, $this->id);
  }
  if ($this->view_mode=='config_check') {
-echo "echeck";
+//echo "echeck";
    $this->config_check($this->id);
  }
  if ($this->view_mode=='config_uncheck') {
