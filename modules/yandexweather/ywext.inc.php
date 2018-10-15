@@ -15,7 +15,11 @@ if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная �
 if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
 if ($conditioneng=="overcast-and-rain") {$condition="ливень";}	
 if ($conditioneng=="overcast-thunderstorms-with-rain") {$condition="гроза";}	
-if ($conditioneng=="cloudy-and-snow") {$condition="Облачно с прояснениями";}	
+if ($conditioneng=="cloudy-and-snow") {$condition="облачно, легкий снегопад";}	
+if ($conditioneng=="overcast-and-snow") {$condition="небольшой снег";}	
+if ($conditioneng=="cloudy-and-light-snow") {$condition="небольшой снегопад";}	
+if ($conditioneng=="cloudy-and-snow") {$condition="идет снег";}		
+	
 	
 	
 	
