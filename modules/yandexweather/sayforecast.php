@@ -155,8 +155,8 @@ sg('yw_now',$status);
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
 $msglevel=$cmd_rec['VALUE'];	
-	
-say($status,$msglevel);
+sg('yw_mycyty.forecasttext',$status);
+//say($status,$msglevel);
 
 
 
