@@ -148,7 +148,7 @@ foreach ($data['forecasts'][$day]['parts'] as $key=> $value ) {
 if  ($day<=$forecast_day)
 {
 
-
+sg( $fobjn.'.'."forecast_".$day."_date",date("d-m-Y", time()+3600*24*$day));
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_temp_avg',$data['forecasts'][$day]['parts'][$key]['temp_avg']);
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_speed',$data['forecasts'][$day]['parts'][$key]['wind_speed']);
 sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data['forecasts'][$day]['parts'][$key]['wind_gust']);
