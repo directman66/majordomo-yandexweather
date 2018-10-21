@@ -642,13 +642,15 @@ SQLInsert('tlg_event', $par);
 ////////////////////////////////////////	
 function sayweather() {
 require(DIR_MODULES.$this->name.'/sayforecastnow.php');	
+say($status,$msglevel);
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 ///////////////////////////////////////////
 ///////////////////////////////////////////	
 function sayforecast() {
-  require(DIR_MODULES.$this->name.'/sayforecast.php');
+require(DIR_MODULES.$this->name.'/sayforecast.php');
+say($status,$msglevel);
 
 }
 	
