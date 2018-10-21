@@ -78,5 +78,6 @@ $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_
 $msglevel=$cmd_rec['VALUE'];	
 
 sg('yw_forecast',$status);
+sg('yw_mycyty.forecasttext',$status);
 	
-say($return_full,$msglevel);
+//say($return_full,$msglevel);
