@@ -331,15 +331,15 @@ foreach ($value2 as $key3=> $value3 ) {
 //$out["yw_city_select"] = '<option value="0" [#if city_id="none"#] selected[#endif#]>'. $value3; 
 //if ($value3=='yandexweather') break;
 //echo "!".$value3."!";
- echo $value3;
+echo $value3;
 //IF ($this->view_mode=='find_city')
-//$i=$i+1;
-//echo $i;
+$i=$i+1;
+echo $i;
 //if ($i<8) $myarray[]='<option value="0" >'. $value3; 
 
-//if ($i<8) {
+if ($i<8) {
 //echo "<br>".$i.'add';
-//$menu.= '<option value="0" >'. $value3; }
+$menu.= '<option value="0" >'. $value3; }
 //echo $menu;
 
 //			<option[#if EVERY="5"#] selected[#endif#]>5
