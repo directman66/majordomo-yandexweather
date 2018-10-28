@@ -642,7 +642,7 @@ SQLInsert('tlg_event', $par);
 ////////////////////////////////////////	
 function sayweather() {
 require(DIR_MODULES.$this->name.'/sayforecastnow.php');	
-say($status,$msglevel);
+say($return_full,$msglevel);
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
