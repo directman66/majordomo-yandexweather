@@ -297,6 +297,74 @@ $table_name='yaweather_cities';
 
 
 }
+//echo $this->view_mode;
+ if ($this->view_mode=='find_city') 
+{
+//echo "123";
+global $findstr;
+//echo $findstr;
+$findstr2=urlencode($findstr);
+$url="https://suggest-maps.yandex.ru/suggest-geo?v=8&search_type=weather&n=10&can_change_layout=0&callback=&part=$findstr2&lang=ru_RU";
+//echo $url;
+$file = file_get_contents($url);
+
+//echo urldecode($file);
+
+$answ=urldecode($file);
+
+$data=json_decode($answ,true);
+$temp=$data[0];
+//print_r($data);
+$menu="";
+$myarray=array();
+$i=0;
+foreach ($data as $key=> $value )
+{
+ //echo "1:".$key.":".$value."<br>";
+ if (is_array($value)) {
+foreach ($value as $key2=> $value2 ) {
+ //echo "2:".$key2.":".$value2."<br>";
+ if (is_array($value2)) {
+foreach ($value2 as $key3=> $value3 ) {
+ if ($key3=='name'){
+//$out["yw_city_select"] .= '<option value="0" [#if city_id="none"#] selected[#endif#]>'. $value3; 
+//$out["yw_city_select"] = '<option value="0" [#if city_id="none"#] selected[#endif#]>'. $value3; 
+//if ($value3=='yandexweather') break;
+//echo "!".$value3."!";
+ echo $value3;
+//IF ($this->view_mode=='find_city')
+//$i=$i+1;
+//echo $i;
+//if ($i<8) $myarray[]='<option value="0" >'. $value3; 
+
+//if ($i<8) {
+//echo "<br>".$i.'add';
+//$menu.= '<option value="0" >'. $value3; }
+//echo $menu;
+
+//			<option[#if EVERY="5"#] selected[#endif#]>5
+// echo $value3."<br>";
+}
+ if ($key3=='geoid'){
+ echo " ".$value3."<br>";
+}
+//echo "3:".$key3.":".$value3."<br>"; 
+
+} 
+ 
+}
+}
+}
+
+}
+//echo "<br>".$out["yw_city_select"];
+//$out["yw_city_select"]='<option value="0" [#if city_id="none"#] selected[#endif#]>test';
+//print($i);
+//sg('test.arr',print_r($myarray));
+$out["yw_city_select"]=$menu;
+
+//      $this->redirect("?");
+}
 
 
 	
