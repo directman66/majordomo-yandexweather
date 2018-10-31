@@ -504,9 +504,9 @@ $sql['check']='1';
 $sql['latlon']='';
 $sql['check']='1';
 $sql['mycity']='0';
-$sql['part']=$insert['part']
-$sql['cityname']=$insert['cityname']
-$sql['country']=$insert['country']
+$sql['part']=$insert['part'];
+$sql['cityname']=$insert['cityname'];
+$sql['country']=$insert['country'];
 SQLInsert('yaweather_cities', $sql);
 }
 
