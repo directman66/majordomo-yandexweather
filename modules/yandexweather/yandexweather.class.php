@@ -314,7 +314,7 @@ $answ=urldecode($file);
 
 $data=json_decode($answ,true);
 $temp=$data[0];
-print_r($data);
+//print_r($data);
 $menu="";
 $i=0;
 $ii=0;
@@ -437,7 +437,7 @@ $out["findstr"]=$findstr;
  if ($this->view_mode=='select_city'){
 global $city_id;
 //global $name;
-echo $name.":".$city_id;
+//echo $name.":".$city_id;
 
 /*
 $sql=SqlSelectOne('SELECT * FROM yaweather_cities where ID='.$city_id);
