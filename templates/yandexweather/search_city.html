@@ -1,21 +1,70 @@
-<br/>
+<br/>	
 <form action="?" method="post" enctype="multipart/form-data" name="frmEdit" class="form-horizontal">
 <fieldset>
-
-<table width=90% border=0><tr><td>
-<h2>Поиск города:</h2>
- </td></tr>
+<table  border=0 cellspacing=20>
  <tr><td>
-
 Строка поиска:
-<input type="text" class="form-control" name="findstr" value="[#findstr#]" id="findstr">
+</td><td></td>
+</tr>
+<tr><td>
+<input type="text" class="form-control" name="findstr" value="[#findstr#]" id="findstr" style="width: 750px;" >
 </td><td>
- <div class="form-actions" align="left">
+
 <button type="submit" name="subm" value="Submit" class="btn btn-primary">Найти</button>
 <input type="hidden" name="view_mode" value="find_city">	
 <input type="hidden" name="mode" value="update">
- </div>
- </td></tr></table>
+<input type="hidden" name="tab" value="settings2">
+
+ </td></tr>
 
 </fieldset>
 </form>
+
+<tr><td align="left">
+
+<br>Выбор по ID города</td></tr><tr><td>
+<form action="?" method="get" class="form-horizontal" name="onselect">
+<input type="hidden" name="view_mode" value="onselect">
+<select name="city_id" class="form-control" style="width: 750px;" align="left">
+<!--  <option value=""><#LANG_SELECT#> -->
+[#begin yw_city_select#]
+<option value="[#CITY_ID#]"[#if SELECTED#] selected[#endif#]>[#CITY_NAME#]
+[#end yw_city_select#]
+ </select>
+</td><td valign="top">
+
+<button type="submit" name="subm" value="Submit" class="btn btn-primary">Добавить</button>
+<input type="hidden" name="view_mode" value="select_city">	
+<input type="hidden" name="mode" value="update">
+<input type="hidden" name="tab" value="settings2">
+</form>
+  
+</td></tr>
+<tr><td align="left">
+<br>Выбор по координатам города</td></tr><tr><td>
+<form action="?" method="get" class="form-horizontal" name="onselect">
+<select name="city_lat" class="form-control" style="width: 750px;" align="left">
+<!--  <option value=""><#LANG_SELECT#> -->
+  [#begin yw_city_select2#]
+<option value="[#CITY_LAT#]"[#if SELECTED#] selected[#endif#]>[#CITY_NAME#]
+[#end yw_city_select2#]
+ </select>
+</td><td valign="top">
+<button type="submit" name="subm" value="Submit" class="btn btn-primary">Добавить</button>
+<input type="hidden" name="view_mode" value="select_latlon">	
+<input type="hidden" name="mode" value="update">
+<input type="hidden" name="tab" value="settings2">
+</form>
+</td></tr>
+
+<!--      <button type="submit" name="ow_subm" value="setCityId" class="btn btn-primary"><#LANG_SUBMIT#></button> 
+      <input type="hidden" id="current" name="current" value="">
+
+-->
+   </div>
+   </div>
+
+</table>
+</form>
+
+
