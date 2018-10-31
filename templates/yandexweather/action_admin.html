@@ -40,33 +40,47 @@
 [#if TAB="settings1"#] [#inc headsettings.html#] [#endif#]
 [#if TAB="settings2"#] 
 
-<div class="panel-group" id="accordion">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-		<a data-toggle="collapse" data-parent="#accordion" href="#search">Поиск города</a>
-		</div>
-		<div class="panel-body collapse" id="search">
+
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Найти город</a>
+
+
+      </div>
+      <div id="collapse1" class="panel-collapse collapse in">
+        <div class="panel-body">
 [#inc search_city.html#] 
-		</div> </div> </div>
-
-<div class="panel-group" id="accordion">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-		<a data-toggle="collapse" data-parent="#accordion" href="#select">Выбор городов</a>
-		</div>
-		<div class="panel-body collapse" id="select">
+</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+       <div class="panel panel-info">
+       <div class="panel-heading">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Выбрать город</a>
+      </div>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
 [#inc config.html#]
-		</div> </div> </div>
+</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+       <div class="panel panel-info">
+      <div class="panel-heading">
 
-
-<div class="panel-group" id="accordion">
-	<div class="panel panel-info">
-		<div class="panel-heading">
-		<a data-toggle="collapse" data-parent="#accordion" href="#add">Добавление города вручную</a>
-		</div>
-		<div class="panel-body collapse" id="add">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Добавить вручную</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
  [#inc config_edit.html#]
-		</div> </div> </div>
+</div>
+      </div>
+    </div>
+  </div> 
+</div>
 
 
 
