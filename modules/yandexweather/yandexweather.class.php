@@ -1191,7 +1191,7 @@ EOD;
  yaweather_cities_temp: mycity int(30) 
  yaweather_cities_temp: url int(30) 
  yaweather_cities_temp: latlon varchar(100) 
- yaweather_cities_temp: url varchar(300) 
+
 EOD;
    parent::dbInstall($data);
 
