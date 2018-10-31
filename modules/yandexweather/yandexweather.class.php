@@ -499,7 +499,7 @@ $insert=SqlSelectOne('SELECT * FROM yaweather_cities_temp where ID='.$city_id);
 
 $sql=SqlSelectOne('SELECT * FROM yaweather_cities where ID='.$city_id);
 if  (!$sql['ID']) {
-$sql['ID']=$city_id;
+$sql['ID']=$insert['ID'];
 $sql['check']='1';
 $sql['latlon']='';
 $sql['check']='1';
