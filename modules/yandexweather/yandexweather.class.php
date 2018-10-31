@@ -494,6 +494,9 @@ global $city_id;
 //echo $name.":".$city_id;
 
 
+$insert=SqlSelectOne('SELECT * FROM yaweather_cities_temp where ID='.$city_id);
+
+
 $sql=SqlSelectOne('SELECT * FROM yaweather_cities where ID='.$city_id);
 if  (!$sql['ID']) {
 $sql['ID']=$city_id;
@@ -501,8 +504,9 @@ $sql['check']='1';
 $sql['latlon']='';
 $sql['check']='1';
 $sql['mycity']='0';
-$sql['part']='';
-$sql['cityname']='';
+$sql['part']=$insert['part']
+$sql['cityname']=$insert['cityname']
+$sql['country']=$insert['country']
 SQLInsert('yaweather_cities', $sql);
 }
 
