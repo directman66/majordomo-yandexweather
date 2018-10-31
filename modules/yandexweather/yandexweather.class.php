@@ -1160,7 +1160,7 @@ SQLUpdate('properties',$property);}
   $data = <<<EOD
  yaweather_cities: country varchar(100) 
  yaweather_cities: cityname varchar(30) 
- yaweather_cities: part varchar(30) 
+ yaweather_cities: part varchar(100) 
  yaweather_cities: ID int(30) unsigned NOT NULL 
  yaweather_cities: check int(30) 
  yaweather_cities: head int(30)
@@ -1168,20 +1168,23 @@ SQLUpdate('properties',$property);}
  yaweather_cities: region int(30) 
  yaweather_cities: mycity int(30) 
  yaweather_cities: latlon varchar(50) 
+ yaweather_cities: url varchar(300) 
 EOD;
    parent::dbInstall($data);
 
   $data = <<<EOD
  yaweather_cities_temp: country varchar(100) 
  yaweather_cities_temp: cityname varchar(30) 
- yaweather_cities_temp: part varchar(30) 
+ yaweather_cities_temp: part varchar(100) 
  yaweather_cities_temp: ID int(30) unsigned NOT NULL 
  yaweather_cities_temp: check int(30) 
  yaweather_cities_temp: head int(30)
  yaweather_cities_temp: type int(30) 
  yaweather_cities_temp: region int(30) 
  yaweather_cities_temp: mycity int(30) 
- yaweather_cities_temp: latlon varchar(50) 
+ yaweather_cities_temp: url int(30) 
+ yaweather_cities_temp: latlon varchar(100) 
+ yaweather_cities_temp: url varchar(300) 
 EOD;
    parent::dbInstall($data);
 
