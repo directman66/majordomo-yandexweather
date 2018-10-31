@@ -314,7 +314,8 @@ $answ=urldecode($file);
 
 $data=json_decode($answ,true);
 $temp=$data[0];
-//print_r($data);
+print_r($data);
+//echo "<br>";
 $menu=array();
 $menu2=array();
 $menu3=array();
@@ -341,12 +342,19 @@ $i=$i+1;
 //echo $i;
 //if ($i<8) $myarray[]='<option value="0" >'. $value3; 
 
-if ($i<8) {
+if ($i<15) {
 //echo "<br>".$i.'add';
 //$menu123.= '<option value="0" >'. $value3; 
 //echo "<br>".$i.'add';
 
 $menu[$ii]['CITY_NAME']= $value3; 
+$split=explode(',',$value3);
+$menu[$ii]['CITY_NAME_SMALL']=$split[0];
+$menu[$ii]['CITY_OBLAST']=$split[1];
+$menu[$ii]['CITY_COUNTRY']=$split[2];
+
+
+
 $ii=$ii+1;
 }
 
@@ -357,22 +365,44 @@ $ii=$ii+1;
 //			<option[#if EVERY="5"#] selected[#endif#]>5
 // echo $value3."<br>";
 }
+
+ if ($key3=='name_short'){
+//echo " ".$value3."<br>";
+$menu[$ii-1]['CITY_name_short']=$value3; 
+}
+
+ if ($key3=='url'){
+//echo " ".$value3."<br>";
+$menu[$ii-1]['CITY_url']=$value3; 
+}
+
+ if ($key3=='url'){
+//echo " ".$value3."<br>";
+$menu[$ii-1]['CITY_url']=$value3; 
+}
+
+
+
  if ($key3=='geoid'){
 //echo " ".$value3."<br>";
-$menu[$ii]['CITY_ID']=$value3; 
+$menu[$ii-1]['CITY_ID']=$value3; 
 //$out["yw_city_select"]=$menu[$i];
+$menu[$ii-1]['CITY_NAME']=$menu[$ii-1]['CITY_NAME'].":".$value3; 
 }
 
 
  if ($key3=='lat'){
 //echo " ".$value3."<br>";
-$menu[$ii]['CITY_LAT']=$value3; 
+$menu[$ii-1]['CITY_LAT']=$value3; 
+//$menu[$ii-1]['CITY_NAME']=$menu[$ii-1]['CITY_NAME'].":".$value3; 
 //$out["yw_city_select"]=$menu[$i];
 }
 
  if ($key3=='lon'){
 //echo " ".$value3."<br>";
-$menu[$ii]['CITY_LON']=$value3; 
+$menu[$ii-1]['CITY_LON']=$value3; 
+//$menu[$ii-1]['CITY_NAME']=$menu[$ii-1]['CITY_NAME'].":".$value3; 
+
 //$out["yw_city_select"]=$menu[$i];
 }
 
@@ -398,13 +428,35 @@ $menu[$ii]['CITY_LON']=$value3;
 
 
 ///удаляем поселки без id
-
+//print_r($menu);
 
 $jj=0;
 $gg=0;
 
+sqlexec('DELETE from yaweather_cities_temp');
+$sql=sqlselectOne('select * from yaweather_cities_temp');
+
 for ($j = 0; $j <= $ii; $j++) {
 //echo $j;
+
+$menu[$ii]['CITY_NAME_SMALL']=$split[0];
+$menu[$ii]['CITY_OBLAST']=$split[1];
+$menu[$ii]['CITY_COUNTRY']=$split[2];
+
+
+$sql['country']=$menu[$j]['CITY_COUNTRY'];
+$sql['cityname']=$menu[$j]['CITY_NAME_SMALL'];
+$sql['part']=$menu[$j]['CITY_OBLAST'];
+$sql['ID']=$menu[$j]['CITY_ID'];
+$sql['check']='';
+$sql['head']='';
+$sql['type']='';
+$sql['region']='';
+$sql['mycity']='';
+$sql['type']='';
+$sql['latlon']='';
+sqlinsert('yaweather_cities_temp', $sql);
+
 if  ($menu[$j]['CITY_ID']) 
 {
 $menu2[$jj]['CITY_ID']=$menu[$j]['CITY_ID'];
@@ -416,9 +468,9 @@ $jj=$jj+1;
 
 if  (($menu[$j]['CITY_LAT']&&(!$menu[$j]['CITY_ID']))) 
 {
-$menu3[$jj]['CITY_LAT']=$menu[$j]['CITY_LAT'];
-$menu3[$jj]['CITY_LON']=$menu[$j]['CITY_LON'];
-$menu3[$jj]['CITY_NAME']=$menu[$j]['CITY_NAME'];
+$menu3[$gg]['CITY_LAT']=$menu[$j]['CITY_LAT'];
+$menu3[$gg]['CITY_LON']=$menu[$j]['CITY_LON'];
+$menu3[$gg]['CITY_NAME']=$menu[$j]['CITY_NAME'];
 $gg=$gg+1;
 
 }
@@ -441,19 +493,19 @@ global $city_id;
 //global $name;
 //echo $name.":".$city_id;
 
-/*
+
 $sql=SqlSelectOne('SELECT * FROM yaweather_cities where ID='.$city_id);
 if  (!$sql['ID']) {
 $sql['ID']=$city_id;
 $sql['check']='1';
-$sql['latlon']='1';
+$sql['latlon']='';
 $sql['check']='1';
 $sql['mycity']='0';
 $sql['part']='';
 $sql['cityname']='';
 SQLInsert('yaweather_cities', $sql);
 }
-*/
+
 
 }
 	
@@ -913,6 +965,7 @@ function  getdatefnc(){
 SQLExec('DROP TABLE IF EXISTS yaweather_cities');
 SQLExec('DROP TABLE IF EXISTS yaweather_main');
 SQLExec('DROP TABLE IF EXISTS yaweather_config');	 
+SQLExec('DROP TABLE IF EXISTS yaweather_cities_temp');	 
 SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
 SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
 SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
@@ -1115,7 +1168,20 @@ SQLUpdate('properties',$property);}
  yaweather_cities: region int(30) 
  yaweather_cities: mycity int(30) 
  yaweather_cities: latlon varchar(50) 
- 
+EOD;
+   parent::dbInstall($data);
+
+  $data = <<<EOD
+ yaweather_cities_temp: country varchar(100) 
+ yaweather_cities_temp: cityname varchar(30) 
+ yaweather_cities_temp: part varchar(30) 
+ yaweather_cities_temp: ID int(30) unsigned NOT NULL 
+ yaweather_cities_temp: check int(30) 
+ yaweather_cities_temp: head int(30)
+ yaweather_cities_temp: type int(30) 
+ yaweather_cities_temp: region int(30) 
+ yaweather_cities_temp: mycity int(30) 
+ yaweather_cities_temp: latlon varchar(50) 
 EOD;
    parent::dbInstall($data);
 
