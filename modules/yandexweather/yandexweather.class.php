@@ -314,10 +314,12 @@ $answ=urldecode($file);
 
 $data=json_decode($answ,true);
 $temp=$data[0];
-//print_r($data);
+print_r($data);
 $menu="";
-$myarray=array();
 $i=0;
+$ii=0;
+
+$myarray=array();
 foreach ($data as $key=> $value )
 {
  //echo "1:".$key.":".$value."<br>";
@@ -331,29 +333,55 @@ foreach ($value2 as $key3=> $value3 ) {
 //$out["yw_city_select"] = '<option value="0" [#if city_id="none"#] selected[#endif#]>'. $value3; 
 //if ($value3=='yandexweather') break;
 //echo "!".$value3."!";
-echo $value3;
+//echo $value3;
 //IF ($this->view_mode=='find_city')
 $i=$i+1;
-echo $i;
+//echo $i;
 //if ($i<8) $myarray[]='<option value="0" >'. $value3; 
 
 if ($i<8) {
 //echo "<br>".$i.'add';
-$menu.= '<option value="0" >'. $value3; }
+//$menu123.= '<option value="0" >'. $value3; 
+//echo "<br>".$i.'add';
+
+$menu[$ii]['CITY_NAME']= $value3; 
+$ii=$ii+1;
+}
+
+
+
 //echo $menu;
 
 //			<option[#if EVERY="5"#] selected[#endif#]>5
 // echo $value3."<br>";
 }
  if ($key3=='geoid'){
- echo " ".$value3."<br>";
+//echo " ".$value3."<br>";
+$menu[$ii]['CITY_ID']=$value3; 
+//$out["yw_city_select"]=$menu[$i];
 }
+
+
+ if ($key3=='lat'){
+//echo " ".$value3."<br>";
+$menu[$ii]['CITY_LAT']=$value3; 
+//$out["yw_city_select"]=$menu[$i];
+}
+
+ if ($key3=='lon'){
+//echo " ".$value3."<br>";
+$menu[$ii]['CITY_LON']=$value3; 
+//$out["yw_city_select"]=$menu[$i];
+}
+
+
+
 //echo "3:".$key3.":".$value3."<br>"; 
 
 } 
- 
+} 
 }
-}
+
 }
 
 }
@@ -361,16 +389,73 @@ $menu.= '<option value="0" >'. $value3; }
 //$out["yw_city_select"]='<option value="0" [#if city_id="none"#] selected[#endif#]>test';
 //print($i);
 //sg('test.arr',print_r($myarray));
-$out["yw_city_select"]=$menu;
+//$menu1[1]['ID']=1234; 
+//$menu1[1]['NAME']='Екат'; 
+
+//$out["yw_city_select"]=$menu1[1];
+
+
+///удаляем поселки без id
+
+
+$jj=0;
+$gg=0;
+$menu2="";
+for ($j = 0; $j <= $ii; $j++) {
+//echo $j;
+if  ($menu[$j]['CITY_ID']) 
+{
+$menu2[$jj]['CITY_ID']=$menu[$j]['CITY_ID'];
+$menu2[$jj]['CITY_NAME']=$menu[$j]['CITY_NAME'];
+$jj=$jj+1;
+//unset($menu[$j]);
+//echo $jj;
+}
+
+if  (($menu[$j]['CITY_LAT']&&(!$menu[$j]['CITY_ID']))) 
+{
+$menu3[$jj]['CITY_LAT']=$menu[$j]['CITY_LAT'];
+$menu3[$jj]['CITY_LON']=$menu[$j]['CITY_LON'];
+$menu3[$jj]['CITY_NAME']=$menu[$j]['CITY_NAME'];
+$gg=$gg+1;
+
+}
+
+}
+
+$out["yw_city_select"]=$menu2;
+$out["yw_city_select2"]=$menu3;
+$out["findstr"]=$findstr;
+//print_r ($menu);
+//echo "<br>";
+//print_r ($menu2);
 
 //      $this->redirect("?");
 }
 
 
+ if ($this->view_mode=='select_city'){
+global $city_id;
+//global $name;
+echo $name.":".$city_id;
+
+/*
+$sql=SqlSelectOne('SELECT * FROM yaweather_cities where ID='.$city_id);
+if  (!$sql['ID']) {
+$sql['ID']=$city_id;
+$sql['check']='1';
+$sql['latlon']='1';
+$sql['check']='1';
+$sql['mycity']='0';
+$sql['part']='';
+$sql['cityname']='';
+SQLInsert('yaweather_cities', $sql);
+}
+*/
+
+}
 	
- if ($this->view_mode=='update_eventssettings') 
-	 
- {
+ if ($this->view_mode=='update_eventssettings'){
 global $enable_events;
 global $msg_level;	 
 
@@ -559,7 +644,7 @@ function insertmain() {
 *
 * @access public
 */
- function config_check($id) {
+ function config_check($id=1) {
   $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
 //echo "<br>". implode( $id);
    $rec['check']=1;
@@ -599,7 +684,7 @@ SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayforecast"));
 * @access public
 */
  
- function config_uncheck($id) {
+ function config_uncheck($id=0) {
   $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
