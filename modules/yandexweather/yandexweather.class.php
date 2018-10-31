@@ -441,7 +441,10 @@ for ($j = 0; $j <= $ii; $j++) {
 
 $menu[$ii]['CITY_NAME_SMALL']=$split[0];
 $menu[$ii]['CITY_OBLAST']=$split[1];
-$menu[$ii]['CITY_COUNTRY']=$split[2];
+if ($split[3]) {$menu[$ii]['CITY_COUNTRY']=$split[3]; }
+else  {$menu[$ii]['CITY_COUNTRY']=$split[2]; }
+
+
 
 
 $sql['country']=$menu[$j]['CITY_COUNTRY'];
