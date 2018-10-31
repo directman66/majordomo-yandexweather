@@ -315,7 +315,9 @@ $answ=urldecode($file);
 $data=json_decode($answ,true);
 $temp=$data[0];
 //print_r($data);
-$menu="";
+$menu=array();
+$menu2=array();
+$menu3=array();
 $i=0;
 $ii=0;
 
@@ -400,7 +402,7 @@ $menu[$ii]['CITY_LON']=$value3;
 
 $jj=0;
 $gg=0;
-$menu2="";
+
 for ($j = 0; $j <= $ii; $j++) {
 //echo $j;
 if  ($menu[$j]['CITY_ID']) 
