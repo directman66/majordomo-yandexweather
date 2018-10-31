@@ -1264,7 +1264,7 @@ EOD;
             $rec['head'] = '0';
             $rec['mycity'] = '0';		
             SQLInsert('yaweather_cities', $rec);
-        $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;"); 
+
      
             $rec['country'] = 'Россия';
             $rec['cityname'] = 'Москва';
@@ -1273,7 +1273,7 @@ EOD;
             $rec['check'] = '1';
             $rec['head'] = 0;
             $rec['mycity'] = '1';				
-		
+            SQLInsert('yaweather_cities', $rec);
 
             $rec['country'] = 'Украина';
             $rec['cityname'] = 'Киев';
@@ -1282,7 +1282,7 @@ EOD;
             $rec['check'] = '0';
             $rec['head'] = 0;
             $rec['mycity'] = '0';				
-
+            SQLInsert('yaweather_cities', $rec);
 		 
             $rec['country'] = 'Беларусь';
             $rec['cityname'] = 'Минск';
@@ -1291,7 +1291,7 @@ EOD;
             $rec['check'] = '0';
             $rec['head'] = 0;
             $rec['mycity'] = '0';				
-
+            SQLInsert('yaweather_cities', $rec);
 
 		 
 				
