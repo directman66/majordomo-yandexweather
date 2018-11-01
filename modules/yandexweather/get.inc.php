@@ -20,7 +20,7 @@ foreach ($properties as $did)
 {
 //header('Content-type: text/json'); 
 $didr= $did['ID'];
-echo "<br>идем по циклу $didr<br>"; 
+//echo "<br>идем по циклу $didr<br>"; 
 //sg('test.vm', $didr);
 $opts = array(
   'http'=>array(
