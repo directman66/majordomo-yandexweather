@@ -514,6 +514,7 @@ $out["findstr"]=$findstr;
 
  if ($this->view_mode=='select_city'){
 global $city_id;
+if (!$city_id) $city_id=0;
 //global $name;
 //echo $name.":".$city_id;
 
@@ -571,24 +572,30 @@ SQLexec("update yaweather_config set value='$msg_level' where parametr='MSG_LEVE
 	
  	
  if ($this->view_mode=='config_edit') {
-   $this->config_edit($out, $this->id);
+if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
+   $this->config_edit($out, $idd);
  }
  if ($this->view_mode=='config_check') {
 //echo "echeck";
-   $this->config_check($this->id);
+if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
+   $this->config_check($idd);
  }
  if ($this->view_mode=='config_uncheck') {
-   $this->config_uncheck($this->id);
+if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
+   $this->config_uncheck($idd);
  }
 if ($this->view_mode=='config_mycity') {
-   $this->config_mycity($this->id);
+if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
+   $this->config_mycity($idd);
  }
 if ($this->view_mode=='indata_del') {
-   $this->config_del($this->id);
+if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
+   $this->config_del($idd);
  }
 	
 if ($this->view_mode=='titledel') {
-   $this->title_del($this->id);
+if (!$this->id) {$idd=1000;} else {$idd=$this->id;}
+   $this->title_del($idd);
  }
 	
 	
@@ -766,7 +773,7 @@ SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayforecast"));
 * @access public
 */
  
- function config_uncheck($id=0) {
+ function config_uncheck($id=1000) {
   $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
