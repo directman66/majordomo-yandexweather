@@ -170,7 +170,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['par
 //////////////////////////////
 
 
-/*
+
 //mycity	
 $objmycity='yw_mycity';
 //проверяем, нужен ли новый объект	
@@ -191,7 +191,7 @@ foreach ($objprops as $value){
 	sg($objmycity.'.'.$value,gg($fobjn.".".$value));
 				}	
 			}
-*/	
+	
 	
 
 	
