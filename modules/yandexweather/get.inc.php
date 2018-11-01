@@ -55,7 +55,7 @@ $latlon=$did['latlon'];
 if (strlen($latlon)>5) {$url='https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru';}	
 else {$url='https://api.weather.yandex.ru/v1/forecast?geoid='.$didr.'&lang=ru';}
 
-echo $url;
+//echo $url;
 
 $file = file_get_contents($url, false, $context);
 	
@@ -70,7 +70,7 @@ $objn=$data['info']['slug'];
 $src=$data['info'];
 
 //////////////info
-echo $objn;
+//echo $objn;
 //проверяем, нужен ли новый объект	
 $new=0;	
 $error='0';
