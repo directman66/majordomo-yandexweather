@@ -350,8 +350,22 @@ if ($i<15) {
 $menu[$ii]['CITY_NAME']= $value3; 
 $split=explode(',',$value3);
 $menu[$ii]['CITY_NAME_SMALL']=$split[0];
+
+
+
+//$menu[$ii]['CITY_OBLAST']=$split[1];
+
+//echo $split[3];
+if (strlen($split[3])>3) {$menu[$ii]['CITY_COUNTRY']=$split[3];
+$menu[$ii]['CITY_OBLAST']=$split[2]; 
+$menu[$ii]['CITY_HEAD']=$split[1];
+
+}
+else  {$menu[$ii]['CITY_COUNTRY']=$split[2]; 
 $menu[$ii]['CITY_OBLAST']=$split[1];
-$menu[$ii]['CITY_COUNTRY']=$split[2];
+$menu[$ii]['CITY_HEAD']=$split[1];
+}
+
 
 
 
@@ -434,30 +448,37 @@ $jj=0;
 $gg=0;
 
 sqlexec('DELETE from yaweather_cities_temp');
-$sql=sqlselectOne('select * from yaweather_cities_temp');
+
 
 for ($j = 0; $j <= $ii; $j++) {
 //echo $j;
 
-$menu[$ii]['CITY_NAME_SMALL']=$split[0];
-$menu[$ii]['CITY_OBLAST']=$split[1];
-if ($split[3]) {$menu[$ii]['CITY_COUNTRY']=$split[3]; }
-else  {$menu[$ii]['CITY_COUNTRY']=$split[2]; }
-
-
-
-
+$sql=sqlselectOne('select * from yaweather_cities_temp');
 $sql['country']=$menu[$j]['CITY_COUNTRY'];
 $sql['cityname']=$menu[$j]['CITY_NAME_SMALL'];
+$sql['region']=$menu[$j]['CITY_OBLAST'];
+//echo $sql['region'];
 $sql['part']=$menu[$j]['CITY_OBLAST'];
+//$sql['part']='';
 $sql['ID']=$menu[$j]['CITY_ID'];
-$sql['check']='';
-$sql['head']='';
+$sql['check']='0';
+//echo $menu[$j]['CITY_HEAD'];
+$sql['head']=$menu[$j]['CITY_HEAD'];
+
+//$sql['head']='123';
+$sql['url']=$menu[$j]['CITY_url'];
+$sql['type']='0';
+
+$sql['mycity']='0';
 $sql['type']='';
-$sql['region']='';
-$sql['mycity']='';
-$sql['type']='';
+//lat=47.240585&lon=38.870989
+if (($menu[$j]['CITY_LAT'])&&($menu[$j]['CITY_LON'])) {
+$sql['latlon']='lat='.$menu[$j]['CITY_LAT'].'&lon='.$menu[$j]['CITY_LON'];
+} else {
 $sql['latlon']='';
+}
+//print_r($sql);
+//echo "<br>";
 sqlinsert('yaweather_cities_temp', $sql);
 
 if  ($menu[$j]['CITY_ID']) 
@@ -1170,9 +1191,9 @@ SQLUpdate('properties',$property);}
  yaweather_cities: part varchar(100) 
  yaweather_cities: ID int(30) unsigned NOT NULL 
  yaweather_cities: check int(30) 
- yaweather_cities: head int(30)
- yaweather_cities: type int(30) 
- yaweather_cities: region int(30) 
+ yaweather_cities: head varchar(100) 
+ yaweather_cities: type varchar(100) 
+ yaweather_cities: region varchar(100) 
  yaweather_cities: mycity int(30) 
  yaweather_cities: latlon varchar(50) 
  yaweather_cities: url varchar(300) 
@@ -1185,11 +1206,11 @@ EOD;
  yaweather_cities_temp: part varchar(100) 
  yaweather_cities_temp: ID int(30) unsigned NOT NULL 
  yaweather_cities_temp: check int(30) 
- yaweather_cities_temp: head int(30)
- yaweather_cities_temp: type int(30) 
- yaweather_cities_temp: region int(30) 
+ yaweather_cities_temp: head varchar(100) 
+ yaweather_cities_temp: type varchar(100) 
+ yaweather_cities_temp: region varchar(100) 
  yaweather_cities_temp: mycity int(30) 
- yaweather_cities_temp: url int(30) 
+ yaweather_cities_temp: url varchar(100) 
  yaweather_cities_temp: latlon varchar(100) 
 
 EOD;
