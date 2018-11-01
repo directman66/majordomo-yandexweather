@@ -20,7 +20,7 @@ foreach ($properties as $did)
 {
 //header('Content-type: text/json'); 
 $didr= $did['ID'];
-//echo "<br>идем по циклу $didr<br>"; 
+echo "<br>идем по циклу $didr<br>"; 
 //sg('test.vm', $didr);
 $opts = array(
   'http'=>array(
@@ -52,20 +52,25 @@ $latlon=$did['latlon'];
 //if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
 //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
  
-if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}	
-else {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru', false, $context);}
+if (strlen($latlon)>5) {$url='https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru';}	
+else {$url='https://api.weather.yandex.ru/v1/forecast?geoid='.$didr.'&lang=ru';}
+
+echo $url;
+
+$file = file_get_contents($url, false, $context);
 	
-	
+  //echo 	$file;
 
 //echo gzdecode($file);
 $otvet=gzdecode($file);
+print_r($otvet);
 $data=json_decode($otvet,true);
 //$objn=$data[0]['id'];
 $objn=$data['info']['slug'];
 $src=$data['info'];
 
 //////////////info
-//echo $objn;
+echo $objn;
 //проверяем, нужен ли новый объект	
 $new=0;	
 $error='0';
@@ -165,7 +170,7 @@ sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['par
 //////////////////////////////
 
 
-
+/*
 //mycity	
 $objmycity='yw_mycity';
 //проверяем, нужен ли новый объект	
@@ -186,25 +191,9 @@ foreach ($objprops as $value){
 	sg($objmycity.'.'.$value,gg($fobjn.".".$value));
 				}	
 			}
-	
+*/	
 	
 
 	
 }
 
-/*
-function get_props1($obj)
-{
-//$sql='SELECT title FROM `properties`  where object_id = (SELECT id FROM `objects`  where title="'.$obj.'")';
-//$sql='SELECT distinct substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%"';
-$sql='SELECT  substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1) title FROM `pvalues` where PROPERTY_NAME like "'.$obj.'%" group by substring(PROPERTY_NAME, POSITION("." in PROPERTY_NAME)+1)';
-$rec = SQLSelect($sql); 
-foreach ($rec as $prop)
-{
- //print_r($prop)[title];
-$ar2[] = $prop['title'];
-}
-return $ar2;
-}
-
-*/
