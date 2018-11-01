@@ -63,7 +63,7 @@ $file = file_get_contents($url, false, $context);
 
 //echo gzdecode($file);
 $otvet=gzdecode($file);
-print_r($otvet);
+//print_r($otvet);
 $data=json_decode($otvet,true);
 //$objn=$data[0]['id'];
 $objn=$data['info']['slug'];
