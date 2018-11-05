@@ -705,7 +705,20 @@ SQLexec("update yaweather_config set value=now() where parametr='LASTCYCLE_TXT'"
 
 function title_del($id) {
   // some action for related tables
+// sql=
+  $cityrus=SQLSelectOne("select * from yaweather_main where TITLE='".$id."'")['locality_name'];
   SQLExec("delete  from objects where class_id = (select id from classes where title = 'YandexWeather') and TITLE='".$id."'");
+  SQLExec("delete  from yaweather_main where TITLE='$id'");
+//  SQLExec("update yaweather_cities set check='0', mycity='0' where cityname='$cityrus'");
+
+  $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE cityname='$cityrus'");
+  $rec['check']=0;
+SQLUpdate('yaweather_cities',$rec); 
+
+
+
+
+
  }	
 	
 function get_props2($obj)
