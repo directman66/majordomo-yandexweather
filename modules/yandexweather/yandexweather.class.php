@@ -579,10 +579,12 @@ if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
 //echo "echeck";
 if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
    $this->config_check($idd);
+   $this->redirect("?tab=settings2");
  }
  if ($this->view_mode=='config_uncheck') {
 if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
    $this->config_uncheck($idd);
+      $this->redirect("?tab=settings2");
  }
 if ($this->view_mode=='config_mycity') {
 if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
@@ -596,6 +598,7 @@ if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
 if ($this->view_mode=='titledel') {
 if (!$this->id) {$idd=1000;} else {$idd=$this->id;}
    $this->title_del($idd);
+   $this->redirect("?tab=settings2");
  }
 	
 	
@@ -790,6 +793,7 @@ SQLUpdate('objects', array("ID"=>get_id($objn), "DESCRIPTION"=>"sayforecast"));
   $rec=SQLSelectOne("SELECT * FROM yaweather_cities WHERE ID=".$id);
    $rec['check']=0;
 SQLUpdate('yaweather_cities',$rec); 
+
 }
 	
  function tlg_yandex() {
