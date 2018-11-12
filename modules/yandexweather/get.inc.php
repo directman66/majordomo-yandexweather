@@ -125,7 +125,7 @@ $sql=SQLSelectOne($zapros);
 
 
 $sql['TITLE']=$objn;
-$sql['ID']=$cityid;
+$sql['CID']=$cityid;
 /*
 
 $sql['locality_name']=
