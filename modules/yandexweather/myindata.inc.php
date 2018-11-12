@@ -34,3 +34,4 @@ $res=SQLSelect("select  ".$skin2." SKIN, '".$conditionrus."' conditionrus, '".$c
    $out['RESULTMYCITY']=$res;
   }
 
+
