@@ -25,7 +25,7 @@ $column2[]=$column[$i]['Field'];
             }
 
 
-$mycityid=SQLSelectOne("SELECT * FROM `yaweather_cities` where `mycity`=1 ")['ID'];
+$mycityid=SQLSelectOne("SELECT * FROM `yaweather_cities` where `mycity`=1 ")['CID'];
 
 //print_r($column2);
 //echo "<br>array_search:";
