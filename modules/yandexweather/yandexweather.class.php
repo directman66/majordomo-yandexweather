@@ -607,7 +607,7 @@ setGlobal('cycle_yandexweatherControl','start');
 //$t1 = new Thread('$this->upd_PROPERTY_NAME' );
 //		$this->upd_PROPERTY_NAME_timer();	 
 cm('yw_mycity.updatetitle');	 
-    		$this->insertmain();
+//    		$this->insertmain();
 	 
 	 
  }
@@ -675,7 +675,7 @@ function usual(&$out) {
    
    if ($has) {  
 $this->getdatefnc();   
-$this->insertmain();
+//$this->insertmain();
 		 
 	$this->config['LATEST_UPDATE']=time();
 	//$this->saveConfig();
@@ -1245,6 +1245,7 @@ EOD;
 	 
 	 
 $data = <<<EOD
+yaweather_main: ID int(30) unsigned NOT NULL auto_increment
 yaweather_main: locality_name       varchar(100) 
 yaweather_main: district_name       varchar(100) 
 yaweather_main: TITLE               varchar(100) 
