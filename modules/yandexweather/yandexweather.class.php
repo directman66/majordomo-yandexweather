@@ -589,6 +589,7 @@ if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
 if ($this->view_mode=='config_mycity') {
 if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
    $this->config_mycity($idd);
+   $this->redirect("?tab=settings2");
  }
 if ($this->view_mode=='indata_del') {
 if (!$this->id) {$idd=100000;} else {$idd=$this->id;}
