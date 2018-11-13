@@ -1252,6 +1252,7 @@ EOD;
 $data = <<<EOD
 yaweather_main: ID int(30) unsigned NOT NULL auto_increment
 yaweather_main: CID 		    int(30) 
+yaweather_main: mycity 		    int(30) 
 yaweather_main: locality_name       varchar(100) 
 yaweather_main: district_name       varchar(100) 
 yaweather_main: TITLE               varchar(100) 
