@@ -85,9 +85,17 @@
 <tr style="height:52px" class="hover_btn2">
 
  <td style="vertical-align:middle">
-[#locality_name#] [#district_name#]   
+
+[#locality_name#]
+ [#district_name#]   
  <a href="https://yandex.ru/pogoda/[#TITLE#]"> <b>[#TITLE#]</b> </a>  
+
+[#if mycity=="1" #]   
+<font color="orange"><i  class="glyphicon glyphicon glyphicon-star"></font></i>
+[#endif#]   
+
  </td>
+
 
  <td style="vertical-align:middle">
   [#if DESCRIPTION!=""#]
