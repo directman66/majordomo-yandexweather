@@ -120,6 +120,7 @@ $sql=SQLSelectOne($zapros);
 
 $sql['TITLE']=$objn;
 $sql['CID']=$cityid;
+$sql['DESCRIPTION']=gg('sysdate').' '.gg('timenow') ;
 $ccityid=$cityid;
 /*
 
