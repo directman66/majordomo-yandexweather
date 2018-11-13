@@ -120,6 +120,8 @@ $sql=SQLSelectOne($zapros);
 
 $sql['TITLE']=$objn;
 $sql['CID']=$cityid;
+
+if ($mycityid==$cityid) {$sql['mycity']=1; } else {$sql['mycity']=0; }
 $sql['DESCRIPTION']=gg('sysdate').' '.gg('timenow') ;
 $ccityid=$cityid;
 /*
