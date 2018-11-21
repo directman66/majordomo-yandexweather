@@ -68,10 +68,9 @@ foreach ($properties as $did) {
     curl_setopt($ch, CURLOPT_USERAGENT, "yandex-weather-android/4.2.1");
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//upd: 20181121 for windows users (disable ssl sert)
-    
+//upd for win10   
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    сurl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     
     $otvet = curl_exec($ch);
     curl_close($ch);
