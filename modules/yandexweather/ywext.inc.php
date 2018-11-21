@@ -19,6 +19,8 @@ if ($conditioneng=="cloudy-and-snow") {$condition="облачно, легкий 
 if ($conditioneng=="overcast-and-snow") {$condition="небольшой снег";}	
 if ($conditioneng=="cloudy-and-light-snow") {$condition="небольшой снегопад";}	
 if ($conditioneng=="cloudy-and-snow") {$condition="идет снег";}		
+if ($conditioneng=="overcast-and-wet-snow") {$condition="пасмурно и мокрый снег";}		
+	
 	
 	
 	
