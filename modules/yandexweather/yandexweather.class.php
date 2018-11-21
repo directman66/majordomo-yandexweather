@@ -1258,6 +1258,7 @@ yaweather_main: district_name       varchar(100)
 yaweather_main: TITLE               varchar(100) 
 yaweather_main: DESCRIPTION         varchar(100) 
 yaweather_main: temp                varchar(100) 
+yaweather_main: feels_like          varchar(100) 
 yaweather_main: condition           varchar(100) 
 yaweather_main: wind_speed          varchar(100) 
 yaweather_main: wind_dir            varchar(100) 
@@ -1298,6 +1299,9 @@ yaweather_main: forecast_0_morning_pressure_mm   varchar(100)
 yaweather_main: forecast_0_day_pressure_mm       varchar(100) 
 yaweather_main: forecast_0_evening_pressure_mm  varchar(100) 
 yaweather_main: forecast_0_night_short_pressure_mm  varchar(100) 
+
+
+
 EOD;
  
    parent::dbInstall($data);
