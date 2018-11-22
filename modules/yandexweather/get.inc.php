@@ -119,7 +119,7 @@ foreach ($properties as $did) {
         } else {
             $sql['mycity']=0;
         }
-        $sql['DESCRIPTION']=gg('sysdate').' '.gg('timenow') ;
+        $sql['DESCRIPTION']=date('d.m.Y H:i') ;
         $ccityid=$cityid;
         /*
 
