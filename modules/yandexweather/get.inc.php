@@ -370,14 +370,14 @@ foreach ($properties as $did) {
 
 
 
-
-        addClassObject('YandexWeather', $sql['TITLE']);
+	$objname=str_replace('-','_',$sql['TITLE']);
+        addClassObject('YandexWeather', $objname);
         addClassObject('YandexWeather', 'yw_mycity');
 //    $total = count($sql);
         foreach ($sql as $par=>$val) {
 //    for ($i = 0; $i < $total; $i++) {
             if ($par<>"") {
-                sg($sql['TITLE'].'.'.$par, $val);
+                sg($objname.'.'.$par, $val);
             }
 
             //echo $mycityid.":".$cityid.'<br>';
