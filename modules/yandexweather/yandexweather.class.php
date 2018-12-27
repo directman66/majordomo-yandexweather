@@ -1304,55 +1304,48 @@ yaweather_main: forecast_0_morning_pressure_mm   varchar(100)
 yaweather_main: forecast_0_day_pressure_mm       varchar(100) 
 yaweather_main: forecast_0_evening_pressure_mm  varchar(100) 
 yaweather_main: forecast_0_night_short_pressure_mm  varchar(100) 
+yaweather_main: day int(30) 
+yaweather_main: date datetime
+yaweather_main: date_ts varchar(20) 
+yaweather_main: sunrise varchar(20) 
+yaweather_main: sunset varchar(20) 
+yaweather_main: rise_begin varchar(20) 
+yaweather_main: set_end varchar(20) 
+yaweather_main: date_ts varchar(20) 
 EOD;
 parent::dbInstall($data);
 
 
-/*
-yaweather_main: day 	        int(30) 
-yaweather_main: date 	        datetime
-yaweather_main: date_ts 	varchar(20) 
-yaweather_main: sunrise	varchar(20) 
-yaweather_main: sunset	varchar(20) 
-yaweather_main: rise_begin	varchar(20) 
-yaweather_main: set_end	varchar(20) 
-yaweather_main: date_ts	varchar(20) 
-
-*/
-
-
-/*
-
-
-
 $data="";
 $data = <<<EOD
-yaweather_hourforecast: ID int(30) unsigned NOT NULL auto_increment
-yaweather_hourforecast: CID 		    	int(30) 
-yaweather_hourforecast: day 		    	int(30) 
-yaweather_hourforecast: hour 		    	int(30) 
-yaweather_hourforecast: hour_ts 	    	varchar(20) 
-yaweather_hourforecast: temp			varchar(20) 
-yaweather_hourforecast: feels_like 		varchar(30) 
-yaweather_hourforecast: icon 			varchar(30) 
-yaweather_hourforecast: condition		varchar(80) 
-yaweather_hourforecast: wind_speed	 	varchar(20) 
-yaweather_hourforecast: wind_gust		varchar(20) 
-yaweather_hourforecast: rise_begin 		varchar(20) 
-yaweather_hourforecast: wind_dir 		varchar(20) 
-yaweather_hourforecast: pressure_mm 		varchar(20) 
-yaweather_hourforecast: pressure_pa 		varchar(20) 
-yaweather_hourforecast: humidity		varchar(20) 
-yaweather_hourforecast: soil_temp 		varchar(20) 
-yaweather_hourforecast: soil_moisture 		varchar(20) 
-yaweather_hourforecast: prec_mm 		varchar(20) 
-yaweather_hourforecast: prec_period 		varchar(20) 
-yaweather_hourforecast: prec_prob		varchar(20) 
+
+
+yaweather_hf: ID int(30) unsigned NOT NULL auto_increment
+yaweather_hf: CID int(30) 
+yaweather_hf: day int(30) 
+yaweather_hf: hour int(30) 
+yaweather_hf: hour_ts varchar(20) 
+yaweather_hf: temp varchar(20) 
+yaweather_hf: feels_like varchar(30) 
+yaweather_hf: icon varchar(30) 
+yaweather_hf: condition varchar(80) 
+yaweather_hf: wind_speed varchar(20) 
+yaweather_hf: wind_gust varchar(20) 
+yaweather_hf: rise_begin varchar(20) 
+yaweather_hf: wind_dir varchar(20) 
+yaweather_hf: pressure_mm varchar(20) 
+yaweather_hf: pressure_pa varchar(20) 
+yaweather_hf: humidity varchar(20) 
+yaweather_hf: soil_temp varchar(20) 
+yaweather_hf: soil_moisture varchar(20) 
+yaweather_hf: prec_mm varchar(20) 
+yaweather_hf: prec_period varchar(20) 
+yaweather_hf: prec_prob varchar(20) 
 EOD;
  
    parent::dbInstall($data);
    
-   */
+
 
 
 
