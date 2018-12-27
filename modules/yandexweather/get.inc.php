@@ -25,7 +25,7 @@ $column=SQLSelect(' SHOW COLUMNS FROM yaweather_main');
 
 //создаем массив хранимых полей для таблицы yaweather_hourforecast
 $column3=array();
-$column=SQLSelect(' SHOW COLUMNS FROM yaweather_hourforecast');
+$column=SQLSelect(' SHOW COLUMNS FROM yaweather_hf');
 //print_r($column);
 //echo "---<br>---<br>";
     $total = count($column);
@@ -391,8 +391,8 @@ foreach ($properties as $did) {
 //print_r(data['forecasts']);
 //echo ("<br>");
 $hour=$data['forecasts'][$day]['hours'][$key]['hour'];
-/*		 
-$sqlll="select * from yaweather_hourforecast where CID='$cityid' and day='$day' and hour='$hour'";
+		 
+$sqlll="select * from yaweather_hf where CID='$cityid' and day='$day' and hour='$hour'";
 
 //echo   $i." ".$hour." ".$sqlll."<br>";
 //echo   $sqlll."<br>";
@@ -426,8 +426,8 @@ $sql2["prec_period"]=$data['forecasts'][$day]['hours'][$key]['prec_period'];
 
 //sg('test.sql3', print_r($sql2));
 
-        if ($sql2['ID']) {sqlupdate('yaweather_hourforecast', $sql2);} else {sqlinsert('yaweather_hourforecast', $sql2);}
-*/		 
+        if ($sql2['ID']) {sqlupdate('yaweather_hf', $sql2);} else {sqlinsert('yaweather_hf', $sql2);}
+		 
 //print_r($sql2);
 //echo "-----<br>";
 //echo "-----<br>";
