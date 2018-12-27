@@ -12,7 +12,7 @@ $forecast_day=$cmd_rec['VALUE'];
 //sg('test.starline', 'start '.date());
 
 
-
+//создаем массив хранимых полей для таблицы yaweather_main
 $column2=array();
 $column=SQLSelect(' SHOW COLUMNS FROM yaweather_main');
 //print_r($column);
@@ -21,6 +21,18 @@ $column=SQLSelect(' SHOW COLUMNS FROM yaweather_main');
     for ($i = 0; $i < $total; $i++) {
         $column2[]=$column[$i]['Field'];
     }
+
+
+//создаем массив хранимых полей для таблицы yaweather_hourforecast
+$column3=array();
+$column=SQLSelect(' SHOW COLUMNS FROM yaweather_hourforecast');
+//print_r($column);
+//echo "---<br>---<br>";
+    $total = count($column);
+    for ($i = 0; $i < $total; $i++) {
+        $column3[]=$column[$i]['Field'];
+    }
+
 
 
 $mycityid=SQLSelectOne("SELECT * FROM `yaweather_cities` where `mycity`=1 ")['ID'];
@@ -287,10 +299,14 @@ foreach ($properties as $did) {
     ///////////////////////////////////////////////////
     ///forecast
     //////////////
+
     $fobjn= $objn;
-    $src=$data['forecasts'][0]['parts'];
+
     if ($error==0) {
         foreach ($data['forecasts'] as $day=> $value) {
+
+
+
             foreach ($data['forecasts'][$day]['parts'] as $key=> $value) {
                 if ($day<=$forecast_day) {
                     sg($fobjn.'.'."forecast_".$day."_date", date("d-m-Y", time()+3600*24*$day));
@@ -349,9 +365,88 @@ foreach ($properties as $did) {
                     }
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']);
                 }
+
+
             }
-        }
-    }
+
+
+
+
+    ///////////////////////////////////////////////////	///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///hour почасовой прогноз
+    //////////////
+    
+
+
+
+
+    
+// $i=0;
+              foreach ($data['forecasts'][$day]['hours'] as $key=> $value) 
+{
+
+         if ($day<=$forecast_day) {
+//print_r(data['forecasts']);
+//echo ("<br>");
+$hour=$data['forecasts'][$day]['hours'][$key]['hour'];
+$sqlll="select * from yaweather_hourforecast where CID='$cityid' and day='$day' and hour='$hour'";
+
+//echo   $i." ".$hour." ".$sqlll."<br>";
+//echo   $sqlll."<br>";
+//echo   $i." "." ".$sqlll."<br>";
+//echo   $i." ".$day." ".$hour."<br>";
+$sql2=SQLSelectOne($sqlll);
+
+$sql2["CID"]=$cityid;
+$sql2["day"]=$day;
+$sql2["hour"]=$hour;
+$sql2["hour_ts"]=$data['forecasts'][$day]['hours'][$key]['hour_ts'];
+$sql2["temp"]=$data['forecasts'][$day]['hours'][$key]['temp'];
+$sql2["feels_like"]=$data['forecasts'][$day]['hours'][$key]['feels_like'];
+$sql2["icon"]=$data['forecasts'][$day]['hours'][$key]['icon'];
+$sql2["condition"]=$data['forecasts'][$day]['hours'][$key]['condition'];
+$sql2["wind_speed"]=$data['forecasts'][$day]['hours'][$key]['wind_speed'];
+$sql2["wind_gust"]=$data['forecasts'][$day]['hours'][$key]['wind_gust'];
+$sql2["rise_begin"]=$data['forecasts'][$day]['hours'][$key]['rise_begin'];
+$sql2["wind_dir"]=$data['forecasts'][$day]['hours'][$key]['wind_dir'];
+$sql2["prec_prob"]=$data['forecasts'][$day]['hours'][$key]['prec_prob'];
+
+$sql2["pressure_mm"]=$data['forecasts'][$day]['hours'][$key]['pressure_mm'];
+$sql2["pressure_pa"]=$data['forecasts'][$day]['hours'][$key]['pressure_pa'];
+$sql2["humidity"]=$data['forecasts'][$day]['hours'][$key]['humidity'];
+$sql2["soil_temp"]=$data['forecasts'][$day]['hours'][$key]['soil_temp'];
+$sql2["soil_moisture"]=$data['forecasts'][$day]['hours'][$key]['soil_moisture'];
+$sql2["prec_mm"]=$data['forecasts'][$day]['hours'][$key]['prec_mm'];
+$sql2["prec_period"]=$data['forecasts'][$day]['hours'][$key]['prec_period'];
+
+
+
+//sg('test.sql3', print_r($sql2));
+
+        if ($sql2['ID']) {sqlupdate('yaweather_hourforecast', $sql2);} else {sqlinsert('yaweather_hourforecast', $sql2);}
+//print_r($sql2);
+//echo "-----<br>";
+//echo "-----<br>";
+
+
+}
+//$i=$i+1;
+}
+
+
+
+    ///////////////////////////////////////////////////	///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///end hour
+    //////////////
+
+
+}
+}
+
 
 
 
