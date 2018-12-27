@@ -1019,6 +1019,8 @@ SQLExec('DROP TABLE IF EXISTS yaweather_cities');
 SQLExec('DROP TABLE IF EXISTS yaweather_main');
 SQLExec('DROP TABLE IF EXISTS yaweather_config');	 
 SQLExec('DROP TABLE IF EXISTS yaweather_cities_temp');	 
+SQLExec('DROP TABLE IF EXISTS yaweather_hourforecast');	 
+
 SQLExec("delete from pvalues where property_id in (select id FROM properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather')))");
 SQLExec("delete from properties where object_id in (select id from objects where class_id = (select id from classes where title = 'YandexWeather'))");
 SQLExec("delete from objects where class_id = (select id from classes where title = 'YandexWeather')");
@@ -1225,6 +1227,8 @@ SQLUpdate('properties',$property);}
 EOD;
    parent::dbInstall($data);
 
+
+$data="";
   $data = <<<EOD
  yaweather_cities_temp: country varchar(100) 
  yaweather_cities_temp: cityname varchar(30) 
@@ -1241,14 +1245,15 @@ EOD;
 EOD;
    parent::dbInstall($data);
 
-	 
+
+$data="";	 
   $data = <<<EOD
  yaweather_config: parametr varchar(300)
  yaweather_config:  value varchar(100)  
 EOD;
    parent::dbInstall($data);
 	 
-	 
+$data="";	 
 $data = <<<EOD
 yaweather_main: ID int(30) unsigned NOT NULL auto_increment
 yaweather_main: CID 		    int(30) 
@@ -1299,12 +1304,52 @@ yaweather_main: forecast_0_morning_pressure_mm   varchar(100)
 yaweather_main: forecast_0_day_pressure_mm       varchar(100) 
 yaweather_main: forecast_0_evening_pressure_mm  varchar(100) 
 yaweather_main: forecast_0_night_short_pressure_mm  varchar(100) 
+yaweather_main: day 	        int(30) 
+yaweather_main: date 	        datetime
+yaweather_main: date_ts 	varchar(20) 
+yaweather_main: sunrise	varchar(20) 
+yaweather_main: sunset	varchar(20) 
+yaweather_main: rise_begin	varchar(20) 
+yaweather_main: set_end	varchar(20) 
+yaweather_main: date_ts	varchar(20) 
+EOD;
+parent::dbInstall($data);
 
 
 
+
+
+
+
+
+$data="";
+$data = <<<EOD
+yaweather_hourforecast: ID int(30) unsigned NOT NULL auto_increment
+yaweather_hourforecast: CID 		    	int(30) 
+yaweather_hourforecast: day 		    	int(30) 
+yaweather_hourforecast: hour 		    	int(30) 
+yaweather_hourforecast: hour_ts 	    	varchar(20) 
+yaweather_hourforecast: temp			varchar(20) 
+yaweather_hourforecast: feels_like 		varchar(30) 
+yaweather_hourforecast: icon 			varchar(30) 
+yaweather_hourforecast: condition		varchar(80) 
+yaweather_hourforecast: wind_speed	 	varchar(20) 
+yaweather_hourforecast: wind_gust		varchar(20) 
+yaweather_hourforecast: rise_begin 		varchar(20) 
+yaweather_hourforecast: wind_dir 		varchar(20) 
+yaweather_hourforecast: pressure_mm 		varchar(20) 
+yaweather_hourforecast: pressure_pa 		varchar(20) 
+yaweather_hourforecast: humidity		varchar(20) 
+yaweather_hourforecast: soil_temp 		varchar(20) 
+yaweather_hourforecast: soil_moisture 		varchar(20) 
+yaweather_hourforecast: prec_mm 		varchar(20) 
+yaweather_hourforecast: prec_period 		varchar(20) 
+yaweather_hourforecast: prec_prob		varchar(20) 
 EOD;
  
    parent::dbInstall($data);
+
+
 
 
          $cmds = SQLSelectOne("SELECT * FROM yaweather_cities;");
