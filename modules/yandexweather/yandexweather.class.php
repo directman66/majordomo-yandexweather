@@ -1304,6 +1304,8 @@ yaweather_main: forecast_0_morning_pressure_mm   varchar(100)
 yaweather_main: forecast_0_day_pressure_mm       varchar(100) 
 yaweather_main: forecast_0_evening_pressure_mm  varchar(100) 
 yaweather_main: forecast_0_night_short_pressure_mm  varchar(100) 
+
+/*
 yaweather_main: day 	        int(30) 
 yaweather_main: date 	        datetime
 yaweather_main: date_ts 	varchar(20) 
@@ -1315,10 +1317,10 @@ yaweather_main: date_ts	varchar(20)
 EOD;
 parent::dbInstall($data);
 
+*/
 
 
-
-
+/*
 
 
 
@@ -1348,6 +1350,8 @@ yaweather_hourforecast: prec_prob		varchar(20)
 EOD;
  
    parent::dbInstall($data);
+   
+   */
 
 
 
