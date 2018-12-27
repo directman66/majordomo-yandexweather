@@ -391,6 +391,7 @@ foreach ($properties as $did) {
 //print_r(data['forecasts']);
 //echo ("<br>");
 $hour=$data['forecasts'][$day]['hours'][$key]['hour'];
+/*		 
 $sqlll="select * from yaweather_hourforecast where CID='$cityid' and day='$day' and hour='$hour'";
 
 //echo   $i." ".$hour." ".$sqlll."<br>";
@@ -426,6 +427,7 @@ $sql2["prec_period"]=$data['forecasts'][$day]['hours'][$key]['prec_period'];
 //sg('test.sql3', print_r($sql2));
 
         if ($sql2['ID']) {sqlupdate('yaweather_hourforecast', $sql2);} else {sqlinsert('yaweather_hourforecast', $sql2);}
+*/		 
 //print_r($sql2);
 //echo "-----<br>";
 //echo "-----<br>";
