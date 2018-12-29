@@ -1311,7 +1311,6 @@ yaweather_main: sunrise varchar(20)
 yaweather_main: sunset varchar(20) 
 yaweather_main: rise_begin varchar(20) 
 yaweather_main: set_end varchar(20) 
-yaweather_main: date_ts varchar(20) 
 EOD;
 parent::dbInstall($data);
 
