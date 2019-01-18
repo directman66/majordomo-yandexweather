@@ -13,7 +13,7 @@
    $session->data['lgps_in']=$qry;
   }
 
-if (isset($this->skin)) {$skin2=$this->skin;} else {$skin2=1;}
+if (isset($this->skin)) {$skin2=$this->skin;} else {$skin2='animated';}
 
 if ($skin2=='static'||$skin2=='animated') {$format='svg';} else {$format='png';}
 
