@@ -13,7 +13,7 @@ $condition=$this->getconditionrusincl(gg('yw_mycity.condition'));
 $status .= "Сейчас на улице по данным метеослужб " .$condition . ", ";
 $w = round(gg("yw_mycity.temp"));
 //$status .= 'температура ' . chti($w, 'градус', 'градуса', 'градусов')  . " цельсия, ";
-$status .= 'температура '.$w." градусов цельсия, ";
+$status .= 'температура '.$w." ".GetNumberWord($w,array('градус','градуса','градусов')). "  цельсия, ";
 //if (gg('all_in_one.zaoknom_actual')=='1' && (gg('all_in_one.zaoknom2_actual')=="1"))
 //{$realFellTemp = round(min(gg("all_in_one.zaoknomtemp"),gg("all_in_one.zaoknom2temp")));}
 //else if 
@@ -59,16 +59,19 @@ $tOld = round((float) getHistoryAvg("yw_mycity.temp", strtotime("-1 day")));
 $tDelta = abs($tNew - $tOld);
 if ($tNew > $tOld) {
      //$status .= "теплее, чем вчера на " . chti($tDelta, 'градус', 'градуса', 'градусов') . ". ";
-$status .= "теплее, чем вчера на " . $tDelta. ' градуса. ';     
+//$status .= "теплее, чем вчера на " . $tDelta. ' градуса. ';     
+$status .= "теплее, чем вчера на " . $tDelta." " .GetNumberWord($tDelta,array('градус','градуса','градусов')).". ";     
+
+
 } elseif ($tNew < $tOld) {
 //     $status .= "холоднее, чем вчера на " . chti($tDelta, 'градус', 'градуса', 'градусов') . ". ";
-     $status .= "холоднее, чем вчера на " . $tDelta . ' градуса. ';
+     $status .= "холоднее, чем вчера на " . $tDelta." ".GetNumberWord($tDelta,array('градус','градуса','градусов')). '. ';
 } elseif ($tNew == $tOld) {
      $status .= "так же как и вчера. ";
 }
 $h = round(gg("yw_mycity.humidity"));
 //$status .= "Относительная влажность " . chti($h, 'процент', 'процента', 'процентов') . ". ";
-$status .= "Относительная влажность " . $h.' процентов.';	
+$status .= "Относительная влажность " . $h." ".GetNumberWord($h,array('процент','процента','процентов')).'. ';	
 $pressure = (float) gg("yw_mycity.pressure_mm");
 if ($pressure < 738) {
     $status .= 'Атмосферное давление пониженное';
@@ -78,7 +81,7 @@ if ($pressure < 738) {
     $status .= 'Атмосферное давление в пределах нормы';
 }
  //$status .= " (" . chti(round($pressure), 'миллиметр', 'миллиметра', 'миллиметров') . " ртутного столба). ";
-$status .= " ". round($pressure). " (миллиметров ртутного столба). "; 
+$status .= " ". round($pressure)." ".GetNumberWord($pressure,array('миллиметра','миллиметров','миллиметров')). "  ртутного столба. "; 
 // ветер
 $WindSpeed = (float) gg("yw_mycity.wind_speed");
 if ($WindSpeed < 1) {
@@ -104,7 +107,7 @@ if ($WindSpeed < 1) {
 }
 if ($WindSpeed >= 1) {
 //    $status .= " (" . chti(round($WindSpeed), 'метр', 'метра', 'метров') . " в секунду), ";
-$status .= " ( " . round($WindSpeed) ." метра в секунду), ";
+$status .= ",  " . round($WindSpeed)." ".GetNumberWord($WindSpeed,array('метра','метра','метров'))." в секунду, ";
 //    $windDirections = array('севера', 'северо-востока', 'востока', 'юго-востока', 'юга', 'юго-запада', 'запада', 'северо-запада', 'севера');
     
 if (gg('yw_mycity.wind_dir')=='n') {$degree = 'севера';}
@@ -143,11 +146,11 @@ $condition=$this->getconditionrusincl(gg('yw_mycity.forecast_0_eveningcondition'
 $condition=$this->getconditionrusincl(gg('yw_mycity.forecast_0_nightcondition'));	
 }
 //$status .= chti($w, 'градус', 'градуса', 'градусов') . " цельсия, " . gg("ow_day0.weather_type") . ". ";
-$status .= $w ." градусов цельсия, " . $condition . ". ";
+$status .= $w." ".GetNumberWord($w,array('градус','градуса','градусов'))." цельсия, " . $condition . ". ";
 // Погода на завтра
 $w = round(gg("yw_mycity.forecast_1_day_temp_avg"));
 //$status .= 'Завтра ожидается ' . chti($w, 'градус', 'градуса', 'градусов') . " цельсия, ";
-$status .= 'Завтра ожидается ' . $w. " градусов цельсия, ";
+$status .= 'Завтра ожидается ' . $w." ".GetNumberWord($w,array('градус','градуса','градусов')). " цельсия, ";
 
 $condition=$this->getconditionrusincl(gg('yw_mycity.forecast_1_daycondition'));
 $status .= $condition . ".";	
