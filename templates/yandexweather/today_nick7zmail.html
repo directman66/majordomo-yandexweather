@@ -17,7 +17,7 @@
   </div>
   <div class="fact_details" tabindex="0" href="https://yandex.ru/pogoda">
 [#locality_name#] [#district_name#]
-   <time class="fact__time">Сейчас 19:45</time>
+   <time class="fact__time">Сейчас [#DESCRIPTION#]</time>
 <img   src="/templates/yandexweather/img/skin/[#SKIN#]/[#condition#].[#FORMAT#]" title="[#condition#]" aria-hidden="true">
 
     <div class="temp fact__temp">
@@ -29,7 +29,9 @@
     <dt class="term__label">Ощущается как</dt>
     <dd class="term__value">
      <div class="temp">
-     <span class="temp__value">−9</span>
+     <span class="temp__value">
+[#feels_like#]
+</span>
      <span class="temp__unit i-font i-font_face_yandex-sans-text-medium">°</span>
      </div>
     </dd>
@@ -38,7 +40,7 @@
     <dt class="term__label">Вчера в это время</dt>
     <dd class="term__value">
      <div class="temp">
-     <span class="temp__value">−7</span>
+     <span class="temp__value">−127</span>
      <span class="temp__unit i-font i-font_face_yandex-sans-text-medium">°</span>
      </div>
     </dd>
