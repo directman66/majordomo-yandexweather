@@ -1,3 +1,7 @@
+dl {
+    margin-bottom: 8px;
+color: white; 
+}
 .fact {
 background-image: url("/cms/images/weather_fon.jpg");
 border-radius: 15px;
@@ -5,6 +9,7 @@ padding: 10px;
 width:100%;
 height:100%;
 font-size: 14px;
+color: white; 
 }
 .fact_navlink {
 background: rgba(0, 0, 0, 0.3);
