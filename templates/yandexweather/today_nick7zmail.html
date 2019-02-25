@@ -1,6 +1,3 @@
-<head>
-<link rel="stylesheet" type="text/css" href="/templates/yandexweather/today_nick7zmail.css">
-</head>
 
 
 <table border=1>  <tr><td>
@@ -8,6 +5,16 @@
  
 [#begin RESULTMYCITY#]
    </div>
+
+<head>
+
+[#if daytime="n"#]
+<link rel="stylesheet" type="text/css" href="/templates/yandexweather/night_nick7zmail.css">
+[#else#]
+<link rel="stylesheet" type="text/css" href="/templates/yandexweather/day_nick7zmail.css">
+[#endif#]
+</head>
+
 
 <div class="fact">
  <div class="fact_temp">
