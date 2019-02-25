@@ -1,0 +1,90 @@
+dl {
+    margin-bottom: 8px;
+color: white; 
+}
+.fact {
+background-image: url("/templates/yandexweather/img/night_bk.jpg");
+border-radius: 15px;
+padding: 10px;
+width:100%;
+height:100%;
+font-size: 14px;
+color: white; 
+}
+.fact_navlink {
+background: rgba(0, 0, 0, 0.3);
+    float: right;
+    width: 40%;
+    border-radius: 5px;
+}
+.fact__props {
+ display: flex;
+ justify-content: space-between;
+ border-top: 1px solid rgba(255,255,255,.3);
+ padding-top: 10px;
+}
+.fact .term__label, .fact__time {
+    opacity: .7;
+font-size: 14px;
+}
+.fact__time {display: block;}
+.fact__temp{
+    display: inline-block;
+    font-size: 64px;
+    line-height: 77px;
+}
+.fact .fact__icon {
+    width: 64px;
+    height: 64px;
+    margin-right: 4px;
+    vertical-align: top;
+}
+.fact_details {padding-left: 10px;}
+.fact .term__value {
+    font-weight: 500;
+}
+.fact .fact__props .term__value .fact__unit {
+    font-size: 12px;
+    margin-left: .3em;
+}
+.fact .fact__props .term__value {
+    font-size: 16px;
+    white-space: nowrap;
+    font-weight: 600;
+   text-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
+.fact__condition {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 5px;
+}
+.fact__feels-like .term_orient_h:not(:last-of-type) {
+    display: inline-block;
+    margin-right: 1.1em;
+}
+.term_orient_h {
+    display: inline-block;
+    margin-right: 1.1em;
+}
+.term__label, .term_orient_h .term__value {
+    display: inline-block;
+}
+.nowcast-alert__control {
+    padding: 7px 16px 6px;
+    background-color: rgba(0,0,0,.08);
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+}
+.nowcast-alert__text {
+ padding:10px;
+}
+.fact .forc__icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
+    vertical-align: top;
+}
+
