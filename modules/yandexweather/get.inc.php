@@ -306,6 +306,39 @@ foreach ($properties as $did) {
         foreach ($data['forecasts'] as $day=> $value) {
 
 
+                    if (in_array("forecast_".$day.'_sunrise', $column2)) {
+                        $sql["forecast_".$day.'_sunrise']=$data['forecasts'][$day]['sunrise'];
+                    }
+
+                    if (in_array("forecast_".$day.'_daytime', $column2)) {
+                        $sql["forecast_".$day.'_daytime']=$data['forecasts'][$day]['daytime'];
+                    }
+
+
+
+                    if (in_array("forecast_".$day.'_sunset', $column2)) {
+                        $sql["forecast_".$day.'_sunset']=$data['forecasts'][$day]['sunset'];
+                    }
+
+
+                    if (in_array("forecast_".$day.'_week', $column2)) {
+                        $sql["forecast_".$day.'_week']=$data['forecasts'][$day]['week'];
+                    }
+
+
+                    if (in_array("forecast_".$day.'_rise_begin', $column2)) {
+                        $sql["forecast_".$day.'_rise_begin']=$data['forecasts'][$day]['rise_begin'];
+                    }
+
+
+                    if (in_array("forecast_".$day.'_set_end', $column2)) {
+                        $sql["forecast_".$day.'_set_end']=$data['forecasts'][$day]['set_end'];
+                    }
+
+
+
+
+
 
             foreach ($data['forecasts'][$day]['parts'] as $key=> $value) {
                 if ($day<=$forecast_day) {
@@ -355,14 +388,12 @@ foreach ($properties as $did) {
 
                     //if ($sql["forecast_".$day."_".$key.'_pressure_pa'])
                     //if ($sql["forecast_".$day."_".$key.'condition'])
-                    if (in_array("forecast_".$day."_".$key.'condition', $column2)) {
-                        $sql["forecast_".$day."_".$key.'condition']=$data['forecasts'][$day]['parts'][$key]['condition'];
+                    if (in_array("forecast_".$day."_".$key.'_condition', $column2)) {
+                        $sql["forecast_".$day."_".$key.'_condition']=$data['forecasts'][$day]['parts'][$key]['condition'];
                     }
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['parts'][$key]['condition']);
 
-                    if (in_array("forecast_".$day."_".$key.'daytime', $column2)) {
-                        $sql["forecast_".$day."_".$key.'daytime']=$data['forecasts'][$day]['parts'][$key]['daytime'];
-                    }
+
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'daytime',$data['forecasts'][$day]['parts'][$key]['daytime']);
                 }
 
