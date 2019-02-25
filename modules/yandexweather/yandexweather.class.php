@@ -1307,10 +1307,20 @@ yaweather_main: forecast_0_night_short_pressure_mm  varchar(100)
 yaweather_main: day int(30) 
 yaweather_main: date datetime
 yaweather_main: date_ts varchar(20) 
-yaweather_main: sunrise varchar(20) 
-yaweather_main: sunset varchar(20) 
-yaweather_main: rise_begin varchar(20) 
-yaweather_main: set_end varchar(20) 
+yaweather_main: daytime varchar(40) 
+yaweather_main: season varchar(40) 
+yaweather_main: polar varchar(40) 
+yaweather_main: soil_temp varchar(40) 
+yaweather_main: forecast_0_sunrise  varchar(100) 
+yaweather_main: forecast_0_sunset  varchar(100) 
+yaweather_main: forecast_0_week  varchar(100) 
+yaweather_main: forecast_0_rise_begin  varchar(100) 
+yaweather_main: forecast_0_set_end  varchar(100) 
+yaweather_main: forecast_0_moon_code  varchar(100) 
+yaweather_main: forecast_0_moon_text  varchar(100) 
+
+
+
 EOD;
 parent::dbInstall($data);
 
