@@ -363,7 +363,7 @@ foreach ($properties as $did) {
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_gust',$data['forecasts'][$day]['parts'][$key]['wind_gust']);
 
                     //if ($sql["forecast_".$day."_".$key.'_wind_gust'])
-                    if (in_array("forecast_".$day."_".$key.'_wind_gust', $column2)) {
+                    if (in_array("forecast_".$day."_".$key.'_wind_dir', $column2)) {
                         $sql["forecast_".$day."_".$key.'_wind_dir']=$data['forecasts'][$day]['parts'][$key]['wind_dir'];
                     }
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'_wind_dir',$data['forecasts'][$day]['parts'][$key]['wind_dir']);
