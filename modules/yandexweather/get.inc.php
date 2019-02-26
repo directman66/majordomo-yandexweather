@@ -388,8 +388,8 @@ foreach ($properties as $did) {
 
                     //if ($sql["forecast_".$day."_".$key.'_pressure_pa'])
                     //if ($sql["forecast_".$day."_".$key.'condition'])
-                    if (in_array("forecast_".$day."_".$key.'_condition', $column2)) {
-                        $sql["forecast_".$day."_".$key.'_condition']=$data['forecasts'][$day]['parts'][$key]['condition'];
+                    if (in_array("forecast_".$day."_".$key.'condition', $column2)) {
+                        $sql["forecast_".$day."_".$key.'condition']=$data['forecasts'][$day]['parts'][$key]['condition'];
                     }
                     ///////sg( $fobjn.'.'."forecast_".$day."_".$key.'condition',$data['forecasts'][$day]['parts'][$key]['condition']);
 
