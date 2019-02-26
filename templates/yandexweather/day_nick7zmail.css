@@ -3,7 +3,8 @@ dl {
 color: white; 
 }
 .fact {
-background-image: url("/templates/yandexweather/img/day_bk.jpg");
+background-image: url("/templates/yandexweather/img/day_bk.jpg") ;
+background-size: 140%;
 border-radius: 15px;
 padding: 10px;
 width:100%;
