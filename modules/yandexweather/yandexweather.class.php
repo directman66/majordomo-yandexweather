@@ -181,7 +181,7 @@ function admin(&$out) {
 //echo $this->view_mode;	
 //('test.view_mode',$this->view_mode);	
  $this->getConfig();
-        if ((time() - gg('cycle_yandexweatherRun')) < 360*2 ) {
+        if ((time() - gg('cycle_yandexweatherRun')) < 360*30 ) {
 			$out['CYCLERUN'] = 1;
 		} else {
 			$out['CYCLERUN'] = 0;
