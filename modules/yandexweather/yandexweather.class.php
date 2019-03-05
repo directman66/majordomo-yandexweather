@@ -655,6 +655,12 @@ if ($this->view_mode=='tlg_yandex')
 * @access public
 */
 function usual(&$out) {
+
+
+ if ($this->owner->action=='apps') {
+  $this->redirect(ROOTHTML."module/".$this->name.".html");
+//  $this->redirect(ROOTHTML."module/nick7zmail.html");
+ } else 
  $this->admin($out);
 }
  
