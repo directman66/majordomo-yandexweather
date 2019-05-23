@@ -606,7 +606,12 @@ if (!$this->id) {$idd=1000;} else {$idd=$this->id;}
 	
 	
  if ($this->view_mode=='get') {
-setGlobal('cycle_yandexweatherControl','start'); 
+
+        if ((time() - gg('cycle_yandexweatherRun')) > 360*30 ) {
+setGlobal('cycle_yandexweatherControl','start');  
+}
+
+
 		$this->getdatefnc();
 //$t1 = new Thread('$this->upd_PROPERTY_NAME' );
 //		$this->upd_PROPERTY_NAME_timer();	 
