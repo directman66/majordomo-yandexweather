@@ -26,12 +26,13 @@ $data = SQLSelect($sql);
 //$total = count($data); 
 //for ($i = 0; $i < $total; $i++){}
 $osadki="В ближайшие два часа осадки не ожидаются.";
-if (($data[0]['prec_prob']!='0' )&&($data[1]['prec_prob']='0' )) $osadki="В ближайший час  ожидается прекращение осадков.";
-if (($data[0]['prec_prob']!='0' )&&($data[1]['prec_prob']!='0' )&&($data[2]['prec_prob']!='0' )) $osadki="В ближайшие два часа  ожидается прекращение осадков.";
+if (($data[0]['prec_prob']!=0 )&&($data[1]['prec_prob']==0 )) {$osadki="В ближайший час ожидается прекращение осадков.";}
+if (($data[0]['prec_prob']!=0 )&&($data[1]['prec_prob']!=0 )&&($data[2]['prec_prob']==0 )) {$osadki="Через час ожидается прекращение осадков.";}
 
-if (($data[0]['prec_prob']='0' )&&($data[1]['prec_prob']!='0' )) $osadki="В ближайший час  ожидаются  осадки.";
-if (($data[0]['prec_prob']!='0' )&&($data[1]['prec_prob']!='0' )&&($data[2]['prec_prob']!='0' )) $osadki="В ближайшие два часа  ожидаются  осадки.";
-
+if (($data[0]['prec_prob']==0 )&&($data[1]['prec_prob']!=0 )) {$osadki="В ближайший час  ожидаются  осадки.";}
+if (($data[0]['prec_prob']==0 )&&($data[1]['prec_prob']==0 )&&($data[2]['prec_prob']!=0 )) {$osadki="Через час ожидаются осадки.";}
+if (($data[0]['prec_prob']==0 )&&($data[1]['prec_prob']!=0 )&&($data[2]['prec_prob']!=0 )) {$osadki="В ближайшие два часа ожидаются осадки.";}
+if (($data[0]['prec_prob']!=0 )&&($data[1]['prec_prob']!=0 )&&($data[2]['prec_prob']!=0 )) {$osadki="Сейчас и в ближайшие два часа ожидаются осадки.";}
 
 
 
