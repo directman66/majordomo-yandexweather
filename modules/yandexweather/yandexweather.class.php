@@ -1521,11 +1521,11 @@ function getconditionrusincl($conditioneng){
 $condition=$conditioneng;
 if ($conditioneng=="overcast") {$condition="пасмурно";}
 if ($conditioneng=="clear") {$condition="ясно";}	
-if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно и небольшой дождь";}
-if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно и  дождь";}
+if ($conditioneng=="cloudy-and-light-rain") {$condition="пасмурно, небольшой дождь";}
+if ($conditioneng=="cloudy-and-rain") {$condition="пасмурно, дождь";}
 if ($conditioneng=="cloudy") {$condition="облачно";}
-if ($conditioneng=="overcast-and-light-rain") {$condition="моросящий дождь";}
-if ($conditioneng=="overcast-and-light-snow") {$condition="небольшой снег";}
+if ($conditioneng=="overcast-and-light-rain") {$condition="пасмурно, моросящий дождь";}
+if ($conditioneng=="overcast-and-light-snow") {$condition="пасмурно, небольшой снег";}
 if ($conditioneng=="partly-cloudy-and-light-rain") {$condition="переменная облачность и небольшой дождь";}
 if ($conditioneng=="partly-cloudy-and-light-snow") {$condition="переменная облачность и небольшой снег";}
 if ($conditioneng=="partly-cloudy-and-rain") {$condition="переменная облачность с дождем";}
@@ -1533,11 +1533,11 @@ if ($conditioneng=="partly-cloudy-and-snow") {$condition="переменная �
 if ($conditioneng=="partly-cloudy") {$condition="переменная облачность";}
 if ($conditioneng=="overcast-and-rain") {$condition="ливень";}	
 if ($conditioneng=="overcast-thunderstorms-with-rain") {$condition="гроза";}	
-if ($conditioneng=="cloudy-and-snow") {$condition="облачно, легкий снегопад";}	
-if ($conditioneng=="overcast-and-snow") {$condition="небольшой снег";}	
-if ($conditioneng=="cloudy-and-light-snow") {$condition="небольшой снегопад";}	
-if ($conditioneng=="cloudy-and-snow") {$condition="идет снег";}		
-if ($conditioneng=="overcast-and-wet-snow") {$condition="пасмурно и мокрый снег";}		
+if ($conditioneng=="overcast-and-snow") {$condition="пасмурно, снег";}	
+if ($conditioneng=="cloudy-and-light-snow") {$condition="облачно, небольшой снег";}	
+if ($conditioneng=="cloudy-and-snow") {$condition="облачно, снег";}		
+if ($conditioneng=="overcast-and-wet-snow") {$condition="пасмурно, мокрый снег";}		
+		
 	
 	
 	
