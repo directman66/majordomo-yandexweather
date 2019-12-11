@@ -913,7 +913,12 @@ SQLInsert('tlg_event', $par);
 ////////////////////////////////////////	
 function sayweather() {
 require(DIR_MODULES.$this->name.'/sayforecastnow.php');	
-say($return_full,$msglevel);
+global $terminals;
+if(strlen($terminals)){
+sayTo($return_full,$msglevel,$terminals);
+}else{
+say($return_full,$msglevel);	
+}
 }
 ///////////////////////////////////////////
 ///////////////////////////////////////////
@@ -921,8 +926,12 @@ say($return_full,$msglevel);
 ///////////////////////////////////////////	
 function sayforecast() {
 require(DIR_MODULES.$this->name.'/sayforecast.php');
-say($status,$msglevel);
-
+global $terminals;
+if(strlen($terminals)){
+sayTo($status,$msglevel,$terminals);
+}else{
+say($status,$msglevel);	
+}
 }
 	
 	
