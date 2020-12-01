@@ -70,6 +70,8 @@
 
 Проговаривает текущую погоду голосом:<br>
 <code><b>
+global $terminals;<br>
+$terminals = 'MAIN';<br>
 include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');<br>
 $yw = new yandexweather();<br>
 $yw->sayweather();</b></code> <br>
@@ -77,6 +79,8 @@ $yw->sayweather();</b></code> <br>
 <br><br>			
 Проговаривает текущую погоду и прогноз на завтра голосом:<br> 
 <code><b>
+global $terminals;<br>
+$terminals = 'MAIN';<br>
 include_once(DIR_MODULES . 'yandexweather/yandexweather.class.php');<br>
 $yw = new yandexweather();<br>
 $yw->sayforecast();</b></code><br> 
