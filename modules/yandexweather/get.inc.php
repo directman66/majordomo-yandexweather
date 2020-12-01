@@ -9,6 +9,10 @@ $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='FORE
 $forecast_day=$cmd_rec['VALUE'];
 
 
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='APIKEY'");
+$apikey=$cmd_rec['VALUE'];
+
+
 //sg('test.starline', 'start '.date());
 
 
@@ -47,6 +51,8 @@ $properties=SQLSelect("SELECT * FROM yaweather_cities where `CHECK`='1'");
 foreach ($properties as $did) {
     $cityid=$did['ID'];
     $latlon=$did['latlon'];
+    $lat=$did['lat'];
+    $lon=$did['lon'];
 
     //ID города узнаем тут: https://pogoda.yandex.ru/static/cities.xml
     //region="11162" id="28440
@@ -57,13 +63,14 @@ foreach ($properties as $did) {
     //if (isset($latlon)) {$file = file_get_contents('https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru', false, $context);}
     //$file = file_get_contents('https://api.weather.yandex.ru/v1/locations?lang=ru', false, $context);
 
-    if (strlen($latlon)>5) {
+/*    if (strlen($latlon)>5) {
         $url='https://api.weather.yandex.ru/v1/forecast?'.$latlon.'&lang=ru';
     } else {
         $url='https://api.weather.yandex.ru/v1/forecast?geoid='.$cityid.'&lang=ru';
     }
 
-    $header = array(
+
+/*    $header = array(
         "X-Yandex-Weather-Client: YandexWeatherAndroid/4.2.1",
         "X-Yandex-Weather-Device: manufacturer=chromium;os_version=21;device_id=$deviceid;os=null;uuid=$uuid;model=App Runtime for Chrome Dev;",
         "X-Yandex-Weather-Token: $token",
@@ -75,9 +82,18 @@ foreach ($properties as $did) {
         "Accept-Encoding: gzip"
 );
 
+*/
+
+$url = "https://api.weather.yandex.ru/v2/forecast?lat=".$lat."&lon=".$lon."&extra=true";
+
+$header = array(
+   "X-Yandex-API-Key: ".$apikey,
+);
+//    debmes($url,'yw');
+//    debmes($header,'yw');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_USERAGENT, "yandex-weather-android/4.2.1");
+//    curl_setopt($ch, CURLOPT_USERAGENT, "yandex-weather-android/4.2.1");
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 //upd for win10   
