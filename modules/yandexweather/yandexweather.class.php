@@ -242,6 +242,7 @@ if ($this->view_mode=='update_headsettings')
  {
 global $duuid;
 global $every;	
+global $apikey;	
 global $deviceid;	
 global $forecast_day;	
 	
@@ -260,7 +261,8 @@ SQLexec("update yaweather_config set value='$duuid' where parametr='DUUID'");
 SQLexec("update yaweather_config set value='$every' where parametr='EVERY'");
 SQLexec("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
 SQLexec("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
-SQLexec("update yaweather_config set value='$apikey' where parametr='APIKEY'");		   	   	   	
+SQLexec("update yaweather_config set value='$apikey' where parametr='APIKEY'");
+
 
 	
 
@@ -569,7 +571,6 @@ $this->config['ENABLE_EVENTS']=$enable_events;
 //   $this->redirect("?");
 
 SQLexec("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
-SQLexec("update yaweather_config set value='$apikey' where parametr='APIKEY'");
 SQLexec("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
@@ -1414,6 +1415,8 @@ EOD;
             $rec['ID'] = 54;
             $rec['check'] = '0';
             $rec['head'] = '0';
+            $rec['lat'] = '56.8380127';
+            $rec['lon'] = '60.59746552';
             $rec['mycity'] = '0';		
             SQLInsert('yaweather_cities', $rec);
 
@@ -1425,6 +1428,8 @@ EOD;
             $rec['check'] = '1';
             $rec['head'] = 0;
             $rec['mycity'] = '1';				
+            $rec['lat'] = '55.75321579';
+            $rec['lon'] = '37.62250519';
             SQLInsert('yaweather_cities', $rec);
 
             $rec['country'] = 'Украина';
@@ -1434,6 +1439,8 @@ EOD;
             $rec['check'] = '0';
             $rec['head'] = 0;
             $rec['mycity'] = '0';				
+            $rec['lat'] = '50.45045853';
+            $rec['lon'] = '30.52346039';
             SQLInsert('yaweather_cities', $rec);
 		 
             $rec['country'] = 'Беларусь';
@@ -1443,6 +1450,9 @@ EOD;
             $rec['check'] = '0';
             $rec['head'] = 0;
             $rec['mycity'] = '0';				
+            $rec['lat'] = '53.90249634';
+            $rec['lon'] = '27.56148148';
+
             SQLInsert('yaweather_cities', $rec);
 
 		 
