@@ -33,7 +33,10 @@
 <th>ID</th>  
 <th>Проверять</th>  
 <th>MyCity</th>  
+<th>Координаты (lat)</th>   
+<th>Координаты (lon)</th>   
 <th>Координаты (latlon)</th>   
+
  
  
 
@@ -88,6 +91,23 @@
 <a href="?view_mode=config_mycity&id=[#ID#]&tab=settings2" class="btn btn-default" title="Это мой город"><i class="glyphicon glyphicon-star-empty"></i></a>     
 [#endif#]   	
 </td>   
+
+
+  <td style="vertical-align:middle">
+  [#if lat!=""#]
+   [#lat#]
+  [#else#]
+  [#endif#]
+ </td>  
+
+
+  <td style="vertical-align:middle">
+  [#if lon!=""#]
+   [#lon#]
+  [#else#]
+  [#endif#]
+ </td>  
+
  
 
   <td style="vertical-align:middle">
