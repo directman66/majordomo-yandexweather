@@ -50,7 +50,17 @@
 			<option[#if FORECAST_DAY="10"#] selected[#endif#]>10						    						    
 		 </select>  
  </div>
-</td><td>				
+</td>
+
+ <div class="form-group">
+    <label class="col-sm-3 control-label" [#if ERR_MQTT_CLIENT#] style="color:red;font-weight:bold"[#endif#]>X-Yandex-API-Key:</label>
+    <div class="col-sm-9">
+      <input class="form-control" type="text" name="apikey" value="<#APIKEY#>">
+    <small>https://developer.tech.yandex.ru/services/</small>
+</div>
+  </div>
+
+<td>				
 				
 				
 							
