@@ -281,6 +281,15 @@ if ($this->view_mode=='add_city')
    global $latlon;
    $rec['latlon']=$latlon;
 
+   global $lat;
+   $rec['lat']=$lat;
+
+   global $lon;
+   $rec['lon']=$lon;
+
+
+
+
 $table_name='yaweather_cities';
      SQLInsert($table_name, $rec); // adding new record
 
@@ -467,16 +476,21 @@ $sql['head']=$menu[$j]['CITY_HEAD'];
 
 //$sql['head']='123';
 $sql['url']=$menu[$j]['CITY_url'];
+
+
+$sql['lat']=$menu[$j]['CITY_LAT'];
+$sql['lon']=$menu[$j]['CITY_LON'];
+
 $sql['type']='0';
 
 $sql['mycity']='0';
 $sql['type']='';
 //lat=47.240585&lon=38.870989
-if (($menu[$j]['CITY_LAT'])&&($menu[$j]['CITY_LON'])) {
-$sql['latlon']='lat='.$menu[$j]['CITY_LAT'].'&lon='.$menu[$j]['CITY_LON'];
-} else {
-$sql['latlon']='';
-}
+//if (($menu[$j]['CITY_LAT'])&&($menu[$j]['CITY_LON'])) {
+//$sql['latlon']='lat='.$menu[$j]['CITY_LAT'].'&lon='.$menu[$j]['CITY_LON'];
+//} else {
+//$sql['latlon']='';
+//}
 //print_r($sql);
 //echo "<br>";
 sqlinsert('yaweather_cities_temp', $sql);
@@ -1243,6 +1257,8 @@ SQLUpdate('properties',$property);}
  yaweather_cities: region varchar(100) 
  yaweather_cities: mycity int(30) 
  yaweather_cities: latlon varchar(50) 
+ yaweather_cities: lat varchar(50) 
+ yaweather_cities: lon varchar(50) 
  yaweather_cities: url varchar(300) 
 EOD;
    parent::dbInstall($data);
@@ -1261,6 +1277,8 @@ $data="";
  yaweather_cities_temp: mycity int(30) 
  yaweather_cities_temp: url varchar(300) 
  yaweather_cities_temp: latlon varchar(100) 
+ yaweather_cities_temp: lat varchar(100) 
+ yaweather_cities_temp: lon varchar(100) 
 
 EOD;
    parent::dbInstall($data);
