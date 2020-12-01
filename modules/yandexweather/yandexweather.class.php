@@ -200,6 +200,10 @@ $out['DUUID']=$cmd_rec['VALUE'];
 
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='ENABLE_EVENTS'");
 $out['ENABLE_EVENTS']=$cmd_rec['VALUE'];
+
+
+$cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='APIKEY'");
+$out['APIKEY']=$cmd_rec['VALUE'];
 	
 	
 $cmd_rec = SQLSelectOne("SELECT VALUE FROM yaweather_config where parametr='MSG_LEVEL'");
@@ -256,6 +260,7 @@ SQLexec("update yaweather_config set value='$duuid' where parametr='DUUID'");
 SQLexec("update yaweather_config set value='$every' where parametr='EVERY'");
 SQLexec("update yaweather_config set value='$deviceid' where parametr='DEVICEID'");
 SQLexec("update yaweather_config set value='$forecast_day' where parametr='FORECAST_DAY'");		   	   	   	
+SQLexec("update yaweather_config set value='$apikey' where parametr='APIKEY'");		   	   	   	
 
 	
 
@@ -541,6 +546,8 @@ if  (!$sql['ID']) {
 $sql['ID']=$insert['ID'];
 $sql['check']='1';
 $sql['latlon']='';
+$sql['lat']=$insert['lat'];
+$sql['lon']=$insert['lon'];
 $sql['check']='1';
 $sql['mycity']='0';
 $sql['part']=$insert['part'];
@@ -554,6 +561,7 @@ SQLInsert('yaweather_cities', $sql);
 	
  if ($this->view_mode=='update_eventssettings'){
 global $enable_events;
+global $apikey;
 global $msg_level;	 
 
 $this->config['ENABLE_EVENTS']=$enable_events;	 
@@ -561,6 +569,7 @@ $this->config['ENABLE_EVENTS']=$enable_events;
 //   $this->redirect("?");
 
 SQLexec("update yaweather_config set value='$enable_events' where parametr='ENABLE_EVENTS'");
+SQLexec("update yaweather_config set value='$apikey' where parametr='APIKEY'");
 SQLexec("update yaweather_config set value='$msg_level' where parametr='MSG_LEVEL'");	 
 
 
@@ -1447,6 +1456,10 @@ EOD;
 		 
 $par['parametr'] = 'EVERY';
 $par['value'] = 30;		 
+SQLInsert('yaweather_config', $par);				
+
+$par['parametr'] = 'APIKEY';
+$par['value'] = 0;		 
 SQLInsert('yaweather_config', $par);				
 		 
 $par['parametr'] = 'ENABLE_EVENTS';
