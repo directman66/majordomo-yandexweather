@@ -39,23 +39,6 @@
 <input type="hidden" name="tab" value="settings2">
 </form>
   
-</td></tr>
-<tr><td align="left">
-<br>Выбор по координатам города</td></tr><tr><td>
-<form action="?" method="get" class="form-horizontal" name="onselect">
-<select name="city_lat" class="form-control" style="width: 750px;" align="left">
-<!--  <option value=""><#LANG_SELECT#> -->
-  [#begin yw_city_select2#]
-<option value="[#CITY_LAT#]"[#if SELECTED#] selected[#endif#]>[#CITY_NAME#]
-[#end yw_city_select2#]
- </select>
-</td><td valign="top">
-<button type="submit" name="subm" value="Submit" class="btn btn-primary">Добавить</button>
-<input type="hidden" name="view_mode" value="select_latlon">	
-<input type="hidden" name="mode" value="update">
-<input type="hidden" name="tab" value="settings2">
-</form>
-</td></tr>
 
 <!--      <button type="submit" name="ow_subm" value="setCityId" class="btn btn-primary"><#LANG_SUBMIT#></button> 
       <input type="hidden" id="current" name="current" value="">
