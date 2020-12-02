@@ -102,7 +102,7 @@ $header = array(
     
     $otvet = curl_exec($ch);
     curl_close($ch);
-
+    debmes($otvet,'yw');
     $data=json_decode($otvet, true);
     //$objn=$data[0]['id'];
 
